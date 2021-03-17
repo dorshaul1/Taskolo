@@ -6,19 +6,10 @@ import {board} from '../data/board.js'
 export const boardService = {
   add,
   query,
-  remove
+  remove,
+  getById
 }
 
-<<<<<<< HEAD
-const board1 = board
-// add(board)
-
-// _addBoardTStorage()
-
-// async function _addBoardTStorage(){
-//   return await JSON.parse(localStorage.getItem(board)) || add(board)
-// }
-=======
 // query()
 
 _addBoardToStorage()
@@ -26,7 +17,6 @@ _addBoardToStorage()
 async function _addBoardToStorage(){
   return  await JSON.parse(localStorage.getItem('board')) || add(board)
 }
->>>>>>> f4174e5c66fdcbf61f1e2b2333bea94de405b644
 
 // More ways to send query params:
 // return axios.get('api/toy/?id=1223&balance=13')
@@ -51,4 +41,8 @@ async function add(board) {
   const addedBoard = storageService.post('board', board)
 
   return addedBoard
+}
+
+function getById(boardId) {
+  return storageService.get('board', boardId)
 }

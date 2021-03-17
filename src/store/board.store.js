@@ -3,12 +3,17 @@ import { socketService, SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.ser
 
 export const boardStore = {
     state: {
-        boards: []
+        boards: [],
+        currBoard: null,
+        currTask: null
     },
     getters: {
         boards(state) {
             return state.boards;
         },
+        currBoard(state) {
+            return state.currBoard
+        }
     },
     mutations: {
         setBoards(state, { boards }) {
@@ -20,6 +25,9 @@ export const boardStore = {
         removeBoard(state, { boardId }) {
             state.boards = state.boards.filter(board => board._id !== boardId)
         },
+        setCurrBoard(state, { board }) {
+            state.currBoard = board
+        }
     },
     actions: {
         async addBoard(context, { board }) {
@@ -56,6 +64,16 @@ export const boardStore = {
                 throw err
             }
         },
+        async loadAndWatchBoard({ commit }, { boardId }) {
+            try {
+                console.log(boardId, "board id")
+                const board = await boardService.getById(boardId)
+                commit({ type: 'setCurrBoard', board })
+            } catch (error) {
+
+            }
+
+        }
 
     }
 }
