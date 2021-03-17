@@ -160,6 +160,14 @@ export default {
             }
         },
     },
+    computed: {
+        task() {
+            return this.$store.getters.currTask
+        }
+    },
+    created() {
+        console.log(this.$store.state.currTask, "createddd")
+    }
 };
 </script>
 

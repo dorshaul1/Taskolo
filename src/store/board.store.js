@@ -13,6 +13,9 @@ export const boardStore = {
         },
         currBoard(state) {
             return state.currBoard
+        },
+        currTask(state) {
+            return state.currTask
         }
     },
     mutations: {
