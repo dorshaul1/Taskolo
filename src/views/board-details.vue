@@ -1,10 +1,12 @@
 <template>
 <section v-if="currBoard">
+    <board-header/>
     <h1>Curr board: {{currBoard._id}}</h1>
 </section>
 </template>
 
 <script>
+import boardHeader from '../cmps/board/board-header'
 export default {
     name: "board-details",
     computed: {
@@ -15,7 +17,9 @@ export default {
             return this.$store.getters.currBoard
         }
     },
-
+    components:{
+        boardHeader
+    },
     watch: {
         boardId: {
             handler() {
