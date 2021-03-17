@@ -29,11 +29,11 @@ export const board = {
                   "title": "Group 1",
                   "tasks": [
                         {
-                              "id": "c101",
+                              "id": "cdmAPDKASD",
                               "title": "Replace logo"
                         },
                         {
-                              "id": "c102",
+                              "id": "cfjksdl",
                               "title": "Add Samples"
                         }
                   ],
@@ -44,11 +44,11 @@ export const board = {
                   "title": "Group 2",
                   "tasks": [
                         {
-                              "id": "c102",
+                              "id": "VDSDS",
                               "title": "Replace logo"
                         },
                         {
-                              "id": "c102",
+                              "id": "QWEWQ",
                               "title": "Add Samples"
                         }
                   ],

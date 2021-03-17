@@ -21,14 +21,21 @@ const routes = [
   {
     path: '/board/:boardId',
     name: 'boardDetails',
-    component: boardDetails
-  },
-  {
-    path: '/board/:boardId/task/:taskId',
-    name: 'taskDetails',
-    component: taskDetails
-  },
+    component: boardDetails,
+    children: [
+      {
+        path: 'task/:taskId',
+        name: 'taskDetails',
+        component: taskDetails
+      },
+    ]
+  }
 ]
+
+
+
+
+
 
 const router = new VueRouter({
   mode: 'history',
