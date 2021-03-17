@@ -10,12 +10,12 @@ export const boardService = {
   getById
 }
 
-// query()
+const KEY = 'board'
 
 _addBoardToStorage()
 
 async function _addBoardToStorage(){
-  return  await JSON.parse(localStorage.getItem('board')) || add(board)
+  return  await JSON.parse(localStorage.getItem(KEY)) || add(board)
 }
 
 // More ways to send query params:
@@ -25,12 +25,12 @@ async function _addBoardToStorage(){
 function query() {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
-  return storageService.query('board')
+  return storageService.query(KEY)
 }
 
 function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
-  return storageService.delete('board', boardId)
+  return storageService.delete(KEY, boardId)
 
 }
 async function add(board) {
@@ -38,11 +38,11 @@ async function add(board) {
 
   board.byUser = userService.getLoggedinUser()
   board.aboutUser = await userService.getById(board.aboutUserId)
-  const addedBoard = storageService.post('board', board)
+  const addedBoard = storageService.post(KEY, board)
 
   return addedBoard
 }
 
 function getById(boardId) {
-  return storageService.get('board', boardId)
+  return storageService.get(KEY, boardId)
 }
