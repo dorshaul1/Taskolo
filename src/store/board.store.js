@@ -16,6 +16,9 @@ export const boardStore = {
         },
         currTask(state) {
             return state.currTask
+        },
+        groupName(state) {
+            return state.currBoard.title
         }
     },
     mutations: {

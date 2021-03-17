@@ -7,7 +7,7 @@
 
         <div class="title flex align-start column">
             <h1>{{task.title}}</h1>
-            <h4>in list To Do</h4>
+            <h4 v-if="boardName">in list {{boardName}}</h4>
         </div>
 
         <div class="task-details-grid">
@@ -164,8 +164,8 @@ export default {
         task() {
             return this.$store.getters.currTask
         },
-        boardName() {
-            return this.$store.getters.boardName
+        groupName() {
+            return this.$store.getters.groupName
         }
     },
     created() {
