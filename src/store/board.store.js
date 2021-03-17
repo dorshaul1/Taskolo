@@ -87,10 +87,10 @@ export const boardStore = {
             } catch (error) {
             }
         },
-        async setTask({commit}, { taskId }) {
-            console.log("set tasks", taskId)
+        async setTask({commit}, { task }) {
+            console.log("set tasks", task)
             try {
-                commit({ type: 'setCurrTask', taskId})
+                commit({ type: 'setCurrTask', task})
             } catch (err) {
                 console.log('boardStore: Error in set task', err)
                 throw err
