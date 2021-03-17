@@ -73,7 +73,15 @@ export const boardStore = {
 
             }
 
-        }
+        },
+        // async changeBoardProperty({ commit }, property, value){
+        //     try{
+        //         board[property] = await value
+        //         console.log('board[property]:', board[property])
+        //     } catch(error){
+
+        //     }
+        // }
 
     }
 }
