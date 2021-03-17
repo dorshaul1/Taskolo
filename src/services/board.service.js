@@ -9,24 +9,13 @@ export const boardService = {
   remove
 }
 
-<<<<<<< HEAD
-const board1 = board
-// add(board)
-
-// _addBoardTStorage()
-
-// async function _addBoardTStorage(){
-//   return await JSON.parse(localStorage.getItem(board)) || add(board)
-// }
-=======
-// query()
+const KEY = 'board'
 
 _addBoardToStorage()
 
 async function _addBoardToStorage(){
-  return  await JSON.parse(localStorage.getItem('board')) || add(board)
+  return  await JSON.parse(localStorage.getItem(KEY)) || add(board)
 }
->>>>>>> f4174e5c66fdcbf61f1e2b2333bea94de405b644
 
 // More ways to send query params:
 // return axios.get('api/toy/?id=1223&balance=13')
@@ -35,12 +24,12 @@ async function _addBoardToStorage(){
 function query() {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
-  return storageService.query('board')
+  return storageService.query(KEY)
 }
 
 function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
-  return storageService.delete('board', boardId)
+  return storageService.delete(KEY, boardId)
 
 }
 async function add(board) {
@@ -48,7 +37,7 @@ async function add(board) {
 
   board.byUser = userService.getLoggedinUser()
   board.aboutUser = await userService.getById(board.aboutUserId)
-  const addedBoard = storageService.post('board', board)
+  const addedBoard = storageService.post(KEY, board)
 
   return addedBoard
 }
