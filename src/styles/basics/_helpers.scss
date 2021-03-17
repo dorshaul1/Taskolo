@@ -28,8 +28,19 @@
     &.align-center {
         align-items: center;
     }
+    &.space-between {
+        justify-content: space-between;
+    }
+    &.center-self {
+        align-self: center;
+        justify-self: center;
+    }
 }
 
+.clean-list {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
 // Media helpers
 
 .square-ratio {
