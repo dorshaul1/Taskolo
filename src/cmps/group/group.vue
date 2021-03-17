@@ -9,6 +9,7 @@
         v-for="task in group.tasks"
         :key="task.id"
         :task="task"
+        :group="group"
         :boardId="boardId"
       ></task-preview>
       <div class="group-footer flex space-between">

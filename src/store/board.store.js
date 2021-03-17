@@ -5,7 +5,8 @@ export const boardStore = {
     state: {
         boards: [],
         currBoard: null,
-        currTask: null
+        currGroup: null,
+        currTask: null,
     },
     getters: {
         boards(state) {
@@ -34,6 +35,9 @@ export const boardStore = {
         setCurrBoard(state, { board }) {
             state.currBoard = board
         },
+        setCurrGroup(state, { group }) {
+            state.currGroup = group
+        },
         setCurrTask(state, { task }) {
             state.currTask = task
         }
@@ -48,7 +52,7 @@ export const boardStore = {
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
                 //     context.commit({ type: 'addBoard', board })
                 // })
-                
+
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
                 throw err
@@ -90,16 +94,25 @@ export const boardStore = {
             } catch (error) {
             }
         },
-        async setTask({commit}, { task }) {
+        async setGroup({ commit }, { group }) {
+            console.log("set group", group)
+            try {
+                commit({ type: 'setCurrGroup', group })
+            } catch (err) {
+                console.log('boardStore: Error in set group', err)
+                throw err
+            }
+        },
+        async setTask({ commit }, { task }) {
             console.log("set tasks", task)
             try {
-                commit({ type: 'setCurrTask', task})
+                commit({ type: 'setCurrTask', task })
             } catch (err) {
                 console.log('boardStore: Error in set task', err)
                 throw err
             }
         },
-        async updateBoard(context){
+        async updateBoard(context) {
 
         }
         // async changeBoardProperty({ commit }, property, value){
