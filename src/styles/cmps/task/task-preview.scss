@@ -15,6 +15,11 @@
             background-color: #fff;
             border-radius: 3px;
             box-shadow: 6px 9px 16px 4px #ccc;
+            .labels {
+                  margin: 0;
+                  padding: 0;
+            }
+
             .label {
                   list-style-type: none;
                   padding-inline-start: 0px;
