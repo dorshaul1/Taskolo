@@ -3,18 +3,18 @@ import { storageService } from './async-storage.service'
 import {userService} from './user.service'
 import {board} from '../data/board.js'
 
-
 export const boardService = {
   add,
   query,
   remove
 }
 
-const board1=board;
+_addBoardTStorage()
 
-// add(board1);
-// board
-// console.log('the  is:', board1)
+async function _addBoardTStorage(){
+  return await JSON.parse(localStorage.getItem(board)) || add(board)
+}
+
 // More ways to send query params:
 // return axios.get('api/toy/?id=1223&balance=13')
 // return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
