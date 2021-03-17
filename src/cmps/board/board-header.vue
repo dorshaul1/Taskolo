@@ -35,6 +35,7 @@
 </template>
 
 <script>
+// import sideMenu from "./side-menu";
 export default {
   name: "board-header",
   data() {
@@ -42,9 +43,11 @@ export default {
       chossenBoard: "",
       isEdititle: false,
       editedTitle: this.$store.getters.currBoard.title,
-      isMenuOpen: false
     };
   },
+  // components: {
+  //   sideMenu,
+  // },
   computed: {
     getBoards() {
       return this.$store.getters.boards;
@@ -52,13 +55,9 @@ export default {
     currBoards() {
       return this.$store.getters.currBoard;
     },
-    openMenu(){
-      return this.isMenuOpen = !this.isMenuOpen
-    }
-    // boardTitle(){
-    //   console.log('this.currBoards().title:', this.currBoards().title)
-    //   return this.currBoards().title
-    // }
+    // menuOpen() {
+    //   if (this.isMenuOpen) return "is-show-menu";
+    // },
   },
   methods: {
     changeBoardTitle() {
@@ -67,8 +66,12 @@ export default {
     },
     editTitle() {
       this.isEdititle = true;
-      console.log(this.$refs["title"]);
+      // console.log(this.$refs["title"]);
       // this.$refs["title"].focus();
+    },
+    openMenu() {
+      // console.log( 'open')
+      this.$emit('open'); // console.log("this.isMenuOpen:", this.isMenuOpen);
     },
   },
 };

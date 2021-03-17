@@ -1,6 +1,7 @@
 <template>
   <section v-if="currBoard">
-    <board-header></board-header>
+    <board-header @open="openMenu" />
+    <side-menu :class="{ 'menu-show': isMenuOpen }" />
     <main class="flex board-details">
       <group
         v-for="group in currBoard.groups"
@@ -9,39 +10,53 @@
         :boardId="currBoard._id"
       ></group>
     </main>
-    <router-view/>
+    <router-view />
   </section>
 </template>
 
 <script>
 import group from "../cmps/group/group";
 import boardHeader from "../cmps/board/board-header";
-export default {
-    name: "board-details",
-    computed: {
-        boardId() {
-            return this.$route.params.boardId;
-        },
-        currBoard() {
-            return this.$store.getters.currBoard;
-        },
-    },
+import sideMenu from "../cmps/board/side-menu";
 
-    watch: {
-        boardId: {
-            handler() {
-                this.$store.dispatch({
-                    type: "loadAndWatchBoard",
-                    boardId: this.boardId,
-                });
-            },
-            immediate: true,
-        },
+export default {
+  name: "board-details",
+  data() {
+    return {
+      isMenuOpen: false,
+    };
+  },
+  computed: {
+    boardId() {
+      return this.$route.params.boardId;
     },
-    components: {
-        group,
-        boardHeader,
+    currBoard() {
+      return this.$store.getters.currBoard;
     },
+  },
+  methods: {
+    openMenu() {
+        // console.log('efewf');
+      this.isMenuOpen = !this.isMenuOpen;
+      console.log("this.isMenuOpen:", this.isMenuOpen);
+    },
+  },
+  watch: {
+    boardId: {
+      handler() {
+        this.$store.dispatch({
+          type: "loadAndWatchBoard",
+          boardId: this.boardId,
+        });
+      },
+      immediate: true,
+    },
+  },
+  components: {
+    group,
+    boardHeader,
+    sideMenu,
+  },
 };
 </script>
 

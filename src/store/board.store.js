@@ -30,16 +30,6 @@ export const boardStore = {
         }
     },
     actions: {
-        async addBoard(context, { board }) {
-            try {
-                board = await boardService.add(board)
-                context.commit({ type: 'addBoard', board })
-                return board;
-            } catch (err) {
-                console.log('boardStore: Error in addBoard', err)
-                throw err
-            }
-        },
         async loadBoards(context) {
             try {
                 const boards = await boardService.query();
@@ -49,9 +39,28 @@ export const boardStore = {
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
                 //     context.commit({ type: 'addBoard', board })
                 // })
-
+                
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
+                throw err
+            }
+        },
+        async loadAndWatchBoard({ commit }, { boardId }) {
+            try {
+                console.log(boardId, "board id")
+                const board = await boardService.getById(boardId)
+                commit({ type: 'setCurrBoard', board })
+            } catch (error) {
+
+            }
+        },
+        async addBoard(context, { board }) {
+            try {
+                board = await boardService.add(board)
+                context.commit({ type: 'addBoard', board })
+                return board;
+            } catch (err) {
+                console.log('boardStore: Error in addBoard', err)
                 throw err
             }
         },
@@ -64,16 +73,9 @@ export const boardStore = {
                 throw err
             }
         },
-        async loadAndWatchBoard({ commit }, { boardId }) {
-            try {
-                console.log(boardId, "board id")
-                const board = await boardService.getById(boardId)
-                commit({ type: 'setCurrBoard', board })
-            } catch (error) {
+        async updateBoard(context){
 
-            }
-
-        },
+        }
         // async changeBoardProperty({ commit }, property, value){
         //     try{
         //         board[property] = await value
