@@ -1,0 +1,17 @@
+.board-header {
+    height: 40px;
+    width: 100%;
+    // background-color: red;
+    padding: 8px 4px 4px 8px;
+
+    .boards-btn {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #172b4d;
+        padding-right: 5px;
+        padding-left: 5px;
+        float: left;
+        display: inline-flex;
+        margin-right: 4px;
+        white-space: nowrap;
+    }
+}

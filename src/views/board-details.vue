@@ -1,13 +1,20 @@
 <template>
   <section v-if="currBoard">
+    <board-header></board-header>
     <main>
-      <group v-for="group in currBoard.groups" :key="group.id" :group="group" :boardId="currBoard._id"></group>
+      <group
+        v-for="group in currBoard.groups"
+        :key="group.id"
+        :group="group"
+        :boardId="currBoard._id"
+      ></group>
     </main>
   </section>
 </template>
 
 <script>
 import group from "../cmps/group/group";
+import boardHeader from "../cmps/board/board-header";
 export default {
   name: "board-details",
   computed: {
@@ -32,6 +39,7 @@ export default {
   },
   components: {
     group,
+    boardHeader
   },
 };
 </script>
