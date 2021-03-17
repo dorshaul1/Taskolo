@@ -1,0 +1,126 @@
+.task-details-container {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    height: 100vh;
+    width: 80%;
+    color: white;
+    background-color: #f4f5f7;
+    z-index: 100;
+    color: #172b4d;
+
+    & .cover {
+        position: relative;
+        background-color: blanchedalmond;
+        height: 115px;
+
+        & .change-cover {
+            right: 8px;
+            bottom: 8px;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.08);
+            color: #172b4d;
+            border-radius: 3px;
+            padding: 6px 12px 6px 6px;
+            text-decoration: none;
+        }
+
+        & .close-modal-btn {
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.08);
+            color: #42526e;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 32px;
+            overflow: hidden;
+            padding: 4px;
+            margin: 4px;
+            width: 32px;
+            z-index: 2;
+        }
+    }
+    & .title {
+        margin: 12px 40px 8px 56px;
+    }
+}
+
+.task-details-grid {
+    display: grid;
+    grid-template-columns: auto 200px;
+    margin: 0 16px;
+
+    & .left-column > * {
+        grid-column: 1/2;
+        margin-left: 40px;
+    }
+
+    & .right-column > * {
+        grid-column: 2/3;
+        // margin-left: 40px;
+        margin-bottom: 8px;
+    }
+
+    & .members-labels {
+        align-items: flex-start;
+
+        & .member {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: palevioletred;
+        }
+
+        & .label {
+            margin: 4px;
+            width: 60px;
+            height: 20px;
+            border-radius: 10%;
+            background-color: palevioletred;
+        }
+    }
+
+    & .description {
+        & .title-container {
+            & button {
+                margin-left: 8px;
+            }
+        }
+
+        & .desc-input-buttons {
+            & button {
+                margin-top: 8px;
+            }
+            & button:not(:last-child) {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    & .activity {
+    }
+
+    & .link-button {
+        color: #172b4d;
+        text-decoration: none;
+        background-color: rgba(9, 30, 66, 0.04);
+        box-shadow: none;
+        border: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        height: 32px;
+        margin-top: 8px;
+        max-width: 300px;
+        overflow: hidden;
+        padding: 6px 12px;
+        position: relative;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        -webkit-user-select: none;
+        user-select: none;
+        white-space: nowrap;
+    }
+}
