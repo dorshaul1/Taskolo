@@ -9,6 +9,7 @@
         :boardId="currBoard._id"
       ></group>
     </main>
+    <router-view/>
   </section>
 </template>
 
