@@ -1,12 +1,12 @@
 <template>
-    <section class="task-details-container">
+    <section v-if="task" class="task-details-container">
         <div class="cover">
             <a class="change-cover" href="#">Cover</a>
             <a class="close-modal-btn" href="#">X</a>
         </div>
 
         <div class="title flex align-start column">
-            <h1>Finish Tech Design</h1>
+            <h1>{{task.title}}</h1>
             <h4>in list To Do</h4>
         </div>
 
@@ -160,6 +160,16 @@ export default {
             }
         },
     },
+    computed: {
+        task() {
+            return this.$store.getters.currTask
+        },
+        boardName() {
+            return this.$store.getters.boardName
+        }
+    },
+    created() {
+    }
 };
 </script>
 
