@@ -1,6 +1,8 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
 import {userService} from './user.service'
+import {board} from '../data/board.js'
+
 
 export const boardService = {
   add,
@@ -8,7 +10,11 @@ export const boardService = {
   remove
 }
 
+const board1=board;
 
+// add(board1);
+
+console.log('the board is:', board1)
 // More ways to send query params:
 // return axios.get('api/toy/?id=1223&balance=13')
 // return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})

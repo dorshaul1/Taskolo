@@ -1,14 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import homePage from '../views/home-page.vue'
+import boardList from '../views/board-list'
+import boardDetails from '../views/board-details'
+import taskDetails from '../views/task-details'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'homePage',
+    component: homePage
+  },
+  {
+    path: '/board',
+    name: 'boardList',
+    component: boardList
+  },
+  {
+    path: '/board/:boardId',
+    name: 'boardDetails',
+    component: boardDetails
+  },
+  {
+    path: '/board/:boardId/task/:taskId',
+    name: 'taskDetails',
+    component: taskDetails
   },
 ]
 

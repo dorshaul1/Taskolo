@@ -4,9 +4,18 @@
       <router-link to="/">Home</router-link> |
       <h1>hello dor michael ytav</h1>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+
+
+<script>
+import {boardService} from './services/board.service.js'
+export default {
+  name: "board-list",
+};
+</script>
+
 
 <style lang="scss">
 #app {
@@ -16,9 +25,6 @@
   text-align: center;
   color: #2c3e50;
 }
-
-
-
 
 #nav {
   padding: 30px;
