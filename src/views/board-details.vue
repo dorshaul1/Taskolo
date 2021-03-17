@@ -1,7 +1,7 @@
 <template>
   <section v-if="currBoard">
     <board-header></board-header>
-    <main>
+    <main class="flex">
       <group
         v-for="group in currBoard.groups"
         :key="group.id"
