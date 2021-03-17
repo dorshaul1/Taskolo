@@ -1,8 +1,28 @@
 <template>
   <div class="task-container">
-    <div class="task-main flex space-between">
-      <h3>{{task.title}}</h3>
-      <button @click="openTaskPreview">...</button>
+
+    <div class="task-header flex space-between">
+      <div class="taskColor" :style="{ 'background-color': task.style.bgColor }"></div>
+      <button class="open-task-btn" @click="openTaskPreview">...</button>
+    </div>
+
+    <div class="task-main">
+
+      <div class="labels">
+        <h1>labels</h1>
+      </div>
+
+      <div class="title">
+        <h3>{{ task.title }}</h3>
+      </div>
+
+      <div class="badges">
+        <h1>badges</h1>
+      </div>
+
+      <div class="members">
+        <h1>members</h1>
+      </div>
     </div>
   </div>
 </template>

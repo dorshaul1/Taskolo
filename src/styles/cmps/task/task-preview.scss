@@ -1,7 +1,15 @@
 .task-container{
       padding: 6px 8px 2px;
+      .open-task-btn{
+            display: flex
+      }
+      
+      .taskColor{
+            width: 100%;
+      }
 
       .task-main{
+            flex-direction: column;
             padding: 6px 8px 2px;
             background-color: #fff;
             border-radius: 3px;
