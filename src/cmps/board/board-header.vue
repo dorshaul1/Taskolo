@@ -1,6 +1,6 @@
 <template>
   <header class="board-header">
-    <button class="boards-btn">Boards</button>
+    <div class="boards-btn">Boards</div>
   </header>
 </template>
 
