@@ -1,16 +1,16 @@
 <template>
-  <section v-if="currBoard">
-    <board-header></board-header>
-    <main class="flex">
-      <group
-        v-for="group in currBoard.groups"
-        :key="group.id"
-        :group="group"
-        :boardId="currBoard._id"
-      ></group>
-    </main>
-    <router-view/>
-  </section>
+    <section class="border-detials-body" v-if="currBoard">
+        <board-header></board-header>
+        <main class="flex">
+            <group
+                v-for="group in currBoard.groups"
+                :key="group.id"
+                :group="group"
+                :boardId="currBoard._id"
+            ></group>
+        </main>
+        <router-view />
+    </section>
 </template>
 
 <script>
