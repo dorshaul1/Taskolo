@@ -9,13 +9,31 @@ export const board = {
             "imgUrl": "http://some-img.jpg",
       },
       "style": {},
-      // "labels": [
-      //       {
-      //             "id": "l101",
-      //             "title": "Done",
-      //             "color": "#61bd4f"
-      //       }
-      // ],
+      "labels": [
+            {
+                  "id": "l101",
+                  "title": "Done",
+                  "color": "#ff0000"
+            },
+            {
+                  "id": "l102",
+                  "title": "Done",
+                  "color": "#00ff00"
+            },        {
+                  "id": "l103",
+                  "title": "Done",
+                  "color": "#0000ff"
+            },
+            {
+                  "id": "l104",
+                  "title": "Done",
+                  "color": "#FFFF00"
+            },        {
+                  "id": "l105",
+                  "title": "Done",
+                  "color": "#FF00FF"
+            }
+      ],
       "members": [{
             "_id": "u103",
             "fullname": "ytav",
@@ -59,7 +77,8 @@ export const board = {
                               "title": "Add Samples",
                               "style": {
                                     "bgColor": "#26de81"
-                              }
+                              },
+                              "labelIds": ["l101", "l102","l103","l104","l105"],
                         }
                   ],
                   "style": {} //group style
