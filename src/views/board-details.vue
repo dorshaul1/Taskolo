@@ -1,7 +1,7 @@
 <template>
   <section v-if="currBoard">
-    <board-header @open="openMenu" />
-    <side-menu :class="{ 'menu-show': isMenuOpen }" />
+    <board-header @open="isMenuOpen = true" />
+    <side-menu @close="isMenuOpen = false" :class="{ 'menu-show': isMenuOpen }" />
     <main class="flex board-details">
       <group
         v-for="group in currBoard.groups"
@@ -35,11 +35,15 @@ export default {
     },
   },
   methods: {
-    openMenu() {
-        // console.log('efewf');
-      this.isMenuOpen = !this.isMenuOpen;
-      console.log("this.isMenuOpen:", this.isMenuOpen);
-    },
+    // openMenu() {
+    //   // console.log('efewf');
+    //   this.isMenuOpen = true;
+    //   console.log("this.isMenuOpen:", this.isMenuOpen);
+    // },
+    // closeMenu() {
+    //   this.isMenuOpen = false;
+    //   console.log('this.isMenuOpen:', this.isMenuOpen)
+    // },
   },
   watch: {
     boardId: {
