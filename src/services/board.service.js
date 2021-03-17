@@ -14,7 +14,7 @@ export const boardService = {
 _addBoardToStorage()
 
 async function _addBoardToStorage(){
-  return await JSON.parse(localStorage.getItem(board)) || add(board)
+  return  await JSON.parse(localStorage.getItem('board')) || add(board)
 }
 
 // More ways to send query params:
