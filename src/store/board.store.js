@@ -27,6 +27,9 @@ export const boardStore = {
         },
         setCurrBoard(state, { board }) {
             state.currBoard = board
+        },
+        setCurrTask(state, { task }) {
+            state.currTask = task
         }
     },
     actions: {
@@ -73,6 +76,23 @@ export const boardStore = {
                 throw err
             }
         },
+        async loadAndWatchBoard({ commit }, { boardId }) {
+            try {
+                console.log(boardId, "board id")
+                const board = await boardService.getById(boardId)
+                commit({ type: 'setCurrBoard', board })
+            } catch (error) {
+            }
+        },
+        async setTask({commit}, { taskId }) {
+            try {
+                console.log("set tasks", taskId)
+                commit({ type: 'setTask', taskId})
+            } catch (err) {
+                console.log('boardStore: Error in set task', err)
+                throw err
+            }
+        },
         async updateBoard(context){
 
         }
@@ -84,6 +104,5 @@ export const boardStore = {
 
         //     }
         // }
-
     }
 }
