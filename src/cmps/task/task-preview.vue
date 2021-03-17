@@ -20,7 +20,7 @@
       </ul>
 
       <div class="title">
-        <h3>{{ task.title }}</h3>
+        {{ task.title }}
       </div>
 
       <div class="badges">
@@ -37,8 +37,9 @@
 <script>
 export default {
   props: {
-    task: {},
     boardId: {},
+    group: {},
+    task: {},
   },
   name: "task-preview",
   data() {
@@ -53,6 +54,7 @@ export default {
   },
   methods: {
     async openTaskPreview() {
+      await this.$store.dispatch({ type: "setGroup", group: this.group });
       await this.$store.dispatch({ type: "setTask", task: this.task });
       this.$router.push("/board/" + this.boardId + "/task/" + this.task.id);
     },
