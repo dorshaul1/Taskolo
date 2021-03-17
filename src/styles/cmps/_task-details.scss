@@ -9,6 +9,10 @@
     z-index: 100;
     color: #172b4d;
 
+    & h3 {
+        margin-bottom: 4px;
+    }
+
     & .cover {
         position: relative;
         background-color: blanchedalmond;
@@ -43,6 +47,10 @@
     }
     & .title {
         margin: 12px 40px 8px 56px;
+
+        & h1{
+            margin-bottom: 16px;
+        }
     }
 }
 
@@ -54,16 +62,19 @@
     & .left-column > * {
         grid-column: 1/2;
         margin-left: 40px;
+        padding-right:16px;
     }
 
     & .right-column > * {
         grid-column: 2/3;
         // margin-left: 40px;
         margin-bottom: 8px;
+        padding-left: 8px;
     }
 
-    & .members-labels {
-        align-items: flex-start;
+    & .members-main-container {
+        margin-bottom: 8px;
+        margin-right: 8px;
 
         & .member {
             width: 40px;
@@ -71,6 +82,19 @@
             border-radius: 50%;
             background-color: palevioletred;
         }
+
+        
+        & .member-plus-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+        }
+    }
+
+    & .labels-main-contaier {
+        margin-bottom: 8px;
+        margin-right: 8px;
 
         & .label {
             margin: 4px;
@@ -99,6 +123,10 @@
     }
 
     & .activity {
+    }
+
+    & .checklist-actions{
+        width: 100%;
     }
 
     & .link-button {

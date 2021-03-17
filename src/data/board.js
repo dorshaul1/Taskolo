@@ -56,7 +56,10 @@ export const board = {
                         },
                         {
                               "id": "QWEWQ",
-                              "title": "Add Samples"
+                              "title": "Add Samples",
+                              "style": {
+                                    "bgColor": "#26de81"
+                              }
                         }
                   ],
                   "style": {} //group style
