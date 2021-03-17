@@ -4,10 +4,10 @@
     <el-select v-model="chossenBoard" placeholder="Select">
       <el-option
         v-for="board in getBoards"
+        :placeholder="Boards"
         :key="board._id"
         :label="board.title"
         :value="board._id"
-        :placeholder="Boards"
       >
       </el-option>
     </el-select>
