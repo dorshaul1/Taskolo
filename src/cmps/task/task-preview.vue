@@ -1,13 +1,14 @@
 <template>
-  <div class="task-container">
-
+  <div class="task-container" v-if="task">
     <div class="task-header flex space-between">
-      <div class="taskColor" :style="{ 'background-color': task.style.bgColor }"></div>
+      <div v-if="task.style"
+        class="taskColor"
+        :style="{ 'background-color': task.style.bgColor }"
+      ></div>
       <button class="open-task-btn" @click="openTaskPreview">...</button>
     </div>
 
     <div class="task-main">
-
       <div class="labels">
         <h1>labels</h1>
       </div>
@@ -35,7 +36,8 @@ export default {
   },
   name: "task-preview",
   methods: {
-    openTaskPreview() {
+    async openTaskPreview() {
+      await this.$store.dispatch({ type: "setTask", taskId: this.task.id });
       this.$router.push("/board/" + this.boardId + "/task/" + this.task.id);
     },
   },
