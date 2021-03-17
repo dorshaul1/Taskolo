@@ -25,6 +25,13 @@ export const board = {
       ],
       "groups": [
             {
+                  "id": "g1042365243",
+                  "title": "Group 1",
+                  "tasks": [
+                  ],
+                  "style": {} //group style
+            },
+            {
                   "id": "g101",
                   "title": "Group 1",
                   "tasks": [
