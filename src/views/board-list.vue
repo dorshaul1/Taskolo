@@ -2,7 +2,7 @@
     <section v-if="boards">
         <h1>Board List</h1>
         <ul>
-            <li v-for="board in boards" :key="board._id">
+            <li class="board-preview" v-for="board in boards" :key="board._id" @click="boardPreviewClicked(board._id)">
                 {{board._id}}
             </li>
         </ul>
@@ -17,6 +17,11 @@ export default {
             return this.$store.getters.boards;
         },
     },
+    methods: {
+        boardPreviewClicked(boardId) {
+            this.$router.push(`./board/${boardId}`)
+        }
+    },
     created() {
         this.$store.dispatch({ type: "loadBoards" });
     },
@@ -24,4 +29,12 @@ export default {
 </script>
 
 <style>
+.board-preview{
+    background-color: black;
+    color: white;
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+    margin: 30px;
+}
 </style>

@@ -9,11 +9,14 @@ export const boardService = {
   remove
 }
 
-_addBoardTStorage()
+const board1 = board
+// add(board)
 
-async function _addBoardTStorage(){
-  return await JSON.parse(localStorage.getItem(board)) || add(board)
-}
+// _addBoardTStorage()
+
+// async function _addBoardTStorage(){
+//   return await JSON.parse(localStorage.getItem(board)) || add(board)
+// }
 
 // More ways to send query params:
 // return axios.get('api/toy/?id=1223&balance=13')
