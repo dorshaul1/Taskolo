@@ -1,4 +1,13 @@
-<template></template>
+<template>
+    <section v-if="boards">
+        <h1>Board List</h1>
+        <ul>
+            <li v-for="board in boards" :key="board._id">
+                {{board._id}}
+            </li>
+        </ul>
+    </section>
+</template>
 
 <script>
 export default {
@@ -9,7 +18,7 @@ export default {
         },
     },
     created() {
-        console.log(this.boards);
+        this.$store.dispatch({ type: "loadBoards" });
     },
 };
 </script>

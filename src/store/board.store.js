@@ -35,6 +35,7 @@ export const boardStore = {
         async loadBoards(context) {
             try {
                 const boards = await boardService.query();
+                console.log(boards, "loadBoards in store")
                 context.commit({ type: 'setBoards', boards })
                 // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
