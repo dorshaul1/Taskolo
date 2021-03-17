@@ -5,7 +5,7 @@
       <el-option
         v-for="board in getBoards"
         :key="board._id"
-        :label="board.name"
+        :label="board.title"
         :value="board._id"
       >
       </el-option>
@@ -39,6 +39,7 @@ export default {
     },
     computed:{
       getBoards(){
+        console.log('this.$store.getters.boards:', this.$store.getters.boards)
         return this.$store.getters.boards
       }
     }
