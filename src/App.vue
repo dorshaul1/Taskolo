@@ -8,15 +8,6 @@
     </div>
 </template>
 
-
-<script>
-import { boardService } from "./services/board.service.js";
-export default {
-    name: "board-list",
-};
-</script>
-
-
 <style lang="scss">
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
