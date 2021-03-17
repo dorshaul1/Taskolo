@@ -1,6 +1,6 @@
 <template>
   <header class="board-header">
-    <h1></h1>
+    <h1>test</h1>
   </header>
 </template>
 
