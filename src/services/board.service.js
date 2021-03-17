@@ -9,6 +9,7 @@ export const boardService = {
   remove
 }
 
+<<<<<<< HEAD
 const board1 = board
 // add(board)
 
@@ -17,12 +18,21 @@ const board1 = board
 // async function _addBoardTStorage(){
 //   return await JSON.parse(localStorage.getItem(board)) || add(board)
 // }
+=======
+// query()
+
+_addBoardToStorage()
+
+async function _addBoardToStorage(){
+  return  await JSON.parse(localStorage.getItem('board')) || add(board)
+}
+>>>>>>> f4174e5c66fdcbf61f1e2b2333bea94de405b644
 
 // More ways to send query params:
 // return axios.get('api/toy/?id=1223&balance=13')
 // return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
 
-function query(filterBy) {
+function query() {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
   return storageService.query('board')
