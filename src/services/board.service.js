@@ -9,9 +9,11 @@ export const boardService = {
   remove
 }
 
-_addBoardTStorage()
+// query()
 
-async function _addBoardTStorage(){
+_addBoardToStorage()
+
+async function _addBoardToStorage(){
   return await JSON.parse(localStorage.getItem(board)) || add(board)
 }
 
@@ -19,7 +21,7 @@ async function _addBoardTStorage(){
 // return axios.get('api/toy/?id=1223&balance=13')
 // return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
 
-function query(filterBy) {
+function query() {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
   return storageService.query('board')
