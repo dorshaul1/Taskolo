@@ -1,7 +1,11 @@
 <template>
   <section v-if="currBoard">
     <board-header @open="isMenuOpen = true" />
-    <side-menu @close="isMenuOpen = false" :class="{ 'menu-show': isMenuOpen }" />
+    <side-menu
+      @close="isMenuOpen = false"
+      :class="{ 'menu-show': isMenuOpen }"
+      :board="currBoard"
+    />
     <main class="flex board-details">
       <group
         v-for="group in currBoard.groups"

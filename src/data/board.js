@@ -125,84 +125,100 @@ export const board = {
                         },
                   ],
             }
+      ],
+      // }
+      // {
+      //       "id": "g102",
+      //       "title": "Group 2",
+      //       "tasks": [
+      //             {
+      //                   "id": "c103",
+      //                   "title": "Do that"
+      //             },
+      //             {
+      //                   "id": "c104",
+      //                   "title": "Help me",
+      //                   "description": "description",
+      //                   "comments": [
+      //                         {
+      //                               "id": "ZdPnm",
+      //                               "txt": "also @yaronb please CR this",
+      //                               "createdAt": 1590999817436.0,
+      //                               "byMember": {
+      //                                     "_id": "u103",
+      //                                     "fullname": "ytav",
+      //                                     "username": "dorsh",
+      //                                     "imgUrl": "http://some-img.jpg",
+      //                               }
+      //                         }
+      //                   ],
+      //                   "checklists": [
+      //                         {
+      //                               "id": "YEhmF",
+      //                               "title": "Checklist",
+      //                               "todos": [
+      //                                     {
+      //                                           "id": "212jX",
+      //                                           "title": "To Do 1",
+      //                                           "isDone": false
+      //                                     }
+      //                               ]
+      //                         }
+      //                   ],
+      //                   "members": [{
+      //                         "_id": "u103",
+      //                         "fullname": "ytav",
+      //                         "username": "dorsh",
+      //                         "imgUrl": "http://some-img.jpg",
+      //                   }
+      //                   ],
+      //                   "labelIds": ["101", "103"],
+      //                   "createdAt": 1590999730348,
+      //                   "dueDate": 16156215211,
+      //                   "byMember": {
+      //                         "_id": "u103",
+      //                         "fullname": "ytav",
+      //                         "username": "dorsh",
+      //                         "imgUrl": "http://some-img.jpg",
+      //                   }
+      //                   ,
+      //                   "style": {
+      //                         "bgColor": "#26de81"
+      //                   }
+      //             }
+      //       ],
+      //       "style": {} //group style
+      // }
+      "activities": [
+            {
+                  "id": "a101",
+                  "txt": "Changed Color",
+                  "createdAt": 154514,
+                  "byMember": {
+                        "_id": "u103",
+                        "fullname": "ytav",
+                        "username": "ytav P",
+                        "imgUrl": "http://some-img.jpg",
+                  },
+                  "task": {
+                        "id": "QWEWQ",
+                        "title": "Replace Logo"
+                  }
+            },
+            {
+                  "id": "a102",
+                  "txt": "Adding Task",
+                  "createdAt": 154414,
+                  "byMember": {
+                        "_id": "u101",
+                        "fullname": "dor shaul",
+                        "username": "dorsh",
+                        "imgUrl": "http://some-img.jpg",
+                  },
+                  "task": {
+                        "id": "c1vds02",
+                        "title": "Checklist"
+                  }
+            },
       ]
 }
-                        // {
-                        //       "id": "g102",
-                        //       "title": "Group 2",
-                        //       "tasks": [
-                        //             {
-                        //                   "id": "c103",
-                        //                   "title": "Do that"
-                        //             },
-                        //             {
-                        //                   "id": "c104",
-                        //                   "title": "Help me",
-                        //                   "description": "description",
-                        //                   "comments": [
-                        //                         {
-                        //                               "id": "ZdPnm",
-                        //                               "txt": "also @yaronb please CR this",
-                        //                               "createdAt": 1590999817436.0,
-                        //                               "byMember": {
-                        //                                     "_id": "u103",
-                        //                                     "fullname": "ytav",
-                        //                                     "username": "dorsh",
-                        //                                     "imgUrl": "http://some-img.jpg",
-                        //                               }
-                        //                         }
-                        //                   ],
-                        //                   "checklists": [
-                        //                         {
-                        //                               "id": "YEhmF",
-                        //                               "title": "Checklist",
-                        //                               "todos": [
-                        //                                     {
-                        //                                           "id": "212jX",
-                        //                                           "title": "To Do 1",
-                        //                                           "isDone": false
-                        //                                     }
-                        //                               ]
-                        //                         }
-                        //                   ],
-                        //                   "members": [{
-                        //                         "_id": "u103",
-                        //                         "fullname": "ytav",
-                        //                         "username": "dorsh",
-                        //                         "imgUrl": "http://some-img.jpg",
-                        //                   }
-                        //                   ],
-                        //                   "labelIds": ["101", "103"],
-                        //                   "createdAt": 1590999730348,
-                        //                   "dueDate": 16156215211,
-                        //                   "byMember": {
-                        //                         "_id": "u103",
-                        //                         "fullname": "ytav",
-                        //                         "username": "dorsh",
-                        //                         "imgUrl": "http://some-img.jpg",
-                        //                   }
-                        //                   ,
-                        //                   "style": {
-                        //                         "bgColor": "#26de81"
-                        //                   }
-                        //             }
-                        //       ],
-                        //       "style": {} //group style
-                        // }
-                  // "activities": [
-                  //       {
-                  //             "id": "a101",
-                  //             "txt": "Changed Color",
-                  //             "createdAt": 154514,
-                  //             "byMember": {
-                  //                   "_id": "u103",
-                  //                   "fullname": "ytav",
-                  //                   "username": "dorsh",
-                  //                   "imgUrl": "http://some-img.jpg",
-                  //             },
-                  //             "task": {
-                  //                   "id": "c101",
-                  //                   "title": "Replace Logo"
-                  //             }
-                  //       }
-                  // ]
