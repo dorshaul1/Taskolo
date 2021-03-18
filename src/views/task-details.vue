@@ -86,7 +86,6 @@
       </section>
     </div>
   </section>
-
 </template>
 
 <script>
@@ -105,35 +104,35 @@ import { utilService } from "../services/util.service.js";
 
 // import { board } from "../data/board";
 export default {
-    name: "task-details",
-    data() {
-        return {
-            isMembersOpen: false,
-            isLabelsOpen: false,
-            isChecklistOpen: false,
-            isDueDateOpen: false,
-        };
+  name: "task-details",
+  data() {
+    return {
+      isMembersOpen: false,
+      isLabelsOpen: false,
+      isChecklistOpen: false,
+      isDueDateOpen: false,
+    };
+  },
+  methods: {
+    toggleSection(sectionName) {
+      switch (sectionName) {
+        case "Members":
+          this.isMembersOpen = !this.isMembersOpen;
+          break;
+        case "Labels":
+          this.isLabelsOpen = !this.isLabelsOpen;
+          break;
+        case "Checklist":
+          this.isChecklistOpen = !this.isChecklistOpen;
+          break;
+        case "DueDate":
+          this.isDueDateOpen = !this.isDueDateOpen;
+          break;
+        default:
+          break;
+      }
     },
-    methods: {
-        toggleSection(sectionName) {
-            switch (sectionName) {
-                case "Members":
-                    this.isMembersOpen = !this.isMembersOpen;
-                    break;
-                case "Labels":
-                    this.isLabelsOpen = !this.isLabelsOpen;
-                    break;
-                case "Checklist":
-                    this.isChecklistOpen = !this.isChecklistOpen;
-                    break;
-                case "DueDate":
-                    this.isDueDateOpen = !this.isDueDateOpen;
-                    break;
-                default:
-                    break;
-            }
-        },
-            setDate(date) {
+    setDate(date) {
       try {
         const clone = require("rfdc");
         const taskCopy = clone({ proto: true })(Object.create(this.task));
@@ -145,101 +144,99 @@ export default {
         console.log(err);
       }
     },
-        addMember(member) {
-            try {
-                // task clone
-                const clone = require("rfdc");
-                const taskCopy = clone({ proto: true })(
-                    Object.create(this.task)
-                );
+    addMember(member) {
+      try {
+        // task clone
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
 
-                // const taskCopy = this.$clone({ proto: true })(
-                //     Object.create(this.task)
-                // );
+        // const taskCopy = this.$clone({ proto: true })(
+        //     Object.create(this.task)
+        // );
 
-                //toggle members
-                let taskMembers = taskCopy.members;
-                if (!taskMembers) taskMembers = [];
-                const isTaskMember = taskMembers.some(
-                    (taskMember) => taskMember._id === member._id
-                );
+        //toggle members
+        let taskMembers = taskCopy.members;
+        if (!taskMembers) taskMembers = [];
+        const isTaskMember = taskMembers.some(
+          (taskMember) => taskMember._id === member._id
+        );
 
-                console.log("isTaskMember", isTaskMember);
+        console.log("isTaskMember", isTaskMember);
 
-                if (!isTaskMember) {
-                    console.log("pushing...");
-                    taskMembers.push(member);
-                } else {
-                    console.log("deleteing......");
-                    const memberIdx = taskMembers.findIndex((m) => {
-                        m._id = member._id;
-                    });
-                    taskMembers.splice(memberIdx, 1);
-                }
+        if (!isTaskMember) {
+          console.log("pushing...");
+          taskMembers.push(member);
+        } else {
+          console.log("deleteing......");
+          const memberIdx = taskMembers.findIndex((m) => {
+            m._id = member._id;
+          });
+          taskMembers.splice(memberIdx, 1);
+        }
 
-                taskCopy.members = taskMembers;
+        taskCopy.members = taskMembers;
 
-                // change values
-                this.$store.dispatch({ type: "updateTask", task: taskCopy });
-            } catch (err) {
-                console.log(err);
-            }
-        },
-        updateChecklist(checklist) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            if (!taskCopy.checklists) taskCopy.checklists = [];
-            if (!checklist.id) checklist.id = utilService.makeId();
-            taskCopy.checklists.push(checklist);
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
+        // change values
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      } catch (err) {
+        console.log(err);
+      }
     },
-    computed: {
-        task() {
-            return this.$store.getters.currTask;
-        },
-        group() {
-            return this.$store.getters.currGroup;
-        },
-        board() {
-            return this.$store.getters.currBoard;
-        },
-        groupName() {
-            return this.$store.getters.groupName;
-        },
-        taskId() {
-            return this.$route.params.taskId;
-        },
+    updateChecklist(checklist) {
+      const clone = require("rfdc");
+      const taskCopy = clone({ proto: true })(Object.create(this.task));
+      if (!taskCopy.checklists) taskCopy.checklists = [];
+      if (!checklist.id) checklist.id = utilService.makeId();
+      taskCopy.checklists.push(checklist);
+      this.$store.dispatch({ type: "updateTask", task: taskCopy });
     },
-    components: {
-        membersPreview,
-        labelsPreview,
-        activityPreview,
-        descriptionPreview,
-        checklistPreview,
-        baseTaskModal,
-        members,
-        dueDate,
-        dueDatePreview
+  },
+  computed: {
+    task() {
+      return this.$store.getters.currTask;
     },
-    watch: {
-        taskId: {
-            handler() {
-                this.$store.commit({
-                    type: "setTaskById",
-                    taskId: this.taskId,
-                });
-            },
-            immediate: true,
-        },
+    group() {
+      return this.$store.getters.currGroup;
     },
+    board() {
+      return this.$store.getters.currBoard;
+    },
+    groupName() {
+      return this.$store.getters.groupName;
+    },
+    taskId() {
+      return this.$route.params.taskId;
+    },
+  },
+  components: {
+    membersPreview,
+    labelsPreview,
+    activityPreview,
+    descriptionPreview,
+    checklistPreview,
+    baseTaskModal,
+    members,
+    dueDate,
+    dueDatePreview,
+  },
+  watch: {
+    taskId: {
+      handler() {
+        this.$store.commit({
+          type: "setTaskById",
+          taskId: this.taskId,
+        });
+      },
+      immediate: true,
+    },
+  },
 
-    created() {
-        // console.log(board, "board in task details");
-        // console.log(this.taskId, "taskId in created task details");
-        //1. taskID from route
-        //2. commit setTaskById (mutation) find task in group
-    },
+  created() {
+    // console.log(board, "board in task details");
+    // console.log(this.taskId, "taskId in created task details");
+    //1. taskID from route
+    //2. commit setTaskById (mutation) find task in group
+  },
 };
 </script>
 
