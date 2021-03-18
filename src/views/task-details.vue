@@ -13,11 +13,18 @@
 
         <div class="task-details-grid">
             <section class="left-column">
-                <members-preview v-if="task.members && task.members.length" :members="task.members" />
+                <members-preview
+                    v-if="task.members && task.members.length"
+                    :members="task.members"
+                />
 
                 <labels-preview v-if="isLabelsOpen" />
                 <description-preview />
-                <checklist-preview v-if="isChecklistOpen" />
+                <checklist-preview
+                    v-if="isChecklistOpen || task.checklists.length"
+                    @update-checklist="updateChecklist"
+                    :checklistProp="task.checklists[0]"
+                />
                 <activity-preview />
             </section>
 
@@ -34,13 +41,17 @@
                 </a>
 
                 <base-task-modal v-if="isMembersOpen" title="Members">
-                    <members :members="board.members" :taskMembers="task.members" @add-member="addMember" />
+                    <members
+                        :members="board.members"
+                        :taskMembers="task.members"
+                        @add-member="addMember"
+                    />
                 </base-task-modal>
 
                 <a
                     class="link-button"
                     href="#"
-                    title="Members"
+                    title="Labels"
                     @click="toggleSection('Labels')"
                 >
                     <span>Labels</span>
@@ -48,14 +59,22 @@
                 <a
                     class="link-button"
                     href="#"
-                    title="Members"
+                    title="Checklist"
                     @click="toggleSection('Checklist')"
                 >
                     <span>Checklist</span>
                 </a>
-                <a class="link-button" href="#" title="Members">
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Due Date"
+                    @click="toggleSection('DueDate')"
+                >
                     <span>Due Date</span>
                 </a>
+                <base-task-modal v-if="isDueDateOpen" title="Due Date">
+                    <due-date />
+                </base-task-modal>
                 <a class="link-button" href="#" title="Members">
                     <span>Attachment</span>
                 </a>
@@ -73,7 +92,11 @@ import baseTaskModal from "../cmps/base-task-modal";
 import activityPreview from "../cmps/task/activity-preview";
 
 import members from "../cmps/task/task-option/task-details/members";
-import { board } from "../data/board";
+import dueDate from "../cmps/task/task-option/task-details/due-date";
+
+import { utilService } from "../services/util.service.js";
+
+// import { board } from "../data/board";
 export default {
     name: "task-details",
     data() {
@@ -81,6 +104,7 @@ export default {
             isMembersOpen: false,
             isLabelsOpen: false,
             isChecklistOpen: false,
+            isDueDateOpen: false,
         };
     },
     methods: {
@@ -94,6 +118,9 @@ export default {
                     break;
                 case "Checklist":
                     this.isChecklistOpen = !this.isChecklistOpen;
+                    break;
+                case "DueDate":
+                    this.isDueDateOpen = !this.isDueDateOpen;
                     break;
                 default:
                     break;
@@ -131,13 +158,21 @@ export default {
                     taskMembers.splice(memberIdx, 1);
                 }
 
-                taskCopy.members = taskMembers
+                taskCopy.members = taskMembers;
 
                 // change values
                 this.$store.dispatch({ type: "updateTask", task: taskCopy });
             } catch (err) {
                 console.log(err);
             }
+        },
+        updateChecklist(checklist) {
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            if (!taskCopy.checklists) taskCopy.checklists = [];
+            if (!checklist.id) checklist.id = utilService.makeId();
+            taskCopy.checklists.push(checklist);
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
     },
     computed: {
@@ -165,6 +200,7 @@ export default {
         checklistPreview,
         baseTaskModal,
         members,
+        dueDate,
     },
     watch: {
         taskId: {

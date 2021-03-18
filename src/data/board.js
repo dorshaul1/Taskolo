@@ -35,10 +35,27 @@ export const board = {
             }
       ],
       "members": [{
+            "_id": "u101",
+            "fullname": "Ralph Barnes",
+            "username": "RALFI",
+            "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
+      },
+      {
+            "_id": "u102",
+            "fullname": "Mitchell Vargas",
+            "username": "MITCHI",
+            "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+      }, {
             "_id": "u103",
-            "fullname": "ytav",
-            "username": "dorsh",
-            "imgUrl": "http://some-img.jpg",
+            "fullname": "Audrey Scott",
+            "username": "AUDRY",
+            "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+      },
+      {
+            "_id": "u104",
+            "fullname": "Willard Robinson",
+            "username": "wiliardi",
+            "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
       }
       ],
       "groups": [
@@ -123,7 +140,7 @@ export const board = {
                               }
                               ],
                         },
-                       
+
                   ],
             }
       ],
