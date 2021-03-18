@@ -1,92 +1,96 @@
 <template>
-  <section v-if="task" class="task-details-container">
-    <div class="cover">
-      <a class="change-cover" href="#">Cover</a>
-      <a class="close-modal-btn" href="#">X</a>
-    </div>
+    <section v-if="task" class="task-details-container">
+        <div class="cover">
+            <a class="change-cover" href="#">Cover</a>
+            <a class="close-modal-btn" href="#">X</a>
+        </div>
 
-    <div class="title flex align-start column">
-      <h1>{{ task.title }}</h1>
+        <div class="title flex align-start column">
+            <h1>{{ task.title }}</h1>
 
-      <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
-    </div>
+            <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
+        </div>
 
-    <div class="task-details-grid">
-      <section class="left-column">
-        <members-preview
-          v-if="task.members && task.members.length"
-          :members="task.members"
-        />
-        <labels-preview v-if="isLabelsOpen" />
-        <description-preview />
-        <checklist-preview
-          v-if="isChecklistOpen || task.checklists.length"
-          @update-checklist="updateChecklist"
-          :checklistProp="task.checklists[0]"
-        />
-        <due-date-preview
-          v-if="task.dueDate"
-          :date="task.dueDate"
-          @setDate="toggleSection('DueDate')"
-        />
-        <checklist-preview v-if="isChecklistOpen" />
-        <activity-preview />
-      </section>
+        <div class="task-details-grid">
+            <section class="left-column">
+                <members-preview
+                    v-if="task.members && task.members"
+                    :members="task.members"
+                />
+                <labels-preview v-if="isLabelsOpen" />
+                <description-preview />
+                <!-- <checklist-preview
+                    v-for="checklist in task.checklists"
+                    :key="checklist.id"
+                    @update-checklist="updateChecklist"
+                    :checklistProp="checklist"
+                /> -->
 
-      <section class="right-column">
-        <h3>Add to card</h3>
+                <due-date-preview
+                    v-if="task.dueDate"
+                    :date="task.dueDate"
+                    @setDate="toggleSection('DueDate')"
+                />
+                <activity-preview />
+            </section>
 
-        <a
-          class="link-button"
-          href="#"
-          title="Members"
-          @click="toggleSection('Members')"
-        >
-          <span>Members</span>
-        </a>
+            <section class="right-column">
+                <h3>Add to card</h3>
 
-        <base-task-modal v-if="isMembersOpen" title="Members">
-          <members
-            :members="board.members"
-            :taskMembers="task.members"
-            @add-member="addMember"
-          />
-        </base-task-modal>
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Members"
+                    @click="toggleSection('Members')"
+                >
+                    <span>Members</span>
+                </a>
 
-        <a
-          class="link-button"
-          href="#"
-          title="Labels"
-          @click="toggleSection('Labels')"
-        >
-          <span>Labels</span>
-        </a>
-        <a
-          class="link-button"
-          href="#"
-          title="Checklist"
-          @click="toggleSection('Checklist')"
-        >
-          <span>Checklist</span>
-        </a>
-        <a
-          class="link-button"
-          href="#"
-          title="Due Date"
-          @click="toggleSection('DueDate')"
-        >
-          <span>Due Date</span>
-        </a>
-        <base-task-modal v-if="isDueDateOpen" title="Due Date">
-          <due-date @setDate="setDate" />
-        </base-task-modal>
-        <a class="link-button" href="#" title="Members">
-          <span>Attachment</span>
-        </a>
-      </section>
-    </div>
-  </section>
+                <base-task-modal v-if="isMembersOpen" title="Members">
+                    <members
+                        :members="board.members"
+                        :taskMembers="task.members"
+                        @add-member="addMember"
+                    />
+                </base-task-modal>
 
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Labels"
+                    @click="toggleSection('Labels')"
+                >
+                    <span>Labels</span>
+                </a>
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Checklist"
+                    @click="toggleSection('Checklist')"
+                >
+                    <span>Checklist</span>
+                </a>
+
+                <base-task-modal v-if="isChecklistOpen" title="Checklist">
+                    <checklist @add-checklist-title="addToChecklist" />
+                </base-task-modal>
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Due Date"
+                    @click="toggleSection('DueDate')"
+                >
+                    <span>Due Date</span>
+                </a>
+                <base-task-modal v-if="isDueDateOpen" title="Due Date">
+                    <due-date @setDate="setDate" />
+                </base-task-modal>
+                <a class="link-button" href="#" title="Members">
+                    <span>Attachment</span>
+                </a>
+            </section>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -100,6 +104,7 @@ import dueDatePreview from "../cmps/task/task-option/task-details-previews/due-d
 
 import members from "../cmps/task/task-option/task-details/members";
 import dueDate from "../cmps/task/task-option/task-details/due-date";
+import checklist from "../cmps/task/task-option/task-details/checklist";
 
 import { utilService } from "../services/util.service.js";
 
@@ -133,18 +138,20 @@ export default {
                     break;
             }
         },
-            setDate(date) {
-      try {
-        const clone = require("rfdc");
-        const taskCopy = clone({ proto: true })(Object.create(this.task));
-        taskCopy.dueDate = date;
-        this.toggleSection("DueDate");
-        this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        console.log("date:", date);
-      } catch (error) {
-        console.log(err);
-      }
-    },
+        setDate(date) {
+            try {
+                const clone = require("rfdc");
+                const taskCopy = clone({ proto: true })(
+                    Object.create(this.task)
+                );
+                taskCopy.dueDate = date;
+                this.toggleSection("DueDate");
+                this.$store.dispatch({ type: "updateTask", task: taskCopy });
+                console.log("date:", date);
+            } catch (error) {
+                console.log(err);
+            }
+        },
         addMember(member) {
             try {
                 // task clone
@@ -193,6 +200,18 @@ export default {
             taskCopy.checklists.push(checklist);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
+        initChecklists() {
+            taskCopy.checklists = [];
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
+        addToChecklist(title) {
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            if (!taskCopy.checklists) {
+                taskCopy.checklists = [];
+            }
+            
+        },
     },
     computed: {
         task() {
@@ -220,7 +239,8 @@ export default {
         baseTaskModal,
         members,
         dueDate,
-        dueDatePreview
+        dueDatePreview,
+        checklist,
     },
     watch: {
         taskId: {
@@ -235,6 +255,7 @@ export default {
     },
 
     created() {
+        // console.log("task", this.task);
         // console.log(board, "board in task details");
         // console.log(this.taskId, "taskId in created task details");
         //1. taskID from route
