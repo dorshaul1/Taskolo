@@ -1,4 +1,37 @@
-.board-details{
+.board-details {
       display: flex;
       align-items: flex-start;
+      white-space: nowrap;
+
+      // .group-container {
+      //       flex-wrap: nowrap;
+      //       overflow: scroll;
+      // }
+      .main-group-container {
+            width: 272px;
+            min-width: 272px;
+      }
+
+      .new-group-container {
+            background-color: rgb(235, 236, 240);
+            margin-inline-end: 4px;
+            margin-inline-start: 4px;
+            width: 272px;
+            min-width: 272px;
+            border-radius: 3px;
+      }
+
+      .group-Add-input {
+            margin: 5px;
+      }
+
+      .take-new-group {
+            flex-direction: column;
+      }
+      .add-group {
+            background-color: rgb(90, 172, 68);
+            border-radius: 3px;
+            margin-inline-start: 5px;
+            color: white;
+      }
 }

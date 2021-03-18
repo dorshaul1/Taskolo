@@ -1,12 +1,12 @@
 <template>
-  <div class="task-container" v-if="task">
-    <div class="task-header flex space-between">
+  <div class="task-container" v-if="task" @click="openTaskPreview">
+
+    <div class="task-header">
       <div
         v-if="task.style"
         class="taskColor"
         :style="{ 'background-color': task.style.bgColor }"
       ></div>
-      <button class="open-task-btn" @click="openTaskPreview">...</button>
     </div>
 
     <div class="task-main">

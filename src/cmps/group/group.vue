@@ -37,7 +37,6 @@
             <button @click="closeTaskAdd">x</button>
           </div>
         </section>
-        
       </div>
     </div>
   </div>
@@ -74,6 +73,7 @@ export default {
       this.isTakeTask = false;
       this.newTask.title = "Enter a title for this card...";
     },
+
     async addNewTask() {
       try {
         const clone = require("rfdc");
@@ -86,8 +86,9 @@ export default {
           id: utilService.makeId(),
           title: this.newTask.title,
         });
-        this.$store.dispatch({ type: "updateBoard", board: boardCopy });
-      } catch (error) {
+        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+        this.closeTaskAdd()
+      } catch (err) {
         console.log("group-cmp: error with try to add new task", err);
       }
     },

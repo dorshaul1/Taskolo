@@ -82,7 +82,6 @@ export const boardStore = {
 
             }
         },
-
         async updateBoard({ commit }, { board }) {
             try {
                 commit({ type: 'setBoard', board })
@@ -95,18 +94,14 @@ export const boardStore = {
         },
         async updateTask(context, { task }) {
             try {
-
                 context.commit({ type: 'setTask', task })
-
                 const clone = require("rfdc");
                 const boardCopy = clone({ proto: true })(
                     Object.create(context.state.currBoard)
                 );
-
                 // const boardCopy = this.$clone({ proto: true })(
                 //     Object.create(context.state.currBoard
                 //     ));
-
                 let currTaskIdx;
                 const currGroupIdx = boardCopy.groups.findIndex((group) => {
                     if (group.id === context.state.currGroup.id) {
