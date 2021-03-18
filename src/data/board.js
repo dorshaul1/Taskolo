@@ -76,7 +76,8 @@ export const board = {
                               "id": "QWEWQ",
                               "title": "Add Samples",
                               "style": {
-                                    "bgColor": "#26de81"
+                                    "bgColor": "#26de81",
+                                    "bgColor": "#5644ff",
                               },
                               "labelIds": ["l101", "l102", "l103", "l104", "l105"],
                               "description": "description",
@@ -121,8 +122,8 @@ export const board = {
                                     "imgUrl": "https://randomuser.me/api/portraits/thumb/women/64.jpg",
                               }
                               ],
-                              "style": {} //group style
                         },
+                       
                   ],
             }
       ],
