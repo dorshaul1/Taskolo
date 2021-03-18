@@ -33,8 +33,8 @@
         </textarea>
 
         <div class="flex space-between">
-          <button @click="addNewTask" class="add-task">Add card</button>
-          <button @click="closeTaskAdd">x</button>
+          <!-- <button @click="addNewTask" class="add-task">Add card</button>
+          <button @click="closeTaskAdd">x</button> -->
         </div>
       </section>
     </main>

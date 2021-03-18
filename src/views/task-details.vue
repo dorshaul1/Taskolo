@@ -100,30 +100,20 @@ export default {
         },
         addMember(member) {
             try {
+                // task clone
                 const clone = require("rfdc");
-                const boardCopy = clone({ proto: true })(
-                    Object.create(this.board)
+                const taskCopy = clone({ proto: true })(
+                    Object.create(this.task)
                 );
 
-                console.log(this.group, this.task)
+                // const taskCopy = this.$clone({ proto: true })(
+                //     Object.create(this.task)
+                // );
 
-                let currTaskIdx;
-                const currGroupIdx = boardCopy.groups.findIndex((group) => {
-                    if (group.id === this.group.id) {
-                        currTaskIdx = group.tasks.findIndex((task) => {
-                            return task.id === this.task.id;
-                        });
-                        return true;
-                    }
-                });
-                const currTask =  boardCopy.groups[currGroupIdx].tasks[currTaskIdx]
-
-
-                if (!currTask.members) currTask.members = [];
-                currTask.members.push(member);
-                boardCopy.groups[currGroupIdx].tasks[currTaskIdx] = currTask;
-
-                this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+                //change values
+                if (!taskCopy.members) taskCopy.members = [];
+                taskCopy.members.push(member);
+                this.$store.dispatch({ type: "updateTask", task: taskCopy });
             } catch (err) {
                 console.log(err);
             }
