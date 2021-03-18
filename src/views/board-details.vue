@@ -84,7 +84,7 @@ export default {
     boardId: {
       handler() {
         this.$store.dispatch({
-          type: "loadAndWatchBoard",
+          type: "loadBoard",
           boardId: this.boardId,
         });
       },

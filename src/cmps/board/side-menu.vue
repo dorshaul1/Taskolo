@@ -5,7 +5,17 @@
       <h1>Menu</h1>
       <ul class="clean-list">
         <li><div class="side-menu-option">About This Board</div></li>
-        <li><div class="side-menu-option">Change Background</div></li>
+        <li>
+          <label for="background-input">
+            <div class="side-menu-option">Change Background</div>
+          </label>
+          <input
+            @change="changeBackground"
+            id="background-input"
+            type="color"
+            v-model="backgroundColor"
+          />
+        </li>
         <li><div class="side-menu-option">more</div></li>
         <!-- <li>more</li> -->
       </ul>
@@ -26,9 +36,21 @@ export default {
     },
   },
   name: "side-menu",
+  data() {
+    return {
+      backgroundColor: "white",
+    };
+  },
   methods: {
     closeMenu() {
       this.$emit("close");
+    },
+    changeBackground() {
+      const clone = require("rfdc");
+      const newBoard = clone({ proto: true })(Object.create(this.board));
+      newBoard.style = this.backgroundColor;
+      // console.log('newBoard:', newBoard)
+      this.$store.dispatch({ type: "updateBoard", board: newBoard });
     },
   },
   components: {

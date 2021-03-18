@@ -24,7 +24,6 @@
             <section class="right-column">
                 <h3>Add to card</h3>
 
-
                 <a
                     class="link-button"
                     href="#"
@@ -34,9 +33,8 @@
                     <span>Members</span>
                 </a>
                 <base-task-modal v-if="isMembersOpen" title="Members">
-                    <members :members="board.members"/>
+                    <members :members="board.members" @add-member="addMember" />
                 </base-task-modal>
-
 
                 <a
                     class="link-button"
@@ -74,7 +72,7 @@ import baseTaskModal from "../cmps/base-task-modal";
 import activityPreview from "../cmps/task/activity-preview";
 
 import members from "../cmps/task/task-option/task-details/members";
-import { board } from '../data/board';
+import { board } from "../data/board";
 export default {
     name: "task-details",
     data() {
@@ -100,16 +98,39 @@ export default {
                     break;
             }
         },
+        addMember(member) {
+            try {
+                const clone = require("rfdc");
+                const boardCopy = clone({ proto: true })(
+                    Object.create(this.board)
+                );
+                var currGroupIdx = boardCopy.groups.findIndex(
+                    (group) => group.id === this.group.id
+                );
+
+                const currTask = boardCopy.groups[currGroupIdx].tasks[task.id];
+                if (!currTask.members) currTask.members = [];
+                currTask.members.push(member);
+                console.log("currTask", currTask);
+
+                this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+            } catch (err) {
+                console.log(err);
+            }
+        },
     },
     computed: {
         task() {
             return this.$store.getters.currTask;
         },
-        board() {
-            return this.$store.getters.currBoard;
-        },
+        // board() {
+        //     return this.$store.getters.currBoard;
+        // },
         groupName() {
             return this.$store.getters.groupName;
+        },
+        taskId() {
+            return this.$route.params.taskId;
         },
     },
     components: {
@@ -121,9 +142,25 @@ export default {
         baseTaskModal,
         members,
     },
+    watch: {
+        taskId: {
+            handler() {
+                this.$store.commit({
+                    type: "setTaskById",
+                    taskId: this.taskId,
+                });
+            },
+            immediate: true,
+        },
+    },
 
     created() {
-        console.log(board, 'board in task details')
+        // console.log(board, "board in task details");
+
+        // console.log(this.taskId, "taskId in created task details");
+
+        //1. taskID from route
+        //2. commit setTaskById (mutation) find task in group
     },
 };
 </script>

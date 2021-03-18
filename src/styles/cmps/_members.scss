@@ -9,7 +9,8 @@
         cursor: pointer;
 
         &:hover{
-            background: darken($color: white, $amount: 5%);
+            // background: darken($color: white, $amount: 5%);
+            background: $hover;
         }
     }
 
