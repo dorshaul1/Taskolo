@@ -99,7 +99,24 @@ export default {
             }
         },
         addMember(member) {
-            console.log("member", member);
+            try {
+                const clone = require("rfdc");
+                const boardCopy = clone({ proto: true })(
+                    Object.create(this.board)
+                );
+                var currGroupIdx = boardCopy.groups.findIndex(
+                    (group) => group.id === this.group.id
+                );
+
+                const currTask = boardCopy.groups[currGroupIdx].tasks[task.id];
+                if (!currTask.members) currTask.members = [];
+                currTask.members.push(member);
+                console.log("currTask", currTask);
+
+                this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+            } catch (err) {
+                console.log(err);
+            }
         },
     },
     computed: {
