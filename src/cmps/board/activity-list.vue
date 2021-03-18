@@ -1,11 +1,11 @@
 <template>
   <!-- <pre> -->
   <!-- {{this.board.activities}} -->
-  <section class="activity-list">
-    <ul class="clean-list">
-      <li v-for="activity in this.board.activities" :key="activity.id">
+  <section class="activity-list-container">
+    <ul class="clean-list activity-list flex column">
+      <li v-for="activity in this.board.activities" :key="activity.id" class="flex">
         <div class="member"></div>
-        {{ activity.byMember.username }}
+        <h1>{{ activity.byMember.username }}</h1>
         {{ activity.txt }}
       </li>
     </ul>
