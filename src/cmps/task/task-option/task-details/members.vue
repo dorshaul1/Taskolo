@@ -1,7 +1,7 @@
 <template>
     <section class="members-modal">
         <input type="text" placeholder="Search members..." />
-        <div v-for="member in members" :key="member._id" class="member-container flex align-center">
+        <div v-for="member in members" :key="member._id" @click="addMember(member)" class="member-container flex align-center">
             <div class="member-icon"></div>
             <h3>{{member.fullname}}</h3>
         </div>
@@ -16,6 +16,12 @@ export default {
     name: "members",
     props: {
       members: {}
+    },
+    methods: {
+      addMember(member) {
+        console.log('member', member)
+        this.$emit('add-member', member)
+      }
     }
 };
 </script>

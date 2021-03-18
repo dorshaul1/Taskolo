@@ -5,6 +5,16 @@
         width: 100%;
     }
 
+    & .member-container{
+        cursor: pointer;
+
+        &:hover{
+            background: darken($color: white, $amount: 5%);
+        }
+    }
+
+
+
     & .member-icon {
         width: 40px;
         height: 40px;
