@@ -104,14 +104,24 @@ export default {
                 const boardCopy = clone({ proto: true })(
                     Object.create(this.board)
                 );
-                var currGroupIdx = boardCopy.groups.findIndex(
-                    (group) => group.id === this.group.id
-                );
 
-                const currTask = boardCopy.groups[currGroupIdx].tasks[task.id];
+                console.log(this.group, this.task)
+
+                let currTaskIdx;
+                const currGroupIdx = boardCopy.groups.findIndex((group) => {
+                    if (group.id === this.group.id) {
+                        currTaskIdx = group.tasks.findIndex((task) => {
+                            return task.id === this.task.id;
+                        });
+                        return true;
+                    }
+                });
+                const currTask =  boardCopy.groups[currGroupIdx].tasks[currTaskIdx]
+
+
                 if (!currTask.members) currTask.members = [];
                 currTask.members.push(member);
-                console.log("currTask", currTask);
+                boardCopy.groups[currGroupIdx].tasks[currTaskIdx] = currTask;
 
                 this.$store.dispatch({ type: "updateBoard", board: boardCopy });
             } catch (err) {
@@ -123,9 +133,12 @@ export default {
         task() {
             return this.$store.getters.currTask;
         },
-        // board() {
-        //     return this.$store.getters.currBoard;
-        // },
+        group() {
+            return this.$store.getters.currGroup;
+        },
+        board() {
+            return this.$store.getters.currBoard;
+        },
         groupName() {
             return this.$store.getters.groupName;
         },
@@ -156,9 +169,7 @@ export default {
 
     created() {
         // console.log(board, "board in task details");
-
         // console.log(this.taskId, "taskId in created task details");
-
         //1. taskID from route
         //2. commit setTaskById (mutation) find task in group
     },
