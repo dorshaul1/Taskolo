@@ -2,11 +2,21 @@ import Vue from 'vue'
 import app from './app.vue'
 import './registerServiceWorker'
 import router from './router';
-import {store} from './store'
+import { store } from './store'
 import 'element-ui/lib/theme-chalk/index.css';
 import ElementUI from 'element-ui';
 
 import './styles/main.scss'
+
+// import Calendar from 'v-calendar/lib/components/calendar.umd'
+// import DatePicker from 'v-calendar/lib/components/date-picker.umd'
+
+// // Register components in your 'main.js'
+// Vue.component('calendar', Calendar)
+// Vue.component('date-picker', DatePicker)
+
+import VCalendar from 'v-calendar';
+Vue.use(VCalendar)
 
 
 Vue.use(ElementUI);
