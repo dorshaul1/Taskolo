@@ -119,7 +119,6 @@ export const boardStore = {
                 throw err
             }
         },
-
         async addBoard(context, { board }) {
             try {
                 board = await boardService.add(board)
