@@ -12,7 +12,7 @@ export const boardService = {
   update,
   getEmptyGroup,
   getEmptyTask,
-  getEmptyCheackList,
+  getEmptyCheckList,
   getEmptyTodo
 }
 
@@ -67,7 +67,7 @@ function getEmptyTask() {
   return {}
 }
 
-function getEmptyCheackList() {
+function getEmptyCheckList() {
   return {
     id: utilService.makeId(),
     title: '',
