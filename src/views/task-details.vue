@@ -17,6 +17,11 @@
 
         <labels-preview v-if="isLabelsOpen" />
         <description-preview />
+        <due-date-preview
+          v-if="task.dueDate"
+          :date="task.dueDate"
+          @setDate="toggleSection('DueDate')"
+        />
         <checklist-preview v-if="isChecklistOpen" />
         <activity-preview />
       </section>
@@ -60,9 +65,9 @@
         >
           <span>Due Date</span>
         </a>
-          <base-task-modal v-if="isDueDateOpen" title="Due Date">
-            <due-date />
-          </base-task-modal>
+        <base-task-modal v-if="isDueDateOpen" title="Due Date">
+          <due-date @setDate="setDate" />
+        </base-task-modal>
         <a class="link-button" href="#" title="Members">
           <span>Attachment</span>
         </a>
@@ -78,6 +83,7 @@ import descriptionPreview from "../cmps/task/task-option/task-details-previews/d
 import checklistPreview from "../cmps/task/task-option/task-details-previews/checklist-preview";
 import baseTaskModal from "../cmps/base-task-modal";
 import activityPreview from "../cmps/task/activity-preview";
+import dueDatePreview from "../cmps/task/task-option/task-details-previews/due-date-preview";
 
 import members from "../cmps/task/task-option/task-details/members";
 import dueDate from "../cmps/task/task-option/task-details/due-date";
@@ -129,9 +135,25 @@ export default {
         console.log(err);
       }
     },
+    setDate(date) {
+      try {
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
+        taskCopy.dueDate = date;
+        this.toggleSection("DueDate");
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        console.log("date:", date);
+      } catch (error) {
+        console.log(err);
+      }
+    },
   },
   computed: {
     task() {
+      console.log(
+        "this.$store.getters.currTask:",
+        this.$store.getters.currTask
+      );
       return this.$store.getters.currTask;
     },
     group() {
@@ -155,7 +177,8 @@ export default {
     checklistPreview,
     baseTaskModal,
     members,
-    dueDate
+    dueDate,
+    dueDatePreview,
   },
   watch: {
     taskId: {

@@ -14,6 +14,7 @@ import './styles/main.scss'
 // // Register components in your 'main.js'
 // Vue.component('calendar', Calendar)
 // Vue.component('date-picker', DatePicker)
+Vue.use(require('vue-moment'));
 
 import VCalendar from 'v-calendar';
 Vue.use(VCalendar)
