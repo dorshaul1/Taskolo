@@ -1,0 +1,12 @@
+.labels-main-contaier {
+    margin-bottom: 8px;
+    margin-right: 8px;
+
+    & .label {
+        margin: 4px;
+        width: 60px;
+        height: 20px;
+        border-radius: 10%;
+        background-color: palevioletred;
+    }
+}

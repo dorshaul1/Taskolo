@@ -17,6 +17,9 @@ export const boardStore = {
         },
         currTask(state) {
             return state.currTask
+        },
+        groupName(state) {
+            //loop to find task id
         }
     },
     mutations: {

@@ -4,9 +4,10 @@
     <section class="side-menu-content flex column align-center">
       <h1>Menu</h1>
       <ul class="clean-list">
-        <li>About This Board</li>
-        <li>Change Background</li>
-        <li>more</li>
+        <li><div class="side-menu-option">About This Board</div></li>
+        <li><div class="side-menu-option">Change Background</div></li>
+        <li><div class="side-menu-option">more</div></li>
+        <!-- <li>more</li> -->
       </ul>
       <h1>Activities</h1>
       <activity-list :board="board" />

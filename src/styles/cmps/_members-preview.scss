@@ -1,0 +1,19 @@
+ .members-main-container {
+    margin-bottom: 8px;
+    margin-right: 8px;
+
+    & .member {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: palevioletred;
+    }
+
+    
+    & .member-plus-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+    }
+}
