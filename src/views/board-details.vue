@@ -79,6 +79,9 @@ export default {
     openGroupkAdd() {
       this.isTakeGroup = true;
     },
+    addNewTask(){
+      console.log("addind new task")
+    }
   },
   watch: {
     boardId: {
