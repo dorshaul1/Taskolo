@@ -33,4 +33,21 @@
             font-size: 14px;
             cursor: pointer;
       }
+
+      .task-Add-input {
+            margin: 5px;
+      }
+
+      .add-task {
+            background-color: rgb(90, 172, 68);
+            border-radius: 3px;
+            margin-inline-start: 5px;
+            color: white;
+      }
+
+      .take-new-task {
+            flex-direction: column;
+            width: 100%;
+            padding: 8px;
+      }
 }
