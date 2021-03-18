@@ -44,6 +44,8 @@
 
 <script>
 import taskPreview from "../task/task-preview";
+import { utilService } from "../../services/util.service.js";
+
 export default {
   name: "group",
   props: {
@@ -75,20 +77,15 @@ export default {
       try {
         const clone = require("rfdc");
         const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
-        console.log("board copy is:", boardCopy);
-
         var groups = boardCopy.groups;
-        //get the curr group index
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
         );
-
-        console.log("group idx is:", currGroupIdx );
-        // boardCopy.title = this.editedTitle;
-
-        // // console.log('newBoard:', newBoard)
-        // this.$store.dispatch({ type: "updateBoard", board: newBoard });
-        // this.isEdititle = false;
+        boardCopy.groups[currGroupIdx].tasks.push({
+          id: utilService.makeId(),
+          title: this.newTask.title,
+        });
+        this.$store.dispatch({ type: "updateBoard", board: boardCopy });
       } catch (error) {
         console.log("group-cmp: error with try to add new task", err);
       }
