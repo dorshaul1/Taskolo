@@ -5,7 +5,19 @@
         color: white;
     }
 
-    .due-date-range-btn{
+    .due-date-range-btn {
         margin-top: 8px;
     }
+}
+
+.due-date-preview {
+    margin: 20px 0;
+    position: relative;
+    .date-preview {
+        cursor: pointer;
+        &:hover {
+            background-color: $hover;
+        }
+    }
+
 }
