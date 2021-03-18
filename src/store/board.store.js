@@ -98,7 +98,7 @@ export const boardStore = {
                 return await boardService.update(board)
             }
             catch {
-                console.log('boardStore: Error in update task', err)
+                console.log('boardStore: Error in update board', err)
                 throw err
             }
         },
@@ -106,8 +106,12 @@ export const boardStore = {
             try {
                 commit({ type: 'setTask', newTask })
             }
-
+            catch {
+                console.log('boardStore: Error in update task', err)
+                throw err
+            }
         }
+        
 
         // async loadAndWatchBoard({ commit }, { boardId }) {
         //     try {
