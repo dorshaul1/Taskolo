@@ -1,5 +1,5 @@
 <template>
-  <header class="board-header flex align-center">
+  <header v-if="currBoard" class="board-header flex align-center">
     <!-- <button class="boards-btn">Boards</button> -->
     <el-select v-model="chossenBoard" placeholder="Boards">
       <el-option
@@ -12,7 +12,7 @@
     </el-select>
 
     <h1 v-if="!isEdititle" @click="editTitle">
-      {{ currBoards.title }}
+      {{ currBoard.title }}
     </h1>
     <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
       <el-input
@@ -40,6 +40,7 @@ export default {
   name: "board-header",
   data() {
     return {
+      // currBoard: this.$store.getters.currBoard,
       chossenBoard: "",
       isEdititle: false,
       editedTitle: this.$store.getters.currBoard.title,
@@ -52,7 +53,7 @@ export default {
     getBoards() {
       return this.$store.getters.boards;
     },
-    currBoards() {
+    currBoard() {
       return this.$store.getters.currBoard;
     },
     // menuOpen() {
@@ -61,7 +62,11 @@ export default {
   },
   methods: {
     changeBoardTitle() {
-      // this.$store.dispatch({ type: "changeBoardProperty" , properties: 'title', this.editedTitle)
+      const clone = require("rfdc");
+      const newBoard = clone({ proto: true })(Object.create(this.currBoard))
+      newBoard.title = this.editedTitle;
+      // console.log('newBoard:', newBoard)
+      this.$store.dispatch({ type: "updateBoard", board: newBoard });
       this.isEdititle = false;
     },
     editTitle() {
@@ -71,8 +76,11 @@ export default {
     },
     openMenu() {
       // console.log( 'open')
-      this.$emit('open'); // console.log("this.isMenuOpen:", this.isMenuOpen);
+      this.$emit("open"); // console.log("this.isMenuOpen:", this.isMenuOpen);
     },
+  },
+  created() {
+    console.log(this.currBoard._id);
   },
 };
 </script>
