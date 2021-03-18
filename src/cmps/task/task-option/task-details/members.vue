@@ -19,7 +19,6 @@ export default {
     },
     methods: {
       addMember(member) {
-        console.log('member', member)
         this.$emit('add-member', member)
       }
     }
