@@ -1,5 +1,6 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
 import { userService } from './user.service'
 import { board } from '../data/board.js'
 
@@ -8,7 +9,11 @@ export const boardService = {
   query,
   remove,
   getById,
-  update
+  update,
+  getEmptyGroup,
+  getEmptyTask,
+  getEmptyCheackList,
+  getEmptyTodo
 }
 
 const KEY = 'board'
@@ -52,4 +57,28 @@ async function add(board) {
 
 function getById(boardId) {
   return storageService.get(KEY, boardId)
+}
+
+function getEmptyGroup() {
+  return {}
+}
+
+function getEmptyTask() {
+  return {}
+}
+
+function getEmptyCheackList() {
+  return {
+    id: utilService.makeId(),
+    title: '',
+    todos: []
+  }
+}
+
+function getEmptyTodo() {
+  return {
+    "id": utilService.makeId(),
+    "title": '',
+    "isDone": false
+  }
 }
