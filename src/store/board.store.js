@@ -26,24 +26,27 @@ export const boardStore = {
         setBoards(state, { boards }) {
             state.boards = boards;
         },
+        setBoard(state, { board }) {
+            state.currBoard = board
+        },
+        setTask(state, { task }) {
+            state.currTask = task
+        },
+        setTaskById(state, { taskID }) {
+            //TO-DO
+        },
+        setGroup(state, { group }) {
+            state.currGroup = group
+        },
         addBoard(state, { board }) {
             state.boards.push(board)
         },
         removeBoard(state, { boardId }) {
             state.boards = state.boards.filter(board => board._id !== boardId)
         },
-        setCurrBoard(state, { board }) {
-            state.currBoard = board
-        },
-        setCurrGroup(state, { group }) {
-            state.currGroup = group
-        },
-        setCurrTask(state, { task }) {
-            state.currTask = task
-        },
-        updateBoard(state, { newBoard }){
-            state.currBoard = newBoard
-        }   
+        // updateBoard(state, { newBoard }){
+        //     state.currBoard = newBoard
+        // }   
     },
     actions: {
         async loadBoards(context) {
@@ -61,11 +64,11 @@ export const boardStore = {
                 throw err
             }
         },
-        async loadAndWatchBoard({ commit }, { boardId }) {
+        async loadBoard({ commit }, { boardId }) {
             try {
                 console.log(boardId, "board id")
                 const board = await boardService.getById(boardId)
-                commit({ type: 'setCurrBoard', board })
+                commit({ type: 'setBoard', board })
             } catch (error) {
 
             }
@@ -89,49 +92,48 @@ export const boardStore = {
                 throw err
             }
         },
-        async loadAndWatchBoard({ commit }, { boardId }) {
-            try {
-                console.log(boardId, "board id")
-                const board = await boardService.getById(boardId)
-                commit({ type: 'setCurrBoard', board })
-            } catch (error) {
-            }
-        },
-        async setGroup({ commit }, { group }) {
-            console.log("set group", group)
-            try {
-                commit({ type: 'setCurrGroup', group })
-            } catch (err) {
-                console.log('boardStore: Error in set group', err)
-                throw err
-            }
-        },
-        async setTask({ commit }, { task }) {
-            console.log("set tasks", task)
-            try {
-                commit({ type: 'setCurrTask', task })
-            } catch (err) {
-                console.log('boardStore: Error in set task', err)
-                throw err
-            }
-        },
         async updateBoard({ commit }, { board }) {
-            try{
-                const newBoard = await boardService.update(board)
-                commit({ type: 'updateBoard', newBoard })
+            try {
+                commit({ type: 'setBoard', board })
+                return await boardService.update(board)
             }
-            catch{
+            catch {
                 console.log('boardStore: Error in update task', err)
                 throw err
             }
-        }
-        // async changeBoardProperty({ commit }, property, value){
-        //     try{
-        //         board[property] = await value
-        //         console.log('board[property]:', board[property])
-        //     } catch(error){
+        },
+        async updateTask({ commit }, { newTask }) {
+            try {
+                commit({ type: 'setTask', newTask })
+            }
 
+        }
+
+        // async loadAndWatchBoard({ commit }, { boardId }) {
+        //     try {
+        //         console.log(boardId, "board id")
+        //         const board = await boardService.getById(boardId)
+        //         commit({ type: 'setCurrBoard', board })
+        //     } catch (error) {
         //     }
-        // }
+        // },
+        // async setGroup({ commit }, { group }) {
+        //     console.log("set group", group)
+        //     try {
+        //         commit({ type: 'setCurrGroup', group })
+        //     } catch (err) {
+        //         console.log('boardStore: Error in set group', err)
+        //         throw err
+        //     }
+        // },
+        // async setTask({ commit }, { task }) {
+        //     console.log("set tasks", task)
+        //     try {
+        //         commit({ type: 'setCurrTask', task })
+        //     } catch (err) {
+        //         console.log('boardStore: Error in set task', err)
+        //         throw err
+        //     }
+        // },
     }
 }

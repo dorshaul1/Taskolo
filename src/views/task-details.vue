@@ -106,9 +106,9 @@ export default {
         task() {
             return this.$store.getters.currTask;
         },
-        board() {
-            return this.$store.getters.currBoard;
-        },
+        // board() {
+        //     return this.$store.getters.currBoard;
+        // },
         groupName() {
             return this.$store.getters.groupName;
         },
@@ -125,6 +125,8 @@ export default {
 
     created() {
         console.log(board, "board in task details");
+        //1. taskID from route
+        //2. commit setTaskById (mutation) find task in group
     },
 };
 </script>
