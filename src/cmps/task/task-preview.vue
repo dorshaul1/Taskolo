@@ -23,12 +23,47 @@
         {{ task.title }}
       </div>
 
-      <div class="badges">
-        <h1>badges</h1>
+      <div class="badges flex space-between">
+        <div class="watch">
+          <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/watch.png"
+            alt=""
+          />
+        </div>
+
+        <div class="dute-date">
+          <span>mar 18</span>
+        </div>
+
+        <div class="desc">
+          <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/desc.png"
+            alt=""
+          />
+        </div>
+
+        <div class="comments">
+          <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/comments.png"
+            alt=""
+          />
+        </div>
+
+        <div class="checklist">
+          <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/checklist.png"
+            alt=""
+          />
+        </div>
       </div>
 
-      <div class="members">
-        <h1>members</h1>
+      <div class="members flex">
+        <div class="member"></div>
+        <div class="member"></div>
       </div>
     </div>
   </div>

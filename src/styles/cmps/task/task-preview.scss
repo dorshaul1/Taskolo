@@ -19,7 +19,6 @@
                   margin: 0;
                   padding: 0;
             }
-
             .label {
                   list-style-type: none;
                   padding-inline-start: 0px;
@@ -32,6 +31,29 @@
                   margin-inline-end: 4px;
                   margin-block-end: 4px;
                   border-radius: 3px;
+            }
+
+            .title {
+                  text-align: left;
+                  margin-block-end: 4px;
+            }
+
+            .task-prev-icon {
+                  width: 20px;
+                  height: 20px;
+                  cursor: pointer;
+            }
+
+            .members {
+                  justify-content: flex-end;
+                  margin: 5px;
+            }
+
+            .member {
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  border: 2px solid black;
             }
       }
 }
