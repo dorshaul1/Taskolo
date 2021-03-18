@@ -4,7 +4,10 @@
     <section class="side-menu-content flex column align-center">
       <h1>Menu</h1>
       <ul class="clean-list">
-        <li><div class="side-menu-option">About This Board</div></li>
+        <li>
+          <div class="side-menu-option">About This Board</div>
+          <div class="aboutThisBoard"></div>
+        </li>
         <li>
           <label for="background-input">
             <div class="side-menu-option">Change Background</div>
