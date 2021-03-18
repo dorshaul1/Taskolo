@@ -37,7 +37,10 @@ export const boardStore = {
         },
         setCurrTask(state, { task }) {
             state.currTask = task
-        }
+        },
+        updateBoard(state, { newBoard }){
+            state.currBoard = newBoard
+        }   
     },
     actions: {
         async loadBoards(context) {
@@ -109,8 +112,15 @@ export const boardStore = {
                 throw err
             }
         },
-        async updateBoard(context) {
-
+        async updateBoard({ commit }, { board }) {
+            try{
+                const newBoard = await boardService.update(board)
+                commit({ type: 'updateBoard', newBoard })
+            }
+            catch{
+                console.log('boardStore: Error in update task', err)
+                throw err
+            }
         }
         // async changeBoardProperty({ commit }, property, value){
         //     try{
