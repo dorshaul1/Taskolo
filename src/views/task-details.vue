@@ -24,7 +24,6 @@
             <section class="right-column">
                 <h3>Add to card</h3>
 
-
                 <a
                     class="link-button"
                     href="#"
@@ -34,9 +33,8 @@
                     <span>Members</span>
                 </a>
                 <base-task-modal v-if="isMembersOpen" title="Members">
-                    <members :members="board.members"/>
+                    <members :members="board.members" @add-member="addMember" />
                 </base-task-modal>
-
 
                 <a
                     class="link-button"
@@ -74,7 +72,7 @@ import baseTaskModal from "../cmps/base-task-modal";
 import activityPreview from "../cmps/task/activity-preview";
 
 import members from "../cmps/task/task-option/task-details/members";
-import { board } from '../data/board';
+import { board } from "../data/board";
 export default {
     name: "task-details",
     data() {
@@ -100,6 +98,9 @@ export default {
                     break;
             }
         },
+        addMember(member) {
+            console.log("member", member);
+        },
     },
     computed: {
         task() {
@@ -123,7 +124,7 @@ export default {
     },
 
     created() {
-        console.log(board, 'board in task details')
+        console.log(board, "board in task details");
     },
 };
 </script>
