@@ -9,14 +9,18 @@
             <button v-if="!isAddItemClicked" @click="isAddItemClicked = true">
                 Add an item
             </button>
-            <textarea
+            <input
+                type="text"
                 v-if="isAddItemClicked"
-                placeholder="Add more details description..."
-                rows="6"
-            ></textarea>
-            <div class="checklist-actions flex space-between">
+                placeholder="Add an item"
+                v-model="todo.txt"
+            />
+            <div
+                v-if="isAddItemClicked"
+                class="checklist-actions flex space-between"
+            >
                 <div class="add-delete flex">
-                    <button>Add</button>
+                    <button @click="addToChecklist">Add</button>
                     <button>X</button>
                 </div>
 
@@ -34,8 +38,23 @@
 export default {
     data() {
         return {
+            checklist: [],
+            todo: {
+                txt: "",
+                isDone: false,
+            },
             isAddItemClicked: false,
         };
+    },
+    methods: {
+        addToChecklist() {
+            if (this.todo.txt) {
+                const todoToAdd = { ...this.todo };
+                this.checklist.push(todoToAdd);
+                this.todo = { txt: "", isDone: false };
+                console.log(this.checklist)
+            }
+        },
     },
 };
 </script>

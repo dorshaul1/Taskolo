@@ -13,7 +13,7 @@
 
         <div class="task-details-grid">
             <section class="left-column">
-                <members-preview v-if="isMembersOpen" />
+                <members-preview v-if="task.members && task.members.length" :members="task.members" />
 
                 <labels-preview v-if="isLabelsOpen" />
                 <description-preview />
@@ -32,8 +32,9 @@
                 >
                     <span>Members</span>
                 </a>
+
                 <base-task-modal v-if="isMembersOpen" title="Members">
-                    <members :members="board.members" @add-member="addMember" />
+                    <members :members="board.members" :taskMembers="task.members" @add-member="addMember" />
                 </base-task-modal>
 
                 <a
@@ -110,9 +111,29 @@ export default {
                 //     Object.create(this.task)
                 // );
 
-                //change values
-                if (!taskCopy.members) taskCopy.members = [];
-                taskCopy.members.push(member);
+                //toggle members
+                let taskMembers = taskCopy.members;
+                if (!taskMembers) taskMembers = [];
+                const isTaskMember = taskMembers.some(
+                    (taskMember) => taskMember._id === member._id
+                );
+
+                console.log("isTaskMember", isTaskMember);
+
+                if (!isTaskMember) {
+                    console.log("pushing...");
+                    taskMembers.push(member);
+                } else {
+                    console.log("deleteing......");
+                    const memberIdx = taskMembers.findIndex((m) => {
+                        m._id = member._id;
+                    });
+                    taskMembers.splice(memberIdx, 1);
+                }
+
+                taskCopy.members = taskMembers
+
+                // change values
                 this.$store.dispatch({ type: "updateTask", task: taskCopy });
             } catch (err) {
                 console.log(err);
