@@ -37,6 +37,7 @@
             <button @click="closeTaskAdd">x</button>
           </div>
         </section>
+        
       </div>
     </div>
   </div>
