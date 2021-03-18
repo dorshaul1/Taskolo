@@ -94,9 +94,7 @@ export default {
   },
   methods: {
     async openTaskPreview() {
-      // await this.$store.dispatch({ type: "setGroup", group: this.group });
-      // await this.$store.dispatch({ type: "setTask", task: this.task });
-      this.$router.push("/board/" + this.boardId + "/task/" + this.task.id);
+      this.$router.push(`/board/${this.boardId}/task/${this.task.id}`);
     },
     getTaskColor(taskLabelId) {
       let labels = this.currBoard.labels;

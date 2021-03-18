@@ -18,8 +18,8 @@ export const boardStore = {
         currTask(state) {
             return state.currTask
         },
-        groupName(state) {
-            //loop to find task id
+        currGroup(state) {
+            return state.currGroup
         }
     },
     mutations: {
@@ -32,9 +32,18 @@ export const boardStore = {
         setTask(state, { task }) {
             state.currTask = task
         },
-        setTaskById(state, { taskID }) {
-            //TO-DO
+
+        setTaskById(state, { taskId }) {
+            state.currBoard.groups.forEach(group => {
+                group.tasks.forEach(task => {
+                    if (task.id === taskId) {
+                        state.currTask = task
+                        state.currGroup = group
+                    }
+                })
+            });
         },
+        
         setGroup(state, { group }) {
             state.currGroup = group
         },
@@ -111,7 +120,9 @@ export const boardStore = {
                 throw err
             }
         }
+
         
+
 
         // async loadAndWatchBoard({ commit }, { boardId }) {
         //     try {

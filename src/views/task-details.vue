@@ -129,6 +129,9 @@ export default {
         groupName() {
             return this.$store.getters.groupName;
         },
+        taskId() {
+            return this.$route.params.taskId;
+        },
     },
     components: {
         membersPreview,
@@ -139,9 +142,23 @@ export default {
         baseTaskModal,
         members,
     },
+    watch: {
+        taskId: {
+            handler() {
+                this.$store.commit({
+                    type: "setTaskById",
+                    taskId: this.taskId,
+                });
+            },
+            immediate: true,
+        },
+    },
 
     created() {
-        console.log(board, "board in task details");
+        // console.log(board, "board in task details");
+
+        // console.log(this.taskId, "taskId in created task details");
+
         //1. taskID from route
         //2. commit setTaskById (mutation) find task in group
     },
