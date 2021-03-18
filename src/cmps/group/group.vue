@@ -12,13 +12,31 @@
         :group="group"
         :boardId="boardId"
       ></task-preview>
+
       <div class="group-footer flex space-between">
-        <div class="flex">
-          <h3 class="add-new-Card"><span>+</span> add a card</h3>
-        </div>
-        <div>
-          <button class="group-menu-btn">+</button>
-        </div>
+        <section v-show="!isTakeTask">
+          <h3 @click="openTaskAdd" class="add-new-Card">
+            <span>+</span> add a card
+          </h3>
+        </section>
+
+        <section v-show="isTakeTask" class="take-new-task flex">
+          <textarea
+            class="task-Add-input"
+            ref="taskTitle"
+            v-show="isTakeTask"
+            name="NoteTxt"
+            v-model="newTask.title"
+            placeholder="Enter a title for this card..."
+            rows="2"
+          >
+          </textarea>
+
+          <div class="flex space-between">
+            <button @click="addNewTask" class="add-task">Add card</button>
+            <button @click="closeTaskAdd">x</button>
+          </div>
+        </section>
       </div>
     </div>
   </div>
@@ -31,6 +49,29 @@ export default {
   props: {
     group: {},
     boardId: {},
+  },
+  data() {
+    return {
+      newTask: {
+        title: null,
+      },
+      isTakeTask: false,
+    };
+  },
+  methods: {
+    openTaskAdd() {
+      this.isTakeTask = true;
+    },
+    closeTaskAdd() {
+      this.isTakeTask = false;
+      this.newTask.title = "Enter a title for this card...";
+    },
+    async addNewTask() {
+      try {
+      } catch (error) {
+        console.log("group-cmp: error with try to add new task", err);
+      }
+    },
   },
   components: {
     taskPreview,

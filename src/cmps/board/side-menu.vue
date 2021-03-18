@@ -9,18 +9,32 @@
         <li>more</li>
       </ul>
       <h1>Activities</h1>
+      <activity-list :board="board" />
     </section>
   </section>
   <!-- </section> -->
 </template>
 
 <script>
+import activityList from "./activity-list";
+
 export default {
+  props: {
+    board: {
+      type: Object,
+    },
+  },
   name: "side-menu",
   methods: {
     closeMenu() {
       this.$emit("close");
     },
   },
+  components: {
+    activityList,
+  },
+  // created() {
+  //   console.log(this.board);
+  // },
 };
 </script>

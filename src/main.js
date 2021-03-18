@@ -10,7 +10,7 @@ import './styles/main.scss'
 
 Vue.use(ElementUI);
 
-
+// const clone = require("rfdc/default")
 
 Vue.config.productionTip = false
 

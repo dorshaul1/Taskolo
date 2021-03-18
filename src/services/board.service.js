@@ -1,21 +1,22 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
-import {userService} from './user.service'
-import {board} from '../data/board.js'
+import { userService } from './user.service'
+import { board } from '../data/board.js'
 
 export const boardService = {
   add,
   query,
   remove,
-  getById
+  getById,
+  update
 }
 
 const KEY = 'board'
 
 _addBoardToStorage()
 
-async function _addBoardToStorage(){
-  return  await JSON.parse(localStorage.getItem(KEY)) || add(board)
+async function _addBoardToStorage() {
+  return await JSON.parse(localStorage.getItem(KEY)) || add(board)
 }
 
 // More ways to send query params:
@@ -31,6 +32,12 @@ function query() {
 function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
   return storageService.delete(KEY, boardId)
+
+}
+
+function update(board) {
+  // return httpService.delete(`board/${boardId}`)
+  return storageService.put(KEY, board)
 
 }
 async function add(board) {

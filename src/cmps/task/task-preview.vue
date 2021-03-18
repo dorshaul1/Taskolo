@@ -32,7 +32,7 @@
           />
         </div>
 
-        <div class="dute-date">
+        <div class="dute-date" v-if="task.dueDate">
           <span>mar 18</span>
         </div>
 
