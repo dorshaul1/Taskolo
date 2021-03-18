@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         boardPreviewClicked(boardId) {
-            this.$router.push(`./board/${boardId}`)
+            this.$router.push(`/board/${boardId}`)
         }
     },
     created() {

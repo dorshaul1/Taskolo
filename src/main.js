@@ -8,9 +8,12 @@ import ElementUI from 'element-ui';
 
 import './styles/main.scss'
 
+
 Vue.use(ElementUI);
 
-// const clone = require("rfdc/default")
+const clone = require("rfdc/default")
+
+Vue.prototype.$clone = clone
 
 Vue.config.productionTip = false
 

@@ -43,7 +43,7 @@ export const boardStore = {
                 })
             });
         },
-        
+
         setGroup(state, { group }) {
             state.currGroup = group
         },
@@ -82,6 +82,49 @@ export const boardStore = {
 
             }
         },
+
+        async updateBoard({ commit }, { board }) {
+            try {
+                commit({ type: 'setBoard', board })
+                return await boardService.update(board)
+            }
+            catch {
+                console.log('boardStore: Error in update board', err)
+                throw err
+            }
+        },
+        async updateTask(context, { task }) {
+            try {
+
+                context.commit({ type: 'setTask', task })
+
+                const clone = require("rfdc");
+                const boardCopy = clone({ proto: true })(
+                    Object.create(context.state.currBoard)
+                );
+
+                // const boardCopy = this.$clone({ proto: true })(
+                //     Object.create(context.state.currBoard
+                //     ));
+
+                let currTaskIdx;
+                const currGroupIdx = boardCopy.groups.findIndex((group) => {
+                    if (group.id === context.state.currGroup.id) {
+                        currTaskIdx = group.tasks.findIndex((task) => {
+                            return task.id === context.state.currTask.id;
+                        });
+                        return true;
+                    }
+                });
+                boardCopy.groups[currGroupIdx].tasks[currTaskIdx] = task
+                context.dispatch({ type: 'updateBoard', board: boardCopy })
+            }
+            catch {
+                console.log('boardStore: Error in update task', err)
+                throw err
+            }
+        },
+
         async addBoard(context, { board }) {
             try {
                 board = await boardService.add(board)
@@ -101,27 +144,9 @@ export const boardStore = {
                 throw err
             }
         },
-        async updateBoard({ commit }, { board }) {
-            try {
-                commit({ type: 'setBoard', board })
-                return await boardService.update(board)
-            }
-            catch {
-                console.log('boardStore: Error in update board', err)
-                throw err
-            }
-        },
-        async updateTask({ commit }, { newTask }) {
-            try {
-                commit({ type: 'setTask', newTask })
-            }
-            catch {
-                console.log('boardStore: Error in update task', err)
-                throw err
-            }
-        }
 
-        
+
+
 
 
         // async loadAndWatchBoard({ commit }, { boardId }) {
