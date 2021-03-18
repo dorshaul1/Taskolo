@@ -2,7 +2,7 @@
     <section class="task-modal">
         <header class="header">
             <span class="title">{{title}}</span>
-            <a href="#" class="close-btn">X</a>
+            <a href="#" @click="closeModal" class="close-btn">X</a>
         </header>
         <slot></slot>
     </section>
@@ -14,6 +14,11 @@ export default {
         title: {
             type: String,
             required: true
+        }
+    },
+    methods:{
+        closeModal(){
+           this.$emit('close-modal')
         }
     }
 };

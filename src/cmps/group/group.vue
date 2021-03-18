@@ -3,7 +3,18 @@
     <div class="group-main">
       <div class="group-header flex space-between">
         <h3 class="group-title">{{ group.title }}</h3>
-        <button class="group-menu-btn">...</button>
+
+        <div>
+          <button @click="openGroupMenu" class="group-menu-btn">...</button>
+
+          <base-modal
+            @close-modal="closeMenu"
+            title="list"
+            v-if="isGroupMenuOpen"
+          >
+            <group-menu @delete-group="deleteGroup"></group-menu>
+          </base-modal>
+        </div>
       </div>
       <task-preview
         v-for="task in group.tasks"
@@ -45,6 +56,8 @@
 <script>
 import taskPreview from "../task/task-preview";
 import { utilService } from "../../services/util.service.js";
+import groupMenu from "../group/group-menu";
+import baseModal from "../base-task-modal";
 
 export default {
   name: "group",
@@ -58,6 +71,7 @@ export default {
         title: null,
       },
       isTakeTask: false,
+      isGroupMenuOpen: false,
     };
   },
   computed: {
@@ -73,7 +87,12 @@ export default {
       this.isTakeTask = false;
       this.newTask.title = "Enter a title for this card...";
     },
-
+    openGroupMenu() {
+      this.isGroupMenuOpen = true;
+    },
+    closeMenu() {
+      this.isGroupMenuOpen = false;
+    },
     async addNewTask() {
       try {
         const clone = require("rfdc");
@@ -87,14 +106,31 @@ export default {
           title: this.newTask.title,
         });
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
-        this.closeTaskAdd()
+        this.closeTaskAdd();
       } catch (err) {
         console.log("group-cmp: error with try to add new task", err);
+      }
+    },
+    async deleteGroup() {
+      try {
+        console.log("group delete");
+        const clone = require("rfdc");
+        const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
+        var groups = boardCopy.groups;
+        var currGroupIdx = groups.findIndex(
+          (group) => group.id === this.group.id
+        );
+        boardCopy.groups.splice(currGroupIdx, 1);
+        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+      } catch (error) {
+        console.log("group cmp: error with delete group", error);
       }
     },
   },
   components: {
     taskPreview,
+    groupMenu,
+    baseModal,
   },
 };
 </script>
