@@ -6,96 +6,25 @@
         </div>
 
         <div class="title flex align-start column">
-            <h1>{{task.title}}</h1>
-            <h4 v-if="boardName">in list {{boardName}}</h4>
+            <h1>{{ task.title }}</h1>
+
+            <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
         </div>
 
         <div class="task-details-grid">
             <section class="left-column">
-                <div
-                    v-if="isMembersOpen"
-                    class="members-main-container flex column align-start"
-                >
-                    <h3>Members</h3>
-                    <div class="members-container flex">
-                        <div class="member"></div>
-                        <div class="member"></div>
-                        <div class="member"></div>
-                        <div class="member-plus-icon">+</div>
-                    </div>
-                </div>
+                <members-preview v-if="isMembersOpen" />
 
-                <div
-                    v-if="isLabelsOpen"
-                    class="labels-main-contaier flex column align-start"
-                >
-                    <h3>Labels</h3>
-                    <div class="labels-container flex">
-                        <div class="label"></div>
-                        <div class="label"></div>
-                        <div class="label"></div>
-                    </div>
-                </div>
-
-                <section class="description flex start column">
-                    <div class="title-container flex align-center">
-                        <h3>Description</h3>
-                        <button>Edit</button>
-                    </div>
-                    <textarea
-                        placeholder="Add more details description..."
-                        rows="6"
-                    ></textarea>
-                    <div class="desc-input-buttons flex align-center">
-                        <button>Save</button>
-                        <button>X</button>
-                    </div>
-                </section>
-
-                <section class="activity flex column">
-                    <div class="acitivty-title flex space-between align-center">
-                        <h3>Activity</h3>
-                        <button>Show Details</button>
-                    </div>
-                    <input type="text" placeholder="Wtire a comment..." />
-                </section>
-
-                <section v-if="isChecklistOpen" class="checklist flex column">
-                    <div class="checklist-title flex space-between">
-                        <h3>Checklist</h3>
-                        <button>Delete</button>
-                    </div>
-                    <div class="checklist-bar"></div>
-                    <div class="checklist-button flex column align-start">
-                        <button
-                            v-if="!isAddItemClicked"
-                            @click="isAddItemClicked = true"
-                        >
-                            Add an item
-                        </button>
-                        <textarea
-                            v-if="isAddItemClicked"
-                            placeholder="Add more details description..."
-                            rows="6"
-                        ></textarea>
-                        <div class="checklist-actions flex space-between">
-                            <div class="add-delete flex">
-                                <button>Add</button>
-                                <button>X</button>
-                            </div>
-
-                            <div class="text-actions flex">
-                                <button>Mention</button>
-                                <button>Emoji</button>
-                                <button>Assign</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <labels-preview v-if="isLabelsOpen" />
+                <description-preview />
+                <checklist-preview v-if="isChecklistOpen" />
+                <activity-preview />
             </section>
 
             <section class="right-column">
                 <h3>Add to card</h3>
+
+
                 <a
                     class="link-button"
                     href="#"
@@ -104,6 +33,11 @@
                 >
                     <span>Members</span>
                 </a>
+                <base-task-modal v-if="isMembersOpen" title="Members">
+                    <members :members="board.members"/>
+                </base-task-modal>
+
+
                 <a
                     class="link-button"
                     href="#"
@@ -132,6 +66,15 @@
 </template>
 
 <script>
+import membersPreview from "../cmps/task/task-option/task-details-previews/members-preview";
+import labelsPreview from "../cmps/task/task-option/task-details-previews/labels-preview";
+import descriptionPreview from "../cmps/task/task-option/task-details-previews/description-preview";
+import checklistPreview from "../cmps/task/task-option/task-details-previews/checklist-preview";
+import baseTaskModal from "../cmps/base-task-modal";
+import activityPreview from "../cmps/task/activity-preview";
+
+import members from "../cmps/task/task-option/task-details/members";
+import { board } from '../data/board';
 export default {
     name: "task-details",
     data() {
@@ -139,7 +82,6 @@ export default {
             isMembersOpen: false,
             isLabelsOpen: false,
             isChecklistOpen: false,
-            isAddItemClicked: false,
         };
     },
     methods: {
@@ -154,7 +96,6 @@ export default {
                 case "Checklist":
                     this.isChecklistOpen = !this.isChecklistOpen;
                     break;
-
                 default:
                     break;
             }
@@ -162,14 +103,28 @@ export default {
     },
     computed: {
         task() {
-            return this.$store.getters.currTask
+            return this.$store.getters.currTask;
+        },
+        board() {
+            return this.$store.getters.currBoard;
         },
         groupName() {
-            return this.$store.getters.groupName
-        }
+            return this.$store.getters.groupName;
+        },
     },
+    components: {
+        membersPreview,
+        labelsPreview,
+        activityPreview,
+        descriptionPreview,
+        checklistPreview,
+        baseTaskModal,
+        members,
+    },
+
     created() {
-    }
+        console.log(board, 'board in task details')
+    },
 };
 </script>
 
