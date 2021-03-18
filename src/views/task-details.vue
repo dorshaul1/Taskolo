@@ -13,10 +13,17 @@
 
     <div class="task-details-grid">
       <section class="left-column">
-        <members-preview v-if="isMembersOpen" />
-
+        <members-preview
+          v-if="task.members && task.members.length"
+          :members="task.members"
+        />
         <labels-preview v-if="isLabelsOpen" />
         <description-preview />
+        <checklist-preview
+          v-if="isChecklistOpen || task.checklists.length"
+          @update-checklist="updateChecklist"
+          :checklistProp="task.checklists[0]"
+        />
         <due-date-preview
           v-if="task.dueDate"
           :date="task.dueDate"
@@ -37,8 +44,13 @@
         >
           <span>Members</span>
         </a>
+
         <base-task-modal v-if="isMembersOpen" title="Members">
-          <members :members="board.members" @add-member="addMember" />
+          <members
+            :members="board.members"
+            :taskMembers="task.members"
+            @add-member="addMember"
+          />
         </base-task-modal>
 
         <a
@@ -74,6 +86,7 @@
       </section>
     </div>
   </section>
+
 </template>
 
 <script>
@@ -87,55 +100,40 @@ import dueDatePreview from "../cmps/task/task-option/task-details-previews/due-d
 
 import members from "../cmps/task/task-option/task-details/members";
 import dueDate from "../cmps/task/task-option/task-details/due-date";
+
+import { utilService } from "../services/util.service.js";
+
 // import { board } from "../data/board";
 export default {
-  name: "task-details",
-  data() {
-    return {
-      isMembersOpen: false,
-      isLabelsOpen: false,
-      isChecklistOpen: false,
-      isDueDateOpen: false,
-    };
-  },
-  methods: {
-    toggleSection(sectionName) {
-      switch (sectionName) {
-        case "Members":
-          this.isMembersOpen = !this.isMembersOpen;
-          break;
-        case "Labels":
-          this.isLabelsOpen = !this.isLabelsOpen;
-          break;
-        case "Checklist":
-          this.isChecklistOpen = !this.isChecklistOpen;
-          break;
-        case "DueDate":
-          this.isDueDateOpen = !this.isDueDateOpen;
-          break;
-        default:
-          break;
-      }
+    name: "task-details",
+    data() {
+        return {
+            isMembersOpen: false,
+            isLabelsOpen: false,
+            isChecklistOpen: false,
+            isDueDateOpen: false,
+        };
     },
-    addMember(member) {
-      try {
-        // task clone
-        const clone = require("rfdc");
-        const taskCopy = clone({ proto: true })(Object.create(this.task));
-
-        // const taskCopy = this.$clone({ proto: true })(
-        //     Object.create(this.task)
-        // );
-
-        //change values
-        if (!taskCopy.members) taskCopy.members = [];
-        taskCopy.members.push(member);
-        this.$store.dispatch({ type: "updateTask", task: taskCopy });
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    setDate(date) {
+    methods: {
+        toggleSection(sectionName) {
+            switch (sectionName) {
+                case "Members":
+                    this.isMembersOpen = !this.isMembersOpen;
+                    break;
+                case "Labels":
+                    this.isLabelsOpen = !this.isLabelsOpen;
+                    break;
+                case "Checklist":
+                    this.isChecklistOpen = !this.isChecklistOpen;
+                    break;
+                case "DueDate":
+                    this.isDueDateOpen = !this.isDueDateOpen;
+                    break;
+                default:
+                    break;
+            }
+        },
+            setDate(date) {
       try {
         const clone = require("rfdc");
         const taskCopy = clone({ proto: true })(Object.create(this.task));
@@ -147,57 +145,101 @@ export default {
         console.log(err);
       }
     },
-  },
-  computed: {
-    task() {
-      console.log(
-        "this.$store.getters.currTask:",
-        this.$store.getters.currTask
-      );
-      return this.$store.getters.currTask;
-    },
-    group() {
-      return this.$store.getters.currGroup;
-    },
-    board() {
-      return this.$store.getters.currBoard;
-    },
-    groupName() {
-      return this.$store.getters.groupName;
-    },
-    taskId() {
-      return this.$route.params.taskId;
-    },
-  },
-  components: {
-    membersPreview,
-    labelsPreview,
-    activityPreview,
-    descriptionPreview,
-    checklistPreview,
-    baseTaskModal,
-    members,
-    dueDate,
-    dueDatePreview,
-  },
-  watch: {
-    taskId: {
-      handler() {
-        this.$store.commit({
-          type: "setTaskById",
-          taskId: this.taskId,
-        });
-      },
-      immediate: true,
-    },
-  },
+        addMember(member) {
+            try {
+                // task clone
+                const clone = require("rfdc");
+                const taskCopy = clone({ proto: true })(
+                    Object.create(this.task)
+                );
 
-  created() {
-    // console.log(board, "board in task details");
-    // console.log(this.taskId, "taskId in created task details");
-    //1. taskID from route
-    //2. commit setTaskById (mutation) find task in group
-  },
+                // const taskCopy = this.$clone({ proto: true })(
+                //     Object.create(this.task)
+                // );
+
+                //toggle members
+                let taskMembers = taskCopy.members;
+                if (!taskMembers) taskMembers = [];
+                const isTaskMember = taskMembers.some(
+                    (taskMember) => taskMember._id === member._id
+                );
+
+                console.log("isTaskMember", isTaskMember);
+
+                if (!isTaskMember) {
+                    console.log("pushing...");
+                    taskMembers.push(member);
+                } else {
+                    console.log("deleteing......");
+                    const memberIdx = taskMembers.findIndex((m) => {
+                        m._id = member._id;
+                    });
+                    taskMembers.splice(memberIdx, 1);
+                }
+
+                taskCopy.members = taskMembers;
+
+                // change values
+                this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        updateChecklist(checklist) {
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            if (!taskCopy.checklists) taskCopy.checklists = [];
+            if (!checklist.id) checklist.id = utilService.makeId();
+            taskCopy.checklists.push(checklist);
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
+    },
+    computed: {
+        task() {
+            return this.$store.getters.currTask;
+        },
+        group() {
+            return this.$store.getters.currGroup;
+        },
+        board() {
+            return this.$store.getters.currBoard;
+        },
+        groupName() {
+            return this.$store.getters.groupName;
+        },
+        taskId() {
+            return this.$route.params.taskId;
+        },
+    },
+    components: {
+        membersPreview,
+        labelsPreview,
+        activityPreview,
+        descriptionPreview,
+        checklistPreview,
+        baseTaskModal,
+        members,
+        dueDate,
+        dueDatePreview
+    },
+    watch: {
+        taskId: {
+            handler() {
+                this.$store.commit({
+                    type: "setTaskById",
+                    taskId: this.taskId,
+                });
+            },
+            immediate: true,
+        },
+    },
+
+    created() {
+        // console.log(board, "board in task details");
+        // console.log(this.taskId, "taskId in created task details");
+        //1. taskID from route
+        //2. commit setTaskById (mutation) find task in group
+    },
 };
 </script>
 

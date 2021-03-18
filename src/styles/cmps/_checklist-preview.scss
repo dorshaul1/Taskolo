@@ -1,3 +1,12 @@
-.checklist-actions {
-    width: 100%;
+.checklist {
+    & input[type="text"] {
+        width: 100%;
+    }
+    & .checklist-actions {
+        width: 100%;
+    }
+
+    & .done{
+        text-decoration: line-through;
+    }
 }
