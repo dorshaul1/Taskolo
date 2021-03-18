@@ -24,7 +24,7 @@
       </div>
 
       <div class="badges flex space-between">
-        <div class="watch">
+        <div class="watch" v-if="task.watch">
           <img
             class="task-prev-icon"
             src="../../assets/task-icon/watch.png"
@@ -36,7 +36,7 @@
           <span>mar 18</span>
         </div>
 
-        <div class="desc">
+        <div class="desc" v-if="task.description">
           <img
             class="task-prev-icon"
             src="../../assets/task-icon/desc.png"
@@ -44,7 +44,7 @@
           />
         </div>
 
-        <div class="comments">
+        <div class="comments" v-if="task.comments">
           <img
             class="task-prev-icon"
             src="../../assets/task-icon/comments.png"
@@ -52,7 +52,7 @@
           />
         </div>
 
-        <div class="checklist">
+        <div class="checklist" v-if="task.checklists">
           <img
             class="task-prev-icon"
             src="../../assets/task-icon/checklist.png"
@@ -61,9 +61,14 @@
         </div>
       </div>
 
-      <div class="members flex">
-        <div class="member"></div>
-        <div class="member"></div>
+      <div class="members flex" v-if="task.members">
+        <li class="memeber" v-for="member in task.members" :key="member._id">
+          <img
+            class="task-prev-icon member"
+            :src="member.imgUrl"
+            alt=""
+          />
+        </li>
       </div>
     </div>
   </div>
