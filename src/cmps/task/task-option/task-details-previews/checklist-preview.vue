@@ -1,13 +1,17 @@
 <template>
     <section class="checklist flex column">
         <div class="checklist-title flex space-between">
-            <h3>Checklist</h3>
+            <h3>{{ checklist.title }}</h3>
             <button>Delete</button>
         </div>
         <div class="checklist-bar"></div>
 
         <!-- CHANGE KEY TO ID  -->
-        <div v-for="todo in checklist.todos" :key="todo.id" class="todo-item flex">
+        <div
+            v-for="todo in checklist.todos"
+            :key="todo.id"
+            class="todo-item flex"
+        >
             <input type="checkbox" :checked="todo.isDone" />
             <span
                 :class="{ done: todo.isDone }"
@@ -46,14 +50,15 @@
 
 <script>
 import { utilService } from "@/services/util.service.js";
-import {boardService} from "@/services/board.service.js";
+import { boardService } from "@/services/board.service.js";
 export default {
     props: {
-        checklistProp: {}
+        checklistProp: {},
     },
     data() {
         return {
-            checklist: {...this.checklistProp},
+            // checklist: { ...this.checklistProp },
+            checklist: null,
             todo: boardService.getEmptyTodo(),
             isAddItemClicked: false,
         };
@@ -75,8 +80,12 @@ export default {
         // },
     },
     created() {
-        console.log("checklist", this.checklist)
-    }
+        const clone = require("rfdc");
+        (this.checklist = clone({ proto: true })(
+            Object.create(this.checklistProp)
+        )),
+            console.log("checklist", this.checklist);
+    },
 };
 </script>
 
