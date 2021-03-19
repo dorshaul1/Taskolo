@@ -30,7 +30,7 @@
       <button class="add-member-btn">Invite</button>
     </div>
 
-    <button class="show-menu-btn" @click="openMenu">··· Show Menu</button>
+    <button class="show-menu-btn" @click="openMenu"><i class="el-icon-more"></i>   Show Menu</button>
   </header>
 </template>
 

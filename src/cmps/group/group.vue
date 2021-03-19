@@ -1,11 +1,12 @@
 <template>
   <div class="group-container">
     <div class="group-main">
-      <div class="group-header flex space-between">
-        <h3 class="group-title">{{ group.title }}</h3>
+
+      <div class="group-header flex space-between align-center">
+        <h2 class="group-title flex align-center">{{ group.title }}</h2>
 
         <div>
-          <button @click="openGroupMenu" class="group-menu-btn">...</button>
+          <span @click="openGroupMenu" class="group-menu-btn"><i class="el-icon-more"></i></span>
 
           <base-modal
             @close-modal="closeMenu"
@@ -14,7 +15,9 @@
           >
             <group-menu @delete-group="deleteGroup"></group-menu>
           </base-modal>
+
         </div>
+
       </div>
 
       <div class="group-main-body">

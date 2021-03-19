@@ -1,5 +1,6 @@
 .group-container {
-      background-color: rgb(235, 236, 240);
+      // background-color: rgb(235, 236, 240);
+      background-color: #ebecf0;
       margin-inline-end: 4px;
       margin-inline-start: 4px;
       width: 272px;
@@ -10,48 +11,50 @@
       white-space: initial;
 
       .group-title {
+            color: brighten(#172b4d);
+
+            font-weight: 600;
             font-size: 14px;
-            line-height: 20px;
-            font-weight: 700;
             padding: 8px 16px;
+            padding-block-start: 12px;
             min-height: 20px;
             cursor: pointer;
             word-break: break-all;
             white-space: initial;
-            &:hover {
-                  background: $hover-dark;
-            }
       }
       .group-menu-btn {
             width: 20px;
             height: 20px;
-            padding: 6px;
-            margin: 0;
+
+            font-weight: 600;
+            margin-inline-end: 16px;
             cursor: pointer;
-            & :hover {
-                  background: $hover-dark;
-            }
       }
 
       .group-main-body {
             max-height: 300px;
             overflow-y: scroll;
+            margin-inline-end: 4px;
+            margin-inline-start: 4px;
       }
 
       .group-main-body::-webkit-scrollbar {
             height: 8px;
             width: 8px;
+            margin-inline-end: 4px;
+            scroll-margin-right: 20px;
       }
 
       .group-main-body::-webkit-scrollbar-track {
             // background: #f1f1f1;
-            background: rgba(9, 30, 66, 0.08);
+            background: #dadbe2;
+            scroll-margin-right: 20px;
       }
 
       .group-main-body::-webkit-scrollbar-thumb {
-            background: #888;
-            // background-color: #c4c9cc;
-            // border-right: 0.6rem solid #e2e4e6;
+            background: #bfc4ce;
+            border-radius: 15px;
+            scroll-margin-right: 20px;
       }
 
       .add-new-Card {

@@ -13,25 +13,50 @@ export const board = {
             {
                   "id": "l101",
                   "title": "Done",
-                  "color": "#ff0000"
+                  "color": "#0079bf"
             },
             {
                   "id": "l102",
                   "title": "Done",
-                  "color": "#00ff00"
+                  "color": "#70b500"
             }, {
                   "id": "l103",
                   "title": "Done",
-                  "color": "#0000ff"
+                  "color": "#ff9f1a"
             },
             {
                   "id": "l104",
                   "title": "Done",
-                  "color": "#FFFF00"
+                  "color": "#eb5a46"
             }, {
                   "id": "l105",
                   "title": "Done",
-                  "color": "#FF00FF"
+                  "color": "#f2d600"
+            },
+            {
+                  "id": "l106",
+                  "title": "Done",
+                  "color": "#c377e0"
+            },
+            {
+                  "id": "l107",
+                  "title": "Done",
+                  "color": "#ff78cb"
+            },
+            {
+                  "id": "l108",
+                  "title": "Done",
+                  "color": "#00c2e0"
+            },
+            {
+                  "id": "l109",
+                  "title": "Done",
+                  "color": "#51e898"
+            },
+            {
+                  "id": "l110",
+                  "title": "Done",
+                  "color": "#c4c9cc"
             }
       ],
       "members": [{
@@ -96,7 +121,7 @@ export const board = {
                                     "bgColor": "#26de81",
                                     "bgColor": "#5644ff",
                               },
-                              "labelIds": ["l101", "l102", "l103", "l104", "l105"],
+                              "labelIds": ["l101", "l102", "l103", "l104", "l105","l106","l107","l108","l109","l110"],
                               "description": "description",
                               "comments": [
                                     {
