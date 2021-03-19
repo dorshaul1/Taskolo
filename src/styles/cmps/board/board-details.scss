@@ -25,6 +25,17 @@
             border-radius: 3px;
       }
 
+      //group
+      .add-new-group{
+            color: brighten(#172b4d);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 16px;
+            padding-block-start: 12px;
+            min-height: 20px;
+            cursor: pointer;
+      }
+
       .group-Add-input {
             margin: 5px;
       }
