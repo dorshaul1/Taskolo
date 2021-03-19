@@ -1,12 +1,14 @@
 <template>
   <div class="group-container">
     <div class="group-main">
-
       <div class="group-header flex space-between align-center">
-        <h2 class="group-title flex align-center">{{ group.title }}</h2>
+        <h2  class="group-title flex align-center">{{ group.title }}</h2>
+        <!-- <input v-if="isEdititle" ref="title" class="group-title editable"  :value="group.title" /> -->
 
         <div>
-          <span @click="openGroupMenu" class="group-menu-btn"><i class="el-icon-more"></i></span>
+          <span @click="openGroupMenu" class="group-menu-btn"
+            ><i class="el-icon-more"></i
+          ></span>
 
           <base-modal
             @close-modal="closeMenu"
@@ -15,9 +17,7 @@
           >
             <group-menu @delete-group="deleteGroup"></group-menu>
           </base-modal>
-
         </div>
-
       </div>
 
       <div class="group-main-body">
@@ -49,7 +49,7 @@
           >
           </textarea>
 
-          <div class="flex space-between">
+          <div class="task-btn-container flex space-between">
             <button @click="addNewTask" class="add-task">Add card</button>
             <button @click="closeTaskAdd">x</button>
           </div>
@@ -74,10 +74,11 @@ export default {
   data() {
     return {
       newTask: {
-        title: null,
+        title: '',
       },
       isTakeTask: false,
       isGroupMenuOpen: false,
+      isEdititle: false
     };
   },
   computed: {
@@ -91,7 +92,7 @@ export default {
     },
     closeTaskAdd() {
       this.isTakeTask = false;
-      this.newTask.title = "Enter a title for this card...";
+      this.newTask.title = '';
     },
     openGroupMenu() {
       this.isGroupMenuOpen = true;
@@ -132,6 +133,12 @@ export default {
         console.log("group cmp: error with delete group", error);
       }
     },
+    // editTitle() {
+    //   this.isEdititle = true;
+    //   this.$nextTick(() => {
+    //     this.$refs.title.select();
+    //   });
+    // },
   },
   components: {
     taskPreview,

@@ -33,7 +33,7 @@
         </div>
 
         <div class="dute-date" v-if="task.dueDate">
-          <span>mar 18</span>
+          <span>{{timeForDisplay}}</span>
         </div>
 
         <div class="desc" v-if="task.description">
@@ -91,6 +91,9 @@ export default {
     currBoard() {
       return this.$store.getters.currBoard;
     },
+    timeForDisplay(){
+      // return moment(this.task.dueDate)
+    }
   },
   methods: {
     async openTaskPreview() {

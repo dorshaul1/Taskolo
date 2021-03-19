@@ -65,6 +65,9 @@
                 >
                     <span>Labels</span>
                 </a>
+                <base-task-modal v-if="isLabelsOpen" title="Labels">
+                    <labels :labels="board.labels" />
+                </base-task-modal>
                 <a
                     class="link-button"
                     href="#"
@@ -108,6 +111,7 @@ import dueDatePreview from "../cmps/task/task-option/task-details-previews/due-d
 import members from "../cmps/task/task-option/task-details/members";
 import dueDate from "../cmps/task/task-option/task-details/due-date";
 import checklist from "../cmps/task/task-option/task-details/checklist";
+import labels from '../cmps/task/task-option/task-details/labels.vue';
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
@@ -271,8 +275,10 @@ export default {
         dueDate,
         dueDatePreview,
         checklist,
+           labels 
     },
-    watch: {
+
+        watch: {
         taskId: {
             handler() {
                 this.$store.commit({
