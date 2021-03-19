@@ -2,7 +2,6 @@
   <section class="activity flex column">
 
     <img
-      class="task-prev-icon"
       src="@/assets/task-icon/bullet-list.png"
       alt=""
     />
