@@ -19,12 +19,12 @@
                 />
                 <labels-preview v-if="isLabelsOpen" />
                 <description-preview />
-                <!-- <checklist-preview
+                <checklist-preview
                     v-for="checklist in task.checklists"
                     :key="checklist.id"
                     @update-checklist="updateChecklist"
                     :checklistProp="checklist"
-                /> -->
+                />
 
                 <due-date-preview
                     v-if="task.dueDate"
@@ -108,7 +108,6 @@ import checklist from "../cmps/task/task-option/task-details/checklist";
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
-
 
 // import { board } from "../data/board";
 export default {
@@ -197,16 +196,20 @@ export default {
         updateChecklist(checklist) {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
-            if (!taskCopy.checklists) taskCopy.checklists = [];
-            if (!checklist.id) checklist.id = utilService.makeId();
-            taskCopy.checklists.push(checklist);
+            // if (!taskCopy.checklists) taskCopy.checklists = [];
+            // if (!checklist.id) checklist.id = utilService.makeId();
+            const isChecklistExist = taskCopy.checklists.some(
+                (cl) => cl.id === checklist.id
+            );
+            if (!isChecklistExist) taskCopy.checklists.push(checklist);
+            else {
+                const checklistIdx = taskCopy.checklists.findIndex((cl) => {
+                    cl.id = checklist.id;
+                });
+                taskCopy.checklists.splice(checklistIdx, 1, checklist);
+            }
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
-        initChecklists() {
-            taskCopy.checklists = [];
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
-
         addToChecklist(title) {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
