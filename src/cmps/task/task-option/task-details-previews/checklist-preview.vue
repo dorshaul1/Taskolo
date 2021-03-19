@@ -7,7 +7,7 @@
         <div class="checklist-bar"></div>
 
         <!-- CHANGE KEY TO ID  -->
-        <div v-for="todo in checklist" :key="todo.id" class="todo-item flex">
+        <div v-for="todo in checklist.todos" :key="todo.id" class="todo-item flex">
             <input type="checkbox" :checked="todo.isDone" />
             <span
                 :class="{ done: todo.isDone }"
@@ -46,18 +46,15 @@
 
 <script>
 import { utilService } from "@/services/util.service.js";
+import {boardService} from "@/services/board.service.js";
 export default {
     props: {
-        checklistProp: {},
-        task: {}
+        checklistProp: {}
     },
     data() {
         return {
-            checklist: this.checklistProp || [],
-            todo: {
-                txt: "",
-                isDone: false,
-            },
+            checklist: {...this.checklistProp},
+            todo: boardService.getEmptyTodo(),
             isAddItemClicked: false,
         };
     },
@@ -65,19 +62,21 @@ export default {
         addToChecklist() {
             if (this.todo.txt) {
                 const todoToAdd = { ...this.todo };
-                todoToAdd.id = utilService.makeId();
-                this.checklist.push(todoToAdd);
+                this.checklist.todos.push(todoToAdd);
                 this.$emit("update-checklist", this.checklist);
-                this.todo = { txt: "", isDone: false };
+                this.todo = boardService.getEmptyTodo();
             }
         },
-        toggleTodoState(todoId) {
-            console.log("toggleTodoState");
-            todoIdx = this.checklist.findIndex((todo) => todoId === todo.id);
-            console.log("toggleTodoState", todoIdx);
-            this.checklist[todoIdx].isDone = !this.checklist[todoIdx].isDone;
-        },
+        // toggleTodoState(todoId) {
+        //     console.log("toggleTodoState");
+        //     todoIdx = this.checklist.findIndex((todo) => todoId === todo.id);
+        //     console.log("toggleTodoState", todoIdx);
+        //     this.checklist[todoIdx].isDone = !this.checklist[todoIdx].isDone;
+        // },
     },
+    created() {
+        console.log("checklist", this.checklist)
+    }
 };
 </script>
 

@@ -1,8 +1,9 @@
 .task-details-container {
-    position: absolute;
+    position: fixed;
     top: 50px;
-    right: 50px;
-    height: 100vh;
+    right: 10%;
+    left: 10%;
+    height: 90vh;
     width: 80%;
     color: white;
     background-color: #f4f5f7;
