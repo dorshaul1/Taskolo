@@ -61,14 +61,15 @@
           />
         </div>
 
-        <div class="checklist flex align-center space-between" v-if="task.checklists" >
+
+        <div class="checklist flex align-center" v-if="task.checklists" >
           <img
-            class="task-prev-icon"
+            class="task-prev-icon checklist-icon"
             src="../../assets/task-icon/checklist.png"
             alt=""
           />
-
           <span class="checklist-display"> {{ checklistForDisplay }}</span>
+
         </div>
       </div>
 
