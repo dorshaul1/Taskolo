@@ -8,7 +8,8 @@
     />
 
     <main class="flex board-details">
-      <group class="main-group-container"
+      <group
+        class="main-group-container"
         v-for="group in currBoard.groups"
         :key="group.id"
         :group="group"
@@ -17,7 +18,10 @@
 
       <div class="new-group-container">
         <section v-show="!isTakeGroup">
-          <h3 @click="openGroupkAdd" class="add-new-group flex justify-center align-center">
+          <h3
+            @click="openGroupkAdd"
+            class="add-new-group flex justify-center align-center"
+          >
             <span>+</span> Add another list
           </h3>
         </section>
@@ -56,7 +60,7 @@ export default {
   data() {
     return {
       newGroup: {
-        title: null,
+        title: '',
       },
       isMenuOpen: false,
       isTakeGroup: false,
@@ -89,7 +93,7 @@ export default {
         const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
         this.newGroup.id = utilService.makeId();
         this.newGroup.tasks = [];
-        this.newGroup.style =  {};
+        this.newGroup.style = {};
         console.log("addind new group", this.newGroup);
         boardCopy.groups.push(this.newGroup);
         console.log("addind board", boardCopy);

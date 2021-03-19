@@ -87,10 +87,13 @@
             }
       }
 
+      .task-btn-container{
+            padding-block-start: 6px;
+      }
+
       .add-task {
             background-color: rgb(90, 172, 68);
             border-radius: 3px;
-            margin-inline-start: 5px;
             color: white;
       }
 
@@ -98,6 +101,6 @@
             margin-inline-end: 6px;
             flex-direction: column;
             width: 100%;
-            padding: 6px 4px 2px 5px;
+            padding: 6px 10px 0px 10px;
       }
 }
