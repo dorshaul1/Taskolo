@@ -73,8 +73,18 @@
             }
       }
 
+      /// new task input
       .task-Add-input {
-            margin: 5px;
+            width: auto;
+            margin: 0px;
+            resize: none;
+            background-color: #fff;
+            border-color: transparent;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+            & :focus{
+                  border-color: transparent;
+            }
       }
 
       .add-task {
@@ -85,8 +95,9 @@
       }
 
       .take-new-task {
+            margin-inline-end: 6px;
             flex-direction: column;
             width: 100%;
-            padding: 8px;
+            padding: 6px 4px 2px 5px;
       }
 }
