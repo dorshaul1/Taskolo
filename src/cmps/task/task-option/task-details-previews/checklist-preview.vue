@@ -25,11 +25,17 @@
                 :checked="todo.isDone"
                 @change="toggleTodoState(todo.id)"
             />
-            <span :class="{ done: todo.isDone }">{{ todo.txt }}</span>
+            <span
+                v-if="!isEdit"
+                :class="{ done: todo.isDone }"
+                @click="selectEditItem"
+                >{{ todo.txt }}</span
+            >
+            <input v-else type="text" v-model="todo.txt" ref="todoItem" />
         </div>
 
         <div class="checklist-button flex column align-start">
-            <button v-if="!isAddItemClicked" @click="addItemClicked">
+            <button v-if="!isAddItemClicked && !isEdit" @click="addItemClicked">
                 Add an item
             </button>
             <input
@@ -40,11 +46,12 @@
                 ref="addItem"
             />
             <div
-                v-if="isAddItemClicked"
+                v-if="isAddItemClicked || isEdit"
                 class="checklist-actions flex space-between"
             >
                 <div class="add-delete flex">
-                    <button @click="addToChecklist">Add</button>
+                    <button v-if="!isEdit" @click="addToChecklist">Add</button>
+                    <button v-else @click="editItem">Save</button>
                     <button @click="closeAddItemClicked">X</button>
                 </div>
 
@@ -74,6 +81,7 @@ export default {
             todo: boardService.getEmptyTodo(),
             isAddItemClicked: false,
             isDeleteConfirmOpen: false,
+            isEdit: false,
         };
     },
     methods: {
@@ -110,6 +118,16 @@ export default {
         addItemClicked() {
             this.isAddItemClicked = true;
             this.focusAddItemInput();
+        },
+        selectEditItem() {
+            this.isEdit = true;
+            this.$nextTick(() => {
+                console.log(this.$refs.todoItem[1]);
+                this.$refs.todoItem[0].select();
+            });
+        },
+        editItem() {
+            console.log('savingg///')
         },
         focusAddItemInput() {
             this.$nextTick(() => {
