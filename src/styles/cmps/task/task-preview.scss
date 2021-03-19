@@ -1,11 +1,10 @@
 .task-container {
       padding: 6px 4px 2px 5px;
 
-      & :first-child{
+      & :first-child {
             padding-block-start: 0px;
       }
-  
-      
+
       cursor: pointer;
       .open-task-btn {
             display: flex;
@@ -49,9 +48,18 @@
                   font-size: 12px;
             }
 
+            .time-display {
+                  margin-inline-start: 3px;
+                  font-size: 12px;
+            }
+
+            .checklist-display{
+                  font-size: 12px;
+            }
+
             .task-prev-icon {
-                  width: 18px;
-                  height: 18px;
+                  width: 14px;
+                  height: 14px;
                   cursor: pointer;
             }
 
