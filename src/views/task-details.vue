@@ -2,7 +2,9 @@
     <section v-if="task" class="task-details-container">
         <div class="cover">
             <a class="change-cover" href="#">Cover</a>
-            <router-link class="close-modal-btn" :to="`/board/${board._id}`">X</router-link>
+            <router-link class="close-modal-btn" :to="`/board/${board._id}`"
+                >X</router-link
+            >
         </div>
 
         <div class="title flex align-start column">
@@ -23,6 +25,7 @@
                     v-for="checklist in task.checklists"
                     :key="checklist.id"
                     @update-checklist="updateChecklist"
+                    @delete-checklist="deleteChecklist"
                     :checklistProp="checklist"
                 />
 
@@ -227,6 +230,16 @@ export default {
             console.log("getEmptyCheckList", boardService.getEmptyCheckList());
             checklist.title = title;
             taskCopy.checklists.push(checklist);
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
+        deleteChecklist(checklistId) {
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const checklistIdx = taskCopy.checklists.findIndex(
+                (checklist) => checklist.id === checklistId
+            );
+            console.log(checklistIdx, "idx");
+            taskCopy.checklists.splice(checklistIdx, 1);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
     },

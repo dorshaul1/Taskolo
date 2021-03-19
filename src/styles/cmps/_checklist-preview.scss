@@ -9,4 +9,11 @@
     & .done{
         text-decoration: line-through;
     }
+    
+    .todo-item{
+
+        &:hover{
+            background-color: $hover-dark;
+        }
+    }
 }

@@ -2,25 +2,34 @@
     <section class="checklist flex column">
         <div class="checklist-title flex space-between">
             <h3>{{ checklist.title }}</h3>
-            <button>Delete</button>
+            <button @click="toggleDeleteConfrimation">Delete</button>
+            <base-task-modal
+                title="Delete checklist?"
+                v-if="isDeleteConfirmOpen"
+            >
+                <checklist-delete-confirm @delete-checklist="deleteChecklist" />
+            </base-task-modal>
         </div>
-        <div class="checklist-bar"></div>
+        <div class="checklist-bar-container flex align-center">
+            <div class="status-txt">{{ percentagesToDisplay }}</div>
+            <checklist-bar :percentages="percentages" />
+        </div>
 
-        <!-- CHANGE KEY TO ID  -->
         <div
             v-for="todo in checklist.todos"
             :key="todo.id"
             class="todo-item flex"
         >
-            <input type="checkbox" :checked="todo.isDone" />
-            <span
-                :class="{ done: todo.isDone }"
+            <input
+                type="checkbox"
+                :checked="todo.isDone"
                 @change="toggleTodoState(todo.id)"
-                >{{ todo.txt }}</span
-            >
+            />
+            <span :class="{ done: todo.isDone }">{{ todo.txt }}</span>
         </div>
+
         <div class="checklist-button flex column align-start">
-            <button v-if="!isAddItemClicked" @click="isAddItemClicked = true">
+            <button v-if="!isAddItemClicked" @click="addItemClicked">
                 Add an item
             </button>
             <input
@@ -28,6 +37,7 @@
                 v-if="isAddItemClicked"
                 placeholder="Add an item"
                 v-model="todo.txt"
+                ref="addItem"
             />
             <div
                 v-if="isAddItemClicked"
@@ -35,7 +45,7 @@
             >
                 <div class="add-delete flex">
                     <button @click="addToChecklist">Add</button>
-                    <button>X</button>
+                    <button @click="closeAddItemClicked">X</button>
                 </div>
 
                 <div class="text-actions flex">
@@ -49,7 +59,9 @@
 </template>
 
 <script>
-import { utilService } from "@/services/util.service.js";
+import checklistDeleteConfirm from "../task-details/checklist-delete-confirm";
+import baseTaskModal from "../../../base-task-modal";
+import checklistBar from "../../../checklist-bar";
 import { boardService } from "@/services/board.service.js";
 export default {
     props: {
@@ -61,6 +73,7 @@ export default {
             checklist: null,
             todo: boardService.getEmptyTodo(),
             isAddItemClicked: false,
+            isDeleteConfirmOpen: false,
         };
     },
     methods: {
@@ -70,14 +83,54 @@ export default {
                 this.checklist.todos.push(todoToAdd);
                 this.$emit("update-checklist", this.checklist);
                 this.todo = boardService.getEmptyTodo();
+                this.focusAddItemInput();
             }
         },
-        // toggleTodoState(todoId) {
-        //     console.log("toggleTodoState");
-        //     todoIdx = this.checklist.findIndex((todo) => todoId === todo.id);
-        //     console.log("toggleTodoState", todoIdx);
-        //     this.checklist[todoIdx].isDone = !this.checklist[todoIdx].isDone;
-        // },
+        toggleTodoState(todoId) {
+            console.log("toggeling...", todoId, this.checklist);
+            const todoIdx = this.checklist.todos.findIndex(
+                (todo) => todoId === todo.id
+            );
+            console.log("toggeling...todoIdx", todoIdx);
+            this.checklist.todos[todoIdx].isDone = !this.checklist.todos[
+                todoIdx
+            ].isDone;
+            this.$emit("update-checklist", this.checklist);
+        },
+        deleteChecklist() {
+            this.toggleDeleteConfrimation();
+            this.$emit("delete-checklist", this.checklist.id);
+        },
+        toggleDeleteConfrimation() {
+            this.isDeleteConfirmOpen = !this.isDeleteConfirmOpen;
+        },
+        closeAddItemClicked() {
+            this.isAddItemClicked = false;
+        },
+        addItemClicked() {
+            this.isAddItemClicked = true;
+            this.focusAddItemInput();
+        },
+        focusAddItemInput() {
+            this.$nextTick(() => {
+                this.$refs.addItem.focus();
+            });
+        },
+    },
+    computed: {
+        percentages() {
+            if (!this.checklist.todos.length) return 0;
+            const unCompleted = this.checklist.todos.reduce((sum, todo) => {
+                if (todo.isDone) sum += 1;
+                return sum;
+            }, 0);
+            return ((unCompleted / this.checklist.todos.length) * 100).toFixed(
+                2
+            );
+        },
+        percentagesToDisplay() {
+            return Math.floor(this.percentages) + "%";
+        },
     },
     created() {
         const clone = require("rfdc");
@@ -85,6 +138,11 @@ export default {
             Object.create(this.checklistProp)
         )),
             console.log("checklist", this.checklist);
+    },
+    components: {
+        checklistDeleteConfirm,
+        baseTaskModal,
+        checklistBar,
     },
 };
 </script>
