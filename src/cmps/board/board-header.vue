@@ -71,9 +71,11 @@ export default {
     },
     editTitle() {
       this.isEdititle = true;
-      // console.log(this.$refs["title"]);
-      // this.$refs["title"].focus();
-    },
+            this.$nextTick(() => {
+                this.$refs.title.select();
+            });
+        },
+
     openMenu() {
       // console.log( 'open')
       this.$emit("open"); // console.log("this.isMenuOpen:", this.isMenuOpen);
