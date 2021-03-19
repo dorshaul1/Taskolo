@@ -25,7 +25,12 @@
                 :checked="todo.isDone"
                 @change="toggleTodoState(todo.id)"
             />
-            <span :class="{ done: todo.isDone }">{{ todo.txt }}</span>
+            <span
+                :class="{ done: todo.isDone }"
+                @click="editItem"
+                ref="todoItem"
+                >{{ todo.txt }}</span
+            >
         </div>
 
         <div class="checklist-button flex column align-start">
@@ -110,6 +115,11 @@ export default {
         addItemClicked() {
             this.isAddItemClicked = true;
             this.focusAddItemInput();
+        },
+        editItem() {
+            this.$nextTick(() => {
+                this.$refs.todoItem.select();
+            });
         },
         focusAddItemInput() {
             this.$nextTick(() => {
