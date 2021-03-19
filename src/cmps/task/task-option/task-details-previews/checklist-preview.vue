@@ -49,6 +49,7 @@ import { utilService } from "@/services/util.service.js";
 export default {
     props: {
         checklistProp: {},
+        task: {}
     },
     data() {
         return {
@@ -76,9 +77,6 @@ export default {
             console.log("toggleTodoState", todoIdx);
             this.checklist[todoIdx].isDone = !this.checklist[todoIdx].isDone;
         },
-    },
-    created() {
-        console.log("created checklist",this.checklist);
     },
 };
 </script>

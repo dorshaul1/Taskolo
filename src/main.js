@@ -22,7 +22,7 @@ Vue.use(VCalendar)
 
 Vue.use(ElementUI);
 
-const clone = require("rfdc/default")
+const clone = require("rfdc")()
 
 Vue.prototype.$clone = clone
 
