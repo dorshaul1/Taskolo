@@ -16,6 +16,14 @@
 .due-date-preview {
     margin: 20px 0;
     position: relative;
+    position: relative;
+    font-size: 16px;
+    img {
+        width: 24px;
+        position: absolute;
+        left: -40px;
+        // top: 8px;
+    }
     .date-preview {
         cursor: pointer;
         &:hover {
