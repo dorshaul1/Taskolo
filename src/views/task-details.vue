@@ -1,5 +1,5 @@
 <template>
-  <section v-if="task" class="task-details-container">
+  <section v-if="task" class="task-details-container flex column">
     <div class="cover">
       <a class="change-cover" href="#">Cover</a>
       <router-link
@@ -41,13 +41,17 @@
 
       <section class="right-column">
         <h3>Add to card</h3>
-
         <a
           class="link-button"
           href="#"
           title="Members"
           @click="toggleSection('Members')"
         >
+          <img
+            class="task-prev-icon"
+            src="../assets/task-icon/member.png"
+            alt=""
+          />
           <span>Members</span>
         </a>
 
@@ -65,6 +69,11 @@
           title="Labels"
           @click="toggleSection('Labels')"
         >
+          <img
+            class="task-prev-icon"
+            src="../assets/task-icon/tag.png"
+            alt=""
+          />
           <span>Labels</span>
         </a>
 
@@ -118,6 +127,11 @@
           <due-date @setDate="setDate" />
         </base-task-modal>
         <a class="link-button" href="#" title="Members">
+          <img
+            class="task-prev-icon"
+            src="../assets/task-icon/attachment.png"
+            alt=""
+          />
           <span>Attachment</span>
         </a>
       </section>
