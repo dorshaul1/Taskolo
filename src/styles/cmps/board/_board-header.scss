@@ -1,22 +1,29 @@
 .board-header {
-    height: 10%;
+    height: 5%;
     width: 100%;
     // background-color: red;
     padding: 8px 4px 4px 8px;
     margin-bottom: 20px;
     position: fixed;
-    top: 8%;
+    top: 5%;
 
-    .boards-btn {
-        background-color: rgba(0, 0, 0, 0.1);
-        color: #172b4d;
-        padding-right: 5px;
-        padding-left: 5px;
-        float: left;
-        display: inline-flex;
-        margin-right: 4px;
-        white-space: nowrap;
-    }
+    // .boards-btn {
+    //     background-color: rgba(0, 0, 0, 0.1);
+    //     color: #172b4d;
+    //     padding-right: 5px;
+    //     padding-left: 5px;
+    //     float: left;
+    //     display: inline-flex;
+    //     margin-right: 4px;
+    //     white-space: nowrap;
+    // }
+
+    input.el-input__inner{
+        width: 100px;
+        // padding: ;
+        font-size: 14px;
+        line-height: 20px;
+        }
 
     .el-select{
         color: #172b4d;
@@ -26,9 +33,14 @@
         font-weight: 400;
         // width: ;
     }
-    h1, .edit-title-input{
+    h1, .edit-title-input input{
         // font-size: 1rem;
-        margin: 0 20px;
+        width: 180px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 32px;
+        padding: 0 12px;
+        margin: 0 10px;
         color: #172b4d;
     }
     .member{
