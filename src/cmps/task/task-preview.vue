@@ -92,7 +92,7 @@ export default {
       return this.$store.getters.currBoard;
     },
     timeForDisplay(){
-      // return moment(this.task.dueDate)
+      return this.$moment(this.task.dueDate).format('MMMM Do YYYY, h:mm:ss a')
     }
   },
   methods: {
