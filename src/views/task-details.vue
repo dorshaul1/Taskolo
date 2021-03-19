@@ -1,5 +1,5 @@
 <template>
-  <section v-if="task" class="task-details-container flex column">
+  <section v-if="task" class="task-details-container">
     <div class="cover">
       <a class="change-cover" href="#">Cover</a>
       <router-link

@@ -1,5 +1,6 @@
 <template>
     <section class="checklist flex column">
+            <img class="task-prev-icon" src="../../../../assets/task-icon/checklist.png" alt="" />
         <div class="checklist-title flex space-between">
             <h3>{{ checklist.title }}</h3>
             <button @click="toggleDeleteConfrimation">Delete</button>

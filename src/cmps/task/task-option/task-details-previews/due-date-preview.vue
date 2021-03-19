@@ -1,5 +1,11 @@
 <template>
   <section class="due-date-preview flex column align-start">
+    <img
+      class="task-prev-icon"
+      src="../../../../assets/task-icon/wall-clock.png"
+      alt=""
+    />
+
     <div
       v-if="date.start"
       class="date-preview-range flex align-start"
