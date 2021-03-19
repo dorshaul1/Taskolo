@@ -16,13 +16,16 @@
           </base-modal>
         </div>
       </div>
-      <task-preview
-        v-for="task in group.tasks"
-        :key="task.id"
-        :task="task"
-        :group="group"
-        :boardId="boardId"
-      ></task-preview>
+
+      <div class="group-main-body">
+        <task-preview
+          v-for="task in group.tasks"
+          :key="task.id"
+          :task="task"
+          :group="group"
+          :boardId="boardId"
+        ></task-preview>
+      </div>
 
       <div class="group-footer flex space-between">
         <section v-show="!isTakeTask">
