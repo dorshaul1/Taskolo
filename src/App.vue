@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header class="app-header">
-      <div id="nav">
+    <header class="app-header flex justify-center">
+      <div class="nav flex align-center justify-center">
         <router-link to="/">Home</router-link> |
         <router-link to="/board">Board</router-link> |
       </div>
