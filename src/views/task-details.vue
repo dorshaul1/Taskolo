@@ -65,9 +65,18 @@
                 >
                     <span>Labels</span>
                 </a>
-                <base-task-modal v-if="isLabelsOpen" title="Labels">
-                    <labels :labels="board.labels" />
+
+                <base-task-modal v-if="isLabelsOpen" title="Labels" @close-modal="isLabelsOpen = false">
+                    <labels
+                        :labels="board.labels"
+                        @open-label-edit="openLabelEdit"
+                    />
                 </base-task-modal>
+
+                <base-task-modal v-if="isLabelsEditOpen" title="Change label" @close-modal="isLabelsEditOpen = false">
+                    <label-edit :labels="board.labels" />
+                </base-task-modal>
+
                 <a
                     class="link-button"
                     href="#"
@@ -111,7 +120,8 @@ import dueDatePreview from "../cmps/task/task-option/task-details-previews/due-d
 import members from "../cmps/task/task-option/task-details/members";
 import dueDate from "../cmps/task/task-option/task-details/due-date";
 import checklist from "../cmps/task/task-option/task-details/checklist";
-import labels from '../cmps/task/task-option/task-details/labels.vue';
+import labels from "../cmps/task/task-option/task-details/labels.vue";
+import labelEdit from "../cmps/task/task-option/task-details/labels_edit";
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
@@ -123,6 +133,7 @@ export default {
         return {
             isMembersOpen: false,
             isLabelsOpen: false,
+            isLabelsEditOpen: false,
             isChecklistOpen: false,
             isDueDateOpen: false,
         };
@@ -246,6 +257,9 @@ export default {
             taskCopy.checklists.splice(checklistIdx, 1);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
+        openLabelEdit() {
+            (this.isLabelsOpen = false), (this.isLabelsEditOpen = true);
+        },
     },
     computed: {
         task() {
@@ -275,10 +289,11 @@ export default {
         dueDate,
         dueDatePreview,
         checklist,
-           labels 
+        labels,
+        labelEdit,
     },
 
-        watch: {
+    watch: {
         taskId: {
             handler() {
                 this.$store.commit({

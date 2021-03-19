@@ -1,5 +1,5 @@
 <template>
-  <section v-if="currBoard">
+  <section v-if="currBoard" class="main-boaed-container"  :style="{backgroundColor: currBoard.style}">
     <board-header @open="isMenuOpen = true" />
     <side-menu
       @close="isMenuOpen = false"
@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       newGroup: {
-        title: '',
+        title: "",
       },
       isMenuOpen: false,
       isTakeGroup: false,
