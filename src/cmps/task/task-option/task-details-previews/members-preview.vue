@@ -7,8 +7,10 @@
     />
     <h3>Members</h3>
     <div class="members-container flex">
-      <div v-for="member in members" :key="member._id" class="member"></div>
-      <div class="member-plus-icon">+</div>
+      <div v-for="member in members" :key="member._id" class="member">
+        <img class="member" :src="member.imgUrl" alt="-" />
+      </div>
+      <div class="member-plus-icon flex center">+</div>
     </div>
   </div>
 </template>
