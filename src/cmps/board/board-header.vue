@@ -22,26 +22,42 @@
       ></el-input>
     </form>
 
-    <div class="members-list flex">
-      <div class="member"></div>
-      <div class="member"></div>
-      <div class="member"></div>
-      <div class="member"></div>
-      <button class="add-member-btn">Invite</button>
-    </div>
+    <ul class="members-list flex clean-list align-center">
+      <li
+        v-for="member in currBoard.members"
+        :key="member._id"
+        class="member"
+      >
+        <img :src="member.imgUrl" alt="-" />
+      </li>
+      <button class="add-member-btn" @click="isMembersOpen = !isMembersOpen">Invite</button>
+    </ul>
 
-    <button class="show-menu-btn" @click="openMenu"><i class="el-icon-more"></i>   Show Menu</button>
+    <base-task-modal v-if="isMembersOpen" title="Members">
+      <members
+        :members="currBoard.members"
+        @add-member="addMember"
+      />
+    </base-task-modal>
+
+    <button class="show-menu-btn" @click="openMenu">
+      <i class="el-icon-more"></i> Show Menu
+    </button>
   </header>
 </template>
 
 <script>
 // import sideMenu from "./side-menu";
+import members from "../task/task-option/task-details/members";
+import baseTaskModal from "../base-task-modal";
+
 export default {
   name: "board-header",
   data() {
     return {
       // currBoard: this.$store.getters.currBoard,
       chossenBoard: "",
+      isMembersOpen: false,
       isEdititle: false,
       editedTitle: this.$store.getters.currBoard.title,
     };
@@ -63,7 +79,7 @@ export default {
   methods: {
     changeBoardTitle() {
       const clone = require("rfdc");
-      const newBoard = clone({ proto: true })(Object.create(this.currBoard))
+      const newBoard = clone({ proto: true })(Object.create(this.currBoard));
       newBoard.title = this.editedTitle;
       // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
@@ -71,15 +87,53 @@ export default {
     },
     editTitle() {
       this.isEdititle = true;
-            this.$nextTick(() => {
-                this.$refs.title.select();
-            });
-        },
+      this.$nextTick(() => {
+        this.$refs.title.select();
+      });
+    },
 
     openMenu() {
       // console.log( 'open')
       this.$emit("open"); // console.log("this.isMenuOpen:", this.isMenuOpen);
     },
+    addMember(member) {
+      try {
+        // task clone
+        const clone = require("rfdc");
+        const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
+
+        //toggle members
+        let boardMembers = boardCopy.members;
+        if (!boardMembers) boardMembers = [];
+        const isBoardMember = boardMembers.some(
+          (boardMember) => boardMember._id === member._id
+        );
+
+        console.log("isBoardMember", isBoardMember);
+
+        if (!isBoardMember) {
+          console.log("pushing...");
+          boardMembers.push(member);
+        } else {
+          console.log("deleteing......");
+          const memberIdx = boardMembers.findIndex((m) => {
+            m._id = member._id;
+          });
+          boardMembers.splice(memberIdx, 1);
+        }
+
+        boardCopy.members = boardMembers;
+
+        // change values
+        this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+  components:{
+    members,
+    baseTaskModal
   },
   created() {
     console.log(this.currBoard._id);
