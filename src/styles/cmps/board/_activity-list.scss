@@ -11,3 +11,13 @@
         }
     }
 }
+.activity{
+    position: relative;
+    font-size: 16px;
+    img {
+        width: 24px;
+        position: absolute;
+        left: -40px;
+        top: 10px;
+    }
+}
