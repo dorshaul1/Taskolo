@@ -9,6 +9,7 @@
       color: #172b4d;
       word-break: break-all;
       white-space: initial;
+      overflow: hidden;
 
       .group-title {
             color: brighten(#172b4d);
@@ -32,29 +33,37 @@
       }
 
       .group-main-body {
-            max-height: 300px;
+            max-height: 390px;
             overflow-y: scroll;
             margin-inline-end: 4px;
             margin-inline-start: 4px;
+            
       }
-
 
       .group-main-body::-webkit-scrollbar {
             height: 8px;
             width: 8px;
             margin-inline-end: 4px;
             scroll-margin-right: 20px;
+           
       }
 
       .group-main-body::-webkit-scrollbar-track {
             // background: #f1f1f1;
+            
             background: #dadbe2;
             scroll-margin-right: 20px;
+            border-radius: 30px;
+            //if we have minimum height we will start scroll
+            .start-scroll {
+                  background: #dadbe2;
+                  scroll-margin-right: 20px;
+            }
       }
 
       .group-main-body::-webkit-scrollbar-thumb {
             background: #bfc4ce;
-            border-radius: 15px;
+            border-radius: 30px;
             scroll-margin-right: 20px;
       }
 
@@ -83,12 +92,12 @@
             border-color: transparent;
             border-radius: 3px;
             box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-            & :focus{
+            & :focus {
                   border-color: transparent;
             }
       }
 
-      .task-btn-container{
+      .task-btn-container {
             padding-block-start: 6px;
       }
 
