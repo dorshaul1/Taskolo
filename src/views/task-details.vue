@@ -2,7 +2,7 @@
     <section v-if="task" class="task-details-container">
         <div class="cover">
             <a class="change-cover" href="#">Cover</a>
-            <a class="close-modal-btn" href="#">X</a>
+            <router-link class="close-modal-btn" :to="`/board/${board._id}`">X</router-link>
         </div>
 
         <div class="title flex align-start column">
