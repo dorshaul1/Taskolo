@@ -2,7 +2,7 @@
     <section v-if="task" class="task-details-container">
         <div class="cover">
             <a class="change-cover" href="#">Cover</a>
-            <a class="close-modal-btn" href="#">X</a>
+            <router-link class="close-modal-btn" :to="`/board/${board._id}`">X</router-link>
         </div>
 
         <div class="title flex align-start column">
@@ -193,23 +193,30 @@ export default {
                 console.log(err);
             }
         },
+
         updateChecklist(checklist) {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
+            checklist = clone({ proto: true })(Object.create(checklist));
             // if (!taskCopy.checklists) taskCopy.checklists = [];
             // if (!checklist.id) checklist.id = utilService.makeId();
             const isChecklistExist = taskCopy.checklists.some(
                 (cl) => cl.id === checklist.id
             );
+            console.log("isChecklistExist", isChecklistExist);
             if (!isChecklistExist) taskCopy.checklists.push(checklist);
             else {
                 const checklistIdx = taskCopy.checklists.findIndex((cl) => {
-                    cl.id = checklist.id;
+                    console.log("findIndx:", cl.id, checklist.id);
+                    return cl.id === checklist.id;
                 });
+
+                // taskCopy.checklists[checklistIdx].todos = checklist.todos;
                 taskCopy.checklists.splice(checklistIdx, 1, checklist);
             }
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
+
         addToChecklist(title) {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
@@ -217,6 +224,7 @@ export default {
                 taskCopy.checklists = [];
             }
             const checklist = boardService.getEmptyCheckList();
+            console.log("getEmptyCheckList", boardService.getEmptyCheckList());
             checklist.title = title;
             taskCopy.checklists.push(checklist);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });

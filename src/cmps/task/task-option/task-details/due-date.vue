@@ -1,5 +1,5 @@
 <template>
-  <section class="dueDate-modal flex column space-between">
+  <section class="dueDate-modal flex column align-center">
     <v-date-picker v-if="!isRangeDates" v-model="date" mode="dateTime" />
     <v-date-picker v-else v-model="range" is-range mode="dateTime" />
     <div class="date-options flex column">
