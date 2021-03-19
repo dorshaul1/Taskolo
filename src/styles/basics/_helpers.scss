@@ -55,6 +55,10 @@
         justify-content: flex-start;
         align-items: flex-start;
     }
+    &.center{
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .clean-list {
