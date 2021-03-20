@@ -2,8 +2,8 @@
   <section
     v-if="currBoard"
     class="main-board-container"
-    :style="{ backgroundColor: currBoard.style }"
   >
+  <div class="main-screen" :style="{ backgroundColor: currBoard.style }"></div>
     <board-header @open="isMenuOpen = true" :currBoard="currBoard" />
     <side-menu
       @close="isMenuOpen = false"
