@@ -93,6 +93,7 @@ export default {
       isTakeTask: false,
       isGroupMenuOpen: false,
       isEdititle: false,
+      drag: null
     };
   },
   computed: {

@@ -13,19 +13,19 @@
 
     <main class="flex board-details">
       <div class="groups" v-for="group in currBoard.groups" :key="group.id">
-        <draggable
+        <!-- <draggable
           v-model="currBoard.groups"
           group="people"
           @start="drag = true"
-          @end="dragGroup"
-        >
+          @end="dragDone"
+        > -->
           <group
             @drag-done="dragDone"
             class="main-group-container"
             :group="group"
             :boardId="currBoard._id"
           ></group>
-        </draggable>
+        <!-- </draggable> -->
       </div>
 
       <div class="new-group-container">
@@ -77,6 +77,7 @@ export default {
       },
       isMenuOpen: false,
       isTakeGroup: false,
+      drag:null
     };
   },
   computed: {
@@ -138,10 +139,6 @@ export default {
       var currBoardIdx = this.getBoards.findIndex(
         (board) => board._id === this.currBoard._id
       );
-
-      // console.log("func: idx copy", currBoardIdx);
-
-      console.log("func: boards copy", boardsCopy);
       boardsCopy.splice(currBoardIdx, 1, this.currBoard);
 
       await this.$store.dispatch({
@@ -150,7 +147,24 @@ export default {
       });
     },
     async dragGroup() {
-      console.log('drag gropps')
+      // console.log("drag gropps");
+      // try {
+      //   //clone change all the groups
+      //   const clone = require("rfdc");
+
+      //   // //replace the group- find index
+      //   // var groups = currBoard().groups;
+      //   // var currGroupIdx = groups.findIndex(
+      //   //   (group) => group.id === this.group.id
+      //   // );
+
+      //   // boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);
+
+      //   //update to all the board.
+      //   this.dragDone();
+      // } catch (error) {
+      //   console.log("group cmp: error with drag task inside group");
+      // }
     },
   },
   watch: {
