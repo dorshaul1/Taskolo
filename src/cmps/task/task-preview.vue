@@ -1,5 +1,17 @@
 <template>
-  <div class="task-container" v-if="task" @click="openTaskPreview">
+  <div class="task-container" v-if="task" @click="openTaskPreview" @mouseover="isEdit = true" @mouseleave="isEdit = false">
+
+    <div class="edit-btn">
+      <img
+        v-show="isEdit"
+        @click.stop="openEditModal"
+        class="task-edit"
+        src="../../assets/task-icon/pen.png"
+        alt=""
+      />
+
+    </div>
+
     <div class="task-header">
       <div
         v-if="task.style"
@@ -23,7 +35,6 @@
       </div>
 
       <div class="badges flex space-between align-center">
-
         <div class="watch" v-if="task.watch">
           <img
             class="task-prev-icon"
@@ -61,15 +72,13 @@
           />
         </div>
 
-
-        <div class="checklist flex align-center" v-if="task.checklists" >
+        <div class="checklist flex align-center" v-if="task.checklists">
           <img
             class="task-prev-icon checklist-icon"
             src="../../assets/task-icon/checklist.png"
             alt=""
           />
           <span class="checklist-display"> {{ checklistForDisplay }}</span>
-
         </div>
       </div>
 
@@ -93,6 +102,7 @@ export default {
   data() {
     return {
       labels: this.task.labelIds,
+      isEdit: false,
     };
   },
   computed: {
@@ -116,13 +126,13 @@ export default {
       let dones = 0;
 
       this.task.checklists.forEach((checklist) => {
-        checklist.todos.forEach(todo => {
-          size++
-          if(todo.isDone) dones++
-        })
+        checklist.todos.forEach((todo) => {
+          size++;
+          if (todo.isDone) dones++;
+        });
       });
 
-     return `${dones} / ${size}`;
+      return `${dones} / ${size}`;
 
       // const unCompleted = this.checklist.todos.reduce((sum, todo) => {
       //   if (todo.isDone) sum += 1;
@@ -139,6 +149,9 @@ export default {
       let labels = this.currBoard.labels;
       let currLabel = labels.find((label) => label.id === taskLabelId);
       return currLabel.color;
+    },
+    openEditModal() {
+      console.log("task modal open");
     },
   },
 };
