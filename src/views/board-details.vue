@@ -69,7 +69,6 @@ export default {
       },
       isMenuOpen: false,
       isTakeGroup: false,
-      clonedBoard: null,
     };
   },
   computed: {
@@ -77,7 +76,10 @@ export default {
       return this.$route.params.boardId;
     },
     currBoard() {
-      return this.$store.getters.currBoard;
+      const clone = require("rfdc");
+      let currBoard = this.$store.getters.currBoard;
+      const boardCopy = clone({ proto: true })(Object.create(currBoard));
+      return boardCopy;
     },
     getBoards() {
       return this.$store.getters.boards;
@@ -122,20 +124,22 @@ export default {
       console.log("drag done in board details cmp");
       // //clone boards clone
       const clone = require("rfdc");
-      const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
-
       // const boardsCopy = clone({ proto: true })(Object.create(this.getBoards));
-      // var currBoardIdx = this.getBoards.findIndex(
-      //   (board) => board._id === this.currBoard._id
-      // );
-      // console.log("func: boards copy", boardsCopy);
+      const boardsCopy = JSON.parse(JSON.stringify(this.getBoards));
+
+      var currBoardIdx = this.getBoards.findIndex(
+        (board) => board._id === this.currBoard._id
+      );
+
       // console.log("func: idx copy", currBoardIdx);
 
-      // boardCopy.splice(0, 1, this.clonedBoard);
-      //replace the group- find index
+      console.log("func: boards copy", boardsCopy);
+      boardsCopy.splice(currBoardIdx, 1, this.currBoard);
 
-      //dispatch
-      await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+      await this.$store.dispatch({
+        type: "updateBoard",
+        board: this.currBoard,
+      });
     },
   },
   watch: {
@@ -154,11 +158,7 @@ export default {
     boardHeader,
     sideMenu,
   },
-  mounted() {
-    const clone = require("rfdc");
-    (this.clonedBoard = clone({ proto: true })(Object.create(this.currBoard))),
-      console.log("board", this.currBoard);
-  },
+  async created() {},
 };
 </script>
 

@@ -87,13 +87,15 @@ export default {
       isTakeTask: false,
       isGroupMenuOpen: false,
       isEdititle: false,
-      clonedGroup: null,
     };
   },
   computed: {
     getBoard() {
       return this.$store.getters.currBoard;
     },
+    clonedGroup(){
+      return this.group
+    }
   },
   methods: {
     openTaskAdd() {
@@ -161,12 +163,6 @@ export default {
         console.log("group cmp: error with drag task inside group");
       }
     },
-    // editTitle() {
-    //   this.isEdititle = true;
-    //   this.$nextTick(() => {
-    //     this.$refs.title.select();
-    //   });
-    // },
   },
   components: {
     taskPreview,
@@ -175,9 +171,8 @@ export default {
     draggable,
   },
   created() {
-    const clone = require("rfdc");
-    (this.clonedGroup = clone({ proto: true })(Object.create(this.group))),
-      console.log("group", this.group);
+    // const clone = require("rfdc");
+    // (this.clonedGroup = clone({ proto: true })(Object.create(this.group)))
   },
 };
 </script>
