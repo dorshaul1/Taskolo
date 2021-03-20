@@ -3,8 +3,44 @@
     height: 5%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.11);
-    .nav{
-        width: 100%;
+    // nav{
+    padding: 4px;
+
+    // & > * {
+    // }
+    //     // width: 100%;
+    //     // margin: 0 auto;
+    // }
+    nav {
+        & > * {
+            margin-right: 4px;
+            height: 32px;
+            margin-top: 7px;
+        }
+        .boards-btn {
+            width: 87px;
+            // margin-top: 4px;
+        }
+        .home-btn {
+            width: 32px;
+            // margin-left: 4px;
+        }
+    }
+    .logo {
+        img {
+            width: 80px;
+            position: absolute;
+            right: 48%;
+            left: 48%;
+            top: 10%;
+        }
         // margin: 0 auto;
+    }
+
+    .member-avatar {
+        width: 32px;
+        height: 32px;
+        background-color: blanchedalmond;
+        border-radius: 50%;
     }
 }
