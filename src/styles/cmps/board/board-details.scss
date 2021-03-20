@@ -4,6 +4,8 @@
 }
 
 .board-details {
+      margin-inline-start: 8px;
+      margin-inline-end: 8px;
       display: flex;
       align-items: flex-start;
       white-space: nowrap;
@@ -29,6 +31,12 @@
             width: 272px;
             min-width: 272px;
             border-radius: 3px;
+            background-color: hsla(0, 0%, 100%, 0.24);
+            color: #fff;
+            & :hover{
+                  background-color: hsla(0, 0%, 100%, 0.103);
+            }
+            
       }
 
       //group

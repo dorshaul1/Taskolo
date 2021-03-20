@@ -6,6 +6,15 @@
     // nav{
     padding: 4px;
 
+
+    button {
+        background-color: hsla(0, 0%, 100%, 0.24);
+        color: #fff;
+        
+        & :hover{
+              background-color: hsla(0, 0%, 100%, 0.103);
+        }
+    }
     // & > * {
     // }
     //     // width: 100%;

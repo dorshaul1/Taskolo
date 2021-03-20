@@ -27,9 +27,14 @@
 export default {
   name: "Home",
   components: {},
+  computed:{
+    currBoard(){
+      return this.$state.getters.currBoard
+    }
+  },
   methods:{
       goDemoBoard(){
-          this.$router.push('/board/mUaap')
+          this.$router.push(`/board`)
       }
   }
 };
