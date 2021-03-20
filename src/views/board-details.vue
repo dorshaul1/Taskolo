@@ -4,12 +4,12 @@
     class="main-board-container"
     :style="{ backgroundColor: currBoard.style }"
   >
-    <!-- <board-header @open="isMenuOpen = true" />
+    <board-header @open="isMenuOpen = true" />
     <side-menu
       @close="isMenuOpen = false"
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
-    /> -->
+    />
 
     <main class="flex board-details">
       <div class="groups" v-for="group in currBoard.groups" :key="group.id">
