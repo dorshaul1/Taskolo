@@ -4,7 +4,7 @@
       <button class="home-btn flex center" @click="$router.push('/')">
         <i class="el-icon-s-home"></i>
       </button>
-      <button class="boards-btn" @click="$router.push('/board')">Boards</button>
+      <button class="boards-btn flex center" @click="$router.push('/board')">Boards</button>
       <!-- <router-link to="/">Home</router-link> | -->
       <!-- <router-link to="/board">Board</router-link> | -->
     </nav>
