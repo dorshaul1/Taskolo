@@ -1,6 +1,14 @@
 .main-board-container {
       height: 100vh;
       width: 100%;
+      .main-screen{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            // background-color: rgb(88, 95, 124);
+      }
 }
 
 .board-details {
