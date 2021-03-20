@@ -55,7 +55,11 @@
           <span>Members</span>
         </a>
 
-        <base-task-modal v-if="isMembersOpen" title="Members">
+        <base-task-modal
+          v-if="isMembersOpen"
+          title="Members"
+          @close-modal="isMembersOpen = false"
+        >
           <members
             :members="board.members"
             :taskMembers="task.members"
@@ -107,7 +111,11 @@
           <span>Checklist</span>
         </a>
 
-        <base-task-modal v-if="isChecklistOpen" title="Checklist">
+        <base-task-modal
+          v-if="isChecklistOpen"
+          title="Checklist"
+          @close-modal="isChecklistOpen = false"
+        >
           <checklist @add-checklist-title="addToChecklist" />
         </base-task-modal>
         <a
@@ -123,7 +131,11 @@
           />
           <span>Due Date</span>
         </a>
-        <base-task-modal v-if="isDueDateOpen" title="Due Date">
+        <base-task-modal
+          v-if="isDueDateOpen"
+          title="Due Date"
+          @close-modal="isDueDateOpen = false"
+        >
           <due-date @setDate="setDate" />
         </base-task-modal>
         <a class="link-button" href="#" title="Members">
