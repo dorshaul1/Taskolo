@@ -18,7 +18,7 @@ $border-bottom: 1px solid rgb(185, 185, 185);
     transition-timing-function: ease-in;
     transform: translateX(339px);
     width: 339px;
-    z-index: 5;
+    z-index: 100;
     background-color: #f4f5f7;
 
     &.menu-show {
