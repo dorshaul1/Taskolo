@@ -8,8 +8,8 @@
       <!-- <router-link to="/">Home</router-link> | -->
       <!-- <router-link to="/board">Board</router-link> | -->
     </nav>
-    <section class="logo" @click="$router.push('/')">
-      <img src="../assets/logo/logo-txt.png" alt="" />
+    <section class="logo flex align-center" @click="$router.push('/')">
+      <img src="../assets/logo/logo-txt-white.png" alt="" />
       <!-- <img src="../assets/logo/logo-full.png" alt=""> -->
     </section>
     <section class="profile-details">
