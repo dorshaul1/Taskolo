@@ -1,5 +1,5 @@
 <template>
-  <header v-if="currBoard" class="board-header flex align-center">
+  <header v-if="this.currBoard" class="board-header flex align-center">
     <!-- <button class="boards-btn">Boards</button> -->
     <el-select v-model="chossenBoard" placeholder="Boards">
       <el-option
@@ -12,28 +12,32 @@
     </el-select>
 
     <h1 v-if="!isEdititle" @click="editTitle">
-      {{ currBoard.title }}
+      {{ this.currBoard.title }}
     </h1>
     <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
       <el-input
-        @change="isEdititle = false"
         ref="title"
         placeholder="Please input"
-        v-model="editedTitle"
+        v-model="this.currBoard.title"
       ></el-input>
     </form>
 
     <ul class="members-list flex clean-list align-center">
-      <li v-for="member in currBoard.members" :key="member._id" class="member">
+      <li
+        v-for="member in this.currBoard.members"
+        :key="member._id"
+        class="member"
+      >
         <img :src="member.imgUrl" alt="-" />
       </li>
-      <button class="add-member-btn" @click="isMembersOpen = !isMembersOpen">
-        Invite
-      </button>
+      <button class="add-member-btn" @click="isMembersOpen = !isMembersOpen">Invite</button>
     </ul>
 
     <base-task-modal v-if="isMembersOpen" title="Members">
-      <members :members="currBoard.members" @add-member="addMember" />
+      <members
+        :members="this.currBoard.members"
+        @add-member="addMember"
+      />
     </base-task-modal>
 
     <button class="show-menu-btn" @click="openMenu">
@@ -49,13 +53,16 @@ import baseTaskModal from "../base-task-modal";
 
 export default {
   name: "board-header",
+  props:{
+    currBoard:{}
+  },
   data() {
     return {
       // currBoard: this.$store.getters.currBoard,
       chossenBoard: "",
       isMembersOpen: false,
       isEdititle: false,
-      editedTitle: this.$store.getters.currBoard.title,
+      // editedTitle: this.currBoard.title,
     };
   },
   // components: {
@@ -65,9 +72,12 @@ export default {
     getBoards() {
       return this.$store.getters.boards;
     },
-    currBoard() {
-      return this.$store.getters.currBoard;
-    },
+    // currBoard() {
+    //   return this.$store.getters.currBoard;
+    // },
+    // boardTitle(){
+    //   return this.$store.getters.currBoard.title
+    // }
     // menuOpen() {
     //   if (this.isMenuOpen) return "is-show-menu";
     // },
@@ -127,12 +137,13 @@ export default {
       }
     },
   },
-  components: {
+  components:{
     members,
-    baseTaskModal,
+    baseTaskModal
   },
   created() {
-    console.log(this.currBoard._id);
+    // console.log(this.currBoard._id);
+    // console.log(this.currBoard);
   },
 };
 </script>
