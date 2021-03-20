@@ -157,7 +157,6 @@ export default {
           (group) => group.id === this.group.id
         );
         boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);
-        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.$emit('drag-done')
       } catch (error) {
         console.log("group cmp: error with drag task inside group");
