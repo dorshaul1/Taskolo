@@ -24,16 +24,22 @@
         <draggable
           v-model="clonedGroup.tasks"
           group="people"
+          v-bind="dragOptions"
           @start="drag = true"
           @end="dragDone"
         >
-          <task-preview
-            v-for="task in clonedGroup.tasks"
-            :key="task.id"
-            :task="task"
-            :group="clonedGroup"
-            :boardId="boardId"
-          ></task-preview>
+          <transition-group
+            type="transition"
+            :name="!drag ? 'flip-list' : null"
+          >
+            <task-preview
+              v-for="task in clonedGroup.tasks"
+              :key="task.id"
+              :task="task"
+              :group="clonedGroup"
+              :boardId="boardId"
+            ></task-preview>
+          </transition-group>
         </draggable>
       </div>
 
@@ -93,9 +99,17 @@ export default {
     getBoard() {
       return this.$store.getters.currBoard;
     },
-    clonedGroup(){
-      return this.group
-    }
+    clonedGroup() {
+      return this.group;
+    },
+    dragOptions() {
+      return {
+        animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost",
+      };
+    },
   },
   methods: {
     openTaskAdd() {
@@ -157,7 +171,7 @@ export default {
           (group) => group.id === this.group.id
         );
         boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);
-        this.$emit('drag-done')
+        this.$emit("drag-done");
       } catch (error) {
         console.log("group cmp: error with drag task inside group");
       }
@@ -168,10 +182,6 @@ export default {
     groupMenu,
     baseModal,
     draggable,
-  },
-  created() {
-    // const clone = require("rfdc");
-    // (this.clonedGroup = clone({ proto: true })(Object.create(this.group)))
   },
 };
 </script>

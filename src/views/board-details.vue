@@ -12,14 +12,21 @@
     />
 
     <main class="flex board-details">
-      <group
-        @drag-done="dragDone"
-        class="main-group-container"
-        v-for="group in currBoard.groups"
-        :key="group.id"
-        :group="group"
-        :boardId="currBoard._id"
-      ></group>
+      <div class="groups" v-for="group in currBoard.groups" :key="group.id">
+        <draggable
+          v-model="currBoard.groups"
+          group="people"
+          @start="drag = true"
+          @end="dragGroup"
+        >
+          <group
+            @drag-done="dragDone"
+            class="main-group-container"
+            :group="group"
+            :boardId="currBoard._id"
+          ></group>
+        </draggable>
+      </div>
 
       <div class="new-group-container">
         <section v-show="!isTakeGroup">
@@ -59,6 +66,7 @@ import group from "../cmps/group/group";
 import boardHeader from "../cmps/board/board-header";
 import sideMenu from "../cmps/board/side-menu";
 import { utilService } from "../services/util.service.js";
+import draggable from "vuedraggable";
 
 export default {
   name: "board-details",
@@ -141,6 +149,9 @@ export default {
         board: this.currBoard,
       });
     },
+    async dragGroup() {
+      console.log('drag gropps')
+    },
   },
   watch: {
     boardId: {
@@ -157,6 +168,7 @@ export default {
     group,
     boardHeader,
     sideMenu,
+    draggable,
   },
   async created() {},
 };
