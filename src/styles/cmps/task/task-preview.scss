@@ -3,19 +3,26 @@
       position: relative;
 
       .edit-btn {
+            
             & :hover {
                   background-color: $hover;
             }
       }
 
-      .task-edit {
-            width: 14px;
-            height: 14px;
-            cursor: pointer;
-            position: absolute;
-            right: 30px;
-            top: 10px;
+      .editing{
+
+            .task-edit {
+                  width: 14px;
+                  height: 14px;
+                  cursor: pointer;
+                  position: absolute;
+                  right: 30px;
+                  top: 10px;
+            }
+
+            
       }
+
 
       .task-delete {
             width: 14px;

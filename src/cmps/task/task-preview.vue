@@ -7,13 +7,16 @@
     @mouseleave="isEdit = false"
   >
     <div class="edit-btn">
-      <img
-        v-show="isEdit"
-        @click="openEditModal"
-        class="task-edit"
-        src="../../assets/task-icon/pen.png"
-        alt=""
-      />
+
+      <div class="editing">
+        <img
+          v-show="isEdit"
+          @click="openEditModal"
+          class="task-edit"
+          src="../../assets/task-icon/pen.png"
+          alt=""
+        />
+      </div>
 
       <img
         v-show="isEdit"
@@ -173,11 +176,11 @@ export default {
     },
   },
   created() {
-  //   const clone = require("rfdc");
-  //   (this.checklist = clone({ proto: true })(
-  //     Object.create(this.task)
-  //   )),
-  //     console.log("checklist", this.task);
+    //   const clone = require("rfdc");
+    //   (this.checklist = clone({ proto: true })(
+    //     Object.create(this.task)
+    //   )),
+    //     console.log("checklist", this.task);
   },
 };
 </script>
