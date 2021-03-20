@@ -17,6 +17,7 @@
     "socket.io-client": "^2.2.0",
     "v-calendar": "^2.3.0",
     "vue": "^2.6.11",
+    "vue-draggable": "^2.0.6",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.2.0",
     "vuedraggable": "^2.24.3",

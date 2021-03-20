@@ -4,7 +4,7 @@
     class="main-board-container"
     :style="{ backgroundColor: currBoard.style }"
   >
-    <board-header @open="isMenuOpen = true" />
+    <board-header @open="isMenuOpen = true" :currBoard="currBoard" />
     <side-menu
       @close="isMenuOpen = false"
       :class="{ 'menu-show': isMenuOpen }"
