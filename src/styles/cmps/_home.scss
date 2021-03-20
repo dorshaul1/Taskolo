@@ -1,0 +1,48 @@
+.home {
+      background-color: #f2f0ff;
+      color: rgb(9, 30, 66);
+
+      .home-main-container {
+            display: grid;
+            grid-template-columns: 1fr 6fr 1fr;
+            height: 100%;
+
+            .home-main-area {
+                  grid-column-start: 2;
+                  grid-column-end: 3;
+                  text-align: left;
+                  width: 665px;
+            }
+
+            .title {
+                  font-size: 48px;
+                  padding-block-start: 10px;
+                  line-height: 60px;
+                  margin-block-end: 8px;
+            }
+
+            .explanation {
+                  font-size: 20px;
+                  line-height: 30px;
+                  margin-block-end: 24px;
+            }
+
+            .board-demo-btn {
+                  cursor: pointer;
+                  white-space: normal;
+                  color: #fff;
+                  background-color: #0056d9;
+                  border-color: #0051cc;
+                  height: 42px;
+                  width: 252px;
+                  border-radius: 5px;
+                  font-size: 20px;
+                  padding: 12px 48px;
+            }
+
+            .logo {
+                  padding-block-start: 10px;
+                  margin-block-start: 24px;
+            }
+      }
+}

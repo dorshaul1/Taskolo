@@ -3,7 +3,7 @@
         <h1>Board List</h1>
         <ul>
             <li class="board-preview" v-for="board in boards" :key="board._id" @click="boardPreviewClicked(board._id)">
-                {{board._id}}
+                <div class="board-title">{{board.title}}</div>
             </li>
         </ul>
     </section>
