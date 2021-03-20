@@ -30,14 +30,17 @@
       >
         <img :src="member.imgUrl" alt="-" />
       </li>
-      <button class="add-member-btn" @click="isMembersOpen = !isMembersOpen">Invite</button>
+      <button class="add-member-btn" @click="isMembersOpen = !isMembersOpen">
+        Invite
+      </button>
     </ul>
 
-    <base-task-modal v-if="isMembersOpen" title="Members">
-      <members
-        :members="this.currBoard.members"
-        @add-member="addMember"
-      />
+    <base-task-modal
+      @close-modal="isMembersOpen = false"
+      v-if="isMembersOpen"
+      title="Members"
+    >
+      <members :members="this.currBoard.members" @add-member="addMember" />
     </base-task-modal>
 
     <button class="show-menu-btn" @click="openMenu">
@@ -53,8 +56,8 @@ import baseTaskModal from "../base-task-modal";
 
 export default {
   name: "board-header",
-  props:{
-    currBoard:{}
+  props: {
+    currBoard: {},
   },
   data() {
     return {
@@ -137,9 +140,9 @@ export default {
       }
     },
   },
-  components:{
+  components: {
     members,
-    baseTaskModal
+    baseTaskModal,
   },
   created() {
     // console.log(this.currBoard._id);

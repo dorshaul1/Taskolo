@@ -8,6 +8,13 @@
     margin-bottom: 20px;
     position: fixed;
     top: 50px;
+    z-index:5;
+
+    .task-modal{
+        position: fixed;
+        top:45px;
+        left: 128px;
+    }
 
     button {
         background-color: hsla(0, 0%, 100%, 0.24);
