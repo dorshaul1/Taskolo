@@ -1,14 +1,19 @@
 <template>
-  <section v-if="currBoard" class="main-board-container"  :style="{backgroundColor: currBoard.style}">
-    <board-header @open="isMenuOpen = true" />
+  <section
+    v-if="currBoard"
+    class="main-board-container"
+    :style="{ backgroundColor: currBoard.style }"
+  >
+    <!-- <board-header @open="isMenuOpen = true" />
     <side-menu
       @close="isMenuOpen = false"
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
-    />
+    /> -->
 
     <main class="flex board-details">
       <group
+        @drag-done="dragDone"
         class="main-group-container"
         v-for="group in currBoard.groups"
         :key="group.id"
@@ -64,6 +69,7 @@ export default {
       },
       isMenuOpen: false,
       isTakeGroup: false,
+      clonedBoard: null,
     };
   },
   computed: {
@@ -72,6 +78,9 @@ export default {
     },
     currBoard() {
       return this.$store.getters.currBoard;
+    },
+    getBoards() {
+      return this.$store.getters.boards;
     },
   },
   methods: {
@@ -109,6 +118,25 @@ export default {
       this.newGroup = { title: "Enter a title for this card..." };
       console.log("CLOSE");
     },
+    async dragDone() {
+      console.log("drag done in board details cmp");
+      // //clone boards clone
+      const clone = require("rfdc");
+      const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
+
+      // const boardsCopy = clone({ proto: true })(Object.create(this.getBoards));
+      // var currBoardIdx = this.getBoards.findIndex(
+      //   (board) => board._id === this.currBoard._id
+      // );
+      // console.log("func: boards copy", boardsCopy);
+      // console.log("func: idx copy", currBoardIdx);
+
+      // boardCopy.splice(0, 1, this.clonedBoard);
+      //replace the group- find index
+
+      //dispatch
+      await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+    },
   },
   watch: {
     boardId: {
@@ -125,6 +153,11 @@ export default {
     group,
     boardHeader,
     sideMenu,
+  },
+  mounted() {
+    const clone = require("rfdc");
+    (this.clonedBoard = clone({ proto: true })(Object.create(this.currBoard))),
+      console.log("board", this.currBoard);
   },
 };
 </script>

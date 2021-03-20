@@ -2,7 +2,7 @@
   <div class="group-container">
     <div class="group-main">
       <div class="group-header flex space-between align-center">
-        <h2  class="group-title flex align-center">{{ group.title }}</h2>
+        <h2 class="group-title flex align-center">{{ group.title }}</h2>
         <!-- <input v-if="isEdititle" ref="title" class="group-title editable"  :value="group.title" /> -->
 
         <div>
@@ -21,13 +21,20 @@
       </div>
 
       <div class="group-main-body">
-        <task-preview
-          v-for="task in group.tasks"
-          :key="task.id"
-          :task="task"
-          :group="group"
-          :boardId="boardId"
-        ></task-preview>
+        <draggable
+          v-model="clonedGroup.tasks"
+          group="people"
+          @start="drag = true"
+          @end="dragDone"
+        >
+          <task-preview
+            v-for="task in clonedGroup.tasks"
+            :key="task.id"
+            :task="task"
+            :group="clonedGroup"
+            :boardId="boardId"
+          ></task-preview>
+        </draggable>
       </div>
 
       <div class="group-footer flex space-between">
@@ -64,6 +71,7 @@ import taskPreview from "../task/task-preview";
 import { utilService } from "../../services/util.service.js";
 import groupMenu from "../group/group-menu";
 import baseModal from "../base-task-modal";
+import draggable from "vuedraggable";
 
 export default {
   name: "group",
@@ -74,11 +82,12 @@ export default {
   data() {
     return {
       newTask: {
-        title: '',
+        title: "",
       },
       isTakeTask: false,
       isGroupMenuOpen: false,
-      isEdititle: false
+      isEdititle: false,
+      clonedGroup: null,
     };
   },
   computed: {
@@ -92,7 +101,7 @@ export default {
     },
     closeTaskAdd() {
       this.isTakeTask = false;
-      this.newTask.title = '';
+      this.newTask.title = "";
     },
     openGroupMenu() {
       this.isGroupMenuOpen = true;
@@ -133,6 +142,25 @@ export default {
         console.log("group cmp: error with delete group", error);
       }
     },
+    async dragDone() {
+      // drag = false;
+      try {
+        //clone
+        const clone = require("rfdc");
+        const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
+
+        //replace the group- find index
+        var groups = boardCopy.groups;
+        var currGroupIdx = groups.findIndex(
+          (group) => group.id === this.group.id
+        );
+        boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);
+        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+        this.$emit('drag-done')
+      } catch (error) {
+        console.log("group cmp: error with drag task inside group");
+      }
+    },
     // editTitle() {
     //   this.isEdititle = true;
     //   this.$nextTick(() => {
@@ -144,6 +172,12 @@ export default {
     taskPreview,
     groupMenu,
     baseModal,
+    draggable,
+  },
+  created() {
+    const clone = require("rfdc");
+    (this.clonedGroup = clone({ proto: true })(Object.create(this.group))),
+      console.log("group", this.group);
   },
 };
 </script>
