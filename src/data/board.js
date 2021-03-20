@@ -8,7 +8,7 @@ export const board = {
             "username": "dorsh",
             "imgUrl": "http://some-img.jpg",
       },
-      "style": {},
+      "style": "rgb(88, 95, 124)",
       "labels": [
             {
                   "id": "l101",
