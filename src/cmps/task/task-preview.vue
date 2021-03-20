@@ -1,15 +1,27 @@
 <template>
-  <div class="task-container" v-if="task" @click="openTaskPreview" @mouseover="isEdit = true" @mouseleave="isEdit = false">
-
+  <div
+    class="task-container"
+    v-if="task"
+    @click="openTaskPreview"
+    @mouseover="isEdit = true"
+    @mouseleave="isEdit = false"
+  >
     <div class="edit-btn">
       <img
         v-show="isEdit"
-        @click.stop="openEditModal"
+        @click="openEditModal"
         class="task-edit"
         src="../../assets/task-icon/pen.png"
         alt=""
       />
 
+      <img
+        v-show="isEdit"
+        @click.stop="deleteTask"
+        class="task-delete"
+        src="../../assets/task-icon/delete (2).png"
+        alt=""
+      />
     </div>
 
     <div class="task-header">
@@ -152,6 +164,25 @@ export default {
     },
     openEditModal() {
       console.log("task modal open");
+    },
+    deleteTask() {
+//               try {
+//         console.log("task delete");
+//         const clone = require("rfdc");
+//         const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
+
+//         var groups = boardCopy.groups;
+//         var currGroupIdx = groups.findIndex(
+//           (group) => group.id === this.group.id
+//         );
+
+// //splice to this task
+//         // boardCopy.groups.splice(currGroupIdx, 1);
+
+//         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+//       } catch (error) {
+//         console.log("task-preview cmp: error with delete task", error);
+//       }
     },
   },
 };
