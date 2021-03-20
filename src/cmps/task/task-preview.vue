@@ -124,15 +124,6 @@ export default {
     timeForDisplay() {
       return this.$moment(this.task.dueDate).format("MMM D");
     },
-    // checklistForDisplay() {
-    //   let size = 0;
-    //   let dones = 0;
-
-    //   let checklist = this.task.checklists;
-    //   let size = checklist.length;
-    //   let dones = checklist.filter((item) => item.isDone);
-    //   return `${dones.length} / ${size}`;
-    // },
     checklistForDisplay() {
       let size = 0;
       let dones = 0;
@@ -143,14 +134,10 @@ export default {
           if (todo.isDone) dones++;
         });
       });
-
       return `${dones} / ${size}`;
-
-      // const unCompleted = this.checklist.todos.reduce((sum, todo) => {
-      //   if (todo.isDone) sum += 1;
-      //   return sum;
-      // }, 0);
-      // return ((unCompleted / this.checklist.todos.length) * 100).toFixed(2);
+    },
+    getBoard() {
+      return this.$store.getters.currBoard;
     },
   },
   methods: {
@@ -165,24 +152,24 @@ export default {
     openEditModal() {
       console.log("task modal open");
     },
-    deleteTask() {
-//               try {
-//         console.log("task delete");
-//         const clone = require("rfdc");
-//         const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
-
-//         var groups = boardCopy.groups;
-//         var currGroupIdx = groups.findIndex(
-//           (group) => group.id === this.group.id
-//         );
-
-// //splice to this task
-//         // boardCopy.groups.splice(currGroupIdx, 1);
-
-//         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
-//       } catch (error) {
-//         console.log("task-preview cmp: error with delete task", error);
-//       }
+    async deleteTask() {
+      try {
+        console.log("task delete");
+        const clone = require("rfdc");
+        const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
+        var groups = boardCopy.groups;
+        var currGroupIdx = groups.findIndex(
+          (group) => group.id === this.group.id
+        );
+        var currTaskIdx = groups[currGroupIdx].tasks.findIndex(
+          (task) => task.id === this.task.id
+        );
+        boardCopy.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
+        //update board
+        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+      } catch (error) {
+        console.log("task-preview cmp: error with delete task", error);
+      }
     },
   },
 };

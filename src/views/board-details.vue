@@ -1,5 +1,5 @@
 <template>
-  <section v-if="currBoard" class="main-boaed-container"  :style="{backgroundColor: currBoard.style}">
+  <section v-if="currBoard" class="main-board-container"  :style="{backgroundColor: currBoard.style}">
     <board-header @open="isMenuOpen = true" />
     <side-menu
       @close="isMenuOpen = false"

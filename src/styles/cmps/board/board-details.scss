@@ -1,7 +1,6 @@
-.main-boaed-container{
+.main-board-container {
       height: 100vh;
       width: 100%;
-      // background-color: rosybrown;
 }
 
 .board-details {
@@ -15,10 +14,10 @@
       top: 100px;
       // justify-content: flex-end;
       // .group-container {
-            //       flex-wrap: nowrap;
-            //       overflow: scroll;
-            // }
-            .main-group-container {
+      //       flex-wrap: nowrap;
+      //       overflow: scroll;
+      // }
+      .main-group-container {
             width: 272px;
             min-width: 272px;
       }
@@ -33,7 +32,7 @@
       }
 
       //group
-      .add-new-group{
+      .add-new-group {
             color: brighten(#172b4d);
             font-weight: 600;
             font-size: 14px;
@@ -51,7 +50,7 @@
             border-color: transparent;
             border-radius: 3px;
             box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-            & :focus{
+            & :focus {
                   border-color: transparent;
             }
       }
