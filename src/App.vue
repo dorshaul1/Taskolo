@@ -1,14 +1,19 @@
 <template>
   <div id="app">
-    <header class="app-header flex justify-center">
-      <div class="nav flex align-center justify-center">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/board">Board</router-link> |
-      </div>
-    </header>
-      <router-view />
+    <main-header />
+    <router-view />
   </div>
 </template>
+
+<script>
+import mainHeader from "../src/cmps/main-header";
+export default {
+  components: {
+    mainHeader,
+  },
+};
+</script>
+    MainHeader
 
 <style lang="scss">
 #app {
