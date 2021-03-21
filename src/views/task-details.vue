@@ -23,7 +23,12 @@
                         v-if="task.members && task.members"
                         :members="task.members"
                     />
-                    <labels-preview v-if="isLabelsOpen" />
+                    <!-- v-if="isLabelsOpen" -->
+                    <labels-preview
+                        :labels="labelsPreview"
+                        v-if="labelsPreview"
+                        @label-clicked="isLabelsOpen = true"
+                    />
                     <description-preview />
                     <checklist-preview
                         v-for="checklist in task.checklists"
@@ -181,6 +186,7 @@ import labelEdit from "../cmps/task/task-option/task-details/labels_edit";
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
+import { board } from "../data/board";
 
 // import { board } from "../data/board";
 export default {
@@ -326,11 +332,27 @@ export default {
             this.labelToEdit = label;
             console.log("openLabelEdit label", label);
         },
-        saveLabel(label) {
+        async saveLabel(label) {
             this.isLabelsOpen = true;
             this.isLabelsEditOpen = false;
             this.labelToEdit = null;
             this.editedLabel = label;
+
+            //save updated label to global board labels
+            const clone = require("rfdc");
+            const boardCopy = clone({ proto: true })(Object.create(this.board));
+            console.log("boardCopy", boardCopy);
+            const labelIdx = boardCopy.labels.findIndex(
+                (l) => l.id === label.id
+            );
+            boardCopy.labels.splice(labelIdx, 1, label);
+            try {
+                await this.$store.dispatch({
+                    type: "updateBoard",
+                    board: boardCopy,
+                });
+            } catch (error) {}
+
             console.log("save label", label);
         },
         addLabel(label) {
@@ -364,23 +386,38 @@ export default {
             // change values
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
+        labelsIdsToLabels() {
+            if (!this.task.labelIds) return;
+            //TODO: Find better way?
+            const labels = [];
+            this.board.labels.forEach((label) => {
+                this.task.labelIds.forEach((labelId) => {
+                    if (label.id === labelId) labels.push(label);
+                });
+            });
+            return labels;
+            // task.labelsIds = ['id2', 'id3', 'id4'] // convert to label object
+            // const labels = this.board.labels.filter(label => {
+            //     if(label.id)
+            // })
+        },
     },
-    deleteChecklist(checklistId) {
-        const clone = require("rfdc");
-        const taskCopy = clone({ proto: true })(Object.create(this.task));
-        const checklistIdx = taskCopy.checklists.findIndex(
-            (checklist) => checklist.id === checklistId
-        );
-        console.log(checklistIdx, "idx");
-        taskCopy.checklists.splice(checklistIdx, 1);
-        this.$store.dispatch({ type: "updateTask", task: taskCopy });
-    },
-    openLabelEdit(label) {
-        this.isLabelsOpen = false;
-        this.isLabelsEditOpen = true;
-        this.labelToEdit = label;
-        console.log("openLabelEdit label", label);
-    },
+    // deleteChecklist(checklistId) {
+    //     const clone = require("rfdc");
+    //     const taskCopy = clone({ proto: true })(Object.create(this.task));
+    //     const checklistIdx = taskCopy.checklists.findIndex(
+    //         (checklist) => checklist.id === checklistId
+    //     );
+    //     console.log(checklistIdx, "idx");
+    //     taskCopy.checklists.splice(checklistIdx, 1);
+    //     this.$store.dispatch({ type: "updateTask", task: taskCopy });
+    // },
+    // openLabelEdit(label) {
+    //     this.isLabelsOpen = false;
+    //     this.isLabelsEditOpen = true;
+    //     this.labelToEdit = label;
+    //     console.log("openLabelEdit label", label);
+    // },
 
     computed: {
         task() {
@@ -397,6 +434,10 @@ export default {
         },
         taskId() {
             return this.$route.params.taskId;
+        },
+
+        labelsPreview() {
+            return this.labelsIdsToLabels();
         },
     },
     components: {

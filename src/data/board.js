@@ -148,6 +148,7 @@ export const board = {
                                     }
                               ],
                               "dueDate": 1246841611,
+                              "isDone": true,
                               "watch": true,
                         },
                         {
@@ -338,6 +339,7 @@ export const board = {
                                     }
                               ],
                               "dueDate": 16158715211,
+                              "isDone": true,
                               "watch": true,
                               "attachment": "https://i.picsum.photos/id/608/200/200.jpg?hmac=-p1htX-mFieavdRDr9vUIJKyDHCXZAY5B35nhdcgIgQ",
                               "members": [

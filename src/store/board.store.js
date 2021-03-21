@@ -115,7 +115,7 @@ export const boardStore = {
                 console.log('updaing task and board...', boardCopy)
                 context.dispatch({ type: 'updateBoard', board: boardCopy })
             }
-            catch {
+            catch(err) {
                 console.log('boardStore: Error in update task', err)
                 throw err
             }
