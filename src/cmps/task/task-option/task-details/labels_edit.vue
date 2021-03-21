@@ -9,7 +9,9 @@
                 class="label-edit-item"
                 :style="{ backgroundColor: label.color }"
             >
-                <a href="#" v-show="isCurrColor(label.color)">V</a>
+                <a href="#" v-show="isCurrColor(label.color)"
+                    ><i class="el-icon-check"></i
+                ></a>
             </div>
         </div>
         <div class="label-edit-btns flex space-between">
