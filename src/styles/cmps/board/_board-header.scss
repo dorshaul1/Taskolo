@@ -1,11 +1,14 @@
 .board-header {
     // height: 25px;
-    height: 5vh;
+    height: auto;
+    // flex: 1;
+
     // width: 100%;
-    margin-inline-start: 8px;
-    margin-inline-end: 8px;
+    // margin-inline-start: 8px;
+    // margin-inline-end: 8px;
     // background-color: red;
-    padding: 8px 4px 4px 4px;
+    padding: 8px 4px 4px 8px;
+    // padding: 0 8px;
     // margin-bottom: 15px;
     // position: fixed;
     // top: 50px;
@@ -67,9 +70,12 @@
     h1{
         color: white;
     }
+    ul{
+        margin:8px
+    }
     .member {
         width: 28px;
-        height: 28px;
+        // height: 28px;
         position: relative;
         right: 20px;
         // margin-right: 4px;
@@ -91,6 +97,6 @@
     }
     .show-menu-btn {
         position: absolute;
-        right: 8px;
+        right: 4px;
     }
 }
