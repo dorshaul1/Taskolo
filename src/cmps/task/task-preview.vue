@@ -74,7 +74,7 @@
         >
           <img
             class="task-prev-icon"
-            src="../../assets/task-icon/wall-clock.png"
+            src="../../assets/task-icon/wall-clock.svg"
             alt=""
           />
 
