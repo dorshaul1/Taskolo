@@ -1,24 +1,28 @@
 .app-header {
     position: relative;
-    height: 5vh;
-    // height: 32px;
+    // height: 5vh;
+    height: 32px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.11);
     // nav{
     padding: 4px;
     z-index: 10;
     
+    // flex-basis: 32PX;
     // flex: 1;
 
     .app-header-container {
-        margin-inline-start: 8px;
-        margin-inline-end: 8px;
+        // margin-inline-start: 8px;
+        // margin-inline-end: 8px;
+        padding: 4px;
+
         // width: 100%;
     }
     
     button {
         background-color: hsla(0, 0%, 100%, 0.24);
         color: #fff;
+        // height: 28px;
         
         & :hover {
             background-color: hsla(0, 0%, 100%, 0.103);
@@ -46,7 +50,7 @@
     }
     .logo {
         img {
-            width: 80px;
+            width: 70px;
             position: absolute;
             // right: 45%;
             // left: 45%;

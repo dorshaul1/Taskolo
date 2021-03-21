@@ -13,7 +13,7 @@
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
     />
-
+    
     <main class="flex board-details">
       <div class="groups" v-for="group in currBoard.groups" :key="group.id">
         <!-- <draggable
