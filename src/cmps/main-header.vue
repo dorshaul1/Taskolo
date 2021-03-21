@@ -1,5 +1,6 @@
 <template>
   <header class="app-header flex align-center space-between">
+    <section class="app-header-container flex align-center space-between">
     <nav class="flex align-center">
       <button class="home-btn flex center" @click="$router.push('/')">
         <i class="el-icon-s-home"></i>
@@ -11,6 +12,7 @@
     <section class="logo flex align-center" @click="$router.push('/')">
       <img src="../assets/logo/logo-txt-white.png" alt="" />
       <!-- <img src="../assets/logo/logo-full.png" alt=""> -->
+    </section>
     </section>
     <section class="profile-details">
       <!-- <div class="member-avatar"> -->

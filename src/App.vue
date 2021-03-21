@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <main-header />
+    <!-- <main-header /> -->
     <router-view  />
   </div>
 </template>
 
 <script>
-import mainHeader from "../src/cmps/main-header";
+// import mainHeader from "../src/cmps/main-header";
 export default {
   components: {
-    mainHeader,
+    // mainHeader,
   },
 };
 </script>
