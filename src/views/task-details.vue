@@ -89,6 +89,7 @@
                     <labels
                         :labels="board.labels"
                         :editedLabel="editedLabel"
+                        :taskLabelIds="task.labelIds"
                         @open-label-edit="openLabelEdit"
                         @add-label="addLabel"
                     />
@@ -337,27 +338,25 @@ export default {
             const taskCopy = clone({ proto: true })(Object.create(this.task));
 
             //add labels to list
-            let taskLabels = taskCopy.labels;
-            if (!taskLabels) taskLabels = [];
-            const isTaskLabel = taskLabels.some(
-                (taskLabel) => taskLabel.id === label.id
+            let taskLabelIds = taskCopy.labelIds;
+            if (!taskLabelIds) taskLabelIds = [];
+            const isTaskLabel = taskLabelIds.some(
+                (taskLabelId) => taskLabelId === label.id
             );
 
-            if (!isTaskMember) {
+            if (!isTaskLabel) {
                 console.log("pushing...");
-                taskMembers.push(member);
+                taskLabelIds.push(label.id);
             } else {
                 console.log("deleteing......");
-                console.log("member id", member._id);
-                const memberIdx = taskMembers.findIndex(
-                    (m) => m._id === member._id
+                const labelIdx = taskLabelIds.findIndex(
+                    (tlId) => tlId.id === label.id
                 );
-                console.log("memberIdx", memberIdx);
-                console.log("taskMembers", taskMembers);
-                taskMembers.splice(memberIdx, 1);
+
+                taskLabelIds.splice(labelIdx, 1);
             }
 
-            taskCopy.members = taskMembers;
+            taskCopy.labelIds = taskLabelIds;
 
             // change values
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
