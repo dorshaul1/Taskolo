@@ -155,7 +155,13 @@
                     >
                         <due-date @setDate="setDate" />
                     </base-task-modal>
-                    <a class="link-button" href="#" title="Members">
+
+                    <a
+                        class="link-button"
+                        href="#"
+                        title="Attachment"
+                        @click="toggleSection('Attachment')"
+                    >
                         <img
                             class="task-prev-icon"
                             src="../assets/task-icon/attachment.png"
@@ -163,6 +169,12 @@
                         />
                         <span>Attachment</span>
                     </a>
+                    <base-task-modal
+                        title="Attach from..."
+                        v-if="isAttachmentOpen"
+                    >
+                        <attachment />
+                    </base-task-modal>
                 </section>
             </div>
         </section>
@@ -183,10 +195,12 @@ import dueDate from "../cmps/task/task-option/task-details/due-date";
 import checklist from "../cmps/task/task-option/task-details/checklist";
 import labels from "../cmps/task/task-option/task-details/labels.vue";
 import labelEdit from "../cmps/task/task-option/task-details/labels_edit";
+import attachment from "../cmps/task/task-option/task-details/task-attachment";
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
 import { board } from "../data/board";
+import BaseTaskModal from "../cmps/base-task-modal.vue";
 
 // import { board } from "../data/board";
 export default {
@@ -198,6 +212,7 @@ export default {
             isLabelsEditOpen: false,
             isChecklistOpen: false,
             isDueDateOpen: false,
+            isAttachmentOpen: false,
             labelToEdit: null, //from labels to edit labels
             editedLabel: null,
         };
@@ -217,6 +232,8 @@ export default {
                 case "DueDate":
                     this.isDueDateOpen = !this.isDueDateOpen;
                     break;
+                case "Attachment":
+                    this.isAttachmentOpen = !this.isAttachmentOpen;
                 default:
                     break;
             }
@@ -453,6 +470,8 @@ export default {
         checklist,
         labels,
         labelEdit,
+        attachment,
+        BaseTaskModal,
     },
 
     watch: {
