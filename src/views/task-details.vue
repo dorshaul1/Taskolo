@@ -97,7 +97,7 @@
                     title="Change label"
                     @close-modal="isLabelsEditOpen = false"
                 >
-                    <label-edit :labels="board.labels" />
+                    <label-edit :labels="board.labels" :labelToEdit="labelToEdit" />
                 </base-task-modal>
 
                 <a
@@ -182,6 +182,7 @@ export default {
             isLabelsEditOpen: false,
             isChecklistOpen: false,
             isDueDateOpen: false,
+            labelToEdit: null
         };
     },
     methods: {
@@ -308,8 +309,11 @@ export default {
             taskCopy.checklists.splice(checklistIdx, 1);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
-        openLabelEdit() {
-            (this.isLabelsOpen = false), (this.isLabelsEditOpen = true);
+        openLabelEdit(label) {
+            this.isLabelsOpen = false;
+            this.isLabelsEditOpen = true;
+            this.labelToEdit = label
+            console.log("openLabelEdit label", label);
         },
     },
     computed: {
