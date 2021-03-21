@@ -8,7 +8,9 @@
             class="flex"
             @click="addLabel(label)"
         >
-            <a v-show="isAlreadyTaskLabel(label.id)" href="#">V</a>
+            <a v-show="isAlreadyTaskLabel(label.id)" href="#"
+                ><i class="el-icon-check"></i
+            ></a>
             <span class="label" :style="{ backgroundColor: label.color }">{{
                 label.title
             }}</span>
@@ -38,7 +40,7 @@ export default {
     props: {
         labels: {},
         editedLabel: {},
-        taskLabelIds: {} //specific task labels
+        taskLabelIds: {}, //specific task labels
         // labelToEdit: null,
     },
     data() {
