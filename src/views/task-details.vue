@@ -172,8 +172,9 @@
                     <base-task-modal
                         title="Attach from..."
                         v-if="isAttachmentOpen"
+                        @close-modal="isAttachmentOpen = false"
                     >
-                        <attachment />
+                        <attachment @add-url="addUrl" />
                     </base-task-modal>
                 </section>
             </div>
@@ -417,6 +418,13 @@ export default {
             // const labels = this.board.labels.filter(label => {
             //     if(label.id)
             // })
+        },
+        addUrl(url) {
+            console.log("adding url...", url);
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            taskCopy.attachment = url;
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
     },
     // deleteChecklist(checklistId) {
