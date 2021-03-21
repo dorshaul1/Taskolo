@@ -22,6 +22,9 @@
       .picture-preview {
             object-fit: cover;
             border-radius: 3px;
+            width: 100%;
+            margin-inline-start: 5px;
+            margin-inline-end: 5px;
       }
 
       .task-delete {
