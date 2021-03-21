@@ -1,8 +1,7 @@
 <template>
   <section class="task-details">
-      <div class="screen"></div>
+    <div class="screen"></div>
     <section v-if="task" class="task-details-container">
-
       <div class="cover">
         <a class="change-cover" href="#">Cover</a>
         <router-link
@@ -70,26 +69,29 @@
             />
           </base-task-modal>
 
-          <a
-            class="link-button"
-            href="#"
-            title="Labels"
-            @click="toggleSection('Labels')"
-          >
-            <img
-              class="task-prev-icon"
-              src="../assets/task-icon/tag.png"
-              alt=""
-            />
-            <span>Labels</span>
-          </a>
-
           <base-task-modal
             v-if="isLabelsOpen"
             title="Labels"
             @close-modal="isLabelsOpen = false"
           >
-            <labels :labels="board.labels" @open-label-edit="openLabelEdit" />
+            <labels
+              :labels="board.labels"
+              :editedLabel="editedLabel"
+              @open-label-edit="openLabelEdit"
+              @add-label="addLabel"
+            />
+          </base-task-modal>
+
+          <base-task-modal
+            v-if="isLabelsEditOpen"
+            title="Change label"
+            @close-modal="isLabelsEditOpen = false"
+          >
+            <label-edit
+              :labels="board.labels"
+              :labelToEdit="labelToEdit"
+              @save-label="saveLabel"
+            />
           </base-task-modal>
 
           <base-task-modal
@@ -178,12 +180,13 @@ export default {
   name: "task-details",
   data() {
     return {
-      isMembersOpen: false,
-      isLabelsOpen: false,
-      isLabelsEditOpen: false,
-      isChecklistOpen: false,
-      isDueDateOpen: false,
-      labelToEdit: null,
+            isMembersOpen: false,
+            isLabelsOpen: false,
+            isLabelsEditOpen: false,
+            isChecklistOpen: false,
+            isDueDateOpen: false,
+            labelToEdit: null, //from labels to edit labels
+            editedLabel: null, 
     };
   },
   methods: {
@@ -282,17 +285,74 @@ export default {
       this.$store.dispatch({ type: "updateTask", task: taskCopy });
     },
 
-    addToChecklist(title) {
-      const clone = require("rfdc");
-      const taskCopy = clone({ proto: true })(Object.create(this.task));
-      if (!taskCopy.checklists) {
-        taskCopy.checklists = [];
-      }
-      const checklist = boardService.getEmptyCheckList();
-      console.log("getEmptyCheckList", boardService.getEmptyCheckList());
-      checklist.title = title;
-      taskCopy.checklists.push(checklist);
-      this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        addToChecklist(title) {
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            if (!taskCopy.checklists) {
+                taskCopy.checklists = [];
+            }
+            const checklist = boardService.getEmptyCheckList();
+            console.log("getEmptyCheckList", boardService.getEmptyCheckList());
+            checklist.title = title;
+            taskCopy.checklists.push(checklist);
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
+        deleteChecklist(checklistId) {
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const checklistIdx = taskCopy.checklists.findIndex(
+                (checklist) => checklist.id === checklistId
+            );
+            console.log(checklistIdx, "idx");
+            taskCopy.checklists.splice(checklistIdx, 1);
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
+        openLabelEdit(label) {
+            this.isLabelsOpen = false;
+            this.isLabelsEditOpen = true;
+            this.labelToEdit = label;
+            console.log("openLabelEdit label", label);
+        },
+        saveLabel(label) {
+            this.isLabelsOpen = true;
+            this.isLabelsEditOpen = false;
+            this.labelToEdit = null;
+            this.editedLabel = label;
+            console.log("save label", label);
+        },
+        addLabel(label) {
+            console.log("adding label in task-details...", label);
+
+            // task clone
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+
+            //add labels to list
+            let taskLabels = taskCopy.labels;
+            if (!taskLabels) taskLabels = [];
+            const isTaskLabel = taskLabels.some(
+                (taskLabel) => taskLabel.id === label.id
+            );
+
+            if (!isTaskMember) {
+                console.log("pushing...");
+                taskMembers.push(member);
+            } else {
+                console.log("deleteing......");
+                console.log("member id", member._id);
+                const memberIdx = taskMembers.findIndex(
+                    (m) => m._id === member._id
+                );
+                console.log("memberIdx", memberIdx);
+                console.log("taskMembers", taskMembers);
+                taskMembers.splice(memberIdx, 1);
+            }
+
+            taskCopy.members = taskMembers;
+
+            // change values
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
     },
     deleteChecklist(checklistId) {
       const clone = require("rfdc");
@@ -310,7 +370,7 @@ export default {
       this.labelToEdit = label;
       console.log("openLabelEdit label", label);
     },
-  },
+  
   computed: {
     task() {
       return this.$store.getters.currTask;

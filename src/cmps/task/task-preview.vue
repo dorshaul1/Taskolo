@@ -29,6 +29,7 @@
 
     <div class="task-header">
       <div
+
         v-if="task.style"
         class="taskColor"
         :style="{ 'background-color': task.style.bgColor }"
@@ -159,14 +160,18 @@ export default {
       try {
         console.log("task delete");
         const clone = require("rfdc");
+
         const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
         var groups = boardCopy.groups;
+
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
         );
+
         var currTaskIdx = groups[currGroupIdx].tasks.findIndex(
           (task) => task.id === this.task.id
         );
+
         boardCopy.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
         //update board
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
@@ -176,11 +181,7 @@ export default {
     },
   },
   created() {
-    //   const clone = require("rfdc");
-    //   (this.checklist = clone({ proto: true })(
-    //     Object.create(this.task)
-    //   )),
-    //     console.log("checklist", this.task);
+
   },
 };
 </script>
