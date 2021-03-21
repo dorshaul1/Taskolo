@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <main-header />
-
+tas
     <main class="home-main-container">
       <section class="home-main-area">
         <div class="title">Taskolo helps teams move work forward.</div>

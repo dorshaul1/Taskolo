@@ -11,6 +11,10 @@
       white-space: initial;
       overflow: hidden;
 
+      .task-modal {
+            top: 155px;
+      }
+
       .group-title {
             color: brighten(#172b4d);
 
@@ -37,7 +41,6 @@
             overflow-y: auto;
             margin-inline-end: 4px;
             margin-inline-start: 4px;
-            
       }
 
       .group-main-body::-webkit-scrollbar {
@@ -45,12 +48,11 @@
             width: 8px;
             margin-inline-end: 4px;
             scroll-margin-right: 20px;
-           
       }
 
       .group-main-body::-webkit-scrollbar-track {
             // background: #f1f1f1;
-            
+
             background: #dadbe2;
             scroll-margin-right: 20px;
             border-radius: 30px;
