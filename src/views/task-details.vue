@@ -54,11 +54,13 @@
                         title="Members"
                         @click="toggleSection('Members')"
                     >
-                        <img
+
+                      <font-awesome-icon :icon="['far', 'eye']" />
+                        <!-- <img
                             class="task-prev-icon"
                             src="../assets/task-icon/member.png"
                             alt=""
-                        />
+                        /> -->
                         <span>Members</span>
                     </a>
 

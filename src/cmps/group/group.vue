@@ -93,7 +93,7 @@ export default {
       isTakeTask: false,
       isGroupMenuOpen: false,
       isEdititle: false,
-      drag: null
+      drag: false
     };
   },
   computed: {
@@ -115,6 +115,9 @@ export default {
   methods: {
     openTaskAdd() {
       this.isTakeTask = true;
+      this.$nextTick(() => {
+        this.$refs.taskTitle.focus();
+      });
     },
     closeTaskAdd() {
       this.isTakeTask = false;
@@ -160,7 +163,7 @@ export default {
       }
     },
     async dragDone() {
-      // drag = false;
+      this.drag = false;
       try {
         //clone
         const clone = require("rfdc");

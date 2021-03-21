@@ -81,6 +81,9 @@
             width: 32px;
             z-index: 2;
             font-size: 20px;
+            &:hover{
+                background-color: rgba(0, 0, 0, 0.15);
+            }
         }
     }
     & .title {

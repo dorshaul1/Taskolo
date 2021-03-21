@@ -4,7 +4,7 @@
     class="main-board-container"
     :style="{ backgroundColor: currBoard.style }"
   >
-      <main-header />
+    <main-header />
 
     <!-- <div class="main-screen" :style="{ backgroundColor: currBoard.style }"></div> -->
     <board-header @open="isMenuOpen = true" :currBoard="currBoard" />
@@ -13,7 +13,7 @@
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
     />
-    
+
     <main class="flex board-details">
       <div class="groups" v-for="group in currBoard.groups" :key="group.id">
         <!-- <draggable
@@ -110,6 +110,9 @@ export default {
     },
     openGroupkAdd() {
       this.isTakeGroup = true;
+      this.$nextTick(() => {
+        this.$refs.groupTitle.focus();
+      });
     },
     async addNewGroup() {
       try {
@@ -184,7 +187,7 @@ export default {
     boardHeader,
     sideMenu,
     draggable,
-    mainHeader
+    mainHeader,
   },
   async created() {},
 };

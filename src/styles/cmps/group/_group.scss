@@ -1,3 +1,4 @@
+
 .group-container {
       // background-color: rgb(235, 236, 240);
       background-color: #ebecf0;
@@ -88,6 +89,7 @@
 
       /// new task input
       .task-Add-input {
+            outline: none;
             width: auto;
             margin: 0px;
             resize: none;

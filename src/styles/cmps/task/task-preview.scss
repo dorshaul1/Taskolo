@@ -2,20 +2,37 @@
       padding: 6px 4px 2px 5px;
       position: relative;
 
-      .edit-btn {
-            & :hover {
-                  background-color: $hover;
-            }
-      }
+      // .edit-btn {
+      //       & :hover {
+      //             background-color: $hover;
+      //       }
+      // }
 
       .editing {
-            .task-edit {
-                  width: 14px;
-                  height: 14px;
+            & > * {
+                  // width: 25px;
+                  // height: 25px;
+                  font-size: 28px;
+                  padding: 8px;
+                  top:7px;
+                  border-radius: 3px;
+                  color: #6b778c;
+                  transition: .3s;
+                  
                   cursor: pointer;
                   position: absolute;
-                  right: 30px;
-                  top: 10px;
+                  // &:hover{
+                        // background-color: rgba(0, 0, 0, 0.12);
+                        background-color: $hover;
+                        color: rgba(0, 0, 0, 0.712);
+                  // }
+            }
+            .task-edit {
+                  padding-block-start: 6px;
+                  right: 32px;
+            }
+            .task-delete {
+                  right: 6px;
             }
       }
 
@@ -27,17 +44,22 @@
             margin-inline-end: 5px;
       }
 
-      .task-delete {
-            width: 14px;
-            height: 14px;
-            cursor: pointer;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-      }
-
       & :first-child {
             padding-block-start: 0px;
+      }
+
+      .badges {
+            color: #6b778c;
+            flex-wrap: wrap;
+            align-items: center;
+            & > * {
+                  padding: 5px;
+                  margin-inline-end: 8px;
+
+                  &:first-child {
+                        padding-inline-start: 0px;
+                  }
+            }
       }
 
       cursor: pointer;
@@ -83,17 +105,10 @@
                   font-size: 12px;
             }
 
-            .dute-date {
-                  padding: 5px;
-                  // border-radius: 3px;
-                  // color: #fff;
-            }
-
             .isDone {
                   background-color: #61bd4f;
                   border-radius: 3px;
                   color: #fff;
-                  fill: white;
             }
 
             .time-display {
@@ -103,6 +118,7 @@
 
             .checklist-display {
                   font-size: 12px;
+                  margin-inline-start: 4px;
             }
 
             .task-prev-icon {

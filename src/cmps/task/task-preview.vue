@@ -7,23 +7,23 @@
     @mouseleave="isEdit = false"
   >
     <div class="edit-btn">
+
       <div class="editing">
-        <img
+        <font-awesome-icon
           v-show="isEdit"
           @click="openEditModal"
           class="task-edit"
-          src="../../assets/task-icon/pen.png"
-          alt=""
+          :icon="['fas', 'pencil-alt']"
         />
-      </div>
 
-      <img
-        v-show="isEdit"
-        @click.stop="deleteTask"
-        class="task-delete"
-        src="../../assets/task-icon/delete (2).png"
-        alt=""
-      />
+        <font-awesome-icon
+          v-show="isEdit"
+          @click.stop="deleteTask"
+          class="task-delete"
+          :icon="['fas', 'trash-alt']"
+        />
+        
+      </div>
     </div>
 
     <div class="task-header">
@@ -57,13 +57,14 @@
         {{ task.title }}
       </div>
 
-      <div class="badges flex space-between align-center">
+      <div class="badges flex">
         <div class="watch" v-if="task.watch">
-          <img
+          <font-awesome-icon :icon="['far', 'eye']" />
+          <!-- <img
             class="task-prev-icon"
             src="../../assets/task-icon/watch.png"
             alt=""
-          />
+          /> -->
         </div>
 
         <div
@@ -78,27 +79,15 @@
         </div>
 
         <div class="desc" v-if="task.description">
-          <img
-            class="task-prev-icon"
-            src="../../assets/task-icon/desc.png"
-            alt=""
-          />
+          <font-awesome-icon :icon="['fas', 'align-left']" />
         </div>
 
         <div class="comments" v-if="task.comments">
-          <img
-            class="task-prev-icon"
-            src="../../assets/task-icon/comments.png"
-            alt=""
-          />
+          <font-awesome-icon :icon="['far', 'comment']" />
         </div>
 
         <div class="checklist flex align-center" v-if="task.checklists">
-          <img
-            class="task-prev-icon checklist-icon"
-            src="../../assets/task-icon/checklist.png"
-            alt=""
-          />
+          <font-awesome-icon :icon="['far', 'check-square']" />
           <span class="checklist-display"> {{ checklistForDisplay }}</span>
         </div>
       </div>
@@ -143,7 +132,7 @@ export default {
           if (todo.isDone) dones++;
         });
       });
-      return `${dones} / ${size}`;
+      return `${dones}/${size}`;
     },
     getBoard() {
       return this.$store.getters.currBoard;
