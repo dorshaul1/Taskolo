@@ -2,157 +2,164 @@
   <section class="task-details">
     <div class="screen"></div>
     <section v-if="task" class="task-details-container">
-      <div class="cover">
-        <a class="change-cover" href="#">Cover</a>
-        <router-link
-          class="close-modal-btn flex center"
-          :to="`/board/${board._id}`"
-          ><i class="el-icon-close"></i>
-        </router-link>
-      </div>
+        <div class="cover">
+            <a class="change-cover" href="#">Cover</a>
+            <router-link
+                class="close-modal-btn flex center"
+                :to="`/board/${board._id}`"
+                ><i class="el-icon-close"></i>
+            </router-link>
+        </div>
 
-      <div class="title flex align-start column">
-        <h1>{{ task.title }}</h1>
+        <div class="title flex align-start column">
+            <h1>{{ task.title }}</h1>
 
-        <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
-      </div>
+            <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
+        </div>
 
-      <div class="task-details-grid">
-        <section class="left-column">
-          <members-preview
-            v-if="task.members && task.members"
-            :members="task.members"
-          />
-          <labels-preview v-if="isLabelsOpen" />
-          <description-preview />
-          <checklist-preview
-            v-for="checklist in task.checklists"
-            :key="checklist.id"
-            @update-checklist="updateChecklist"
-            @delete-checklist="deleteChecklist"
-            :checklistProp="checklist"
-          />
+        <div class="task-details-grid">
+            <section class="left-column">
+                <members-preview
+                    v-if="task.members && task.members"
+                    :members="task.members"
+                />
+                <labels-preview v-if="isLabelsOpen" />
+                <description-preview />
+                <checklist-preview
+                    v-for="checklist in task.checklists"
+                    :key="checklist.id"
+                    @update-checklist="updateChecklist"
+                    @delete-checklist="deleteChecklist"
+                    :checklistProp="checklist"
+                />
 
-          <due-date-preview
-            v-if="task.dueDate"
-            :date="task.dueDate"
-            @setDate="toggleSection('DueDate')"
-          />
-          <activity-preview />
-        </section>
+                <due-date-preview
+                    v-if="task.dueDate"
+                    :date="task.dueDate"
+                    @setDate="toggleSection('DueDate')"
+                />
+                <activity-preview />
+            </section>
 
-        <section class="right-column">
-          <h3>Add to card</h3>
-          <a
-            class="link-button"
-            href="#"
-            title="Members"
-            @click="toggleSection('Members')"
-          >
-            <img
-              class="task-prev-icon"
-              src="../assets/task-icon/member.png"
-              alt=""
-            />
-            <span>Members</span>
-          </a>
+            <section class="right-column">
+                <h3>Add to card</h3>
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Members"
+                    @click="toggleSection('Members')"
+                >
+                    <img
+                        class="task-prev-icon"
+                        src="../assets/task-icon/member.png"
+                        alt=""
+                    />
+                    <span>Members</span>
+                </a>
 
-          <base-task-modal
-            v-if="isMembersOpen"
-            title="Members"
-            @close-modal="isMembersOpen = false"
-          >
-            <members
-              :members="board.members"
-              :taskMembers="task.members"
-              @add-member="addMember"
-            />
-          </base-task-modal>
+                <base-task-modal
+                    v-if="isMembersOpen"
+                    title="Members"
+                    @close-modal="isMembersOpen = false"
+                >
+                    <members
+                        :members="board.members"
+                        :taskMembers="task.members"
+                        @add-member="addMember"
+                    />
+                </base-task-modal>
 
-          <base-task-modal
-            v-if="isLabelsOpen"
-            title="Labels"
-            @close-modal="isLabelsOpen = false"
-          >
-            <labels
-              :labels="board.labels"
-              :editedLabel="editedLabel"
-              @open-label-edit="openLabelEdit"
-              @add-label="addLabel"
-            />
-          </base-task-modal>
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Labels"
+                    @click="toggleSection('Labels')"
+                >
+                    <img
+                        class="task-prev-icon"
+                        src="../assets/task-icon/tag.png"
+                        alt=""
+                    />
+                    <span>Labels</span>
+                </a>
 
-          <base-task-modal
-            v-if="isLabelsEditOpen"
-            title="Change label"
-            @close-modal="isLabelsEditOpen = false"
-          >
-            <label-edit
-              :labels="board.labels"
-              :labelToEdit="labelToEdit"
-              @save-label="saveLabel"
-            />
-          </base-task-modal>
+                <base-task-modal
+                    v-if="isLabelsOpen"
+                    title="Labels"
+                    @close-modal="isLabelsOpen = false"
+                >
+                    <labels
+                        :labels="board.labels"
+                        :editedLabel="editedLabel"
+                        :taskLabelIds="task.labelIds"
+                        @open-label-edit="openLabelEdit"
+                        @add-label="addLabel"
+                    />
+                </base-task-modal>
 
-          <base-task-modal
-            v-if="isLabelsEditOpen"
-            title="Change label"
-            @close-modal="isLabelsEditOpen = false"
-          >
-            <label-edit :labels="board.labels" :labelToEdit="labelToEdit" />
-          </base-task-modal>
+                <base-task-modal
+                    v-if="isLabelsEditOpen"
+                    title="Change label"
+                    @close-modal="isLabelsEditOpen = false"
+                >
+                    <label-edit
+                        :labels="board.labels"
+                        :labelToEdit="labelToEdit"
+                        @save-label="saveLabel"
+                    />
+                </base-task-modal>
 
-          <a
-            class="link-button"
-            href="#"
-            title="Checklist"
-            @click="toggleSection('Checklist')"
-          >
-            <img
-              class="task-prev-icon"
-              src="../assets/task-icon/checklist.png"
-              alt=""
-            />
-            <span>Checklist</span>
-          </a>
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Checklist"
+                    @click="toggleSection('Checklist')"
+                >
+                    <img
+                        class="task-prev-icon"
+                        src="../assets/task-icon/checklist.png"
+                        alt=""
+                    />
+                    <span>Checklist</span>
+                </a>
 
-          <base-task-modal
-            v-if="isChecklistOpen"
-            title="Checklist"
-            @close-modal="isChecklistOpen = false"
-          >
-            <checklist @add-checklist-title="addToChecklist" />
-          </base-task-modal>
-          <a
-            class="link-button"
-            href="#"
-            title="Due Date"
-            @click="toggleSection('DueDate')"
-          >
-            <img
-              class="task-prev-icon"
-              src="../assets/task-icon/wall-clock.png"
-              alt=""
-            />
-            <span>Due Date</span>
-          </a>
-          <base-task-modal
-            v-if="isDueDateOpen"
-            title="Due Date"
-            @close-modal="isDueDateOpen = false"
-          >
-            <due-date @setDate="setDate" />
-          </base-task-modal>
-          <a class="link-button" href="#" title="Members">
-            <img
-              class="task-prev-icon"
-              src="../assets/task-icon/attachment.png"
-              alt=""
-            />
-            <span>Attachment</span>
-          </a>
-        </section>
-      </div>
+                <base-task-modal
+                    v-if="isChecklistOpen"
+                    title="Checklist"
+                    @close-modal="isChecklistOpen = false"
+                >
+                    <checklist @add-checklist-title="addToChecklist" />
+                </base-task-modal>
+                <a
+                    class="link-button"
+                    href="#"
+                    title="Due Date"
+                    @click="toggleSection('DueDate')"
+                >
+                    <img
+                        class="task-prev-icon"
+                        src="../assets/task-icon/wall-clock.png"
+                        alt=""
+                    />
+                    <span>Due Date</span>
+                </a>
+                <base-task-modal
+                    v-if="isDueDateOpen"
+                    title="Due Date"
+                    @close-modal="isDueDateOpen = false"
+                >
+                    <due-date @setDate="setDate" />
+                </base-task-modal>
+                <a class="link-button" href="#" title="Members">
+                    <img
+                        class="task-prev-icon"
+                        src="../assets/task-icon/attachment.png"
+                        alt=""
+                    />
+                    <span>Attachment</span>
+                </a>
+            </section>
+        </div>
     </section>
   </section>
 </template>
@@ -328,27 +335,25 @@ export default {
             const taskCopy = clone({ proto: true })(Object.create(this.task));
 
             //add labels to list
-            let taskLabels = taskCopy.labels;
-            if (!taskLabels) taskLabels = [];
-            const isTaskLabel = taskLabels.some(
-                (taskLabel) => taskLabel.id === label.id
+            let taskLabelIds = taskCopy.labelIds;
+            if (!taskLabelIds) taskLabelIds = [];
+            const isTaskLabel = taskLabelIds.some(
+                (taskLabelId) => taskLabelId === label.id
             );
 
-            if (!isTaskMember) {
+            if (!isTaskLabel) {
                 console.log("pushing...");
-                taskMembers.push(member);
+                taskLabelIds.push(label.id);
             } else {
                 console.log("deleteing......");
-                console.log("member id", member._id);
-                const memberIdx = taskMembers.findIndex(
-                    (m) => m._id === member._id
+                const labelIdx = taskLabelIds.findIndex(
+                    (tlId) => tlId.id === label.id
                 );
-                console.log("memberIdx", memberIdx);
-                console.log("taskMembers", taskMembers);
-                taskMembers.splice(memberIdx, 1);
+
+                taskLabelIds.splice(labelIdx, 1);
             }
 
-            taskCopy.members = taskMembers;
+            taskCopy.labelIds = taskLabelIds;
 
             // change values
             this.$store.dispatch({ type: "updateTask", task: taskCopy });

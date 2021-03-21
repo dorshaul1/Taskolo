@@ -2,7 +2,13 @@
     <section class="task-labels">
         <input type="text" />
         <h3>Labels</h3>
-        <div v-for="label in labelsFromProp" :key="label.id" class="flex" @click="addLabel(label)">
+        <div
+            v-for="label in labelsFromProp"
+            :key="label.id"
+            class="flex"
+            @click="addLabel(label)"
+        >
+            <a v-show="isAlreadyTaskLabel(label.id)" href="#">V</a>
             <span class="label" :style="{ backgroundColor: label.color }">{{
                 label.title
             }}</span>
@@ -32,7 +38,13 @@ export default {
     props: {
         labels: {},
         editedLabel: {},
+        taskLabelIds: {} //specific task labels
         // labelToEdit: null,
+    },
+    data() {
+        return {
+            labelsFromProp: null,
+        };
     },
     methods: {
         openLabelsEdit(label) {
@@ -48,9 +60,16 @@ export default {
             this.labelsFromProp.splice(labelIdx, 1, this.editedLabel);
         },
         addLabel(label) {
-          console.log('adding label...', label)
-          this.$emit('add-label', label)
-        }
+            console.log("adding label...", label);
+            this.$emit("add-label", label);
+        },
+        isAlreadyTaskLabel(labelId) {
+            let isInTask = false;
+            this.taskLabelIds.forEach((lId) => {
+                if (lId === labelId) isInTask = true;
+            });
+            return isInTask;
+        },
     },
     created() {
         this.labelsFromProp = JSON.parse(JSON.stringify(this.labels));
