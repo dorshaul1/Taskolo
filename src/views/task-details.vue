@@ -1,5 +1,5 @@
 <template>
-    <section class="task-details">
+    <section class="task-details flex justify-center">
         <div class="screen"></div>
         <section v-if="task" class="task-details-container">
             <div class="cover">
