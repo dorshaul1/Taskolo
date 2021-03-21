@@ -72,11 +72,7 @@
           :class="{ isDone: task.isDone }"
           @click.stop="isDoneToggle"
         >
-          <img
-            class="task-prev-icon"
-            src="../../assets/task-icon/wall-clock.svg"
-            alt=""
-          />
+          <font-awesome-icon :icon="['far', 'clock']" />
 
           <span class="time-display"> {{ timeForDisplay }}</span>
         </div>
@@ -190,7 +186,7 @@ export default {
     },
     async isDoneToggle() {
       try {
-      await  this.$store.commit({
+        await this.$store.commit({
           type: "setTaskById",
           taskId: this.task.id,
         });
