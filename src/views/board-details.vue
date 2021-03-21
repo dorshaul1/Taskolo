@@ -2,8 +2,11 @@
   <section
     v-if="currBoard"
     class="main-board-container"
+    :style="{ backgroundColor: currBoard.style }"
   >
-  <div class="main-screen" :style="{ backgroundColor: currBoard.style }"></div>
+      <main-header />
+
+    <!-- <div class="main-screen" :style="{ backgroundColor: currBoard.style }"></div> -->
     <board-header @open="isMenuOpen = true" :currBoard="currBoard" />
     <side-menu
       @close="isMenuOpen = false"
@@ -19,12 +22,12 @@
           @start="drag = true"
           @end="dragDone"
         > -->
-          <group
-            @drag-done="dragDone"
-            class="main-group-container"
-            :group="group"
-            :boardId="currBoard._id"
-          ></group>
+        <group
+          @drag-done="dragDone"
+          class="main-group-container"
+          :group="group"
+          :boardId="currBoard._id"
+        ></group>
         <!-- </draggable> -->
       </div>
 
@@ -62,6 +65,7 @@
 </template>
 
 <script>
+import mainHeader from "../cmps/main-header";
 import group from "../cmps/group/group";
 import boardHeader from "../cmps/board/board-header";
 import sideMenu from "../cmps/board/side-menu";
@@ -77,7 +81,7 @@ export default {
       },
       isMenuOpen: false,
       isTakeGroup: false,
-      drag:null
+      drag: null,
     };
   },
   computed: {
@@ -151,15 +155,12 @@ export default {
       // try {
       //   //clone change all the groups
       //   const clone = require("rfdc");
-
       //   // //replace the group- find index
       //   // var groups = currBoard().groups;
       //   // var currGroupIdx = groups.findIndex(
       //   //   (group) => group.id === this.group.id
       //   // );
-
       //   // boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);
-
       //   //update to all the board.
       //   this.dragDone();
       // } catch (error) {
@@ -183,6 +184,7 @@ export default {
     boardHeader,
     sideMenu,
     draggable,
+    mainHeader
   },
   async created() {},
 };
