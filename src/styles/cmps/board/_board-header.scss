@@ -1,13 +1,14 @@
 .board-header {
-    height: 25px;
-    width: 100%;
+    // height: 25px;
+    height: 5vh;
+    // width: 100%;
     margin-inline-start: 8px;
     margin-inline-end: 8px;
     // background-color: red;
     padding: 8px 4px 4px 4px;
-    margin-bottom: 20px;
-    position: fixed;
-    top: 50px;
+    // margin-bottom: 15px;
+    // position: fixed;
+    // top: 50px;
     z-index:5;
 
     .task-modal{
@@ -60,6 +61,8 @@
         margin: 0 10px;
         color: #172b4d;
         // color: #a08686;
+        position: relative;
+        right: 7px;
     }
     h1{
         color: white;
@@ -67,6 +70,8 @@
     .member {
         width: 28px;
         height: 28px;
+        position: relative;
+        right: 20px;
         // margin-right: 4px;
         // border-radius: 50%;
         // background-color: lightgrey;
@@ -80,11 +85,12 @@
     .add-member-btn {
         margin-left: 5px;
         position: relative;
+        // right: 20px;
         // font-size: 30px;
         // background-color: transparent;
     }
     .show-menu-btn {
         position: absolute;
-        right: 16px;
+        right: 8px;
     }
 }

@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <main-header />
+
     <main class="home-main-container">
       <section class="home-main-area">
         <div class="title">Taskolo helps teams move work forward.</div>
@@ -16,26 +18,28 @@
       <section class="logo">
         <img alt="Vue logo" src="../assets/logo.png" />
       </section>
-
     </main>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import mainHeader from "../cmps/main-header";
 
 export default {
   name: "Home",
-  components: {},
-  computed:{
-    currBoard(){
-      return this.$state.getters.currBoard
-    }
+  components: {
+    mainHeader
   },
-  methods:{
-      goDemoBoard(){
-          this.$router.push(`/board`)
-      }
-  }
+  computed: {
+    currBoard() {
+      return this.$state.getters.currBoard;
+    },
+  },
+  methods: {
+    goDemoBoard() {
+      this.$router.push(`/board`);
+    },
+  },
 };
 </script>

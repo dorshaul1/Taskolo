@@ -1,5 +1,6 @@
 <template>
-  <header class="app-header flex align-center space-between">
+  <header class="app-header">
+    <section class="app-header-container flex align-center space-between">
     <nav class="flex align-center">
       <button class="home-btn flex center" @click="$router.push('/')">
         <i class="el-icon-s-home"></i>
@@ -17,6 +18,7 @@
         <img class="member-avatar" src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="">
       <!-- </div> -->
       </section>
+    </section>
   </header>
 </template>
 

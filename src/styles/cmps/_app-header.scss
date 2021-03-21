@@ -1,12 +1,20 @@
 .app-header {
-    position: fixed;
-    height: 32px;
+    // position: fixed;
+    height: 5vh;
+    // height: 32px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.11);
     // nav{
     padding: 4px;
     z-index: 10;
-
+    // flex: 1;
+    
+    .app-header-container{
+        margin-inline-start: 8px;
+        margin-inline-end: 8px;
+        // width: 100%;
+        
+    }
 
     button {
         background-color: hsla(0, 0%, 100%, 0.24);
