@@ -85,26 +85,65 @@ export const board = {
       ],
       "groups": [
             {
-                  "id": "g1042365243",
-                  "title": "Group 1",
-                  "tasks": [
-                  ],
-                  "style": {} //group style
-            },
-            {
-                  "id": "g101",
-                  "title": "Group 1",
+                  "id": "g102",
+                  "title": "Group 2",
                   "tasks": [
                         {
-                              "id": "cdmAPDKASD",
+                              "id": "VDSDS",
                               "title": "Replace logo"
                         },
                         {
-                              "id": "cfjksdl",
-                              "title": "Add Samples"
-                        }
+                              "id": "QWEWQ",
+                              "title": "Add Samples",
+                              "style": {
+                                    "bgColor": "#ff9f1a",
+                              },
+                              "labelIds": ["l101", "l102", "l103", "l104", "l105", "l106", "l107", "l108", "l109", "l110"],
+                              "description": "description",
+                              "comments": [
+                                    {
+                                          "id": "ZdPnm",
+                                          "txt": "also @yaronb please CR this",
+                                          "createdAt": 1590999817436.0,
+                                          "byMember": {
+                                                "_id": "u103",
+                                                "fullname": "ytav",
+                                                "username": "dorsh",
+                                                "imgUrl": "http://some-img.jpg",
+                                          }
+                                    }
+                              ],
+                              "checklists": [
+                                    {
+                                          "id": "YEhmF",
+                                          "title": "Checklist",
+                                          "todos": [
+                                                {
+                                                      "id": "212jX",
+                                                      "title": "To Do 1",
+                                                      "isDone": false
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "dueDate": 16156215211,
+                              "watch": true,
+                              "members": [{
+                                    "_id": "u103",
+                                    "fullname": "Mike Harper",
+                                    "username": "mike",
+                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+                              },
+                              {
+                                    "_id": "u104",
+                                    "fullname": "Eli Gardner",
+                                    "username": "elis",
+                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/women/64.jpg",
+                              }
+                              ],
+                        },
+
                   ],
-                  "style": {} //group style
             },
             {
                   "id": "g102",
@@ -118,10 +157,131 @@ export const board = {
                               "id": "QWEWQ",
                               "title": "Add Samples",
                               "style": {
-                                    "bgColor": "#26de81",
-                                    "bgColor": "#5644ff",
+                                    "bgColor": "#0079bf",
                               },
-                              "labelIds": ["l101", "l102", "l103", "l104", "l105","l106","l107","l108","l109","l110"],
+                              "labelIds": ["l101", "l102", "l103", "l104", "l105", "l106", "l107", "l108", "l109", "l110"],
+                              "description": "description",
+                              "comments": [
+                                    {
+                                          "id": "ZdPnm",
+                                          "txt": "also @yaronb please CR this",
+                                          "createdAt": 1590999817436.0,
+                                          "byMember": {
+                                                "_id": "u103",
+                                                "fullname": "ytav",
+                                                "username": "dorsh",
+                                                "imgUrl": "http://some-img.jpg",
+                                          }
+                                    }
+                              ],
+                              "checklists": [
+                                    {
+                                          "id": "YEhmF",
+                                          "title": "Checklist",
+                                          "todos": [
+                                                {
+                                                      "id": "212jX",
+                                                      "title": "To Do 1",
+                                                      "isDone": false
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "dueDate": 16156215211,
+                              "watch": true,
+                              "members": [{
+                                    "_id": "u103",
+                                    "fullname": "Mike Harper",
+                                    "username": "mike",
+                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+                              },
+                              {
+                                    "_id": "u104",
+                                    "fullname": "Eli Gardner",
+                                    "username": "elis",
+                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/women/64.jpg",
+                              }
+                              ],
+                        },
+
+                  ],
+            },
+            {
+                  "id": "g102",
+                  "title": "Group 2",
+                  "tasks": [
+                        {
+                              "id": "VDSDS",
+                              "title": "Replace logo"
+                        },
+                        {
+                              "id": "QWEWQ",
+                              "title": "Add Samples",
+                              "style": {
+                                    "bgColor": "#70b500",
+                              },
+                              "labelIds": ["l101", "l102", "l103", "l104", "l105", "l106", "l107", "l108", "l109", "l110"],
+                              "description": "description",
+                              "comments": [
+                                    {
+                                          "id": "ZdPnm",
+                                          "txt": "also @yaronb please CR this",
+                                          "createdAt": 1590999817436.0,
+                                          "byMember": {
+                                                "_id": "u103",
+                                                "fullname": "ytav",
+                                                "username": "dorsh",
+                                                "imgUrl": "http://some-img.jpg",
+                                          }
+                                    }
+                              ],
+                              "checklists": [
+                                    {
+                                          "id": "YEhmF",
+                                          "title": "Checklist",
+                                          "todos": [
+                                                {
+                                                      "id": "212jX",
+                                                      "title": "To Do 1",
+                                                      "isDone": false
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "dueDate": 16156215211,
+                              "watch": true,
+                              "members": [{
+                                    "_id": "u103",
+                                    "fullname": "Mike Harper",
+                                    "username": "mike",
+                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+                              },
+                              {
+                                    "_id": "u104",
+                                    "fullname": "Eli Gardner",
+                                    "username": "elis",
+                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/women/64.jpg",
+                              }
+                              ],
+                        },
+
+                  ],
+            },
+            {
+                  "id": "g102",
+                  "title": "Group 2",
+                  "tasks": [
+                        {
+                              "id": "VDSDS",
+                              "title": "Replace logo"
+                        },
+                        {
+                              "id": "QWEWQ",
+                              "title": "Add Samples",
+                              "style": {
+                                    "bgColor": "#eb5a46",
+                              },
+                              "labelIds": ["l101", "l102", "l103", "l104", "l105", "l106", "l107", "l108", "l109", "l110"],
                               "description": "description",
                               "comments": [
                                     {
