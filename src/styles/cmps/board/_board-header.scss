@@ -7,8 +7,8 @@
     // margin-inline-start: 8px;
     // margin-inline-end: 8px;
     // background-color: red;
-    padding: 8px 4px 4px 8px;
-    // padding: 0 8px;
+    // padding: 8px 4px 4px 8px;
+    padding: 8px;
     // margin-bottom: 15px;
     // position: fixed;
     // top: 50px;
@@ -43,6 +43,15 @@
         // padding: ;
         font-size: 14px;
         line-height: 20px;
+        background-color: hsla(0, 0%, 100%, 0.24);
+        color: #fff;
+        border: none;
+
+        &::placeholder {
+            color: #fff;
+            text-align:center;
+        }
+
     }
 
     .el-select {

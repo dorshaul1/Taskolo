@@ -7,7 +7,6 @@
     @mouseleave="isEdit = false"
   >
     <div class="edit-btn">
-
       <div class="editing">
         <img
           v-show="isEdit"
@@ -29,7 +28,6 @@
 
     <div class="task-header">
       <div
-
         v-if="task.style"
         class="taskColor"
         :style="{ 'background-color': task.style.bgColor }"
@@ -45,6 +43,15 @@
           ></div>
         </li>
       </ul>
+
+      <div v-if="task.attachment" class="attachment">
+        <img
+          :src="task.attachment"
+          alt="picture"
+          class="picture-preview"
+          style="width: auto"
+        />
+      </div>
 
       <div class="title">
         {{ task.title }}
@@ -62,10 +69,12 @@
         <div
           class="dute-date flex align-center space-between"
           v-if="task.dueDate"
+          :class="{ isDone: task.isDone }"
+          @click.stop="isDoneToggle"
         >
           <img
             class="task-prev-icon"
-            src="../../assets/task-icon/wall-clock.png"
+            src="../../assets/task-icon/wall-clock.svg"
             alt=""
           />
 
@@ -179,9 +188,21 @@ export default {
         console.log("task-preview cmp: error with delete task", error);
       }
     },
+    async isDoneToggle() {
+      try {
+      await  this.$store.commit({
+          type: "setTaskById",
+          taskId: this.task.id,
+        });
+        const clone = require("rfdc");
+        let taskCopy = clone({ proto: true })(Object.create(this.task));
+        taskCopy.isDone = !taskCopy.isDone;
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      } catch (error) {
+        console.log("cant toggle is done", error);
+      }
+    },
   },
-  created() {
-
-  },
+  created() {},
 };
 </script>

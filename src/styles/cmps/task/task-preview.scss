@@ -3,14 +3,12 @@
       position: relative;
 
       .edit-btn {
-            
             & :hover {
                   background-color: $hover;
             }
       }
 
-      .editing{
-
+      .editing {
             .task-edit {
                   width: 14px;
                   height: 14px;
@@ -19,10 +17,12 @@
                   right: 30px;
                   top: 10px;
             }
-
-            
       }
 
+      .picture-preview {
+            object-fit: cover;
+            border-radius: 3px;
+      }
 
       .task-delete {
             width: 14px;
@@ -78,6 +78,19 @@
                   margin-block-end: 4px;
                   margin-block-start: 4px;
                   font-size: 12px;
+            }
+
+            .dute-date {
+                  padding: 5px;
+                  // border-radius: 3px;
+                  // color: #fff;
+            }
+
+            .isDone {
+                  background-color: #61bd4f;
+                  border-radius: 3px;
+                  color: #fff;
+                  fill: white;
             }
 
             .time-display {
