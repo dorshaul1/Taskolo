@@ -1,38 +1,24 @@
 .app-header {
     position: relative;
-    // height: 5vh;
     height: 32px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.11);
-    // nav{
     padding: 4px;
     z-index: 10;
-    
-    // flex-basis: 32PX;
-    // flex: 1;
 
     .app-header-container {
-        // margin-inline-start: 8px;
-        // margin-inline-end: 8px;
-        padding: 4px;
-
-        // width: 100%;
+        padding: 4px;;
     }
     
     button {
         background-color: hsla(0, 0%, 100%, 0.24);
         color: #fff;
-        // height: 28px;
-        
+
         & :hover {
             background-color: hsla(0, 0%, 100%, 0.103);
         }
     }
-    // & > * {
-        // }
-        //     // width: 100%;
-        //     // margin: 0 auto;
-        // }
+
         nav {
             & > * {
                 margin-right: 4px;
@@ -41,27 +27,21 @@
             }
             .boards-btn {
                 width: 87px;
-                // margin-top: 4px;
         }
         .home-btn {
             width: 32px;
-            // margin-left: 4px;
         }
     }
     .logo {
         img {
             width: 70px;
             position: absolute;
-            // right: 45%;
-            // left: 45%;
             margin-left: auto;
             margin-right: auto;
             left: 0;
             right: 0;
             text-align: center;
-            // top: 1px;
         }
-        // margin: 0 auto;
     }
 
     .member-avatar {
@@ -69,9 +49,6 @@
         height: 32px;
         background-color: blanchedalmond;
         border-radius: 50%;
-        // position: absolute;
-        // right: 8px;
-        // top: 20%;
         margin-inline-end: 8px;
     }
 }
