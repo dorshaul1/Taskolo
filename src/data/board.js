@@ -149,19 +149,6 @@ export const board = {
                               ],
                               "dueDate": 1246841611,
                               "watch": true,
-                              "members": [,
-                                    {
-                                          "_id": "u102",
-                                          "fullname": "Mitchell Vargas",
-                                          "username": "MITCHI",
-                                          "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-                                    }, {
-                                          "_id": "u103",
-                                          "fullname": "Audrey Scott",
-                                          "username": "AUDRY",
-                                          "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                                    }
-                              ],
                         },
                         {
                               "id": "task103",
@@ -252,25 +239,6 @@ export const board = {
                                     }
                               ],
                               "dueDate": 16135315211,
-                              "members": [{
-                                    "_id": "u101",
-                                    "fullname": "Ralph Barnes",
-                                    "username": "RALFI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              },
-                              {
-                                    "_id": "u102",
-                                    "fullname": "Mitchell Vargas",
-                                    "username": "MITCHI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-                              },
-                              {
-                                    "_id": "u104",
-                                    "fullname": "Willard Robinson",
-                                    "username": "wiliardi",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-                              }
-                              ],
                         },
                         {
                               "id": "t105",
