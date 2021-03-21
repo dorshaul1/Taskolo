@@ -88,7 +88,9 @@
                 >
                     <labels
                         :labels="board.labels"
+                        :editedLabel="editedLabel"
                         @open-label-edit="openLabelEdit"
+                        @add-label="addLabel"
                     />
                 </base-task-modal>
 
@@ -97,7 +99,11 @@
                     title="Change label"
                     @close-modal="isLabelsEditOpen = false"
                 >
-                    <label-edit :labels="board.labels" :labelToEdit="labelToEdit" />
+                    <label-edit
+                        :labels="board.labels"
+                        :labelToEdit="labelToEdit"
+                        @save-label="saveLabel"
+                    />
                 </base-task-modal>
 
                 <a
@@ -182,7 +188,8 @@ export default {
             isLabelsEditOpen: false,
             isChecklistOpen: false,
             isDueDateOpen: false,
-            labelToEdit: null
+            labelToEdit: null, //from labels to edit labels
+            editedLabel: null, //from edit label to labels
         };
     },
     methods: {
@@ -312,8 +319,48 @@ export default {
         openLabelEdit(label) {
             this.isLabelsOpen = false;
             this.isLabelsEditOpen = true;
-            this.labelToEdit = label
+            this.labelToEdit = label;
             console.log("openLabelEdit label", label);
+        },
+        saveLabel(label) {
+            this.isLabelsOpen = true;
+            this.isLabelsEditOpen = false;
+            this.labelToEdit = null;
+            this.editedLabel = label;
+            console.log("save label", label);
+        },
+        addLabel(label) {
+            console.log("adding label in task-details...", label);
+
+            // task clone
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+
+            //add labels to list
+            let taskLabels = taskCopy.labels;
+            if (!taskLabels) taskLabels = [];
+            const isTaskLabel = taskLabels.some(
+                (taskLabel) => taskLabel.id === label.id
+            );
+
+            if (!isTaskMember) {
+                console.log("pushing...");
+                taskMembers.push(member);
+            } else {
+                console.log("deleteing......");
+                console.log("member id", member._id);
+                const memberIdx = taskMembers.findIndex(
+                    (m) => m._id === member._id
+                );
+                console.log("memberIdx", memberIdx);
+                console.log("taskMembers", taskMembers);
+                taskMembers.splice(memberIdx, 1);
+            }
+
+            taskCopy.members = taskMembers;
+
+            // change values
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
     },
     computed: {
