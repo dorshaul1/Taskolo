@@ -309,6 +309,7 @@ export const board = {
                               "title": "Weekly update",
                               "style": {
                                     "bgColor": "#eb5a46",
+                                    "isCover": "true"
                               },
                               "labelIds": ["l101", "l108"],
                               "description": "description",
