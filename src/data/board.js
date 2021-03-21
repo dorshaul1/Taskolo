@@ -339,6 +339,7 @@ export const board = {
                               ],
                               "dueDate": 16158715211,
                               "watch": true,
+                              "attachment": "https://i.picsum.photos/id/608/200/200.jpg?hmac=-p1htX-mFieavdRDr9vUIJKyDHCXZAY5B35nhdcgIgQ",
                               "members": [
                                     {
                                           "_id": "u102",
