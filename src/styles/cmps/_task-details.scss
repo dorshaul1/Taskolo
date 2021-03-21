@@ -1,9 +1,32 @@
+.task-details {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 50;
+    background-color: rgba(37, 37, 37, 0.432);
+    overflow: auto;
+    // padding: 0 0 20px 0;
+
+}
+
+// .screen {
+//     position: fixed;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     left: 0;
+//     background-color: rgba(37, 37, 37, 0.432);
+// }
 .task-details-container {
-    position: fixed;
+    position: absolute;
+    
+    // margin-bottom: 20px;
+
     top: 30px;
     right: 25%;
     left: 25%;
-    height: 90vh;
+    // height: 90vh;
     width: 768px;
     color: white;
     background-color: #f4f5f7;
@@ -72,7 +95,10 @@
     display: grid;
     grid-template-columns: 584px 200px;
     margin: 0 16px;
-    height: 60vh;
+    padding: 0 0 20px 0;
+    // height: 90vh;
+    // margin-bottom: 20px;
+
     // overflow: hidden;
     & ::-webkit-scrollbar {
         height: 8px;
@@ -102,8 +128,9 @@
 
     & .left-column {
         margin-left: 56px;
-        height: 60vh;
-        overflow: auto;
+        // height: 60vh;
+        // overflow: hidden;
+
         & > * {
             grid-column: 1/2;
             // margin-left: 40px;

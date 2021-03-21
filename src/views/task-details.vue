@@ -1,4 +1,6 @@
 <template>
+  <section class="task-details">
+    <div class="screen"></div>
     <section v-if="task" class="task-details-container">
         <div class="cover">
             <a class="change-cover" href="#">Cover</a>
@@ -159,6 +161,7 @@
             </section>
         </div>
     </section>
+  </section>
 </template>
 
 <script>
@@ -181,119 +184,113 @@ import { boardService } from "../services/board.service.js";
 
 // import { board } from "../data/board";
 export default {
-    name: "task-details",
-    data() {
-        return {
+  name: "task-details",
+  data() {
+    return {
             isMembersOpen: false,
             isLabelsOpen: false,
             isLabelsEditOpen: false,
             isChecklistOpen: false,
             isDueDateOpen: false,
             labelToEdit: null, //from labels to edit labels
-            editedLabel: null, //from edit label to labels
-        };
+            editedLabel: null, 
+    };
+  },
+  methods: {
+    toggleSection(sectionName) {
+      switch (sectionName) {
+        case "Members":
+          this.isMembersOpen = !this.isMembersOpen;
+          break;
+        case "Labels":
+          this.isLabelsOpen = !this.isLabelsOpen;
+          break;
+        case "Checklist":
+          this.isChecklistOpen = !this.isChecklistOpen;
+          break;
+        case "DueDate":
+          this.isDueDateOpen = !this.isDueDateOpen;
+          break;
+        default:
+          break;
+      }
     },
-    methods: {
-        toggleSection(sectionName) {
-            switch (sectionName) {
-                case "Members":
-                    this.isMembersOpen = !this.isMembersOpen;
-                    break;
-                case "Labels":
-                    this.isLabelsOpen = !this.isLabelsOpen;
-                    break;
-                case "Checklist":
-                    this.isChecklistOpen = !this.isChecklistOpen;
-                    break;
-                case "DueDate":
-                    this.isDueDateOpen = !this.isDueDateOpen;
-                    break;
-                default:
-                    break;
-            }
-        },
-        setDate(date) {
-            try {
-                const clone = require("rfdc");
-                const taskCopy = clone({ proto: true })(
-                    Object.create(this.task)
-                );
-                taskCopy.dueDate = date;
-                this.toggleSection("DueDate");
-                this.$store.dispatch({ type: "updateTask", task: taskCopy });
-                console.log("date:", date);
-            } catch (error) {
-                console.log(err);
-            }
-        },
-        addMember(member) {
-            try {
-                // task clone
-                const clone = require("rfdc");
-                const taskCopy = clone({ proto: true })(
-                    Object.create(this.task)
-                );
+    setDate(date) {
+      try {
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
+        taskCopy.dueDate = date;
+        this.toggleSection("DueDate");
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        console.log("date:", date);
+      } catch (error) {
+        console.log(err);
+      }
+    },
+    addMember(member) {
+      try {
+        // task clone
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
 
-                console.log("member", member);
+        console.log("member", member);
 
-                // const taskCopy = this.$clone({ proto: true })(
-                //     Object.create(this.task)
-                // );
+        // const taskCopy = this.$clone({ proto: true })(
+        //     Object.create(this.task)
+        // );
 
-                //toggle members
-                let taskMembers = taskCopy.members;
-                if (!taskMembers) taskMembers = [];
-                const isTaskMember = taskMembers.some(
-                    (taskMember) => taskMember._id === member._id
-                );
+        //toggle members
+        let taskMembers = taskCopy.members;
+        if (!taskMembers) taskMembers = [];
+        const isTaskMember = taskMembers.some(
+          (taskMember) => taskMember._id === member._id
+        );
 
-                console.log("isTaskMember", isTaskMember);
+        console.log("isTaskMember", isTaskMember);
 
-                if (!isTaskMember) {
-                    console.log("pushing...");
-                    taskMembers.push(member);
-                } else {
-                    console.log("deleteing......");
-                    console.log("member id", member._id);
-                    const memberIdx = taskMembers.findIndex(
-                        (m) => m._id === member._id
-                    );
-                    console.log("memberIdx", memberIdx);
-                    console.log("taskMembers", taskMembers);
-                    taskMembers.splice(memberIdx, 1);
-                }
+        if (!isTaskMember) {
+          console.log("pushing...");
+          taskMembers.push(member);
+        } else {
+          console.log("deleteing......");
+          console.log("member id", member._id);
+          const memberIdx = taskMembers.findIndex((m) => m._id === member._id);
+          console.log("memberIdx", memberIdx);
+          console.log("taskMembers", taskMembers);
+          taskMembers.splice(memberIdx, 1);
+        }
 
-                taskCopy.members = taskMembers;
+        taskCopy.members = taskMembers;
 
-                // change values
-                this.$store.dispatch({ type: "updateTask", task: taskCopy });
-            } catch (err) {
-                console.log(err);
-            }
-        },
+        // change values
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      } catch (err) {
+        console.log(err);
+      }
+    },
 
-        updateChecklist(checklist) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            checklist = clone({ proto: true })(Object.create(checklist));
-            // if (!taskCopy.checklists) taskCopy.checklists = [];
-            // if (!checklist.id) checklist.id = utilService.makeId();
-            const isChecklistExist = taskCopy.checklists.some(
-                (cl) => cl.id === checklist.id
-            );
-            console.log("isChecklistExist", isChecklistExist);
-            if (!isChecklistExist) taskCopy.checklists.push(checklist);
-            else {
-                const checklistIdx = taskCopy.checklists.findIndex((cl) => {
-                    console.log("findIndx:", cl.id, checklist.id);
-                    return cl.id === checklist.id;
-                });
+    updateChecklist(checklist) {
+      const clone = require("rfdc");
+      const taskCopy = clone({ proto: true })(Object.create(this.task));
+      checklist = clone({ proto: true })(Object.create(checklist));
+      // if (!taskCopy.checklists) taskCopy.checklists = [];
+      // if (!checklist.id) checklist.id = utilService.makeId();
+      const isChecklistExist = taskCopy.checklists.some(
+        (cl) => cl.id === checklist.id
+      );
+      console.log("isChecklistExist", isChecklistExist);
+      if (!isChecklistExist) taskCopy.checklists.push(checklist);
+      else {
+        const checklistIdx = taskCopy.checklists.findIndex((cl) => {
+          console.log("findIndx:", cl.id, checklist.id);
+          return cl.id === checklist.id;
+        });
 
-                // taskCopy.checklists[checklistIdx].todos = checklist.todos;
-                taskCopy.checklists.splice(checklistIdx, 1, checklist);
-            }
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
+        // taskCopy.checklists[checklistIdx].todos = checklist.todos;
+        taskCopy.checklists.splice(checklistIdx, 1, checklist);
+      }
+      this.$store.dispatch({ type: "updateTask", task: taskCopy });
+    },
 
         addToChecklist(title) {
             const clone = require("rfdc");
@@ -362,57 +359,74 @@ export default {
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
     },
-    computed: {
-        task() {
-            return this.$store.getters.currTask;
-        },
-        group() {
-            return this.$store.getters.currGroup;
-        },
-        board() {
-            return this.$store.getters.currBoard;
-        },
-        groupName() {
-            return this.$store.getters.groupName;
-        },
-        taskId() {
-            return this.$route.params.taskId;
-        },
+    deleteChecklist(checklistId) {
+      const clone = require("rfdc");
+      const taskCopy = clone({ proto: true })(Object.create(this.task));
+      const checklistIdx = taskCopy.checklists.findIndex(
+        (checklist) => checklist.id === checklistId
+      );
+      console.log(checklistIdx, "idx");
+      taskCopy.checklists.splice(checklistIdx, 1);
+      this.$store.dispatch({ type: "updateTask", task: taskCopy });
     },
-    components: {
-        membersPreview,
-        labelsPreview,
-        activityPreview,
-        descriptionPreview,
-        checklistPreview,
-        baseTaskModal,
-        members,
-        dueDate,
-        dueDatePreview,
-        checklist,
-        labels,
-        labelEdit,
+    openLabelEdit(label) {
+      this.isLabelsOpen = false;
+      this.isLabelsEditOpen = true;
+      this.labelToEdit = label;
+      console.log("openLabelEdit label", label);
     },
+  
+  computed: {
+    task() {
+      return this.$store.getters.currTask;
+    },
+    group() {
+      return this.$store.getters.currGroup;
+    },
+    board() {
+      return this.$store.getters.currBoard;
+    },
+    groupName() {
+      return this.$store.getters.groupName;
+    },
+    taskId() {
+      return this.$route.params.taskId;
+    },
+  },
+  components: {
+    membersPreview,
+    labelsPreview,
+    activityPreview,
+    descriptionPreview,
+    checklistPreview,
+    baseTaskModal,
+    members,
+    dueDate,
+    dueDatePreview,
+    checklist,
+    labels,
+    labelEdit,
+  },
 
-    watch: {
-        taskId: {
-            handler() {
-                this.$store.commit({
-                    type: "setTaskById",
-                    taskId: this.taskId,
-                });
-            },
-            immediate: true,
-        },
+  watch: {
+    taskId: {
+      handler() {
+        this.$store.commit({
+          type: "setTaskById",
+          taskId: this.taskId,
+        });
+      },
+      immediate: true,
     },
+  },
 
-    created() {
-        // console.log("task", this.task);
-        // console.log(board, "board in task details");
-        // console.log(this.taskId, "taskId in created task details");
-        //1. taskID from route
-        //2. commit setTaskById (mutation) find task in group
-    },
+  created() {
+    // console.log("task", this.task);
+    // console.log(board, "board in task details");
+    // console.log(this.taskId, "taskId in created task details");
+    //1. taskID from route
+    //2. commit setTaskById (mutation) find task in group
+  },
 };
 </script>
 
