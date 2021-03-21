@@ -54,8 +54,7 @@
                         title="Members"
                         @click="toggleSection('Members')"
                     >
-
-                      <font-awesome-icon :icon="['far', 'eye']" />
+                        <font-awesome-icon :icon="['far', 'eye']" />
                         <!-- <img
                             class="task-prev-icon"
                             src="../assets/task-icon/member.png"
@@ -178,6 +177,28 @@
                     >
                         <attachment @add-url="addUrl" />
                     </base-task-modal>
+
+                    <!-- COVER -->
+                    <a
+                        class="link-button"
+                        href="#"
+                        title="Cover"
+                        @click="toggleSection('Cover')"
+                    >
+                        <img
+                            class="task-prev-icon"
+                            src="../assets/task-icon/attachment.png"
+                            alt=""
+                        />
+                        <span>Cover</span>
+                    </a>
+                    <base-task-modal
+                        title="Cover"
+                        v-if="isCoverOpen"
+                        @close-modal="isCoverOpen = false"
+                    >
+                        <cover :colors="coverColors" />
+                    </base-task-modal>
                 </section>
             </div>
         </section>
@@ -199,6 +220,7 @@ import checklist from "../cmps/task/task-option/task-details/checklist";
 import labels from "../cmps/task/task-option/task-details/labels.vue";
 import labelEdit from "../cmps/task/task-option/task-details/labels_edit";
 import attachment from "../cmps/task/task-option/task-details/task-attachment";
+import cover from '../cmps/task/task-option/task-details/cover-color';
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
@@ -216,6 +238,7 @@ export default {
             isChecklistOpen: false,
             isDueDateOpen: false,
             isAttachmentOpen: false,
+            isCoverOpen: false,
             labelToEdit: null, //from labels to edit labels
             editedLabel: null,
         };
@@ -237,6 +260,8 @@ export default {
                     break;
                 case "Attachment":
                     this.isAttachmentOpen = !this.isAttachmentOpen;
+                case "Cover":
+                    this.isCoverOpen = !this.isCoverOpen;
                 default:
                     break;
             }
@@ -466,6 +491,12 @@ export default {
         labelsPreview() {
             return this.labelsIdsToLabels();
         },
+        coverColors() {
+            const coverColors = this.board.labels.map(label => {
+                return label.color
+            })
+            return coverColors
+        }
     },
     components: {
         membersPreview,
@@ -482,6 +513,7 @@ export default {
         labelEdit,
         attachment,
         BaseTaskModal,
+        cover
     },
 
     watch: {
