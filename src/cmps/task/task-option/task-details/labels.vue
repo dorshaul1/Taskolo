@@ -67,9 +67,11 @@ export default {
         },
         isAlreadyTaskLabel(labelId) {
             let isInTask = false;
+            if(this.taskLabelIds) {
             this.taskLabelIds.forEach((lId) => {
                 if (lId === labelId) isInTask = true;
             });
+            }
             return isInTask;
         },
     },
