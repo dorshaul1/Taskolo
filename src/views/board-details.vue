@@ -178,6 +178,9 @@ export default {
           type: "loadBoard",
           boardId: this.boardId,
         });
+        this.$store.dispatch({
+          type: "loadUsers",
+        });
       },
       immediate: true,
     },
