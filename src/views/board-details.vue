@@ -14,52 +14,52 @@
       :board="currBoard"
     />
 
-    <main class="flex board-details">
-      
+    <main>
       <draggable
-        class="groups"
-        :list="list"
-        v-for="group in currBoard.groups"
-        :key="group.id"
+        class="flex board-details"
+        v-model="currBoard.groups"
         group="group"
-        @change="dragGroup"
         @start="drag = true"
+        @end="dragDone"
       >
         <group
+          v-for="group in currBoard.groups"
+          :key="group.id"
           @drag-done="dragDone"
           class="main-group-container"
           :group="group"
           :boardId="currBoard._id"
         ></group>
+
+        <div class="new-group-container">
+          <section v-show="!isTakeGroup">
+            <h3
+              @click="openGroupkAdd"
+              class="add-new-group flex justify-center align-center"
+            >
+              <span>+</span> Add another list
+            </h3>
+          </section>
+
+          <section v-show="isTakeGroup" class="take-new-group flex">
+            <textarea
+              class="group-Add-input"
+              ref="groupTitle"
+              v-show="isTakeGroup"
+              name="NoteTxt"
+              v-model="newGroup.title"
+              placeholder="Enter a title for this card..."
+              rows="2"
+            >
+            </textarea>
+
+            <div class="flex">
+              <button @click="addNewGroup" class="add-group">Add list</button>
+              <button @click="closeGroupAdd">x</button>
+            </div>
+          </section>
+        </div>
       </draggable>
-      <div class="new-group-container">
-        <section v-show="!isTakeGroup">
-          <h3
-            @click="openGroupkAdd"
-            class="add-new-group flex justify-center align-center"
-          >
-            <span>+</span> Add another list
-          </h3>
-        </section>
-
-        <section v-show="isTakeGroup" class="take-new-group flex">
-          <textarea
-            class="group-Add-input"
-            ref="groupTitle"
-            v-show="isTakeGroup"
-            name="NoteTxt"
-            v-model="newGroup.title"
-            placeholder="Enter a title for this card..."
-            rows="2"
-          >
-          </textarea>
-
-          <div class="flex">
-            <button @click="addNewGroup" class="add-group">Add list</button>
-            <button @click="closeGroupAdd">x</button>
-          </div>
-        </section>
-      </div>
     </main>
     <router-view />
   </section>
