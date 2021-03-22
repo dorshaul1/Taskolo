@@ -78,5 +78,28 @@
     .show-menu-btn {
         position: absolute;
         right: 4px;
+        border-radius: 3px;
+        color: #fff;
+        // cursor: default;
+        // float: left;
+        font-size: 14px;
+        // font-weight: 400;
+        height: 32px;
+        // line-height: 32px;
+        // margin: 0 4px 4px 0;
+        width: 125px;
+        // box-sizing: border-box;
+        // overflow: hidden;
+        padding-left: 32px;
+        // position: relative;
+        // text-decoration: none;
+        // text-overflow: ellipsis;
+        .el-icon-more{
+            left: 12px;
+            top: 10px;
+            // margin-right: 10px;
+            position: absolute;
+        }
     }
-}
+    }
+
