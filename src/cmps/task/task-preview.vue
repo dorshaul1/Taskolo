@@ -7,7 +7,6 @@
     @mouseleave="isEdit = false"
   >
     <div class="edit-btn">
-
       <div class="editing">
         <font-awesome-icon
           v-show="isEdit"
@@ -22,7 +21,6 @@
           class="task-delete"
           :icon="['fas', 'trash-alt']"
         />
-        
       </div>
     </div>
 
@@ -80,7 +78,7 @@
 
         <div class="desc" v-if="task.description">
           <!-- <font-awesome-icon :icon="['fas', 'align-left']" /> -->
-                    <img
+          <img
             class="task-prev-icon"
             src="../../assets/task-icon/left-alignment.svg"
             alt=""
@@ -92,7 +90,12 @@
         </div>
 
         <div class="checklist flex align-center" v-if="task.checklists">
-          <font-awesome-icon :icon="['far', 'check-square']" />
+          <!-- <font-awesome-icon :icon="['far', 'check-square']" /> -->
+          <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/check-box.svg"
+            alt=""
+          />
           <span class="checklist-display"> {{ checklistForDisplay }}</span>
         </div>
       </div>
