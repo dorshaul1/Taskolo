@@ -1,97 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <section class="task-details flex justify-center">
-        <div class="screen"></div>
-        <section v-if="task" class="task-details-container">
-            <div class="cover">
-                <a class="change-cover" href="#">Cover</a>
-                <router-link
-                    class="close-modal-btn flex center"
-                    :to="`/board/${board._id}`"
-                    ><i class="el-icon-close"></i>
-                </router-link>
-            </div>
-
-            <div class="title flex align-start column">
-                <h1>{{ task.title }}</h1>
-
-                <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
-            </div>
-
-            <div class="task-details-grid">
-                <section class="left-column">
-                    <members-preview
-                        v-if="task.members && task.members"
-                        :members="task.members"
-                    />
-                    <!-- v-if="isLabelsOpen" -->
-                    <labels-preview
-                        :labels="labelsPreview"
-                        v-if="labelsPreview"
-                        @label-clicked="isLabelsOpen = true"
-                    />
-
-                    <description-preview
-                        @updateDesc="updateDescription"
-                        :task="this.task"
-                    />
-
-                    <checklist-preview
-                        v-for="checklist in task.checklists"
-                        :key="checklist.id"
-                        @update-checklist="updateChecklist"
-                        @delete-checklist="deleteChecklist"
-                        :checklistProp="checklist"
-                    />
-
-                    <due-date-preview
-                        v-if="task.dueDate"
-                        :date="task.dueDate"
-                        @setDate="toggleSection('DueDate')"
-                    />
-                    <activity-preview />
-                </section>
-
-                <section class="right-column">
-                    <h3>Add to card</h3>
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Members"
-                        @click="toggleSection('Members')"
-                    >
-                        <font-awesome-icon
-                            class="icon"
-                            :icon="['far', 'user']"
-                        />
-
-                        <span>Members</span>
-                    </a>
-
-                    <base-task-modal
-                        v-if="isMembersOpen"
-                        title="Members"
-                        @close-modal="isMembersOpen = false"
-                    >
-                        <members
-                            :members="board.members"
-                            :taskMembers="task.members"
-                            @add-member="addMember"
-                        />
-                    </base-task-modal>
-
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Labels"
-                        @click="toggleSection('Labels')"
-                    >
-                        <font-awesome-icon
-                            class="icon"
-                            :icon="['fas', 'tag']"
-                        />
-                        <!-- <img
-=======
   <section class="task-details flex justify-center">
     <div class="screen"></div>
     <section v-if="task" class="task-details-container">
@@ -105,7 +12,7 @@
       </div>
 
       <div class="title flex align-start column">
-        <h1 @click="taskTitleEdit"  click="taskTitleEdit">{{ task.title }}</h1>
+        <h1 @click="taskTitleEdit" click="taskTitleEdit">{{ task.title }}</h1>
         <!-- v-if="!isTitleEdit" -->
         <!-- <textarea
           class="title-input"
@@ -184,127 +91,117 @@
           >
             <font-awesome-icon class="icon" :icon="['fas', 'tag']" />
             <!-- <img
->>>>>>> c922e436970522f09b6f9f6a4eec595a0cab67eb
               class="task-prev-icon"
               src="../assets/task-icon/tag.png"
               alt=""
             /> -->
-                        <span>Labels</span>
-                    </a>
+            <span>Labels</span>
+          </a>
 
-                    <base-task-modal
-                        v-if="isLabelsOpen"
-                        title="Labels"
-                        @close-modal="isLabelsOpen = false"
-                    >
-                        <labels
-                            :labels="board.labels"
-                            :editedLabel="editedLabel"
-                            :taskLabelIds="task.labelIds"
-                            @open-label-edit="openLabelEdit"
-                            @add-label="addLabel"
-                        />
-                    </base-task-modal>
+          <base-task-modal
+            v-if="isLabelsOpen"
+            title="Labels"
+            @close-modal="isLabelsOpen = false"
+          >
+            <labels
+              :labels="board.labels"
+              :editedLabel="editedLabel"
+              :taskLabelIds="task.labelIds"
+              @open-label-edit="openLabelEdit"
+              @add-label="addLabel"
+            />
+          </base-task-modal>
 
-                    <base-task-modal
-                        v-if="isLabelsEditOpen"
-                        title="Change label"
-                        @close-modal="isLabelsEditOpen = false"
-                    >
-                        <label-edit
-                            :labels="board.labels"
-                            :labelToEdit="labelToEdit"
-                            @save-label="saveLabel"
-                        />
-                    </base-task-modal>
+          <base-task-modal
+            v-if="isLabelsEditOpen"
+            title="Change label"
+            @close-modal="isLabelsEditOpen = false"
+          >
+            <label-edit
+              :labels="board.labels"
+              :labelToEdit="labelToEdit"
+              @save-label="saveLabel"
+            />
+          </base-task-modal>
 
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Checklist"
-                        @click="toggleSection('Checklist')"
-                    >
-                        <font-awesome-icon
-                            class="icon"
-                            :icon="['far', 'check-square']"
-                        />
+          <a
+            class="link-button"
+            href="#"
+            title="Checklist"
+            @click="toggleSection('Checklist')"
+          >
+            <font-awesome-icon class="icon" :icon="['far', 'check-square']" />
 
-                        <span>Checklist</span>
-                    </a>
+            <span>Checklist</span>
+          </a>
 
-                    <base-task-modal
-                        v-if="isChecklistOpen"
-                        title="Checklist"
-                        @close-modal="isChecklistOpen = false"
-                    >
-                        <checklist @add-checklist-title="addToChecklist" />
-                    </base-task-modal>
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Due Date"
-                        @click="toggleSection('DueDate')"
-                    >
-                        <font-awesome-icon
-                            class="icon"
-                            :icon="['far', 'clock']"
-                        />
+          <base-task-modal
+            v-if="isChecklistOpen"
+            title="Checklist"
+            @close-modal="isChecklistOpen = false"
+          >
+            <checklist @add-checklist-title="addToChecklist" />
+          </base-task-modal>
+          <a
+            class="link-button"
+            href="#"
+            title="Due Date"
+            @click="toggleSection('DueDate')"
+          >
+            <font-awesome-icon class="icon" :icon="['far', 'clock']" />
 
-                        <span>Due Date</span>
-                    </a>
-                    <base-task-modal
-                        v-if="isDueDateOpen"
-                        title="Due Date"
-                        @close-modal="isDueDateOpen = false"
-                    >
-                        <due-date @setDate="setDate" />
-                    </base-task-modal>
+            <span>Due Date</span>
+          </a>
+          <base-task-modal
+            v-if="isDueDateOpen"
+            title="Due Date"
+            @close-modal="isDueDateOpen = false"
+          >
+            <due-date @setDate="setDate" />
+          </base-task-modal>
 
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Attachment"
-                        @click="toggleSection('Attachment')"
-                    >
-                        <font-awesome-icon
-                            class="icon"
-                            :icon="['fas', 'paperclip']"
-                        />
-                        <span>Attachment</span>
-                    </a>
-                    <base-task-modal
-                        title="Attach from..."
-                        v-if="isAttachmentOpen"
-                        @close-modal="isAttachmentOpen = false"
-                    >
-                        <attachment @add-url="addUrl" />
-                    </base-task-modal>
+          <a
+            class="link-button"
+            href="#"
+            title="Attachment"
+            @click="toggleSection('Attachment')"
+          >
+            <font-awesome-icon class="icon" :icon="['fas', 'paperclip']" />
+            <span>Attachment</span>
+          </a>
+          <base-task-modal
+            title="Attach from..."
+            v-if="isAttachmentOpen"
+            @close-modal="isAttachmentOpen = false"
+          >
+            <attachment @add-url="addUrl" />
+          </base-task-modal>
 
-                    <!-- COVER -->
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Cover"
-                        @click="toggleSection('Cover')"
-                    >
-                        <img
-                            class="task-prev-icon"
-                            src="../assets/task-icon/attachment.png"
-                            alt=""
-                        />
-                        <span>Cover</span>
-                    </a>
-                    <base-task-modal
-                        title="Cover"
-                        v-if="isCoverOpen"
-                        @close-modal="isCoverOpen = false"
-                    >
-                        <cover :colors="coverColors" />
-                    </base-task-modal>
-                </section>
-            </div>
+          <!-- COVER -->
+          <a
+            class="link-button"
+            href="#"
+            title="Cover"
+            @click="toggleSection('Cover')"
+          >
+            <img
+              class="task-prev-icon"
+              src="../assets/task-icon/attachment.png"
+              alt=""
+            />
+            <span>Cover</span>
+          </a>
+          <base-task-modal
+            title="Cover"
+            v-if="isCoverOpen"
+            @close-modal="isCoverOpen = false"
+          >
+            <cover :colors="coverColors" />
+          </base-task-modal>
         </section>
+      </div>
     </section>
+  </section>
 </template>
 
 <script>
@@ -471,223 +368,215 @@ export default {
       console.log("openLabelEdit label", label);
     },
     methods: {
-        toggleSection(sectionName) {
-            switch (sectionName) {
-                case "Members":
-                    this.isMembersOpen = !this.isMembersOpen;
-                    break;
-                case "Labels":
-                    this.isLabelsOpen = !this.isLabelsOpen;
-                    break;
-                case "Checklist":
-                    this.isChecklistOpen = !this.isChecklistOpen;
-                    break;
-                case "DueDate":
-                    this.isDueDateOpen = !this.isDueDateOpen;
-                    break;
-                case "Attachment":
-                    this.isAttachmentOpen = !this.isAttachmentOpen;
-                    break;
-                case "Cover":
-                    this.isCoverOpen = !this.isCoverOpen;
-                    break;
-                default:
-                    break;
-            }
-        },
-        setDate(date) {
-            try {
-                const clone = require("rfdc");
-                const taskCopy = clone({ proto: true })(
-                    Object.create(this.task)
-                );
-                taskCopy.dueDate = date;
-                this.toggleSection("DueDate");
-                this.$store.dispatch({ type: "updateTask", task: taskCopy });
-                console.log("date:", date);
-            } catch (error) {
-                console.log(err);
-            }
-        },
-        addMember(member) {
-            try {
-                // task clone
-                const clone = require("rfdc");
-                const taskCopy = clone({ proto: true })(
-                    Object.create(this.task)
-                );
+      toggleSection(sectionName) {
+        switch (sectionName) {
+          case "Members":
+            this.isMembersOpen = !this.isMembersOpen;
+            break;
+          case "Labels":
+            this.isLabelsOpen = !this.isLabelsOpen;
+            break;
+          case "Checklist":
+            this.isChecklistOpen = !this.isChecklistOpen;
+            break;
+          case "DueDate":
+            this.isDueDateOpen = !this.isDueDateOpen;
+            break;
+          case "Attachment":
+            this.isAttachmentOpen = !this.isAttachmentOpen;
+            break;
+          case "Cover":
+            this.isCoverOpen = !this.isCoverOpen;
+            break;
+          default:
+            break;
+        }
+      },
+      setDate(date) {
+        try {
+          const clone = require("rfdc");
+          const taskCopy = clone({ proto: true })(Object.create(this.task));
+          taskCopy.dueDate = date;
+          this.toggleSection("DueDate");
+          this.$store.dispatch({ type: "updateTask", task: taskCopy });
+          console.log("date:", date);
+        } catch (error) {
+          console.log(err);
+        }
+      },
+      addMember(member) {
+        try {
+          // task clone
+          const clone = require("rfdc");
+          const taskCopy = clone({ proto: true })(Object.create(this.task));
 
-                console.log("member", member);
+          console.log("member", member);
 
-                // const taskCopy = this.$clone({ proto: true })(
-                //     Object.create(this.task)
-                // );
+          // const taskCopy = this.$clone({ proto: true })(
+          //     Object.create(this.task)
+          // );
 
-                //toggle members
-                let taskMembers = taskCopy.members;
-                if (!taskMembers) taskMembers = [];
-                const isTaskMember = taskMembers.some(
-                    (taskMember) => taskMember._id === member._id
-                );
+          //toggle members
+          let taskMembers = taskCopy.members;
+          if (!taskMembers) taskMembers = [];
+          const isTaskMember = taskMembers.some(
+            (taskMember) => taskMember._id === member._id
+          );
 
-                console.log("isTaskMember", isTaskMember);
+          console.log("isTaskMember", isTaskMember);
 
-                if (!isTaskMember) {
-                    console.log("pushing...");
-                    taskMembers.push(member);
-                } else {
-                    console.log("deleteing......");
-                    console.log("member id", member._id);
-                    const memberIdx = taskMembers.findIndex(
-                        (m) => m._id === member._id
-                    );
-                    console.log("memberIdx", memberIdx);
-                    console.log("taskMembers", taskMembers);
-                    taskMembers.splice(memberIdx, 1);
-                }
-
-                taskCopy.members = taskMembers;
-
-                // change values
-                this.$store.dispatch({ type: "updateTask", task: taskCopy });
-            } catch (err) {
-                console.log(err);
-            }
-        },
-        updateChecklist(checklist) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            checklist = clone({ proto: true })(Object.create(checklist));
-            // if (!taskCopy.checklists) taskCopy.checklists = [];
-            // if (!checklist.id) checklist.id = utilService.makeId();
-            const isChecklistExist = taskCopy.checklists.some(
-                (cl) => cl.id === checklist.id
+          if (!isTaskMember) {
+            console.log("pushing...");
+            taskMembers.push(member);
+          } else {
+            console.log("deleteing......");
+            console.log("member id", member._id);
+            const memberIdx = taskMembers.findIndex(
+              (m) => m._id === member._id
             );
-            console.log("isChecklistExist", isChecklistExist);
-            if (!isChecklistExist) taskCopy.checklists.push(checklist);
-            else {
-                const checklistIdx = taskCopy.checklists.findIndex((cl) => {
-                    console.log("findIndx:", cl.id, checklist.id);
-                    return cl.id === checklist.id;
-                });
+            console.log("memberIdx", memberIdx);
+            console.log("taskMembers", taskMembers);
+            taskMembers.splice(memberIdx, 1);
+          }
 
-                // taskCopy.checklists[checklistIdx].todos = checklist.todos;
-                taskCopy.checklists.splice(checklistIdx, 1, checklist);
-            }
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
-        addToChecklist(title) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            if (!taskCopy.checklists) {
-                taskCopy.checklists = [];
-            }
-            const checklist = boardService.getEmptyCheckList();
-            console.log("getEmptyCheckList", boardService.getEmptyCheckList());
-            checklist.title = title;
-            taskCopy.checklists.push(checklist);
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
-        deleteChecklist(checklistId) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            const checklistIdx = taskCopy.checklists.findIndex(
-                (checklist) => checklist.id === checklistId
-            );
-            console.log(checklistIdx, "idx");
-            taskCopy.checklists.splice(checklistIdx, 1);
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
-        openLabelEdit(label) {
-            this.isLabelsOpen = false;
-            this.isLabelsEditOpen = true;
-            this.labelToEdit = label;
-            console.log("openLabelEdit label", label);
-        },
-        async saveLabel(label) {
-            this.isLabelsOpen = true;
-            this.isLabelsEditOpen = false;
-            this.labelToEdit = null;
-            this.editedLabel = label;
+          taskCopy.members = taskMembers;
 
-            //save updated label to global board labels
-            const clone = require("rfdc");
-            const boardCopy = clone({ proto: true })(Object.create(this.board));
-            console.log("boardCopy", boardCopy);
-            const labelIdx = boardCopy.labels.findIndex(
-                (l) => l.id === label.id
-            );
-            boardCopy.labels.splice(labelIdx, 1, label);
-            try {
-                await this.$store.dispatch({
-                    type: "updateBoard",
-                    board: boardCopy,
-                });
-            } catch (error) {}
+          // change values
+          this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      updateChecklist(checklist) {
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
+        checklist = clone({ proto: true })(Object.create(checklist));
+        // if (!taskCopy.checklists) taskCopy.checklists = [];
+        // if (!checklist.id) checklist.id = utilService.makeId();
+        const isChecklistExist = taskCopy.checklists.some(
+          (cl) => cl.id === checklist.id
+        );
+        console.log("isChecklistExist", isChecklistExist);
+        if (!isChecklistExist) taskCopy.checklists.push(checklist);
+        else {
+          const checklistIdx = taskCopy.checklists.findIndex((cl) => {
+            console.log("findIndx:", cl.id, checklist.id);
+            return cl.id === checklist.id;
+          });
 
-            console.log("save label", label);
-        },
-        addLabel(label) {
-            console.log("adding label in task-details...", label);
+          // taskCopy.checklists[checklistIdx].todos = checklist.todos;
+          taskCopy.checklists.splice(checklistIdx, 1, checklist);
+        }
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      },
+      addToChecklist(title) {
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
+        if (!taskCopy.checklists) {
+          taskCopy.checklists = [];
+        }
+        const checklist = boardService.getEmptyCheckList();
+        console.log("getEmptyCheckList", boardService.getEmptyCheckList());
+        checklist.title = title;
+        taskCopy.checklists.push(checklist);
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      },
+      deleteChecklist(checklistId) {
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
+        const checklistIdx = taskCopy.checklists.findIndex(
+          (checklist) => checklist.id === checklistId
+        );
+        console.log(checklistIdx, "idx");
+        taskCopy.checklists.splice(checklistIdx, 1);
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      },
+      openLabelEdit(label) {
+        this.isLabelsOpen = false;
+        this.isLabelsEditOpen = true;
+        this.labelToEdit = label;
+        console.log("openLabelEdit label", label);
+      },
+      async saveLabel(label) {
+        this.isLabelsOpen = true;
+        this.isLabelsEditOpen = false;
+        this.labelToEdit = null;
+        this.editedLabel = label;
 
-            // task clone
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+        //save updated label to global board labels
+        const clone = require("rfdc");
+        const boardCopy = clone({ proto: true })(Object.create(this.board));
+        console.log("boardCopy", boardCopy);
+        const labelIdx = boardCopy.labels.findIndex((l) => l.id === label.id);
+        boardCopy.labels.splice(labelIdx, 1, label);
+        try {
+          await this.$store.dispatch({
+            type: "updateBoard",
+            board: boardCopy,
+          });
+        } catch (error) {}
 
-            //add labels to list
-            let taskLabelIds = taskCopy.labelIds;
-            if (!taskLabelIds) taskLabelIds = [];
-            const isTaskLabel = taskLabelIds.some(
-                (taskLabelId) => taskLabelId === label.id
-            );
+        console.log("save label", label);
+      },
+      addLabel(label) {
+        console.log("adding label in task-details...", label);
 
-            if (!isTaskLabel) {
-                console.log("pushing...");
-                taskLabelIds.push(label.id);
-            } else {
-                console.log("deleteing......");
-                const labelIdx = taskLabelIds.findIndex(
-                    (tlId) => tlId === label.id
-                );
+        // task clone
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
 
-                taskLabelIds.splice(labelIdx, 1);
-            }
+        //add labels to list
+        let taskLabelIds = taskCopy.labelIds;
+        if (!taskLabelIds) taskLabelIds = [];
+        const isTaskLabel = taskLabelIds.some(
+          (taskLabelId) => taskLabelId === label.id
+        );
 
-            taskCopy.labelIds = taskLabelIds;
+        if (!isTaskLabel) {
+          console.log("pushing...");
+          taskLabelIds.push(label.id);
+        } else {
+          console.log("deleteing......");
+          const labelIdx = taskLabelIds.findIndex((tlId) => tlId === label.id);
 
-            // change values
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
-        labelsIdsToLabels() {
-            if (!this.task.labelIds) return;
-            //TODO: Find better way?
-            const labels = [];
-            this.board.labels.forEach((label) => {
-                this.task.labelIds.forEach((labelId) => {
-                    if (label.id === labelId) labels.push(label);
-                });
-            });
-            return labels;
-            // task.labelsIds = ['id2', 'id3', 'id4'] // convert to label object
-            // const labels = this.board.labels.filter(label => {
-            //     if(label.id)
-            // })
-        },
-        addUrl(url) {
-            console.log("adding url...", url);
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            taskCopy.attachment = url;
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
-        async updateDescription(updateDescription) {
-            console.log("desc update", updateDescription);
-            //dispatch
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            taskCopy.description = updateDescription;
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        },
+          taskLabelIds.splice(labelIdx, 1);
+        }
+
+        taskCopy.labelIds = taskLabelIds;
+
+        // change values
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      },
+      labelsIdsToLabels() {
+        if (!this.task.labelIds) return;
+        //TODO: Find better way?
+        const labels = [];
+        this.board.labels.forEach((label) => {
+          this.task.labelIds.forEach((labelId) => {
+            if (label.id === labelId) labels.push(label);
+          });
+        });
+        return labels;
+        // task.labelsIds = ['id2', 'id3', 'id4'] // convert to label object
+        // const labels = this.board.labels.filter(label => {
+        //     if(label.id)
+        // })
+      },
+      addUrl(url) {
+        console.log("adding url...", url);
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
+        taskCopy.attachment = url;
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      },
+      async updateDescription(updateDescription) {
+        console.log("desc update", updateDescription);
+        //dispatch
+        const clone = require("rfdc");
+        const taskCopy = clone({ proto: true })(Object.create(this.task));
+        taskCopy.description = updateDescription;
+        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+      },
     },
     // deleteChecklist(checklistId) {
     //     const clone = require("rfdc");
@@ -707,63 +596,33 @@ export default {
     // },
 
     computed: {
-        task() {
-            return this.$store.getters.currTask;
-        },
-        group() {
-            return this.$store.getters.currGroup;
-        },
-        board() {
-            return this.$store.getters.currBoard;
-        },
-        groupName() {
-            return this.$store.getters.groupName;
-        },
-        taskId() {
-            return this.$route.params.taskId;
-        },
+      task() {
+        return this.$store.getters.currTask;
+      },
+      group() {
+        return this.$store.getters.currGroup;
+      },
+      board() {
+        return this.$store.getters.currBoard;
+      },
+      groupName() {
+        return this.$store.getters.groupName;
+      },
+      taskId() {
+        return this.$route.params.taskId;
+      },
 
-        labelsPreview() {
-            return this.labelsIdsToLabels();
-        },
+      labelsPreview() {
+        return this.labelsIdsToLabels();
+      },
 
-        coverColors() {
-            const coverColors = this.board.labels.map((label) => {
-                return label.color;
-            });
-            return coverColors;
-        },
+      coverColors() {
+        const coverColors = this.board.labels.map((label) => {
+          return label.color;
+        });
+        return coverColors;
+      },
     },
-<<<<<<< HEAD
-    components: {
-        membersPreview,
-        labelsPreview,
-        activityPreview,
-        descriptionPreview,
-        checklistPreview,
-        baseTaskModal,
-        members,
-        dueDate,
-        dueDatePreview,
-        checklist,
-        labels,
-        labelEdit,
-        attachment,
-        BaseTaskModal,
-        cover,
-    },
-
-    watch: {
-        taskId: {
-            handler() {
-                this.$store.commit({
-                    type: "setTaskById",
-                    taskId: this.taskId,
-                });
-            },
-            immediate: true,
-        },
-=======
     labelsIdsToLabels() {
       if (!this.task.labelIds) return;
       //TODO: Find better way?
@@ -798,7 +657,7 @@ export default {
       this.isTitleEdit = true;
       const clone = require("rfdc");
       const taskCopy = clone({ proto: true })(Object.create(this.task));
-      console.log('editing title')
+      console.log("editing title");
       // taskCopy.title = updateDescription;
       // this.$store.dispatch({ type: "updateTask", task: taskCopy });
     },
@@ -838,18 +697,7 @@ export default {
     },
     labelsPreview() {
       return this.labelsIdsToLabels();
->>>>>>> c922e436970522f09b6f9f6a4eec595a0cab67eb
     },
-
-    created() {
-        // console.log("task", this.task);
-        // console.log(board, "board in task details");
-        // console.log(this.taskId, "taskId in created task details");
-        //1. taskID from route
-        //2. commit setTaskById (mutation) find task in group
-    },
-<<<<<<< HEAD
-=======
   },
   created() {
     // console.log("task", this.task);
@@ -858,7 +706,6 @@ export default {
     //1. taskID from route
     //2. commit setTaskById (mutation) find task in group
   },
->>>>>>> c922e436970522f09b6f9f6a4eec595a0cab67eb
 };
 </script>
 
