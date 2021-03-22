@@ -57,12 +57,12 @@
 
       <div class="badges flex">
         <div class="watch" v-if="task.watch">
-          <font-awesome-icon :icon="['far', 'eye']" />
-          <!-- <img
+          <!-- <font-awesome-icon :icon="['far', 'eye']" /> -->
+          <img
             class="task-prev-icon"
-            src="../../assets/task-icon/watch.png"
+            src="../../assets/task-icon/visibility.svg"
             alt=""
-          /> -->
+          />
         </div>
 
         <div
