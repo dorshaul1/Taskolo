@@ -1,20 +1,21 @@
 <template>
-    <section class="move-card flex column align-start">
-        <h4>SUGGESTED</h4>
-        <a class="button-link" href="#">Title Here</a>
-        <h4>SELECT DESTINATION</h4>
+    <section class="copy-card flex column align-start">
+        <label for="title">Title</label>
+        <textarea ref="title" name="title" v-model="title"></textarea>
+        <label for="select">Copy to...</label>
         <select-card-position
             :boards="boards"
             :currBoard="currBoard"
             :currGroup="currGroup"
             @task-position-changed="positionChanged"
         />
-        <el-button @click="moveTask" type="success">Move</el-button>
+        <el-button type="success" @click="copyTask">Create card</el-button>
     </section>
 </template>
 
 <script>
 import selectCardPosition from "../../../select-card-position.vue";
+
 export default {
     props: {
         boards: {
@@ -26,9 +27,13 @@ export default {
         currGroup: {
             type: Object,
         },
+        titleProp: {
+            type: String,
+        },
     },
     data() {
         return {
+            title: JSON.parse(JSON.stringify(this.titleProp)),
             copyTo: {
                 boardId: this.currBoard._id,
                 groupId: this.currGroup.id,
@@ -39,17 +44,26 @@ export default {
     methods: {
         positionChanged(copyTo) {
             this.copyTo = copyTo;
+            copyTo.title = this.title;
         },
-        moveTask() {
+        copyTask(copyTo) {
+            copyTo.title = this.title;
             this.$emit("move-task", {
                 copyTo: this.copyTo,
-                isCopy: false,
+                isCopy: true,
             });
         },
     },
-
     components: {
         selectCardPosition,
+    },
+    created() {
+        console.log("move card created", this.boards);
+    },
+    mounted() {
+        this.$nextTick(() => {
+            this.$refs.title.select();
+        });
     },
 };
 </script>
