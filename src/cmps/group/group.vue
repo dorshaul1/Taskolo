@@ -39,7 +39,9 @@
               :group="clonedGroup"
               :boardId="boardId"
             ></task-preview>
+            
           </transition-group>
+
         </draggable>
       </div>
 
