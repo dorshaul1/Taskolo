@@ -1,5 +1,5 @@
 .board-header {
-    height: auto;
+    height: 40px;
     padding: 8px 4px 4px 8px;
     z-index: 5;
 
@@ -12,6 +12,7 @@
     button {
         background-color: hsla(0, 0%, 100%, 0.24);
         color: #fff;
+        // height: 100%;
         & :hover {
             background-color: hsla(0, 0%, 100%, 0.103);
         }
@@ -59,10 +60,10 @@
     ul {
         margin: 8px;
     }
-    .member {
+    .member-avatar {
         width: 28px;
         position: relative;
-        right: 20px;
+        right: 10px;
         img {
             width: 100%;
             border-radius: 50%;
@@ -70,11 +71,35 @@
     }
 
     .add-member-btn {
-        margin-left: 5px;
+        // margin-left: 5px;
         position: relative;
+        height: 32px;
     }
     .show-menu-btn {
         position: absolute;
         right: 4px;
+        border-radius: 3px;
+        color: #fff;
+        // cursor: default;
+        // float: left;
+        font-size: 14px;
+        // font-weight: 400;
+        height: 32px;
+        // line-height: 32px;
+        // margin: 0 4px 4px 0;
+        width: 125px;
+        // box-sizing: border-box;
+        // overflow: hidden;
+        padding-left: 32px;
+        // position: relative;
+        // text-decoration: none;
+        // text-overflow: ellipsis;
+        .el-icon-more{
+            left: 12px;
+            top: 10px;
+            // margin-right: 10px;
+            position: absolute;
+        }
     }
-}
+    }
+

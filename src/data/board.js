@@ -2,12 +2,12 @@ export const board = {
       "_id": "b101",
       "title": "Robot dev proj",
       "createdAt": 1589983468418,
-      "createdBy": {
-            "_id": "u103",
-            "fullname": "ytav",
-            "username": "dorsh",
-            "imgUrl": "http://some-img.jpg",
-      },
+      // "createdBy": {
+      //       "_id": "u103",
+      //       "fullname": "ytav",
+      //       "username": "dorsh",
+      //       "imgUrl": "http://some-img.jpg",
+      // },
       "style": "#565a8f",
       "labels": [
             {
@@ -59,29 +59,30 @@ export const board = {
                   "color": "#c4c9cc"
             }
       ],
-      "members": [{
-            "_id": "u101",
-            "fullname": "Ralph Barnes",
-            "username": "RALFI",
-            "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-      },
-      {
-            "_id": "u102",
-            "fullname": "Mitchell Vargas",
-            "username": "MITCHI",
-            "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-      }, {
-            "_id": "u103",
-            "fullname": "Audrey Scott",
-            "username": "AUDRY",
-            "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-      },
-      {
-            "_id": "u104",
-            "fullname": "Willard Robinson",
-            "username": "wiliardi",
-            "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-      }
+      "members": [
+            // {
+      //       "_id": "u101",
+      //       "fullname": "Ralph Barnes",
+      //       "username": "RALFI",
+      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
+      // },
+      // {
+      //       "_id": "u102",
+      //       "fullname": "Mitchell Vargas",
+      //       "username": "MITCHI",
+      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+      // }, {
+      //       "_id": "u103",
+      //       "fullname": "Audrey Scott",
+      //       "username": "AUDRY",
+      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+      // },
+      // {
+      //       "_id": "u104",
+      //       "fullname": "Willard Robinson",
+      //       "username": "wiliardi",
+      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
+      // }
       ],
       "groups": [
             {
@@ -115,18 +116,19 @@ export const board = {
                                     }
                               ],
                               "watch": true,
-                              "members": [{
-                                    "_id": "u101",
-                                    "fullname": "Ralph Barnes",
-                                    "username": "RALFI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              },
-                              {
-                                    "_id": "u104",
-                                    "fullname": "Eli Gardner",
-                                    "username": "elis",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/women/64.jpg",
-                              }
+                              "members": [
+                              //       {
+                              //       "_id": "u101",
+                              //       "fullname": "Ralph Barnes",
+                              //       "username": "RALFI",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
+                              // },
+                              // {
+                              //       "_id": "u104",
+                              //       "fullname": "Eli Gardner",
+                              //       "username": "elis",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/64.jpg",
+                              // }
                               ],
                         },
                         {
@@ -139,12 +141,12 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          "byMember": {
-                                                "_id": "u103",
-                                                "fullname": "ytav",
-                                                "username": "dorsh",
-                                                "imgUrl": "http://some-img.jpg",
-                                          }
+                                          // "byMember": {
+                                          //       "_id": "u103",
+                                          //       "fullname": "ytav",
+                                          //       "username": "dorsh",
+                                          //       "imgUrl": "http://some-img.jpg",
+                                          // }
                                     }
                               ],
                               "dueDate": 1246841611,
@@ -164,12 +166,12 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          "byMember": {
-                                                "_id": "u103",
-                                                "fullname": "ytav",
-                                                "username": "dorsh",
-                                                "imgUrl": "http://some-img.jpg",
-                                          }
+                                          // "byMember": {
+                                          //       "_id": "u103",
+                                          //       "fullname": "ytav",
+                                          //       "username": "dorsh",
+                                          //       "imgUrl": "http://some-img.jpg",
+                                          // }
                                     }
                               ],
                               "checklists": [
@@ -187,18 +189,19 @@ export const board = {
                               ],
                               "dueDate": 12735915241,
                               "watch": true,
-                              "members": [{
-                                    "_id": "u101",
-                                    "fullname": "Ralph Barnes",
-                                    "username": "RALFI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              },
-                              {
-                                    "_id": "u103",
-                                    "fullname": "Audrey Scott",
-                                    "username": "AUDRY",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                              }
+                              "members": [
+                              //       {
+                              //       "_id": "u101",
+                              //       "fullname": "Ralph Barnes",
+                              //       "username": "RALFI",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
+                              // },
+                              // {
+                              //       "_id": "u103",
+                              //       "fullname": "Audrey Scott",
+                              //       "username": "AUDRY",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+                              // }
                               ],
                         },
 
@@ -217,12 +220,12 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          "byMember": {
-                                                "_id": "u103",
-                                                "fullname": "ytav",
-                                                "username": "dorsh",
-                                                "imgUrl": "http://some-img.jpg",
-                                          }
+                                          // "byMember": {
+                                          //       "_id": "u103",
+                                          //       "fullname": "ytav",
+                                          //       "username": "dorsh",
+                                          //       "imgUrl": "http://some-img.jpg",
+                                          // }
                                     }
                               ],
                               "labelIds": ["l103"],
@@ -254,12 +257,13 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          "byMember": {
-                                                "_id": "u103",
-                                                "fullname": "ytav",
-                                                "username": "dorsh",
-                                                "imgUrl": "http://some-img.jpg",
-                                          }
+                                          // "byMember": 
+                                          // {
+                                          //       "_id": "u103",
+                                          //       "fullname": "ytav",
+                                          //       "username": "dorsh",
+                                          //       "imgUrl": "http://some-img.jpg",
+                                          // }
                                     }
                               ],
                               "checklists": [
@@ -277,24 +281,25 @@ export const board = {
                               ],
                               "dueDate": 12152415211,
                               "watch": true,
-                              "members": [{
-                                    "_id": "u101",
-                                    "fullname": "Ralph Barnes",
-                                    "username": "RALFI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              },
-                              {
-                                    "_id": "u103",
-                                    "fullname": "Audrey Scott",
-                                    "username": "AUDRY",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                              },
-                              {
-                                    "_id": "u104",
-                                    "fullname": "Willard Robinson",
-                                    "username": "wiliardi",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-                              }
+                              "members": [
+                              //       {
+                              //       "_id": "u101",
+                              //       "fullname": "Ralph Barnes",
+                              //       "username": "RALFI",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
+                              // },
+                              // {
+                              //       "_id": "u103",
+                              //       "fullname": "Audrey Scott",
+                              //       "username": "AUDRY",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+                              // },
+                              // {
+                              //       "_id": "u104",
+                              //       "fullname": "Willard Robinson",
+                              //       "username": "wiliardi",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
+                              // }
                               ],
                         },
 
@@ -318,12 +323,12 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          "byMember": {
-                                                "_id": "u103",
-                                                "fullname": "ytav",
-                                                "username": "dorsh",
-                                                "imgUrl": "http://some-img.jpg",
-                                          }
+                                          // "byMember": {
+                                          //       "_id": "u103",
+                                          //       "fullname": "ytav",
+                                          //       "username": "dorsh",
+                                          //       "imgUrl": "http://some-img.jpg",
+                                          // }
                                     }
                               ],
                               "checklists": [
@@ -344,17 +349,17 @@ export const board = {
                               "watch": true,
                               "attachment": "https://i.picsum.photos/id/608/200/200.jpg?hmac=-p1htX-mFieavdRDr9vUIJKyDHCXZAY5B35nhdcgIgQ",
                               "members": [
-                                    {
-                                          "_id": "u102",
-                                          "fullname": "Mitchell Vargas",
-                                          "username": "MITCHI",
-                                          "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-                                    }, {
-                                          "_id": "u103",
-                                          "fullname": "Audrey Scott",
-                                          "username": "AUDRY",
-                                          "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                                    },
+                                    // {
+                                    //       "_id": "u102",
+                                    //       "fullname": "Mitchell Vargas",
+                                    //       "username": "MITCHI",
+                                    //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+                                    // }, {
+                                    //       "_id": "u103",
+                                    //       "fullname": "Audrey Scott",
+                                    //       "username": "AUDRY",
+                                    //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+                                    // },
                               ],
                         },
                         {
@@ -370,12 +375,12 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          "byMember": {
-                                                "_id": "u103",
-                                                "fullname": "ytav",
-                                                "username": "dorsh",
-                                                "imgUrl": "http://some-img.jpg",
-                                          }
+                                          // "byMember": {
+                                          //       "_id": "u103",
+                                          //       "fullname": "ytav",
+                                          //       "username": "dorsh",
+                                          //       "imgUrl": "http://some-img.jpg",
+                                          // }
                                     }
                               ],
                               "checklists": [
@@ -393,24 +398,25 @@ export const board = {
                               ],
                               "dueDate": 161242111,
                               "watch": true,
-                              "members": [{
-                                    "_id": "u101",
-                                    "fullname": "Ralph Barnes",
-                                    "username": "RALFI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              },
-                              {
-                                    "_id": "u103",
-                                    "fullname": "Audrey Scott",
-                                    "username": "AUDRY",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                              },
-                              {
-                                    "_id": "u104",
-                                    "fullname": "Willard Robinson",
-                                    "username": "wiliardi",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-                              }
+                              "members": [
+                              //       {
+                              //       "_id": "u101",
+                              //       "fullname": "Ralph Barnes",
+                              //       "username": "RALFI",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
+                              // },
+                              // {
+                              //       "_id": "u103",
+                              //       "fullname": "Audrey Scott",
+                              //       "username": "AUDRY",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+                              // },
+                              // {
+                              //       "_id": "u104",
+                              //       "fullname": "Willard Robinson",
+                              //       "username": "wiliardi",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
+                              // }
                               ],
                         },
                         {
@@ -426,12 +432,12 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          "byMember": {
-                                                "_id": "u103",
-                                                "fullname": "ytav",
-                                                "username": "dorsh",
-                                                "imgUrl": "http://some-img.jpg",
-                                          }
+                                          // "byMember": {
+                                          //       "_id": "u103",
+                                          //       "fullname": "ytav",
+                                          //       "username": "dorsh",
+                                          //       "imgUrl": "http://some-img.jpg",
+                                          // }
                                     }
                               ],
                               "checklists": [
@@ -449,24 +455,25 @@ export const board = {
                               ],
                               "dueDate": 12356215211,
                               "watch": true,
-                              "members": [{
-                                    "_id": "u101",
-                                    "fullname": "Ralph Barnes",
-                                    "username": "RALFI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              },
-                              {
-                                    "_id": "u102",
-                                    "fullname": "Mitchell Vargas",
-                                    "username": "MITCHI",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-                              },
-                              {
-                                    "_id": "u104",
-                                    "fullname": "Willard Robinson",
-                                    "username": "wiliardi",
-                                    "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-                              }
+                              "members": [
+                              //       {
+                              //       "_id": "u101",
+                              //       "fullname": "Ralph Barnes",
+                              //       "username": "RALFI",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
+                              // },
+                              // {
+                              //       "_id": "u102",
+                              //       "fullname": "Mitchell Vargas",
+                              //       "username": "MITCHI",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+                              // },
+                              // {
+                              //       "_id": "u104",
+                              //       "fullname": "Willard Robinson",
+                              //       "username": "wiliardi",
+                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
+                              // }
                               ],
                         },
 
@@ -543,10 +550,10 @@ export const board = {
                   "txt": "Changed Color",
                   "createdAt": 154514,
                   "byMember": {
-                        "_id": "u103",
-                        "fullname": "ytav",
-                        "username": "ytav P",
-                        "imgUrl": "http://some-img.jpg",
+                        "_id": "u101",
+                        "fullname": "Randy Kelly",
+                        "username": "silverswan131",
+                        "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
                   },
                   "task": {
                         "id": "QWEWQ",
@@ -558,10 +565,10 @@ export const board = {
                   "txt": "Adding Task",
                   "createdAt": 154414,
                   "byMember": {
-                        "_id": "u101",
-                        "fullname": "dor shaul",
-                        "username": "dorsh",
-                        "imgUrl": "http://some-img.jpg",
+                        "_id": "u102",
+                        "fullname": "Jill Chambers",
+                        "username": "jilly",
+                        "imgUrl": "https://randomuser.me/api/portraits/thumb/women/44.jpg",
                   },
                   "task": {
                         "id": "c1vds02",

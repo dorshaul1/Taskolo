@@ -1,15 +1,15 @@
 .app-header {
     position: relative;
-    height: 32px;
+    height: 40px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.11);
     padding: 4px;
     z-index: 10;
 
     .app-header-container {
-        padding: 4px;;
+        padding: 4px;
     }
-    
+
     button {
         background-color: hsla(0, 0%, 100%, 0.24);
         color: #fff;
@@ -19,17 +19,18 @@
         }
     }
 
-        nav {
-            & > * {
-                margin-right: 4px;
-                height: 25px;
-                margin-top: 7px;
-            }
-            .boards-btn {
-                width: 87px;
+    nav {
+        & > * {
+            margin-right: 4px;
+            height: 100%;
+            // margin-top: 7px;
+        }
+        .boards-btn {
+            width: 87px;
         }
         .home-btn {
             width: 32px;
+            height: 32px;
         }
     }
     .logo {

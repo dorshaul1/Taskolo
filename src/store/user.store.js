@@ -16,6 +16,9 @@ export const userStore = {
         watchedUser({ watchedUser }) { return watchedUser }
     },
     mutations: {
+        setUsers(state, { users }) {
+            state.users = users;
+        },
         setLoggedinUser(state, { user }) {
             state.loggedinUser = user;
         },
@@ -33,6 +36,21 @@ export const userStore = {
         },
     },
     actions: {
+        async loadUsers(context) {
+            try {
+                const users = await userService.query();
+                console.log(users, "loadUsers in store")
+                context.commit({ type: 'setUsers', users })
+                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
+                //     context.commit({ type: 'addBoard', board })
+                // })
+
+            } catch (err) {
+                console.log('boardStore: Error in loadBoards', err)
+                throw err
+            }
+        },
         async login({ commit }, { userCred }) {
             try {
                 const user = await userService.login(userCred);
