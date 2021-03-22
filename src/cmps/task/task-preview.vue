@@ -77,7 +77,12 @@
         </div>
 
         <div class="desc" v-if="task.description">
-          <font-awesome-icon :icon="['fas', 'align-left']" />
+          <!-- <font-awesome-icon :icon="['fas', 'align-left']" /> -->
+                    <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/left-alignment.svg"
+            alt=""
+          />
         </div>
 
         <div class="comments" v-if="task.comments">
