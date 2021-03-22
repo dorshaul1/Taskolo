@@ -2,6 +2,7 @@
   <section class="side-menu-container flex column">
     <!-- <component :is="currComponent"></component> -->
     <button @click="closeMenu" class="close-menu flex center">X</button>
+    <!-- <component :is="currCmp"></component> -->
     <section class="side-menu-content flex column align-center">
       <h1>Menu</h1>
       <ul class="clean-list">
@@ -37,6 +38,7 @@ export default {
   props: {
     board: {
       type: Object,
+      // currCmp: 'menu-home'
     },
   },
   name: "side-menu",
