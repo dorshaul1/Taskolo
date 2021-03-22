@@ -1,7 +1,7 @@
 <template>
   <section class="side-menu-container flex column">
     <!-- <component :is="currComponent"></component> -->
-    <button @click="closeMenu" class="close-menu">X</button>
+    <button @click="closeMenu" class="close-menu flex center">X</button>
     <section class="side-menu-content flex column align-center">
       <h1>Menu</h1>
       <ul class="clean-list">
