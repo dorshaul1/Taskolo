@@ -33,14 +33,14 @@ export default {
     data() {
         return {
             cover: {
-                color: "#fff",
+                bgColor: "#fff",
                 isCover: false,
             },
         };
     },
     methods: {
         colorClicked(color) {
-            this.cover.color = color;
+            this.cover.bgColor = color;
             this.$emit("update-cover", this.cover);
         },
         coverStateClicked(isCover) {
