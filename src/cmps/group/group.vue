@@ -41,32 +41,31 @@
             ></task-preview>
           </transition-group>
         </draggable>
-      </div>
+        <div class="group-footer flex space-between">
+          <section v-show="!isTakeTask">
+            <h3 @click="openTaskAdd" class="add-new-Card">
+              <span>+</span> Add another card
+            </h3>
+          </section>
 
-      <div class="group-footer flex space-between">
-        <section v-show="!isTakeTask">
-          <h3 @click="openTaskAdd" class="add-new-Card">
-            <span>+</span> Add another card
-          </h3>
-        </section>
+          <section v-show="isTakeTask" class="take-new-task flex">
+            <textarea
+              class="task-Add-input"
+              ref="taskTitle"
+              v-show="isTakeTask"
+              name="NoteTxt"
+              v-model="newTask.title"
+              placeholder="Enter a title for this card..."
+              rows="2"
+            >
+            </textarea>
 
-        <section v-show="isTakeTask" class="take-new-task flex">
-          <textarea
-            class="task-Add-input"
-            ref="taskTitle"
-            v-show="isTakeTask"
-            name="NoteTxt"
-            v-model="newTask.title"
-            placeholder="Enter a title for this card..."
-            rows="2"
-          >
-          </textarea>
-
-          <div class="task-btn-container flex space-between">
-            <button @click="addNewTask" class="add-task">Add card</button>
-            <button @click="closeTaskAdd">x</button>
-          </div>
-        </section>
+            <div class="task-btn-container flex">
+              <button @click="addNewTask" class="add-task">Add card</button>
+              <button @click="closeTaskAdd" class="exit-task">x</button>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
@@ -140,11 +139,11 @@ export default {
         boardCopy.groups[currGroupIdx].tasks.push({
           id: utilService.makeId(),
           title: this.newTask.title,
-          style: {bgColor:''},
+          style: { bgColor: "" },
         });
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.closeTaskAdd();
-        this.openTaskAdd()
+        this.openTaskAdd();
       } catch (err) {
         console.log("group-cmp: error with try to add new task", err);
       }
