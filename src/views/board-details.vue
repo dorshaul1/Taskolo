@@ -14,6 +14,16 @@
       :board="currBoard"
     />
 
+<<<<<<< HEAD
+    <main>
+      <draggable
+        class="flex board-details"
+        v-model="currBoard.groups"
+        group="group"
+        @start="drag = true"
+        @end="dragDone"
+      >
+=======
     <main class="flex board-details">
       <div class="groups" v-for="group in currBoard.groups" :key="group.id">
         <!-- <draggable
@@ -22,43 +32,50 @@
           @start="drag = true"
           @end="dragDone"
         > -->
+>>>>>>> 90316dd57b5229a234b542536612be1c9fd09cf0
         <group
+          v-for="group in currBoard.groups"
+          :key="group.id"
           @drag-done="dragDone"
           class="main-group-container"
           :group="group"
           :boardId="currBoard._id"
         ></group>
+<<<<<<< HEAD
+=======
         <!-- </draggable> -->
       </div>
+>>>>>>> 90316dd57b5229a234b542536612be1c9fd09cf0
 
-      <div class="new-group-container">
-        <section v-show="!isTakeGroup">
-          <h3
-            @click="openGroupkAdd"
-            class="add-new-group flex justify-center align-center"
-          >
-            <span>+</span> Add another list
-          </h3>
-        </section>
+        <div class="new-group-container">
+          <section v-show="!isTakeGroup">
+            <h3
+              @click="openGroupkAdd"
+              class="add-new-group flex justify-center align-center"
+            >
+              <span>+</span> Add another list
+            </h3>
+          </section>
 
-        <section v-show="isTakeGroup" class="take-new-group flex">
-          <textarea
-            class="group-Add-input"
-            ref="groupTitle"
-            v-show="isTakeGroup"
-            name="NoteTxt"
-            v-model="newGroup.title"
-            placeholder="Enter a title for this card..."
-            rows="2"
-          >
-          </textarea>
+          <section v-show="isTakeGroup" class="take-new-group flex">
+            <textarea
+              class="group-Add-input"
+              ref="groupTitle"
+              v-show="isTakeGroup"
+              name="NoteTxt"
+              v-model="newGroup.title"
+              placeholder="Enter a title for this card..."
+              rows="2"
+            >
+            </textarea>
 
-          <div class="flex">
-            <button @click="addNewGroup" class="add-group">Add list</button>
-            <button @click="closeGroupAdd">x</button>
-          </div>
-        </section>
-      </div>
+            <div class="flex">
+              <button @click="addNewGroup" class="add-group">Add list</button>
+              <button @click="closeGroupAdd">x</button>
+            </div>
+          </section>
+        </div>
+      </draggable>
     </main>
     <router-view />
   </section>
@@ -138,6 +155,8 @@ export default {
     },
     async dragDone() {
       console.log("drag done in board details cmp");
+<<<<<<< HEAD
+=======
       // //clone boards clone
       const clone = require("rfdc");
       // const boardsCopy = clone({ proto: true })(Object.create(this.getBoards));
@@ -148,13 +167,19 @@ export default {
       );
       boardsCopy.splice(currBoardIdx, 1, this.currBoard);
 
+>>>>>>> 90316dd57b5229a234b542536612be1c9fd09cf0
       await this.$store.dispatch({
         type: "updateBoard",
         board: this.currBoard,
       });
     },
     async dragGroup() {
-      // console.log("drag gropps");
+      console.log("drag gropps");
+
+      // await this.$store.dispatch({
+      //   type: "updateBoard",
+      //   board: this.currBoard,
+      // });
       // try {
       //   //clone change all the groups
       //   const clone = require("rfdc");
