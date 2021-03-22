@@ -39,9 +39,7 @@
               :group="clonedGroup"
               :boardId="boardId"
             ></task-preview>
-
           </transition-group>
-
         </draggable>
       </div>
 
@@ -95,7 +93,7 @@ export default {
       isTakeTask: false,
       isGroupMenuOpen: false,
       isEdititle: false,
-      drag: false
+      drag: false,
     };
   },
   computed: {
@@ -142,6 +140,7 @@ export default {
         boardCopy.groups[currGroupIdx].tasks.push({
           id: utilService.makeId(),
           title: this.newTask.title,
+          style: {},
         });
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.closeTaskAdd();
