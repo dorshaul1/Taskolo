@@ -14,17 +14,17 @@
                   // height: 25px;
                   font-size: 28px;
                   padding: 8px;
-                  top:7px;
+                  top: 7px;
                   border-radius: 3px;
                   color: #6b778c;
-                  transition: .3s;
-                  
+                  transition: 0.3s;
+
                   cursor: pointer;
                   position: absolute;
                   // &:hover{
-                        // background-color: rgba(0, 0, 0, 0.12);
-                        background-color: $hover;
-                        color: rgba(0, 0, 0, 0.712);
+                  // background-color: rgba(0, 0, 0, 0.12);
+                  background-color: $hover;
+                  color: rgba(0, 0, 0, 0.712);
                   // }
             }
             .task-edit {
@@ -52,13 +52,30 @@
             color: #6b778c;
             flex-wrap: wrap;
             align-items: center;
+            // img{
+            //       width: 10px;
+            // }
             & > * {
                   padding: 5px;
                   margin-inline-end: 8px;
+                  // width: 20px;
 
                   &:first-child {
                         padding-inline-start: 0px;
                   }
+            }
+
+            .checklist img {
+                  position: static;
+            }
+
+            .watch {
+                  padding: 0px;
+            }
+            
+            .watch-icon {
+                  width: 18px;
+                  margin-block-start: 3px;
             }
       }
 
@@ -132,15 +149,21 @@
             }
 
             .members {
-                  justify-content: flex-end;
-                  margin: 5px;
+                  display: flex;
+                  // margin: 5px;
                   list-style-type: none;
+                  margin-left: auto;
+                  margin-right: 0;
+                  order: 2;
+                  padding-inline-end: 0px;
+                  padding-block-end: 3px;
             }
 
             .member {
                   width: 25px;
                   height: 25px;
                   border-radius: 50%;
+                  margin-inline-start: 3px;
             }
       }
 }

@@ -41,7 +41,7 @@
       title="Members"
     >
       <!-- <members :members="this.currBoard.members" @add-member="addMember" /> -->
-      <invite-members :users="getUsers" @add-user="addUser" />
+      <invite-members/>
     </base-task-modal>
 
     <button class="show-menu-btn" @click="openMenu">
@@ -78,6 +78,7 @@ export default {
       return this.$store.getters.boards;
     },
     getUsers() {
+      // console.log('this.$store.getters.users:', this.$store.getters.users)
       return this.$store.getters.users;
     },
     // currBoard() {
@@ -110,40 +111,40 @@ export default {
       // console.log( 'open')
       this.$emit("open"); // console.log("this.isMenuOpen:", this.isMenuOpen);
     },
-    addUser(member) {
-      try {
-        // task clone
-        const clone = require("rfdc");
-        const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
+    // addUser(member) {
+      // try {
+      //   // task clone
+      //   const clone = require("rfdc");
+      //   const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
 
-        //toggle members
-        let boardMembers = boardCopy.members;
-        if (!boardMembers) boardMembers = [];
-        const isBoardMember = boardMembers.some(
-          (boardMember) => boardMember._id === member._id
-        );
+      //   //toggle members
+      //   let boardMembers = boardCopy.members;
+      //   if (!boardMembers) boardMembers = [];
+      //   const isBoardMember = boardMembers.some(
+      //     (boardMember) => boardMember._id === member._id
+      //   );
 
-        console.log("isBoardMember", isBoardMember);
+      //   console.log("isBoardMember", isBoardMember);
 
-        if (!isBoardMember) {
-          console.log("pushing...");
-          boardMembers.push(member);
-        } else {
-          console.log("deleteing......");
-          const memberIdx = boardMembers.findIndex((m) => {
-            m._id = member._id;
-          });
-          boardMembers.splice(memberIdx, 1);
-        }
+      //   if (!isBoardMember) {
+      //     console.log("pushing...");
+      //     boardMembers.push(member);
+      //   } else {
+      //     console.log("deleteing......");
+      //     const memberIdx = boardMembers.findIndex((m) => {
+      //       m._id = member._id;
+      //     });
+      //     boardMembers.splice(memberIdx, 1);
+      //   }
 
-        boardCopy.members = boardMembers;
+      //   boardCopy.members = boardMembers;
 
-        // change values
-        this.$store.dispatch({ type: "updateBoard", board: boardCopy });
-      } catch (err) {
-        console.log(err);
-      }
-    },
+      //   // change values
+      //   this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+      // } catch (err) {
+      //   console.log(err);
+      // }
+    // },
   },
   components: {
     members,

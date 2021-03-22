@@ -38,7 +38,7 @@ export const user = [{
       "fullname": "Gloria Price",
       "username": "glori",
       "password": "secret",
-      "imgUrl": "https://randomuser.me/api/portraits/thumb/women/24.jpg",
+      "imgUrl": "https://randomuser.me/api/portraits/thumb/women/25.jpg",
       // "mentions": [{
       //       "id": "m101",
       //       "boardId": "m101",
@@ -50,25 +50,25 @@ export const user = [{
       "fullname": "Tamara Perez",
       "username": "tami",
       "password": "secret",
-      "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+      "imgUrl": "https://randomuser.me/api/portraits/thumb/women/14.jpg",
       // "mentions": [{
       //       "id": "m101",
       //       "boardId": "m101",
       //       "taskId": "t101"
       // }]
 },
-{
-      "_id": "u10e5",
-      "fullname": "Phillip Jones",
-      "username": "phili",
-      "password": "secret",
-      "imgUrl": "https://randomuser.me/api/portraits/thumb/men/12.jpg",
-      // "mentions": [{
-      //       "id": "m101",
-      //       "boardId": "m101",
-      //       "taskId": "t101"
-      // }]
-},
+// {
+//       "_id": "u10e5",
+//       "fullname": "Phillip Jones",
+//       "username": "phili",
+//       "password": "secret",
+//       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/12.jpg",
+//       // "mentions": [{
+//       //       "id": "m101",
+//       //       "boardId": "m101",
+//       //       "taskId": "t101"
+//       // }]
+// },
 {
       "_id": "u10g6",
       "fullname": "Roberto Fox",
@@ -98,7 +98,7 @@ export const user = [{
       "fullname": "Ella Gregory",
       "username": "elliy",
       "password": "secret",
-      "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
+      "imgUrl": "https://randomuser.me/api/portraits/thumb/women/19.jpg",
       // "mentions": [{
       //       "id": "m101",
       //       "boardId": "m101",
