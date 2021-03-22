@@ -139,16 +139,6 @@ export default {
     },
     async dragDone() {
       console.log("drag done in board details cmp");
-      // //clone boards clone
-      const clone = require("rfdc");
-      // const boardsCopy = clone({ proto: true })(Object.create(this.getBoards));
-      const boardsCopy = JSON.parse(JSON.stringify(this.getBoards));
-
-      var currBoardIdx = this.getBoards.findIndex(
-        (board) => board._id === this.currBoard._id
-      );
-      boardsCopy.splice(currBoardIdx, 1, this.currBoard);
-
       await this.$store.dispatch({
         type: "updateBoard",
         board: this.currBoard,
