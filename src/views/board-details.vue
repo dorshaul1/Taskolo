@@ -14,6 +14,7 @@
       :board="currBoard"
     />
 
+<<<<<<< HEAD
     <main>
       <draggable
         class="flex board-details"
@@ -22,6 +23,16 @@
         @start="drag = true"
         @end="dragDone"
       >
+=======
+    <main class="flex board-details">
+      <div class="groups" v-for="group in currBoard.groups" :key="group.id">
+        <!-- <draggable
+          v-model="currBoard.groups"
+          group="people"
+          @start="drag = true"
+          @end="dragDone"
+        > -->
+>>>>>>> 90316dd57b5229a234b542536612be1c9fd09cf0
         <group
           v-for="group in currBoard.groups"
           :key="group.id"
@@ -30,6 +41,11 @@
           :group="group"
           :boardId="currBoard._id"
         ></group>
+<<<<<<< HEAD
+=======
+        <!-- </draggable> -->
+      </div>
+>>>>>>> 90316dd57b5229a234b542536612be1c9fd09cf0
 
         <div class="new-group-container">
           <section v-show="!isTakeGroup">
@@ -139,6 +155,19 @@ export default {
     },
     async dragDone() {
       console.log("drag done in board details cmp");
+<<<<<<< HEAD
+=======
+      // //clone boards clone
+      const clone = require("rfdc");
+      // const boardsCopy = clone({ proto: true })(Object.create(this.getBoards));
+      const boardsCopy = JSON.parse(JSON.stringify(this.getBoards));
+
+      var currBoardIdx = this.getBoards.findIndex(
+        (board) => board._id === this.currBoard._id
+      );
+      boardsCopy.splice(currBoardIdx, 1, this.currBoard);
+
+>>>>>>> 90316dd57b5229a234b542536612be1c9fd09cf0
       await this.$store.dispatch({
         type: "updateBoard",
         board: this.currBoard,

@@ -26,7 +26,7 @@
       <li
         v-for="member in this.currBoard.members"
         :key="member._id"
-        class="member"
+        class="member-avatar"
       >
         <img :src="member.imgUrl" alt="-" />
       </li>
@@ -41,7 +41,7 @@
       title="Members"
     >
       <!-- <members :members="this.currBoard.members" @add-member="addMember" /> -->
-      <members-invite @add-member="addMember" />
+      <invite-members :users="getUsers" @add-user="addUser" />
     </base-task-modal>
 
     <button class="show-menu-btn" @click="openMenu">
@@ -54,6 +54,7 @@
 // import sideMenu from "./side-menu";
 import members from "../task/task-option/task-details/members";
 import baseTaskModal from "../base-task-modal";
+import inviteMembers from '../invite-members'
 
 export default {
   name: "board-header",
@@ -75,6 +76,9 @@ export default {
   computed: {
     getBoards() {
       return this.$store.getters.boards;
+    },
+    getUsers() {
+      return this.$store.getters.users;
     },
     // currBoard() {
     //   return this.$store.getters.currBoard;
@@ -106,7 +110,7 @@ export default {
       // console.log( 'open')
       this.$emit("open"); // console.log("this.isMenuOpen:", this.isMenuOpen);
     },
-    addMember(member) {
+    addUser(member) {
       try {
         // task clone
         const clone = require("rfdc");
@@ -144,6 +148,7 @@ export default {
   components: {
     members,
     baseTaskModal,
+    inviteMembers
   },
   created() {
     // console.log(this.currBoard._id);
