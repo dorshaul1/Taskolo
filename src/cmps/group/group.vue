@@ -144,6 +144,7 @@ export default {
         });
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.closeTaskAdd();
+        this.openTaskAdd()
       } catch (err) {
         console.log("group-cmp: error with try to add new task", err);
       }
