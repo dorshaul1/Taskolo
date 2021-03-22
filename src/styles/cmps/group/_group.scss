@@ -43,6 +43,12 @@
             overflow-y: auto;
             margin-inline-end: 4px;
             margin-inline-start: 4px;
+            padding-bottom: 8px;
+      }
+      
+      .group-main{
+            // max-height: 100%;
+            padding-bottom: 8px;
       }
 
       .group-main-body::-webkit-scrollbar {
@@ -67,8 +73,8 @@
 
       .group-main-body::-webkit-scrollbar-thumb {
             background: #bfc4ce;
-            border-radius: 30px;
             scroll-margin-right: 20px;
+            border-radius: 30px;
       }
 
       .add-new-Card {
