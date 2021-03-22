@@ -5,6 +5,11 @@
         font-weight: 500;
     }
 
+.el-button.el-button--default {
+    width: 100%;
+}
+
+
     .size-buttons {
         div{
             width: 136px;
@@ -26,9 +31,14 @@
 
     .attachtment-container {
         clear: both;
+        width: 100%;
 
         button {
             width: 100%;
         }
     }
 }
+
+    button{
+        width: 100%;
+    }
