@@ -12,8 +12,15 @@
       </div>
 
       <div class="title flex align-start column">
-        <h1>{{ task.title }}</h1>
-
+        <h1 @click="taskTitleEdit"  click="taskTitleEdit">{{ task.title }}</h1>
+        <!-- v-if="!isTitleEdit" -->
+        <!-- <textarea
+          class="title-input"
+          ref="taskTitle"
+          v-else
+          rows="6"
+          v-model="titleTxt"
+        ></textarea> -->
         <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
       </div>
 
@@ -210,6 +217,7 @@ export default {
       isDescriptionEdit: false,
       labelToEdit: null, //from labels to edit labels
       editedLabel: null,
+      isTitleEdit: false,
     };
   },
   methods: {
@@ -416,6 +424,14 @@ export default {
       taskCopy.description = updateDescription;
       this.$store.dispatch({ type: "updateTask", task: taskCopy });
     },
+    async taskTitleEdit() {
+      this.isTitleEdit = true;
+      const clone = require("rfdc");
+      const taskCopy = clone({ proto: true })(Object.create(this.task));
+      console.log('editing title')
+      // taskCopy.title = updateDescription;
+      // this.$store.dispatch({ type: "updateTask", task: taskCopy });
+    },
   },
   // deleteChecklist(checklistId) {
   //     const clone = require("rfdc");
@@ -450,7 +466,6 @@ export default {
     taskId() {
       return this.$route.params.taskId;
     },
-
     labelsPreview() {
       return this.labelsIdsToLabels();
     },
@@ -483,7 +498,6 @@ export default {
       immediate: true,
     },
   },
-
   created() {
     // console.log("task", this.task);
     // console.log(board, "board in task details");
