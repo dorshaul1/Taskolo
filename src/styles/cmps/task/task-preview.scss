@@ -133,6 +133,9 @@
 
             .members {
                   justify-content: flex-end;
+                  align-self: flex-end;
+                  justify-self: flex-end;
+                  float: right;
                   margin: 5px;
                   list-style-type: none;
             }
