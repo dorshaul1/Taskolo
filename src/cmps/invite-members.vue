@@ -13,7 +13,7 @@
                 <!-- </div> -->
                 <h3>{{ user.fullname }}</h3>
             </div>
-            <a v-show="isAlreadyTaskUser(user._id)" href="#"
+            <a v-if="isAlreadyTaskUser(user._id)" href="#"
                 ><i class="el-icon-check"></i>
             </a>
         </div>
@@ -32,6 +32,7 @@ export default {
     },
     methods: {
         addUser(user) {
+            console.log('this user is', user)
             this.$emit("add-user", user);
         },
         isAlreadyTaskUser(userId) {

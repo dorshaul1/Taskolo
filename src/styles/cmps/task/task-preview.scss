@@ -14,17 +14,17 @@
                   // height: 25px;
                   font-size: 28px;
                   padding: 8px;
-                  top:7px;
+                  top: 7px;
                   border-radius: 3px;
                   color: #6b778c;
-                  transition: .3s;
-                  
+                  transition: 0.3s;
+
                   cursor: pointer;
                   position: absolute;
                   // &:hover{
-                        // background-color: rgba(0, 0, 0, 0.12);
-                        background-color: $hover;
-                        color: rgba(0, 0, 0, 0.712);
+                  // background-color: rgba(0, 0, 0, 0.12);
+                  background-color: $hover;
+                  color: rgba(0, 0, 0, 0.712);
                   // }
             }
             .task-edit {
@@ -63,6 +63,19 @@
                   &:first-child {
                         padding-inline-start: 0px;
                   }
+            }
+
+            .checklist img {
+                  position: static;
+            }
+
+            .watch {
+                  padding: 0px;
+            }
+            
+            .watch-icon {
+                  width: 18px;
+                  margin-block-start: 3px;
             }
       }
 

@@ -59,7 +59,7 @@
         <div class="watch" v-if="task.watch">
           <!-- <font-awesome-icon :icon="['far', 'eye']" /> -->
           <img
-            class="task-prev-icon"
+            class="watch-icon"
             src="../../assets/task-icon/visibility.svg"
             alt=""
           />
@@ -98,7 +98,7 @@
           />
           <span class="checklist-display"> {{ checklistForDisplay }}</span>
         </div>
-        
+
         <div class="members flex" v-if="task.members">
           <li class="memeber" v-for="member in task.members" :key="member._id">
             <img class="task-prev-icon member" :src="member.imgUrl" alt="" />
