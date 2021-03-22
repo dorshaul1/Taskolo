@@ -214,6 +214,34 @@
                         />
                     </base-task-modal>
 
+                    <!-- COPY -->
+                    <a
+                        class="link-button"
+                        href="#"
+                        title="Copy card"
+                        @click="toggleSection('Copy')"
+                    >
+                        <img
+                            class="task-prev-icon"
+                            src="../assets/task-icon/attachment.png"
+                            alt=""
+                        />
+                        <span>Copy</span>
+                    </a>
+                    <base-task-modal
+                        title="Copy card"
+                        v-if="isCopyCardOpen"
+                        @close-modal="isCopyCardOpen = false"
+                    >
+                        <copy-card
+                            :boards="boards"
+                            :currBoard="board"
+                            :currGroup="group"
+                            :titleProp="task.title"
+                            @move-task="copyTask"
+                        />
+                    </base-task-modal>
+
                     <!-- MOVE -->
                     <a
                         class="link-button"
@@ -233,7 +261,34 @@
                         v-if="isMoveCardOpen"
                         @close-modal="isMoveCardOpen = false"
                     >
-                        <moveCard :boards="boards" :currBoard="board" :currGroup="group" />
+                        <move-card
+                            :boards="boards"
+                            :currBoard="board"
+                            :currGroup="group"
+                            @move-task="copyTask"
+                        />
+                    </base-task-modal>
+
+                    <!-- DELETE -->
+                    <a
+                        class="link-button"
+                        href="#"
+                        title="Delete card"
+                        @click="toggleSection('Delete')"
+                    >
+                        <img
+                            class="task-prev-icon"
+                            src="../assets/task-icon/attachment.png"
+                            alt=""
+                        />
+                        <span>Delete</span>
+                    </a>
+                    <base-task-modal
+                        title="Delete card?"
+                        v-if="isDeleteCardOpen"
+                        @close-modal="isDeleteCardOpen = false"
+                    >
+                        <delete-card @delete-card="deleteCard" />
                     </base-task-modal>
                 </section>
             </div>
@@ -257,7 +312,9 @@ import labels from "../cmps/task/task-option/task-details/labels.vue";
 import labelEdit from "../cmps/task/task-option/task-details/labels_edit";
 import attachment from "../cmps/task/task-option/task-details/task-attachment";
 import cover from "../cmps/task/task-option/task-details/cover-color";
+import copyCard from "../cmps/task/task-option/task-details/copy-card";
 import moveCard from "../cmps/task/task-option/task-details/move-card";
+import deleteCard from "../cmps/task/task-option/task-details/delete-card";
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
@@ -277,6 +334,8 @@ export default {
             isAttachmentOpen: false,
             isDescriptionEdit: false,
             isCoverOpen: false,
+            isCopyCardOpen: false,
+            isDeleteCardOpen: false,
             isMoveCardOpen: false,
             labelToEdit: null, //from labels to edit labels
             editedLabel: null,
@@ -303,8 +362,14 @@ export default {
                 case "Cover":
                     this.isCoverOpen = !this.isCoverOpen;
                     break;
+                case "Copy":
+                    this.isCopyCardOpen = !this.isCopyCardOpen;
+                    break;
                 case "Move":
                     this.isMoveCardOpen = !this.isMoveCardOpen;
+                    break;
+                case "Delete":
+                    this.isDeleteCardOpen = !this.isDeleteCardOpen;
                     break;
                 default:
                     break;
@@ -512,6 +577,58 @@ export default {
             console.log("taskCopy.style", taskCopy.style);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
+        copyTask(newCardPos) {
+            console.log("COPING TO....", newCardPos);
+            const clone = require("rfdc");
+            //TODO: Support board to board copy
+
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+
+            //find group and push the curr task
+            let groupIdx;
+            let groupToCopy = this.board.groups.find((group, idx) => {
+                groupIdx = idx;
+                return group.id === newCardPos.copyTo.groupId;
+            });
+            groupToCopy = clone({ proto: true })(Object.create(groupToCopy));
+
+            if (newCardPos.isCopy) {
+                //new id + title to copied task
+                taskCopy.id = utilService.makeId();
+                taskCopy.title = newCardPos.copyTo.title;
+            }
+            //"insert" to specific pos
+            groupToCopy.tasks.splice(newCardPos.copyTo.position, 0, taskCopy);
+
+            if (!newCardPos.isCopy) this.deleteCard();
+            //replace old group with updated group
+            const boardCopy = clone({ proto: true })(Object.create(this.board));
+            boardCopy.groups.splice(groupIdx, 1, groupToCopy);
+            this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+        },
+        async deleteCard() {
+            console.log("deleting task....");
+            const clone = require("rfdc");
+
+            const boardCopy = clone({ proto: true })(Object.create(this.board));
+            const groups = boardCopy.groups;
+
+            const currGroupIdx = groups.findIndex(
+                (group) => group.id === this.group.id
+            );
+
+            var currTaskIdx = groups[currGroupIdx].tasks.findIndex(
+                (task) => task.id === this.task.id
+            );
+
+            boardCopy.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
+            //update board
+            await this.$store.dispatch({
+                type: "updateBoard",
+                board: boardCopy,
+            });
+            this.isDeleteCardOpen = false;
+        },
     },
     // deleteChecklist(checklistId) {
     //     const clone = require("rfdc");
@@ -577,6 +694,8 @@ export default {
         attachment,
         BaseTaskModal,
         cover,
+        copyCard,
+        deleteCard,
         moveCard,
     },
 
