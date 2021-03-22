@@ -233,7 +233,7 @@
                         v-if="isMoveCardOpen"
                         @close-modal="isMoveCardOpen = false"
                     >
-                        <moveCard :boards="boards" />
+                        <moveCard :boards="boards" :currBoard="board" :currGroup="group" />
                     </base-task-modal>
                 </section>
             </div>
