@@ -29,7 +29,12 @@
                         v-if="labelsPreview"
                         @label-clicked="isLabelsOpen = true"
                     />
-                    <description-preview />
+
+                    <description-preview
+                        @updateDesc="updateDescription"
+                        :task="this.task"
+                    />
+
                     <checklist-preview
                         v-for="checklist in task.checklists"
                         :key="checklist.id"
@@ -54,12 +59,11 @@
                         title="Members"
                         @click="toggleSection('Members')"
                     >
-                        <font-awesome-icon :icon="['far', 'eye']" />
-                        <!-- <img
-                            class="task-prev-icon"
-                            src="../assets/task-icon/member.png"
-                            alt=""
-                        /> -->
+                        <font-awesome-icon
+                            class="icon"
+                            :icon="['far', 'user']"
+                        />
+
                         <span>Members</span>
                     </a>
 
@@ -81,11 +85,15 @@
                         title="Labels"
                         @click="toggleSection('Labels')"
                     >
-                        <img
-                            class="task-prev-icon"
-                            src="../assets/task-icon/tag.png"
-                            alt=""
+                        <font-awesome-icon
+                            class="icon"
+                            :icon="['fas', 'tag']"
                         />
+                        <!-- <img
+              class="task-prev-icon"
+              src="../assets/task-icon/tag.png"
+              alt=""
+            /> -->
                         <span>Labels</span>
                     </a>
 
@@ -121,11 +129,11 @@
                         title="Checklist"
                         @click="toggleSection('Checklist')"
                     >
-                        <img
-                            class="task-prev-icon"
-                            src="../assets/task-icon/checklist.png"
-                            alt=""
+                        <font-awesome-icon
+                            class="icon"
+                            :icon="['far', 'check-square']"
                         />
+
                         <span>Checklist</span>
                     </a>
 
@@ -142,11 +150,11 @@
                         title="Due Date"
                         @click="toggleSection('DueDate')"
                     >
-                        <img
-                            class="task-prev-icon"
-                            src="../assets/task-icon/wall-clock.png"
-                            alt=""
+                        <font-awesome-icon
+                            class="icon"
+                            :icon="['far', 'clock']"
                         />
+
                         <span>Due Date</span>
                     </a>
                     <base-task-modal
@@ -163,10 +171,9 @@
                         title="Attachment"
                         @click="toggleSection('Attachment')"
                     >
-                        <img
-                            class="task-prev-icon"
-                            src="../assets/task-icon/attachment.png"
-                            alt=""
+                        <font-awesome-icon
+                            class="icon"
+                            :icon="['fas', 'paperclip']"
                         />
                         <span>Attachment</span>
                     </a>
@@ -220,7 +227,7 @@ import checklist from "../cmps/task/task-option/task-details/checklist";
 import labels from "../cmps/task/task-option/task-details/labels.vue";
 import labelEdit from "../cmps/task/task-option/task-details/labels_edit";
 import attachment from "../cmps/task/task-option/task-details/task-attachment";
-import cover from '../cmps/task/task-option/task-details/cover-color';
+import cover from "../cmps/task/task-option/task-details/cover-color";
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
@@ -238,6 +245,7 @@ export default {
             isChecklistOpen: false,
             isDueDateOpen: false,
             isAttachmentOpen: false,
+            isDescriptionEdit: false,
             isCoverOpen: false,
             labelToEdit: null, //from labels to edit labels
             editedLabel: null,
@@ -260,8 +268,10 @@ export default {
                     break;
                 case "Attachment":
                     this.isAttachmentOpen = !this.isAttachmentOpen;
+                    break;
                 case "Cover":
                     this.isCoverOpen = !this.isCoverOpen;
+                    break;
                 default:
                     break;
             }
@@ -325,7 +335,6 @@ export default {
                 console.log(err);
             }
         },
-
         updateChecklist(checklist) {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
@@ -348,7 +357,6 @@ export default {
             }
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
-
         addToChecklist(title) {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
@@ -453,6 +461,14 @@ export default {
             taskCopy.attachment = url;
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
+        async updateDescription(updateDescription) {
+            console.log("desc update", updateDescription);
+            //dispatch
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            taskCopy.description = updateDescription;
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
     },
     // deleteChecklist(checklistId) {
     //     const clone = require("rfdc");
@@ -491,12 +507,13 @@ export default {
         labelsPreview() {
             return this.labelsIdsToLabels();
         },
+
         coverColors() {
-            const coverColors = this.board.labels.map(label => {
-                return label.color
-            })
-            return coverColors
-        }
+            const coverColors = this.board.labels.map((label) => {
+                return label.color;
+            });
+            return coverColors;
+        },
     },
     components: {
         membersPreview,
@@ -513,7 +530,7 @@ export default {
         labelEdit,
         attachment,
         BaseTaskModal,
-        cover
+        cover,
     },
 
     watch: {
