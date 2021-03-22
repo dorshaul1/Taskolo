@@ -132,18 +132,21 @@
             }
 
             .members {
-                  justify-content: flex-end;
-                  align-self: flex-end;
-                  justify-self: flex-end;
-                  float: right;
-                  margin: 5px;
+                  display: flex;
+                  // margin: 5px;
                   list-style-type: none;
+                  margin-left: auto;
+                  margin-right: 0;
+                  order: 2;
+                  padding-inline-end: 0px;
+                  padding-block-end: 3px;
             }
 
             .member {
                   width: 25px;
                   height: 25px;
                   border-radius: 50%;
+                  margin-inline-start: 3px;
             }
       }
 }
