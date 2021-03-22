@@ -2,7 +2,11 @@
     <section class="task-details flex justify-center">
         <div class="screen"></div>
         <section v-if="task" class="task-details-container">
-            <div class="cover">
+            <div
+                v-if="task.style.bgColor"
+                class="cover"
+                :style="{ backgroundColor: task.style.bgColor }"
+            >
                 <a class="change-cover" href="#">Cover</a>
                 <router-link
                     class="close-modal-btn flex center"
@@ -209,6 +213,28 @@
                             @update-cover="updateCover"
                         />
                     </base-task-modal>
+
+                    <!-- MOVE -->
+                    <a
+                        class="link-button"
+                        href="#"
+                        title="Move card"
+                        @click="toggleSection('Move')"
+                    >
+                        <img
+                            class="task-prev-icon"
+                            src="../assets/task-icon/attachment.png"
+                            alt=""
+                        />
+                        <span>Move</span>
+                    </a>
+                    <base-task-modal
+                        title="Move card"
+                        v-if="isMoveCardOpen"
+                        @close-modal="isMoveCardOpen = false"
+                    >
+                        <moveCard :boards="boards" />
+                    </base-task-modal>
                 </section>
             </div>
         </section>
@@ -231,6 +257,7 @@ import labels from "../cmps/task/task-option/task-details/labels.vue";
 import labelEdit from "../cmps/task/task-option/task-details/labels_edit";
 import attachment from "../cmps/task/task-option/task-details/task-attachment";
 import cover from "../cmps/task/task-option/task-details/cover-color";
+import moveCard from "../cmps/task/task-option/task-details/move-card";
 
 import { utilService } from "../services/util.service.js";
 import { boardService } from "../services/board.service.js";
@@ -250,6 +277,7 @@ export default {
             isAttachmentOpen: false,
             isDescriptionEdit: false,
             isCoverOpen: false,
+            isMoveCardOpen: false,
             labelToEdit: null, //from labels to edit labels
             editedLabel: null,
         };
@@ -274,6 +302,9 @@ export default {
                     break;
                 case "Cover":
                     this.isCoverOpen = !this.isCoverOpen;
+                    break;
+                case "Move":
+                    this.isMoveCardOpen = !this.isMoveCardOpen;
                     break;
                 default:
                     break;
@@ -476,7 +507,10 @@ export default {
             console.log("updating...", cover);
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
-            taskCopy.style.
+            console.log(taskCopy);
+            taskCopy.style = cover;
+            console.log("taskCopy.style", taskCopy.style);
+            this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
     },
     // deleteChecklist(checklistId) {
@@ -505,6 +539,9 @@ export default {
         },
         board() {
             return this.$store.getters.currBoard;
+        },
+        boards() {
+            return this.$store.getters.boards;
         },
         groupName() {
             return this.$store.getters.groupName;
@@ -540,6 +577,7 @@ export default {
         attachment,
         BaseTaskModal,
         cover,
+        moveCard,
     },
 
     watch: {

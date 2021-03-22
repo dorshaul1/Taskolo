@@ -1,13 +1,12 @@
 <template>
-    <section>
-        <label>
-            Attach a link
-            <el-input
-                type="text"
-                placeholder="Paste any link here..."
-                v-model="url"
-            />
-        </label>
+    <section class="task-attchment flex column align-start">
+        <label for="attchment"> Attach a link</label>
+        <el-input
+            type="text"
+            name="attchment"
+            placeholder="Paste any link here..."
+            v-model="url"
+        />
         <el-button @click="addUrl">Attach</el-button>
     </section>
 </template>
