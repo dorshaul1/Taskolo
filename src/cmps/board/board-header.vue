@@ -78,6 +78,7 @@ export default {
       return this.$store.getters.boards;
     },
     getUsers() {
+      // console.log('this.$store.getters.users:', this.$store.getters.users)
       return this.$store.getters.users;
     },
     // currBoard() {

@@ -36,6 +36,7 @@ export default {
   },
   created() {
     this.$store.dispatch({ type: "loadBoards" });
+    this.$store.dispatch({ type: "loadUsers" });
   },
 };
 </script>
