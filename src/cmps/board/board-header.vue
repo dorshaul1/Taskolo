@@ -40,7 +40,8 @@
       v-if="isMembersOpen"
       title="Members"
     >
-      <members :members="this.currBoard.members" @add-member="addMember" />
+      <!-- <members :members="this.currBoard.members" @add-member="addMember" /> -->
+      <members-invite @add-member="addMember" />
     </base-task-modal>
 
     <button class="show-menu-btn" @click="openMenu">

@@ -23,7 +23,7 @@
       <div class="group-main-body">
         <draggable
           v-model="clonedGroup.tasks"
-          group="people"
+          group="task"
           v-bind="dragOptions"
           @start="drag = true"
           @end="dragDone"

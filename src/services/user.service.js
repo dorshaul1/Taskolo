@@ -1,6 +1,10 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
-const SCORE_FOR_REVIEW = 10
+// const SCORE_FOR_REVIEW = 10
+import { user } from '../data/user.js'
+
+
+const KEY = 'users'
 
 export const userService = {
     login,
@@ -18,6 +22,12 @@ window.userService = userService
 // userService.signup({fullname: 'Puki Norma', username: 'user1', password:'123',score: 100, isAdmin: false})
 // userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 100, isAdmin: true})
 // userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 100})
+
+_addUserToStorage()
+
+async function _addUserToStorage() {
+  return await JSON.parse(localStorage.getItem(KEY)) || JSON.stringify(localStorage.setItem(KEY, user))
+}
 
 function getUsers() {
     return storageService.query('user')
