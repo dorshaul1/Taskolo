@@ -140,7 +140,7 @@ export default {
         boardCopy.groups[currGroupIdx].tasks.push({
           id: utilService.makeId(),
           title: this.newTask.title,
-          style: {},
+          style: {bgColor:''},
         });
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.closeTaskAdd();

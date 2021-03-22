@@ -152,6 +152,7 @@ export const board = {
                               "dueDate": 1246841611,
                               "isDone": true,
                               "watch": true,
+                              "style": {bgColor:''}
                         },
                         {
                               "id": "task103",
@@ -188,6 +189,7 @@ export const board = {
                                     }
                               ],
                               "dueDate": 12735915241,
+                              "style": {bgColor:''},
                               "watch": true,
                               "members": [
                               //       {
@@ -243,6 +245,7 @@ export const board = {
                                     }
                               ],
                               "dueDate": 16135315211,
+                              "style": {bgColor:''},
                         },
                         {
                               "id": "t105",

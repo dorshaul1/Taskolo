@@ -26,7 +26,7 @@
 
     <div class="task-header">
       <div
-        v-if="task.style"
+        v-if="task.style.bgColor"
         class="taskColor"
         :style="{ 'background-color': task.style.bgColor }"
       ></div>
