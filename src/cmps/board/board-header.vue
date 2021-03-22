@@ -11,16 +11,16 @@
       </el-option>
     </el-select>
 
-    <h1 v-if="!isEdititle">
+    <h1 v-if="!isEdititle" @click="editTitle">
       {{ this.currBoard.title }}
     </h1>
-    <!-- <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
+    <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
       <el-input
         ref="title"
         placeholder="Please input"
         v-model="this.currBoard.title"
       ></el-input>
-    </form> -->
+    </form>
 
     <ul class="members-list flex clean-list align-center">
       <li
@@ -100,12 +100,12 @@ export default {
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
       this.isEdititle = false;
     },
-    // editTitle() {
-    //   this.isEdititle = true;
-    //   this.$nextTick(() => {
-    //     this.$refs.title.select();
-    //   });
-    // },
+    editTitle() {
+      this.isEdititle = true;
+      this.$nextTick(() => {
+        this.$refs.title.select();
+      });
+    },
 
     openMenu() {
       // console.log( 'open')
