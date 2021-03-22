@@ -600,6 +600,7 @@ export default {
             //"insert" to specific pos
             groupToCopy.tasks.splice(newCardPos.copyTo.position, 0, taskCopy);
 
+            //delete if move
             if (!newCardPos.isCopy) this.deleteCard();
             //replace old group with updated group
             const boardCopy = clone({ proto: true })(Object.create(this.board));
