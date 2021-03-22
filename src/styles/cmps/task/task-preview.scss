@@ -52,9 +52,13 @@
             color: #6b778c;
             flex-wrap: wrap;
             align-items: center;
+            // img{
+            //       width: 10px;
+            // }
             & > * {
                   padding: 5px;
                   margin-inline-end: 8px;
+                  // width: 20px;
 
                   &:first-child {
                         padding-inline-start: 0px;
