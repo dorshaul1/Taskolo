@@ -5,7 +5,7 @@
             <div
                 v-if="task.style.bgColor"
                 class="cover"
-                :style="{ backgroundColor: task.style.bgColor }"
+                :style="{ backgroundColor: task.style.bgColor || '' }"
             >
                 <a class="change-cover" href="#">Cover</a>
                 <router-link
@@ -577,7 +577,7 @@ export default {
             console.log("taskCopy.style", taskCopy.style);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
-        copyTask(newCardPos) {
+        async copyTask(newCardPos) {
             console.log("COPING TO....", newCardPos);
             const clone = require("rfdc");
             //TODO: Support board to board copy
@@ -605,7 +605,13 @@ export default {
             //replace old group with updated group
             const boardCopy = clone({ proto: true })(Object.create(this.board));
             boardCopy.groups.splice(groupIdx, 1, groupToCopy);
-            this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+            await this.$store.dispatch({
+                type: "updateBoard",
+                board: boardCopy,
+            });
+            newCardPos.isCopy
+                ? (this.isCopyCardOpen = false)
+                : (this.isMoveCardOpen = false);
         },
         async deleteCard() {
             console.log("deleting task....");
