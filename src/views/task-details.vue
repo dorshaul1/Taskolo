@@ -204,7 +204,10 @@
                         v-if="isCoverOpen"
                         @close-modal="isCoverOpen = false"
                     >
-                        <cover :colors="coverColors" />
+                        <cover
+                            :colors="coverColors"
+                            @update-cover="updateCover"
+                        />
                     </base-task-modal>
                 </section>
             </div>
@@ -468,6 +471,12 @@ export default {
             const taskCopy = clone({ proto: true })(Object.create(this.task));
             taskCopy.description = updateDescription;
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        },
+        updateCover(cover) {
+            console.log("updating...", cover);
+            const clone = require("rfdc");
+            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            taskCopy.style.
         },
     },
     // deleteChecklist(checklistId) {
