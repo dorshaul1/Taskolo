@@ -77,7 +77,12 @@
         </div>
 
         <div class="desc" v-if="task.description">
-          <font-awesome-icon :icon="['fas', 'align-left']" />
+          <!-- <font-awesome-icon :icon="['fas', 'align-left']" /> -->
+          <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/left-alignment.svg"
+            alt=""
+          />
         </div>
 
         <div class="comments" v-if="task.comments">
@@ -85,7 +90,12 @@
         </div>
 
         <div class="checklist flex align-center" v-if="task.checklists">
-          <font-awesome-icon :icon="['far', 'check-square']" />
+          <!-- <font-awesome-icon :icon="['far', 'check-square']" /> -->
+          <img
+            class="task-prev-icon"
+            src="../../assets/task-icon/check-box.svg"
+            alt=""
+          />
           <span class="checklist-display"> {{ checklistForDisplay }}</span>
         </div>
         
