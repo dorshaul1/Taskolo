@@ -476,7 +476,7 @@ export default {
             console.log("updating...", cover);
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
-            taskCopy.style.
+            // taskCopy.style.
         },
     },
     // deleteChecklist(checklistId) {
