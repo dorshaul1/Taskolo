@@ -1,24 +1,26 @@
 <template>
-    <section class="task-labels">
-        <input type="text" />
-        <h3>Labels</h3>
-        <div
-            v-for="label in labelsFromProp"
-            :key="label.id"
-            class="flex"
-            @click="addLabel(label)"
+  <section class="task-labels">
+    <input type="text" />
+    <h3>Labels</h3>
+    <div
+      v-for="label in labelsFromProp"
+      :key="label.id"
+      class="flex"
+      @click="addLabel(label)"
+    >
+      <div class="label flex align-center" :style="{ backgroundColor: label.color }"
         >
-            <a v-show="isAlreadyTaskLabel(label.id)" href="#"
-                ><i class="el-icon-check"></i
-            ></a>
-            <span class="label" :style="{ backgroundColor: label.color }">{{
-                label.title
-            }}</span>
-            <span @click="openLabelsEdit(label)">Edit</span>
-        </div>
+        <span class="label-title">{{ label.title }}</span>
+        <a class="v-icon" v-show="isAlreadyTaskLabel(label.id)" href="#"
+          ><i class="el-icon-check"></i></a
+      ></div>
+      <span @click="openLabelsEdit(label)">
+        <font-awesome-icon class="label-edit" :icon="['fas', 'pencil-alt']"
+      /></span>
+    </div>
 
-        <button>Create a new label</button>
-        <!-- 
+    <button>Create a new label</button>
+    <!-- 
         <section v-if="labelToEdit" class="edit-label-container">
             <div
                 v-for="label in labels"
@@ -31,54 +33,54 @@
                 <button>Delete</button>
             </div>
         </section> -->
-    </section>
+  </section>
 </template>
 
 <script>
 export default {
-    name: "labels",
-    props: {
-        labels: {},
-        editedLabel: {},
-        taskLabelIds: {}, //specific task labels
-        // labelToEdit: null,
+  name: "labels",
+  props: {
+    labels: {},
+    editedLabel: {},
+    taskLabelIds: {}, //specific task labels
+    // labelToEdit: null,
+  },
+  data() {
+    return {
+      labelsFromProp: null,
+    };
+  },
+  methods: {
+    openLabelsEdit(label) {
+      // console.log(label, this.labels)
+      // this.labelToEdit = {...label};
+      this.$emit("open-label-edit", label);
     },
-    data() {
-        return {
-            labelsFromProp: null,
-        };
+    setEditedLabel() {
+      if (!this.editedLabel) return;
+      const labelIdx = this.labelsFromProp.findIndex((label) => {
+        return label.id === this.editedLabel.id;
+      });
+      this.labelsFromProp.splice(labelIdx, 1, this.editedLabel);
     },
-    methods: {
-        openLabelsEdit(label) {
-            // console.log(label, this.labels)
-            // this.labelToEdit = {...label};
-            this.$emit("open-label-edit", label);
-        },
-        setEditedLabel() {
-            if (!this.editedLabel) return;
-            const labelIdx = this.labelsFromProp.findIndex((label) => {
-                return label.id === this.editedLabel.id;
-            });
-            this.labelsFromProp.splice(labelIdx, 1, this.editedLabel);
-        },
-        addLabel(label) {
-            console.log("adding label...", label);
-            this.$emit("add-label", label);
-        },
-        isAlreadyTaskLabel(labelId) {
-            let isInTask = false;
-            if(this.taskLabelIds) {
-            this.taskLabelIds.forEach((lId) => {
-                if (lId === labelId) isInTask = true;
-            });
-            }
-            return isInTask;
-        },
+    addLabel(label) {
+      //   console.log("adding label...", label);
+      this.$emit("add-label", label);
     },
-    created() {
-        this.labelsFromProp = JSON.parse(JSON.stringify(this.labels));
-        this.setEditedLabel();
+    isAlreadyTaskLabel(labelId) {
+      let isInTask = false;
+      if (this.taskLabelIds) {
+        this.taskLabelIds.forEach((lId) => {
+          if (lId === labelId) isInTask = true;
+        });
+      }
+      return isInTask;
     },
+  },
+  created() {
+    this.labelsFromProp = JSON.parse(JSON.stringify(this.labels));
+    this.setEditedLabel();
+  },
 };
 </script>
 
