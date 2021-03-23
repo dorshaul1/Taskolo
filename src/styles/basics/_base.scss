@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    font-family: "san-fransisco";
+}
+
+body {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+image {
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+textarea {
+    outline: none;
+}

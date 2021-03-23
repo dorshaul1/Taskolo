@@ -1,0 +1,132 @@
+.group-container {
+      // background-color: rgb(235, 236, 240);
+      background-color: #ebecf0;
+      margin-inline-end: 4px;
+      margin-inline-start: 4px;
+      width: 272px;
+      border-radius: 3px;
+      height: auto;
+      color: #172b4d;
+      word-break: break-all;
+      white-space: initial;
+      overflow: hidden;
+
+      .task-modal {
+            top: 155px;
+      }
+
+      .group-title {
+            color: brighten(#172b4d);
+
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 16px;
+            padding-block-start: 12px;
+            min-height: 20px;
+            cursor: pointer;
+            word-break: break-all;
+            white-space: initial;
+      }
+      .group-menu-btn {
+            width: 20px;
+            height: 20px;
+
+            font-weight: 600;
+            margin-inline-end: 11px;
+            cursor: pointer;
+      }
+
+      .group-main-body {
+            max-height: 70vh;
+            // max-height: 100%;
+            margin-inline-end: 4px;
+            margin-inline-start: 4px;
+            padding-bottom: 0px;
+            overflow-y: auto;
+      }
+
+      .group-main {
+            // max-height: 100%;
+            padding-bottom: 6px;
+      }
+
+      .group-main-body::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+            margin-inline-end: 4px;
+            scroll-margin-right: 20px;
+      }
+
+      .group-main-body::-webkit-scrollbar-track {
+            // background: #f1f1f1;
+
+            background: #dadbe2;
+            scroll-margin-right: 20px;
+            border-radius: 30px;
+            //if we have minimum height we will start scroll
+            .start-scroll {
+                  background: #dadbe2;
+                  scroll-margin-right: 20px;
+            }
+      }
+
+      .group-main-body::-webkit-scrollbar-thumb {
+            background: #bfc4ce;
+            scroll-margin-right: 20px;
+            border-radius: 30px;
+      }
+
+      .add-new-Card {
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+            padding-inline-start: 8px;
+            padding-inline-end: 0px;
+            padding-block-start: 4px;
+            padding-block-start: 4px;
+            margin: 2px 0px 8px 8px;
+            font-size: 14px;
+            cursor: pointer;
+            & :hover {
+                  background: $hover-dark;
+            }
+      }
+
+      /// new task input
+      .task-Add-input {
+            outline: none;
+            width: auto;
+            margin: 0px;
+            resize: none;
+            height: 54px;
+            background-color: #fff;
+            border-color: transparent;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+            & :focus {
+                  border-color: transparent;
+            }
+      }
+
+      .task-btn-container {
+            padding-block-start: 6px;
+      }
+
+      .add-task {
+            background-color: rgb(90, 172, 68);
+            border-radius: 3px;
+            width: 90px;
+            color: white;
+      }
+
+      .exit-task {
+            width: 40px;
+      }
+
+      .take-new-task {
+            margin-inline-end: 1px;
+            flex-direction: column;
+            width: 100%;
+            padding: 5px 4px 2px 6px;
+      }
+}

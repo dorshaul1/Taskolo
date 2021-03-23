@@ -1,0 +1,105 @@
+.main-board-container {
+      height: 100vh;
+      width: 100%;
+      & ::-webkit-scrollbar {
+            height: 12px;
+            width: 12px;
+            margin-inline-end: 4px;
+            scroll-margin-right: 20px;
+           
+      }
+
+      & ::-webkit-scrollbar-track {            
+            background: #dadbe2;
+            scroll-margin-right: 20px;
+            border-radius: 30px;
+            background-color: rgba(9,30,66,.08);
+            .start-scroll {
+                  scroll-margin-right: 20px;
+            }
+      }
+
+      & ::-webkit-scrollbar-thumb {
+            background: #bfc4ce9c;
+            border-radius: 30px;
+            scroll-margin-right: 20px;
+      }
+}
+
+.board-details {
+      margin-inline-start: 4px;
+      margin-inline-end: 4px;
+      flex-grow: 1 ;     // width: 100%;
+      display: flex;
+      align-items: flex-start;
+      white-space: nowrap;
+      overflow-y: auto;
+      padding-bottom: 8px;
+      position: absolute;
+      top: 90px;// // top: 100px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      .main-group-container {
+            width: 272px;
+            min-width: 272px;
+      }
+
+      .new-group-container {
+            background-color: rgb(235, 236, 240);
+            margin-inline-end: 4px;
+            margin-inline-start: 4px;
+            width: 272px;
+            min-width: 272px;
+            border-radius: 3px;
+            background-color: hsla(0, 0%, 100%, 0.24);
+            color: #fff;
+      }
+
+      //group
+      .add-new-group {
+            color: brighten(#172b4d);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 16px;
+            padding-block-start: 12px;
+            min-height: 20px;
+            cursor: pointer;
+      }
+
+      .group-Add-input {
+            outline: none;
+            resize: none;
+            margin: 8px;
+            padding: 4px;
+            margin-block-end: 0px;
+            background-color: #fff;
+            border-color: transparent;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+            & :focus {
+                  border-color: transparent;
+            }
+      }
+
+      .take-new-group {
+            flex-direction: column;
+      }
+      .add-group {
+            background-color: rgb(90, 172, 68);
+            width: 90px;
+            margin-inline-end: 10px;
+            border-radius: 3px;
+            color: white;
+      }
+
+      .exit-group{
+            width: 30px;
+      }
+
+      .group-btn-container{
+            padding: 5px;
+            margin-inline-start: 3px;
+            margin-inline-end: 3px;
+      }
+}

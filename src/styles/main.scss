@@ -1,0 +1,48 @@
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
+@import "setup/fonts";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/forms";
+
+// Components
+@import "cmps/app-header";
+@import "cmps/board/home";
+@import "cmps/board/board-list";
+@import "cmps/group/group";
+@import "cmps/group/group-menu";
+@import "cmps/task-details";
+@import "cmps/task/task-preview.scss";
+@import "cmps/members-preview.scss";
+@import "cmps/labels-preview.scss";
+@import "cmps/description-preview.scss";
+@import "cmps/checklist-preview.scss";
+@import "cmps/base-task-modal.scss";
+@import "cmps/members.scss";
+@import "cmps/due-date";
+@import "cmps/checklist-bar.scss";
+@import "cmps/label.scss";
+@import "cmps/labels-edit.scss";
+@import "cmps/cover.scss";
+@import "cmps/attachment.scss";
+@import "cmps/copy-card.scss";
+@import "cmps/delete-card.scss";
+@import "cmps/move-card.scss";
+@import "cmps/select-card-position.scss";
+
+// @import "cmps/review-list";
+@import "cmps/board/board-header";
+@import "cmps/board/side-menu";
+@import "cmps/board/activity-list";
+
+// Views
+@import "cmps/board/board-details.scss";
+@import "cmps/home";
+

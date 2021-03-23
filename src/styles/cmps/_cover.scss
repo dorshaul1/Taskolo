@@ -1,0 +1,44 @@
+.cover-colors {
+    h4 {
+        margin-bottom: 8px;
+        margin-top: 16px;
+        font-weight: 500;
+    }
+
+.el-button.el-button--default {
+    width: 100%;
+}
+
+
+    .size-buttons {
+        div{
+            width: 136px;
+            height: 64px;
+            background-color: yellow;
+            margin-right: 6px;
+        }
+    }
+
+    .color-item {
+        cursor: pointer;
+        height: 32px;
+        margin: 0 8px 8px 0;
+        padding: 0;
+        width: 48px;
+        float: left;
+        border-radius: 4px;
+    }
+
+    .attachtment-container {
+        clear: both;
+        width: 100%;
+
+        button {
+            width: 100%;
+        }
+    }
+}
+
+    button{
+        width: 100%;
+    }

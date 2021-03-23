@@ -1,0 +1,23 @@
+.activity-list-container {
+    width: 100%;
+    // padding-bottom: 0;
+    .activity-list {
+        // background-color: red;
+        // width: 100%;
+        padding: 0 20px;
+        h1 {
+            font-size: 20px;
+            margin-right: 15px;
+        }
+    }
+}
+.activity{
+    position: relative;
+    font-size: 16px;
+    img {
+        width: 24px;
+        position: absolute;
+        left: -40px;
+        top: 10px;
+    }
+}

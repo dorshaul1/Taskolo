@@ -1,0 +1,24 @@
+.select-card-position {
+    & > input {
+        //only direct child
+        width: 100%;
+    }
+
+    input {
+        margin-bottom: 8px;
+    }
+
+    .main-select {
+        width: 100%;
+    }
+
+    .select-container {
+        .select-group {
+            flex: 3;
+        }
+
+        .select-position {
+            flex: 1;
+        }
+    }
+}

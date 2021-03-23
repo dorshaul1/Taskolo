@@ -1,0 +1,27 @@
+.checklist {
+    position: relative;
+    font-size: 16px;
+    img {
+        width: 24px;
+        position: absolute;
+        left: -40px;
+        // top: 8px;
+    }
+
+    & input[type="text"] {
+        width: 100%;
+    }
+    & .checklist-actions {
+        width: 100%;
+    }
+
+    & .done {
+        text-decoration: line-through;
+    }
+
+    .todo-item {
+        &:hover {
+            background-color: $hover-dark;
+        }
+    }
+}

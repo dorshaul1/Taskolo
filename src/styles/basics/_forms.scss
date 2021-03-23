@@ -1,0 +1,18 @@
+button{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    border: none;
+    display: inline-block;
+    line-height: 20px;
+    // margin-bottom: 8px;
+    padding: 6px 12px;
+    text-decoration: none;
+    position: relative;
+}
+
+form > * {
+    display: block;
+    width: 200px;
+    margin: 10px 0px;
+}

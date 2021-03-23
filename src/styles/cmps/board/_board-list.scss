@@ -1,0 +1,29 @@
+.board-list {
+    height: 82%;
+    // position: absolute;
+    // bottom: 0;
+}
+
+.board-preview {
+    width: 194px;
+    height: 96px;
+    padding: 8px;
+    //first gradient
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    //second gradient
+    //background: rgb(63,94,251);
+    // background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    //third gradient
+    // background: rgb(131,58,180);
+    // background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    border-radius: 3px;
+
+    .board-title {
+        font-size: 16px;
+        color: #fff;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 2px 0 0;
+    }
+}

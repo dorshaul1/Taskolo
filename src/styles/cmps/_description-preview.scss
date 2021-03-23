@@ -1,0 +1,45 @@
+.description {
+    position: relative;
+    font-size: 16px;
+
+    & .title-container {
+        font-size: 16px;
+        & button {
+            margin-left: 8px;
+        }
+    }
+    img {
+        width: 24px;
+        position: absolute;
+        left: -40px;
+        top: 8px;
+    }
+
+    & .desc-input-buttons {
+        & button {
+            margin-top: 8px;
+        }
+        & button:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+
+    .desc-input {
+        outline: none;
+        border-color: transparent;
+        padding: 8px 12px;
+    }
+}
+
+.desc-container {
+    // width: 480px;
+    height: 40px;
+    background-color: #e2e4e9;
+    border-radius: 3px;
+    text-align: left;
+    padding: 8px 12px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}

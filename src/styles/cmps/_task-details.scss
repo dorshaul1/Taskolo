@@ -1,0 +1,210 @@
+.task-details {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 50;
+    background-color: rgba(37, 37, 37, 0.432);
+    overflow: auto;
+    // padding: 0 0 20px 0;
+
+}
+
+// .screen {
+//     position: fixed;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     left: 0;
+//     background-color: rgba(37, 37, 37, 0.432);
+// }
+.task-details-container {
+    position: absolute;
+    // margin: 0 auto;
+    
+    // margin-bottom: 20px;
+
+    top: 50px;
+    // right: 25%;
+    // left: 25%;
+    // height: 90vh;
+    width: 768px;
+    color: white;
+    background-color: #f4f5f7;
+    z-index: 100;
+    color: #172b4d;
+
+    & textarea {
+        resize: none;
+    }
+
+    & h3 {
+        margin-bottom: 4px;
+    }
+
+    & h1 {
+        margin-left: 30px;
+        font-size: 20px;
+    }
+
+    & .cover {
+        position: relative;
+        height: 116px;
+
+        & .change-cover {
+            right: 8px;
+            bottom: 8px;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.08);
+            color: #172b4d;
+            border-radius: 3px;
+            padding: 6px 12px 6px 6px;
+            text-decoration: none;
+            height: 32px;
+            width: 78px;
+            padding: 6px;
+        }
+
+        & .close-modal-btn {
+            // text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.08);
+            color: #42526e;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 32px;
+            overflow: hidden;
+            padding: 4px;
+            margin: 4px;
+            width: 32px;
+            z-index: 2;
+            font-size: 20px;
+            &:hover{
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+    & .title {
+        margin: 12px 40px 8px 56px;
+
+        & h1 {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.task-details-grid {
+    display: grid;
+    grid-template-columns: 584px 200px;
+    margin: 0 16px;
+    padding: 0 0 20px 0;
+    // height: 90vh;
+    // margin-bottom: 20px;
+
+    // overflow: hidden;
+    & ::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+        margin-inline-end: 4px;
+        scroll-margin-right: 20px;
+    }
+
+    & ::-webkit-scrollbar-track {
+        // background: #f1f1f1;
+
+        background: #dadbe2;
+        scroll-margin-right: 20px;
+        border-radius: 30px;
+        //if we have minimum height we will start scroll
+        .start-scroll {
+            background: #dadbe2;
+            scroll-margin-right: 20px;
+        }
+    }
+
+    & ::-webkit-scrollbar-thumb {
+        background: #bfc4ce;
+        border-radius: 30px;
+        scroll-margin-right: 20px;
+    }
+
+    & .left-column {
+        margin-left: 56px;
+        // height: 60vh;
+        // overflow: hidden;
+
+        & > * {
+            grid-column: 1/2;
+            // margin-left: 40px;
+            padding-right: 8px;
+            padding-left: 16px;
+            padding-block-end: 8px;
+        }
+        // img{
+        //     position: absolute;
+        //     width: 24px;
+        // }
+    }
+    & .right-column {
+        max-width: 168px;
+        padding: 6px 12px 6px 6px;
+        color: #6b778c;
+
+        h3 {
+            padding: 0;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        & > * {
+            grid-column: 2/3;
+            // margin-left: 40px;
+            // margin-bottom: 8px;
+            padding-right: 8px;
+            padding-left: 16px;
+            padding-block-end: 8px;
+            // padding-left: 8px;
+        }
+    }
+    // & .activity {
+    // }
+
+    & .link-button {
+        // color: #172b4d;
+        color: #6b778c;
+        text-decoration: none;
+        background-color: rgba(9, 30, 66, 0.04);
+        box-shadow: none;
+        border: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        height: 32px;
+        margin-top: 8px;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        -webkit-user-select: none;
+        user-select: none;
+        white-space: nowrap;
+        padding: 6px 12px 6px 8px;
+        font-size: 14px;
+        // font-weight: 400;
+        // flex-basis: 90%;
+        .icon{
+            margin-inline-end: 15px;
+        }
+
+        img {
+            width: 15px;
+            margin-right: 7px;
+            // flex-basis: 10%;
+        }
+    }
+}

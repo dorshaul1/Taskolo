@@ -1,0 +1,55 @@
+.app-header {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.11);
+    padding: 4px;
+    z-index: 10;
+
+    .app-header-container {
+        padding: 4px;
+    }
+
+    button {
+        background-color: hsla(0, 0%, 100%, 0.24);
+        color: #fff;
+
+        & :hover {
+            background-color: hsla(0, 0%, 100%, 0.103);
+        }
+    }
+
+    nav {
+        & > * {
+            margin-right: 4px;
+            height: 100%;
+            // margin-top: 7px;
+        }
+        .boards-btn {
+            width: 87px;
+        }
+        .home-btn {
+            width: 32px;
+            height: 32px;
+        }
+    }
+    .logo {
+        img {
+            width: 70px;
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+    }
+
+    .member-avatar {
+        width: 32px;
+        height: 32px;
+        background-color: blanchedalmond;
+        border-radius: 50%;
+        margin-inline-end: 8px;
+    }
+}
