@@ -18,8 +18,7 @@
 
       <div class="title flex align-start column">
         <h1>{{ task.title }}</h1>
-
-        <!-- <h4 v-if="boardName">in list {{boardName}}</h4> -->
+        <!-- <input v-else name="" type="text"> -->
       </div>
 
       <div class="task-details-grid">
