@@ -8,6 +8,16 @@
       //       }
       // }
 
+      .cover {
+            height: 60px;
+            display: flex;
+            .title-cover {
+                  display: flex;
+                  justify-content: flex-start;
+                  padding-block-start: 30px;
+            }
+      }
+
       .editing {
             & > * {
                   // width: 25px;
@@ -72,7 +82,7 @@
             .watch {
                   padding: 0px;
             }
-            
+
             .watch-icon {
                   width: 18px;
                   margin-block-start: 3px;
@@ -122,10 +132,26 @@
                   font-size: 12px;
             }
 
+            
+            .isTimePass {
+                  background-color: #eb5a46;
+                  border-radius: 3px;
+                  color: #fff;
+                  padding-inline-start: 5px;
+            }
+            
+            .isToday {
+                  background-color: #f2d600;
+                  border-radius: 3px;
+                  color: #fff;
+                  padding-inline-start: 5px;
+            }
+
             .isDone {
                   background-color: #61bd4f;
                   border-radius: 3px;
                   color: #fff;
+                  padding-inline-start: 5px;
             }
 
             .time-display {

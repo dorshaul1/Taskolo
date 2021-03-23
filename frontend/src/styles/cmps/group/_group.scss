@@ -1,4 +1,3 @@
-
 .group-container {
       // background-color: rgb(235, 236, 240);
       background-color: #ebecf0;
@@ -40,15 +39,15 @@
       .group-main-body {
             max-height: 70vh;
             // max-height: 100%;
-            overflow-y: auto;
             margin-inline-end: 4px;
             margin-inline-start: 4px;
-            padding-bottom: 8px;
+            padding-bottom: 0px;
+            overflow-y: auto;
       }
-      
-      .group-main{
+
+      .group-main {
             // max-height: 100%;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
       }
 
       .group-main-body::-webkit-scrollbar {
@@ -99,6 +98,7 @@
             width: auto;
             margin: 0px;
             resize: none;
+            height: 54px;
             background-color: #fff;
             border-color: transparent;
             border-radius: 3px;
@@ -115,13 +115,18 @@
       .add-task {
             background-color: rgb(90, 172, 68);
             border-radius: 3px;
+            width: 90px;
             color: white;
       }
 
+      .exit-task {
+            width: 40px;
+      }
+
       .take-new-task {
-            margin-inline-end: 6px;
+            margin-inline-end: 1px;
             flex-direction: column;
             width: 100%;
-            padding: 6px 10px 0px 10px;
+            padding: 5px 4px 2px 6px;
       }
 }

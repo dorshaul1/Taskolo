@@ -53,9 +53,9 @@
             >
             </textarea>
 
-            <div class="flex">
+            <div class="group-btn-container flex">
               <button @click="addNewGroup" class="add-group">Add list</button>
-              <button @click="closeGroupAdd">x</button>
+              <button @click="closeGroupAdd" class="exit-group">x</button>
             </div>
           </section>
         </div>
