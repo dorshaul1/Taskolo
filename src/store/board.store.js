@@ -85,9 +85,10 @@ export const boardStore = {
         async updateBoard({ commit }, { board }) {
             try {
                 commit({ type: 'setBoard', board })
+                socketService.emit('board newUpdate', 'board-------------------------------------updated')
                 return await boardService.update(board)
             }
-            catch {
+            catch(err) {
                 console.log('boardStore: Error in update board', err)
                 throw err
             }
