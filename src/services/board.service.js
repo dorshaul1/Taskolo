@@ -30,7 +30,7 @@ const KEY = 'board'
 
 function query() {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-  // return httpService.get(`board${queryStr}`)
+  // return httpService.get(`board${queryStr}`)   ///ytav ddd
   return httpService.get(`board`)
   // return storageService.query(KEY)
 }
