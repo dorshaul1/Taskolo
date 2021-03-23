@@ -2,7 +2,7 @@
   <section class="activity flex column">
 
     <img
-      src="@/assets/task-icon/bullet-list.png"
+      src="@/assets/task-icon/bullet-list.svg"
       alt=""
     />
     <div class="acitivty-title flex space-between align-center">

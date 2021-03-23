@@ -1,6 +1,6 @@
 <template>
   <section class="description flex start column">
-    <img src="../../../../assets/task-icon/desc.png" alt="" />
+    <img src="../../../../assets/task-icon/left-alignment.svg" alt="" />
     <div class="title-container flex align-center">
       <h3>Description</h3>
       <button>Edit</button>

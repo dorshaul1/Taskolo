@@ -131,7 +131,18 @@
                   margin-block-start: 4px;
                   font-size: 12px;
             }
+            
+            .dute-date{
+                  
+                  // margin: 0 4px 4px 0;
+                  // max-width: 100%;
+                  // min-width: 70px;
+            }
 
+            // .due-date-icon{
+            //       // margin-right: 2px;
+            //       // font-size: 16px;
+            // }
             
             .isTimePass {
                   background-color: #eb5a46;
@@ -152,6 +163,7 @@
                   border-radius: 3px;
                   color: #fff;
                   padding-inline-start: 5px;
+                  // padding-inline-end: 5px;
             }
 
             .time-display {
