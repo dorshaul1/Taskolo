@@ -10,6 +10,18 @@
       word-break: break-all;
       white-space: initial;
       overflow: hidden;
+      
+      
+
+      .groupTitleEdit{
+            flex-grow: 1;
+            width: 230px;
+            height: 30px;
+            outline-color: #0079BF;
+            border-color: #0079BF;
+            margin: 6px;
+            margin-inline-start: 10px;
+      }
 
       .task-modal {
             top: 155px;
