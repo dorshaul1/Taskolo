@@ -39,7 +39,6 @@ export const userStore = {
         async loadUsers(context) {
             try {
                 const users = await userService.query();
-                console.log(users, "loadUsers in store")
                 context.commit({ type: 'setUsers', users })
                 // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {

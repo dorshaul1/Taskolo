@@ -57,9 +57,6 @@ export default {
     components: {
         selectCardPosition,
     },
-    created() {
-        console.log("move card created", this.boards);
-    },
     mounted() {
         this.$nextTick(() => {
             this.$refs.title.select();

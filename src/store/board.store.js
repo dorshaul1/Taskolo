@@ -61,7 +61,6 @@ export const boardStore = {
         async loadBoards(context) {
             try {
                 const boards = await boardService.query();
-                console.log(boards, "loadBoards in store")
                 context.commit({ type: 'setBoards', boards })
                 // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
@@ -89,7 +88,6 @@ export const boardStore = {
 
                 socketService.off('board addUpdate')
                 socketService.on('board addUpdate', board => {
-                    console.log('here after update...')
                     commit({ type: 'setBoard', board })
                 })
                 return await boardService.update(board)

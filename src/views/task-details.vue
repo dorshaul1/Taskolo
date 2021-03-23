@@ -385,7 +385,6 @@ export default {
                 taskCopy.dueDate = date;
                 this.toggleSection("DueDate");
                 this.$store.dispatch({ type: "updateTask", task: taskCopy });
-                console.log("date:", date);
             } catch (error) {
                 console.log(err);
             }
@@ -398,8 +397,6 @@ export default {
                     Object.create(this.task)
                 );
 
-                console.log("member", member);
-
                 // const taskCopy = this.$clone({ proto: true })(
                 //     Object.create(this.task)
                 // );
@@ -411,19 +408,13 @@ export default {
                     (taskMember) => taskMember._id === member._id
                 );
 
-                console.log("isTaskMember", isTaskMember);
 
                 if (!isTaskMember) {
-                    console.log("pushing...");
                     taskMembers.push(member);
                 } else {
-                    console.log("deleteing......");
-                    console.log("member id", member._id);
                     const memberIdx = taskMembers.findIndex(
                         (m) => m._id === member._id
                     );
-                    console.log("memberIdx", memberIdx);
-                    console.log("taskMembers", taskMembers);
                     taskMembers.splice(memberIdx, 1);
                 }
 
@@ -444,11 +435,9 @@ export default {
             const isChecklistExist = taskCopy.checklists.some(
                 (cl) => cl.id === checklist.id
             );
-            console.log("isChecklistExist", isChecklistExist);
             if (!isChecklistExist) taskCopy.checklists.push(checklist);
             else {
                 const checklistIdx = taskCopy.checklists.findIndex((cl) => {
-                    console.log("findIndx:", cl.id, checklist.id);
                     return cl.id === checklist.id;
                 });
 
@@ -464,7 +453,6 @@ export default {
                 taskCopy.checklists = [];
             }
             const checklist = boardService.getEmptyCheckList();
-            console.log("getEmptyCheckList", boardService.getEmptyCheckList());
             checklist.title = title;
             taskCopy.checklists.push(checklist);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
@@ -475,7 +463,6 @@ export default {
             const checklistIdx = taskCopy.checklists.findIndex(
                 (checklist) => checklist.id === checklistId
             );
-            console.log(checklistIdx, "idx");
             taskCopy.checklists.splice(checklistIdx, 1);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
@@ -483,7 +470,6 @@ export default {
             this.isLabelsOpen = false;
             this.isLabelsEditOpen = true;
             this.labelToEdit = label;
-            console.log("openLabelEdit label", label);
         },
         async saveLabel(label) {
             this.isLabelsOpen = true;
@@ -494,7 +480,6 @@ export default {
             //save updated label to global board labels
             const clone = require("rfdc");
             const boardCopy = clone({ proto: true })(Object.create(this.board));
-            console.log("boardCopy", boardCopy);
             const labelIdx = boardCopy.labels.findIndex(
                 (l) => l.id === label.id
             );
@@ -506,10 +491,8 @@ export default {
                 });
             } catch (error) {}
 
-            console.log("save label", label);
         },
         addLabel(label) {
-            console.log("adding label in task-details...", label);
 
             // task clone
             const clone = require("rfdc");
@@ -523,10 +506,8 @@ export default {
             );
 
             if (!isTaskLabel) {
-                console.log("pushing...");
                 taskLabelIds.push(label.id);
             } else {
-                console.log("deleteing......");
                 const labelIdx = taskLabelIds.findIndex(
                     (tlId) => tlId === label.id
                 );
@@ -555,14 +536,12 @@ export default {
             // })
         },
         addUrl(url) {
-            console.log("adding url...", url);
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
             taskCopy.attachment = url;
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
         async updateDescription(updateDescription) {
-            console.log("desc update", updateDescription);
             //dispatch
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
@@ -570,16 +549,12 @@ export default {
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
         updateCover(cover) {
-            console.log("updating...", cover);
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
-            console.log(taskCopy);
             taskCopy.style = cover;
-            console.log("taskCopy.style", taskCopy.style);
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
         async copyTask(newCardPos) {
-            console.log("COPING TO....", newCardPos);
             const clone = require("rfdc");
             //TODO: Support board to board copy
 
@@ -615,7 +590,6 @@ export default {
                 : (this.isMoveCardOpen = false);
         },
         async deleteCard() {
-            console.log("deleting task....");
             const clone = require("rfdc");
 
             const boardCopy = clone({ proto: true })(Object.create(this.board));

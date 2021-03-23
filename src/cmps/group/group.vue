@@ -151,7 +151,6 @@ export default {
     },
     async deleteGroup() {
       try {
-        console.log("group delete");
         const clone = require("rfdc");
         const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
         var groups = boardCopy.groups;

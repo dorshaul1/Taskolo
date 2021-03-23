@@ -96,11 +96,9 @@ export default {
             }
         },
         toggleTodoState(todoId) {
-            console.log("toggeling...", todoId, this.checklist);
             const todoIdx = this.checklist.todos.findIndex(
                 (todo) => todoId === todo.id
             );
-            console.log("toggeling...todoIdx", todoIdx);
             this.checklist.todos[todoIdx].isDone = !this.checklist.todos[
                 todoIdx
             ].isDone;
@@ -127,9 +125,9 @@ export default {
                 this.$refs.todoItem[0].select();
             });
         },
-        editItem() {
-            console.log('savingg///')
-        },
+        // editItem() {
+        //     console.log('savingg///')
+        // },
         focusAddItemInput() {
             this.$nextTick(() => {
                 this.$refs.addItem.focus();
@@ -155,8 +153,7 @@ export default {
         const clone = require("rfdc");
         (this.checklist = clone({ proto: true })(
             Object.create(this.checklistProp)
-        )),
-            console.log("checklist", this.checklist);
+        ))
     },
     components: {
         checklistDeleteConfirm,

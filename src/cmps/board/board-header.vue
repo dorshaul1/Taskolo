@@ -84,24 +84,11 @@ export default {
       return clone({ proto: true })(
         Object.create(this.$store.getters.currBoard)
       );
-      // return this.$store.getters.currBoard;
     },
-    // currBoard() {
-    //   return this.$store.getters.currBoard;
-    // },
-    // boardTitle(){
-    //   return this.$store.getters.currBoard.title
-    // }
-    // menuOpen() {
-    //   if (this.isMenuOpen) return "is-show-menu";
-    // },
   },
   methods: {
     changeBoardTitle() {
-      // const clone = require("rfdc");
-      // const newBoard = clone({ proto: true })(Object.create(this.currBoard));
       newBoard.title = this.currBoard.title;
-      // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
       this.isEdititle = false;
     },
@@ -113,53 +100,14 @@ export default {
     },
 
     openMenu() {
-      // console.log( 'open')
-      this.$emit("open"); // console.log("this.isMenuOpen:", this.isMenuOpen);
+      this.$emit("open"); 
     },
-    // addUser(member) {
-    // try {
-    //   // task clone
-    //   const clone = require("rfdc");
-    //   const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
-
-    //   //toggle members
-    //   let boardMembers = boardCopy.members;
-    //   if (!boardMembers) boardMembers = [];
-    //   const isBoardMember = boardMembers.some(
-    //     (boardMember) => boardMember._id === member._id
-    //   );
-
-    //   console.log("isBoardMember", isBoardMember);
-
-    //   if (!isBoardMember) {
-    //     console.log("pushing...");
-    //     boardMembers.push(member);
-    //   } else {
-    //     console.log("deleteing......");
-    //     const memberIdx = boardMembers.findIndex((m) => {
-    //       m._id = member._id;
-    //     });
-    //     boardMembers.splice(memberIdx, 1);
-    //   }
-
-    //   boardCopy.members = boardMembers;
-
-    //   // change values
-    //   this.$store.dispatch({ type: "updateBoard", board: boardCopy });
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    // },
   },
   components: {
     members,
     baseTaskModal,
     inviteMembers,
   },
-  // mounted() {
-  //   //   // console.log(this.currBoard._id);
-  //   console.log(this.currBoard);
-  // },
 };
 </script>
 

@@ -108,11 +108,9 @@ export default {
         openMenu() {
             // console.log('efewf');
             this.isMenuOpen = true;
-            console.log("this.isMenuOpen:", this.isMenuOpen);
         },
         closeMenu() {
             this.isMenuOpen = false;
-            console.log("this.isMenuOpen:", this.isMenuOpen);
         },
         openGroupkAdd() {
             this.isTakeGroup = true;
@@ -129,9 +127,7 @@ export default {
                 this.newGroup.id = utilService.makeId();
                 this.newGroup.tasks = [];
                 this.newGroup.style = {};
-                console.log("addind new group", this.newGroup);
                 boardCopy.groups.push(this.newGroup);
-                console.log("addind board", boardCopy);
 
                 await this.$store.dispatch({
                     type: "updateBoard",
@@ -145,7 +141,6 @@ export default {
         closeGroupAdd() {
             this.isTakeGroup = false;
             this.newGroup = { title: "Enter a title for this card..." };
-            console.log("CLOSE");
         },
         async dragDone() {
             console.log("drag done in board details cmp");

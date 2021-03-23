@@ -17,9 +17,6 @@ export default {
             this.$emit('label-clicked')
         }
     },
-    created() {
-        console.log("labels preview", this.labels);
-    },
 };
 </script>
 

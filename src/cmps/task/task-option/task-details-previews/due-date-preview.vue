@@ -39,7 +39,6 @@ export default {
   },
   computed: {
     dateToShow() {
-      console.log("this.date:", this.date);
       return this.date;
     },
     // checkIfRange() {

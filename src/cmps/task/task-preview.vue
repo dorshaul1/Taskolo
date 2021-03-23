@@ -201,7 +201,6 @@ export default {
     },
     async deleteTask() {
       try {
-        console.log("task delete");
         const clone = require("rfdc");
 
         const boardCopy = clone({ proto: true })(Object.create(this.getBoard));

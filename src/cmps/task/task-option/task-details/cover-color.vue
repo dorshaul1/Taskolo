@@ -48,9 +48,6 @@ export default {
             this.$emit("update-cover", this.cover);
         },
     },
-    created() {
-        console.log("cover colors", this.colors);
-    },
 };
 </script>
 

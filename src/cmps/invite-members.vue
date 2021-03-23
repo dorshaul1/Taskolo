@@ -49,42 +49,19 @@ export default {
   },
   methods: {
     addUser(user) {
-      //   console.log('user:', user._id)
-      // console.log('this user is', user)
-      // this.$emit("add-user", user);
-      //   const clone = require("rfdc");
-      //   let boardCopy = clone({ proto: true })(Object.create(this.currBoard));
       try {
-        // board clone
-        // console.log("boardCopy:", boardCopy);
-
         let members = this.currBoard.members;
-        // //toggle users
-        // let boardUsers = boardCopy.members;
-        // console.log('boardUsers:', boardUsers)
-        // if (!boardUsers) boardUsers = [];
-
         const isBoardUser = members.some((member) => member._id === user._id);
 
-        // console.log("isBoardUser", isBoardUser);
-
         if (!isBoardUser) {
-          console.log("pushing...");
           members.push(user);
-          console.log(this.currBoard)
-          // console.log("members:", members);
         } else {
-          console.log("deleteing......");
           const userIdx = members.findIndex((m) => {
             return m._id === user._id;
           });
-          console.log("userIdx:", userIdx);
           members.splice(userIdx, 1);
         }
 
-        // boardCopy.members = boardUsers;
-
-        console.log("members:", members);
         // // change values
         this.$store.dispatch({ type: "updateBoard", board: this.currBoard });
       } catch (err) {
@@ -92,25 +69,10 @@ export default {
       }
     },
     isAlreadyTaskUser(user) {
-      //   let isInTask = false;
-      //   if (this.taskUsers) {
-      //     this.taskUsers.forEach((user) => {
-      //       if (user._id === userId) isInTask = true;
-      //     });
-      //   }
-    
-      // console.log('bolean:', this.currBoard.members.some((member) => member._id === user._id))
       return this.currBoard.members.some((member) => member._id === user._id);
-      //   return isInTask;
     },
   },
-    mounted() {
-    //   // console.log(this.currBoard._id);
-    console.log(this.users);
-    console.log(this.currBoard);
-  },
   created() {
-    console.log(this.users);
     this.$store.dispatch({ type: "loadUsers" });
   },
 };
