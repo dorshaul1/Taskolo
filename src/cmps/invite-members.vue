@@ -1,8 +1,8 @@
 <template>
-  <section class="members-modal">
+  <section class="members-modal" v-if="currBoard">
     <input type="text" placeholder="Search user..." />
     <div
-      v-for="user in users[0]"
+      v-for="user in users"
       :key="user._id"
       @click="addUser(user)"
       class="user-container flex align-center space-between"
@@ -71,6 +71,7 @@ export default {
         if (!isBoardUser) {
           console.log("pushing...");
           members.push(user);
+          console.log(this.currBoard)
           // console.log("members:", members);
         } else {
           console.log("deleteing......");
@@ -97,13 +98,20 @@ export default {
       //       if (user._id === userId) isInTask = true;
       //     });
       //   }
+    
+      // console.log('bolean:', this.currBoard.members.some((member) => member._id === user._id))
       return this.currBoard.members.some((member) => member._id === user._id);
       //   return isInTask;
     },
   },
+    mounted() {
+    //   // console.log(this.currBoard._id);
+    console.log(this.users);
+    console.log(this.currBoard);
+  },
   created() {
     console.log(this.users);
-    // this.users = this.$store.getters.users
+    this.$store.dispatch({ type: "loadUsers" });
   },
 };
 </script>

@@ -26,7 +26,7 @@ window.userService = userService
 _addUserToStorage()
 
 async function _addUserToStorage() {
-  return await JSON.parse(localStorage.getItem(KEY)) || JSON.stringify(storageService.post(KEY, user))
+  return await JSON.parse(localStorage.getItem(KEY)) || storageService.postMany(KEY, user)
 }
 
 function getUsers() {

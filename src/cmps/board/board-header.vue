@@ -156,10 +156,10 @@ export default {
     baseTaskModal,
     inviteMembers,
   },
-  mounted() {
-    //   // console.log(this.currBoard._id);
-    console.log(this.currBoard);
-  },
+  // mounted() {
+  //   //   // console.log(this.currBoard._id);
+  //   console.log(this.currBoard);
+  // },
 };
 </script>
 
