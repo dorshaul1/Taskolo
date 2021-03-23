@@ -11,12 +11,12 @@
       </el-option>
     </el-select>
     <div class="board-title">
-      <h1 v-if="!isEdititle" @click="editTitle">
+      <h1 v-if="!isEdititle">
         {{ this.currBoard.title }}
       </h1>
-      <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
+      <!-- <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
         <el-input ref="title" v-model="this.currBoard.title"></el-input>
-      </form>
+      </form> -->
     </div>
 
     <span class="seperate">|</span>
