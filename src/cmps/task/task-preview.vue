@@ -83,11 +83,28 @@
           <div
             class="dute-date flex align-center space-between"
             v-if="task.dueDate"
-            :class="{ isDone: task.isDone }"
+            :class="{
+              isTimePass: this.$moment().isAfter(task.dueDate) && !task.isDone,
+              isToday: this.$moment().isSame(task.dueDate, 'day'),
+              isDone: task.isDone,
+            }"
+            @mouseover="userOverDueDate"
+            @mouseout="isClockHover = ''"
             @click.stop="isDoneToggle"
           >
-            <font-awesome-icon :icon="['far', 'clock']" />
-
+            <font-awesome-icon
+              v-show="isClockHoverForDisplay === ''"
+              :icon="['far', 'clock']"
+            />
+            <font-awesome-icon
+              v-show="isClockHoverForDisplay === 'notDone'"
+              :icon="['far', 'square']"
+            />
+            <font-awesome-icon
+              v-show="isClockHoverForDisplay === 'done'"
+              :icon="['far', 'check-square']"
+            />
+            <!-- <v-if="isClockHover" font-awesome-icon :icon="['fas', 'stop']" /> -->
             <span class="time-display"> {{ timeForDisplay }}</span>
           </div>
 
@@ -141,6 +158,7 @@ export default {
     return {
       labels: this.task.labelIds,
       isEdit: false,
+      isClockHover: "",
     };
   },
   computed: {
@@ -164,6 +182,9 @@ export default {
     },
     getBoard() {
       return this.$store.getters.currBoard;
+    },
+    isClockHoverForDisplay() {
+      return this.isClockHover;
     },
   },
   methods: {
@@ -213,6 +234,12 @@ export default {
         this.$store.dispatch({ type: "updateTask", task: taskCopy });
       } catch (error) {
         console.log("cant toggle is done", error);
+      }
+    },
+    userOverDueDate() {
+      this.isClockHover = "notDone";
+      if (this.task.isDone) {
+        this.isClockHover = "done";
       }
     },
   },
