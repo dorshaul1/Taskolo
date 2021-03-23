@@ -1,13 +1,6 @@
 export const board = {
-      "_id": "b101",
       "title": "Robot dev proj",
       "createdAt": 1589983468418,
-      // "createdBy": {
-      //       "_id": "u103",
-      //       "fullname": "ytav",
-      //       "username": "dorsh",
-      //       "imgUrl": "http://some-img.jpg",
-      // },
       "style": "#565a8f",
       "labels": [
             {
@@ -60,29 +53,6 @@ export const board = {
             }
       ],
       "members": [
-            // {
-      //       "_id": "u101",
-      //       "fullname": "Ralph Barnes",
-      //       "username": "RALFI",
-      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-      // },
-      // {
-      //       "_id": "u102",
-      //       "fullname": "Mitchell Vargas",
-      //       "username": "MITCHI",
-      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-      // }, {
-      //       "_id": "u103",
-      //       "fullname": "Audrey Scott",
-      //       "username": "AUDRY",
-      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-      // },
-      // {
-      //       "_id": "u104",
-      //       "fullname": "Willard Robinson",
-      //       "username": "wiliardi",
-      //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-      // }
       ],
       "groups": [
             {
@@ -117,18 +87,6 @@ export const board = {
                               ],
                               "watch": true,
                               "members": [
-                              //       {
-                              //       "_id": "u101",
-                              //       "fullname": "Ralph Barnes",
-                              //       "username": "RALFI",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              // },
-                              // {
-                              //       "_id": "u104",
-                              //       "fullname": "Eli Gardner",
-                              //       "username": "elis",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/64.jpg",
-                              // }
                               ],
                         },
                         {
@@ -141,12 +99,6 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          // "byMember": {
-                                          //       "_id": "u103",
-                                          //       "fullname": "ytav",
-                                          //       "username": "dorsh",
-                                          //       "imgUrl": "http://some-img.jpg",
-                                          // }
                                     }
                               ],
                               "dueDate": 1246841611,
@@ -167,12 +119,7 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          // "byMember": {
-                                          //       "_id": "u103",
-                                          //       "fullname": "ytav",
-                                          //       "username": "dorsh",
-                                          //       "imgUrl": "http://some-img.jpg",
-                                          // }
+                       
                                     }
                               ],
                               "checklists": [
@@ -192,18 +139,7 @@ export const board = {
                               "style": {bgColor:''},
                               "watch": true,
                               "members": [
-                              //       {
-                              //       "_id": "u101",
-                              //       "fullname": "Ralph Barnes",
-                              //       "username": "RALFI",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              // },
-                              // {
-                              //       "_id": "u103",
-                              //       "fullname": "Audrey Scott",
-                              //       "username": "AUDRY",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                              // }
+  
                               ],
                         },
 
@@ -222,12 +158,7 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          // "byMember": {
-                                          //       "_id": "u103",
-                                          //       "fullname": "ytav",
-                                          //       "username": "dorsh",
-                                          //       "imgUrl": "http://some-img.jpg",
-                                          // }
+                         
                                     }
                               ],
                               "labelIds": ["l103"],
@@ -260,13 +191,6 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          // "byMember": 
-                                          // {
-                                          //       "_id": "u103",
-                                          //       "fullname": "ytav",
-                                          //       "username": "dorsh",
-                                          //       "imgUrl": "http://some-img.jpg",
-                                          // }
                                     }
                               ],
                               "checklists": [
@@ -285,24 +209,6 @@ export const board = {
                               "dueDate": 12152415211,
                               "watch": true,
                               "members": [
-                              //       {
-                              //       "_id": "u101",
-                              //       "fullname": "Ralph Barnes",
-                              //       "username": "RALFI",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              // },
-                              // {
-                              //       "_id": "u103",
-                              //       "fullname": "Audrey Scott",
-                              //       "username": "AUDRY",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                              // },
-                              // {
-                              //       "_id": "u104",
-                              //       "fullname": "Willard Robinson",
-                              //       "username": "wiliardi",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-                              // }
                               ],
                         },
 
@@ -326,12 +232,6 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          // "byMember": {
-                                          //       "_id": "u103",
-                                          //       "fullname": "ytav",
-                                          //       "username": "dorsh",
-                                          //       "imgUrl": "http://some-img.jpg",
-                                          // }
                                     }
                               ],
                               "checklists": [
@@ -352,17 +252,6 @@ export const board = {
                               "watch": true,
                               "attachment": "https://i.picsum.photos/id/608/200/200.jpg?hmac=-p1htX-mFieavdRDr9vUIJKyDHCXZAY5B35nhdcgIgQ",
                               "members": [
-                                    // {
-                                    //       "_id": "u102",
-                                    //       "fullname": "Mitchell Vargas",
-                                    //       "username": "MITCHI",
-                                    //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-                                    // }, {
-                                    //       "_id": "u103",
-                                    //       "fullname": "Audrey Scott",
-                                    //       "username": "AUDRY",
-                                    //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                                    // },
                               ],
                         },
                         {
@@ -378,12 +267,6 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          // "byMember": {
-                                          //       "_id": "u103",
-                                          //       "fullname": "ytav",
-                                          //       "username": "dorsh",
-                                          //       "imgUrl": "http://some-img.jpg",
-                                          // }
                                     }
                               ],
                               "checklists": [
@@ -402,24 +285,6 @@ export const board = {
                               "dueDate": 161242111,
                               "watch": true,
                               "members": [
-                              //       {
-                              //       "_id": "u101",
-                              //       "fullname": "Ralph Barnes",
-                              //       "username": "RALFI",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              // },
-                              // {
-                              //       "_id": "u103",
-                              //       "fullname": "Audrey Scott",
-                              //       "username": "AUDRY",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/women/16.jpg",
-                              // },
-                              // {
-                              //       "_id": "u104",
-                              //       "fullname": "Willard Robinson",
-                              //       "username": "wiliardi",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-                              // }
                               ],
                         },
                         {
@@ -435,12 +300,6 @@ export const board = {
                                           "id": "ZdPnm",
                                           "txt": "also @yaronb please CR this",
                                           "createdAt": 1590999817436.0,
-                                          // "byMember": {
-                                          //       "_id": "u103",
-                                          //       "fullname": "ytav",
-                                          //       "username": "dorsh",
-                                          //       "imgUrl": "http://some-img.jpg",
-                                          // }
                                     }
                               ],
                               "checklists": [
@@ -459,24 +318,6 @@ export const board = {
                               "dueDate": 12356215211,
                               "watch": true,
                               "members": [
-                              //       {
-                              //       "_id": "u101",
-                              //       "fullname": "Ralph Barnes",
-                              //       "username": "RALFI",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/78.jpg",
-                              // },
-                              // {
-                              //       "_id": "u102",
-                              //       "fullname": "Mitchell Vargas",
-                              //       "username": "MITCHI",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-                              // },
-                              // {
-                              //       "_id": "u104",
-                              //       "fullname": "Willard Robinson",
-                              //       "username": "wiliardi",
-                              //       "imgUrl": "https://randomuser.me/api/portraits/thumb/men/45.jpg",
-                              // }
                               ],
                         },
 
@@ -484,69 +325,6 @@ export const board = {
             },
 
       ],
-      // }
-      // {
-      //       "id": "g102",
-      //       "title": "Group 2",
-      //       "tasks": [
-      //             {
-      //                   "id": "c103",
-      //                   "title": "Do that"
-      //             },
-      //             {
-      //                   "id": "c104",
-      //                   "title": "Help me",
-      //                   "description": "description",
-      //                   "comments": [
-      //                         {
-      //                               "id": "ZdPnm",
-      //                               "txt": "also @yaronb please CR this",
-      //                               "createdAt": 1590999817436.0,
-      //                               "byMember": {
-      //                                     "_id": "u103",
-      //                                     "fullname": "ytav",
-      //                                     "username": "dorsh",
-      //                                     "imgUrl": "http://some-img.jpg",
-      //                               }
-      //                         }
-      //                   ],
-      //                   "checklists": [
-      //                         {
-      //                               "id": "YEhmF",
-      //                               "title": "Checklist",
-      //                               "todos": [
-      //                                     {
-      //                                           "id": "212jX",
-      //                                           "title": "To Do 1",
-      //                                           "isDone": false
-      //                                     }
-      //                               ]
-      //                         }
-      //                   ],
-      //                   "members": [{
-      //                         "_id": "u103",
-      //                         "fullname": "ytav",
-      //                         "username": "dorsh",
-      //                         "imgUrl": "http://some-img.jpg",
-      //                   }
-      //                   ],
-      //                   "labelIds": ["101", "103"],
-      //                   "createdAt": 1590999730348,
-      //                   "dueDate": 16156215211,
-      //                   "byMember": {
-      //                         "_id": "u103",
-      //                         "fullname": "ytav",
-      //                         "username": "dorsh",
-      //                         "imgUrl": "http://some-img.jpg",
-      //                   }
-      //                   ,
-      //                   "style": {
-      //                         "bgColor": "#26de81"
-      //                   }
-      //             }
-      //       ],
-      //       "style": {} //group style
-      // }
       "activities": [
             {
                   "id": "a101",
