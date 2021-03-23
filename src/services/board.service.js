@@ -34,7 +34,7 @@ function query() {
   return httpService.get(`board`)
   // return storageService.query(KEY)
 }
-
+c
 function remove(boardId) {
   return httpService.delete(`board/${boardId}`)
   // return storageService.delete(KEY, boardId)
