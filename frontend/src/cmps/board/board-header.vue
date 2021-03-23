@@ -10,18 +10,16 @@
       >
       </el-option>
     </el-select>
+    <div class="board-title">
+      <h1 v-if="!isEdititle" @click="editTitle">
+        {{ this.currBoard.title }}
+      </h1>
+      <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
+        <el-input ref="title" v-model="this.currBoard.title"></el-input>
+      </form>
+    </div>
 
-    <h1 v-if="!isEdititle" @click="editTitle">
-      {{ this.currBoard.title }}
-    </h1>
-    <form class="edit-title-input" v-else @submit.prevent="changeBoardTitle">
-      <el-input
-        ref="title"
-        placeholder="Please input"
-        v-model="this.currBoard.title"
-      ></el-input>
-    </form>
-
+    <span class="seperate">|</span>
     <ul class="members-list flex clean-list align-center">
       <li
         v-for="member in this.currBoard.members"
@@ -41,7 +39,7 @@
       title="Members"
     >
       <!-- <members :members="this.currBoard.members" @add-member="addMember" /> -->
-      <invite-members/>
+      <invite-members />
     </base-task-modal>
 
     <button class="show-menu-btn" @click="openMenu">
@@ -54,16 +52,16 @@
 // import sideMenu from "./side-menu";
 import members from "../task/task-option/task-details/members";
 import baseTaskModal from "../base-task-modal";
-import inviteMembers from '../invite-members'
+import inviteMembers from "../invite-members";
 
 export default {
   name: "board-header",
   props: {
-    currBoard: {},
+    // currBoard: {},
   },
   data() {
     return {
-      // currBoard: this.$store.getters.currBoard,
+      // boardTitle: this.currBoard.title,
       chossenBoard: "",
       isMembersOpen: false,
       isEdititle: false,
@@ -81,6 +79,13 @@ export default {
       // console.log('this.$store.getters.users:', this.$store.getters.users)
       return this.$store.getters.users;
     },
+    currBoard() {
+      const clone = require("rfdc");
+      return clone({ proto: true })(
+        Object.create(this.$store.getters.currBoard)
+      );
+      // return this.$store.getters.currBoard;
+    },
     // currBoard() {
     //   return this.$store.getters.currBoard;
     // },
@@ -93,9 +98,9 @@ export default {
   },
   methods: {
     changeBoardTitle() {
-      const clone = require("rfdc");
-      const newBoard = clone({ proto: true })(Object.create(this.currBoard));
-      newBoard.title = this.editedTitle;
+      // const clone = require("rfdc");
+      // const newBoard = clone({ proto: true })(Object.create(this.currBoard));
+      newBoard.title = this.currBoard.title;
       // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
       this.isEdititle = false;
@@ -112,48 +117,48 @@ export default {
       this.$emit("open"); // console.log("this.isMenuOpen:", this.isMenuOpen);
     },
     // addUser(member) {
-      // try {
-      //   // task clone
-      //   const clone = require("rfdc");
-      //   const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
+    // try {
+    //   // task clone
+    //   const clone = require("rfdc");
+    //   const boardCopy = clone({ proto: true })(Object.create(this.currBoard));
 
-      //   //toggle members
-      //   let boardMembers = boardCopy.members;
-      //   if (!boardMembers) boardMembers = [];
-      //   const isBoardMember = boardMembers.some(
-      //     (boardMember) => boardMember._id === member._id
-      //   );
+    //   //toggle members
+    //   let boardMembers = boardCopy.members;
+    //   if (!boardMembers) boardMembers = [];
+    //   const isBoardMember = boardMembers.some(
+    //     (boardMember) => boardMember._id === member._id
+    //   );
 
-      //   console.log("isBoardMember", isBoardMember);
+    //   console.log("isBoardMember", isBoardMember);
 
-      //   if (!isBoardMember) {
-      //     console.log("pushing...");
-      //     boardMembers.push(member);
-      //   } else {
-      //     console.log("deleteing......");
-      //     const memberIdx = boardMembers.findIndex((m) => {
-      //       m._id = member._id;
-      //     });
-      //     boardMembers.splice(memberIdx, 1);
-      //   }
+    //   if (!isBoardMember) {
+    //     console.log("pushing...");
+    //     boardMembers.push(member);
+    //   } else {
+    //     console.log("deleteing......");
+    //     const memberIdx = boardMembers.findIndex((m) => {
+    //       m._id = member._id;
+    //     });
+    //     boardMembers.splice(memberIdx, 1);
+    //   }
 
-      //   boardCopy.members = boardMembers;
+    //   boardCopy.members = boardMembers;
 
-      //   // change values
-      //   this.$store.dispatch({ type: "updateBoard", board: boardCopy });
-      // } catch (err) {
-      //   console.log(err);
-      // }
+    //   // change values
+    //   this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+    // } catch (err) {
+    //   console.log(err);
+    // }
     // },
   },
   components: {
     members,
     baseTaskModal,
-    inviteMembers
+    inviteMembers,
   },
-  created() {
-    // console.log(this.currBoard._id);
-    // console.log(this.currBoard);
+  mounted() {
+    //   // console.log(this.currBoard._id);
+    console.log(this.currBoard);
   },
 };
 </script>

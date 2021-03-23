@@ -7,7 +7,7 @@
     <main-header />
 
     <!-- <div class="main-screen" :style="{ backgroundColor: currBoard.style }"></div> -->
-    <board-header @open="isMenuOpen = true" :currBoard="currBoard" />
+    <board-header @open="isMenuOpen = true" />
     <side-menu
       @close="isMenuOpen = false"
       :class="{ 'menu-show': isMenuOpen }"
