@@ -117,7 +117,6 @@ export const boardStore = {
                     }
                 });
                 boardCopy.groups[currGroupIdx].tasks[currTaskIdx] = task
-                console.log('updaing task and board...', boardCopy)
                 context.dispatch({ type: 'updateBoard', board: boardCopy })
             }
             catch (err) {

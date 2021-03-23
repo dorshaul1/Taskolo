@@ -93,14 +93,17 @@
             @click.stop="isDoneToggle"
           >
             <font-awesome-icon
+              class="due-date-icon"
               v-show="isClockHoverForDisplay === ''"
               :icon="['far', 'clock']"
             />
             <font-awesome-icon
+              class="due-date-icon"
               v-show="isClockHoverForDisplay === 'notDone'"
               :icon="['far', 'square']"
             />
             <font-awesome-icon
+              class="due-date-icon"
               v-show="isClockHoverForDisplay === 'done'"
               :icon="['far', 'check-square']"
             />

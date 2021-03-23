@@ -27,6 +27,7 @@
           <members-preview
             v-if="task.members && task.members"
             :members="task.members"
+            @addMember = "isMembersOpen = true"
           />
           <!-- v-if="isLabelsOpen" -->
           <labels-preview
@@ -196,7 +197,7 @@
           >
             <img
               class="task-prev-icon"
-              src="../assets/task-icon/attachment.png"
+              src="../assets/task-icon/header.svg"
               alt=""
             />
             <span>Cover</span>
@@ -208,7 +209,7 @@
           >
             <cover :colors="coverColors" @update-cover="updateCover" />
           </base-task-modal>
-          <h3>Actions</h3>
+          <h3 class="actions-title">Actions</h3>
 
           <!-- COPY -->
           <a

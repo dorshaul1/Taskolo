@@ -3,7 +3,7 @@
     <img src="../../../../assets/task-icon/left-alignment.svg" alt="" />
     <div class="title-container flex align-center">
       <h3>Description</h3>
-      <button>Edit</button>
+      <button @click="openEditInput">Edit</button>
     </div>
 
     <div
