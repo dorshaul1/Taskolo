@@ -85,10 +85,16 @@ export const boardStore = {
         async updateBoard({ commit }, { board }) {
             try {
                 commit({ type: 'setBoard', board })
-                socketService.emit('board newUpdate', 'board-------------------------------------updated')
+                socketService.emit('board addUpdate', board)
+
+                socketService.off('board addUpdate')
+                socketService.on('board addUpdate', board => {
+                    console.log('here after update...')
+                    commit({ type: 'setBoard', board })
+                })
                 return await boardService.update(board)
             }
-            catch(err) {
+            catch (err) {
                 console.log('boardStore: Error in update board', err)
                 throw err
             }
@@ -116,7 +122,7 @@ export const boardStore = {
                 console.log('updaing task and board...', boardCopy)
                 context.dispatch({ type: 'updateBoard', board: boardCopy })
             }
-            catch(err) {
+            catch (err) {
                 console.log('boardStore: Error in update task', err)
                 throw err
             }

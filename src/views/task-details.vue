@@ -8,13 +8,14 @@
                 :style="{ backgroundColor: task.style.bgColor || '' }"
             >
                 <a class="change-cover" href="#">Cover</a>
-                <router-link
-                    class="close-modal-btn flex center"
-                    :to="`/board/${board._id}`"
-                    ><i class="el-icon-close"></i>
-                </router-link>
             </div>
 
+            <router-link
+                class="close-modal-btn flex center"
+                :to="`/board/${board._id}`"
+                ><i class="el-icon-close"></i>
+            </router-link>
+            
             <div class="title flex align-start column">
                 <h1>{{ task.title }}</h1>
 
