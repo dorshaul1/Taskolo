@@ -36,7 +36,7 @@
             text-align: center;
         }
     }
-    
+
     .el-input__icon {
         line-height: 0;
     }
@@ -71,26 +71,21 @@
             width: unset;
         }
     }
-
-    // ul {
-    //     margin: 8px;
-    //     padding-left: 10px;
-    // }
-    .member-avatar {
+    
+    li:first-child {
+        margin-left: 8px;
+    }
+    img {
         width: 28px;
         position: relative;
-        right: 10px;
-        img {
-            width: 28px;
-            border-radius: 50%;
-            &:first-child {
-                margin-left: 10px;
-            }
-        }
+        // right: 10px;
+        width: 28px;
+        border-radius: 50%;
+        // }
     }
 
     .add-member-btn {
-        margin-left: 5px;
+        margin-left: 8px;
         position: relative;
         height: 32px;
     }
