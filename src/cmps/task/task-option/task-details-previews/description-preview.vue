@@ -3,7 +3,7 @@
     <img src="../../../../assets/task-icon/left-alignment.svg" alt="" />
     <div class="title-container flex align-center">
       <h3>Description</h3>
-      <button @click="openEditInput">Edit</button>
+      <!-- <button @click="openEditInput">Edit</button> -->
     </div>
 
     <div
@@ -22,7 +22,7 @@
       rows="6"
       v-model="descriptionTxt"
     ></textarea>
-    <div class="desc-input-buttons flex align-center">
+    <div v-if="isDescriptionEdit" class="desc-input-buttons flex align-center">
       <button @click="updateDesc">Save</button>
       <button @click="isDescriptionEdit = false">X</button>
     </div>

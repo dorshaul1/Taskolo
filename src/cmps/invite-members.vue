@@ -5,7 +5,7 @@
       v-for="user in users"
       :key="user._id"
       @click="addUser(user)"
-      class="user-container flex align-center space-between"
+      class="member-container flex align-center space-between"
     >
       <div class="user-data flex align-center space-between">
         <!-- <div class="user-icon"> -->
