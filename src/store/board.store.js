@@ -32,7 +32,6 @@ export const boardStore = {
         setTask(state, { task }) {
             state.currTask = task
         },
-
         setTaskById(state, { taskId }) {
             state.currBoard.groups.forEach(group => {
                 group.tasks.forEach(task => {
@@ -43,7 +42,6 @@ export const boardStore = {
                 })
             });
         },
-
         setGroup(state, { group }) {
             state.currGroup = group
         },
@@ -52,10 +50,7 @@ export const boardStore = {
         },
         removeBoard(state, { boardId }) {
             state.boards = state.boards.filter(board => board._id !== boardId)
-        },
-        // updateBoard(state, { newBoard }){
-        //     state.currBoard = newBoard
-        // }   
+        }, 
     },
     actions: {
         async loadBoards(context) {
@@ -148,11 +143,6 @@ export const boardStore = {
                 throw err
             }
         },
-
-
-
-
-
         // async loadAndWatchBoard({ commit }, { boardId }) {
         //     try {
         //         console.log(boardId, "board id")

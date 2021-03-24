@@ -18,12 +18,10 @@
             :placeholder="group.title"
           />
         </div>
-
         <div>
           <span @click="openGroupMenu" class="group-menu-btn"
             ><i class="el-icon-more"></i
           ></span>
-
           <base-modal
             @close-modal="closeMenu"
             title="list"
@@ -34,7 +32,6 @@
           </base-modal>
         </div>
       </div>
-
       <div class="group-main-body">
         <draggable
           v-model="clonedGroup.tasks"
@@ -56,11 +53,16 @@
             ></task-preview>
           </transition-group>
         </draggable>
-
         <div class="group-footer flex space-between">
           <section v-show="!isTakeTask">
             <h3 @click="openTaskAdd" class="add-new-Card">
-              <span><img class="plus-group" src="../../assets/task-icon/plus.svg" alt="+"></span> Add another card
+              <span
+                ><img
+                  class="plus-group"
+                  src="../../assets/task-icon/plus.svg"
+                  alt="+"
+              /></span>
+              Add another card
             </h3>
           </section>
 
