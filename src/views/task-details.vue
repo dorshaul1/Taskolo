@@ -23,6 +23,7 @@
 
             <div class="task-details-grid">
                 <section class="left-column">
+                  <div class="task-details-top flex">
                     <members-preview
                         v-if="task.members && task.members"
                         :members="task.members"
@@ -34,6 +35,7 @@
                         v-if="labelsPreview"
                         @label-clicked="isLabelsOpen = true"
                     />
+                  </div>
 
                     <description-preview
                         @updateDesc="updateDescription"
