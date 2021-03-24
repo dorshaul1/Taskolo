@@ -135,12 +135,17 @@
           </div>
 
           <div class="members flex" v-if="task.members">
-            <li 
+            <li
               class="memeber"
               v-for="member in task.members"
               :key="member._id"
             >
-              <img class="task-prev-icon member" :src="member.imgUrl" alt="" />
+              <img
+                v-if="isBoardMember(member._id)"
+                class="task-prev-icon member"
+                :src="member.imgUrl"
+                alt=""
+              />
             </li>
           </div>
         </div>
@@ -242,6 +247,15 @@ export default {
       this.isClockHover = "notDone";
       if (this.task.isDone) {
         this.isClockHover = "done";
+      }
+    },
+    isBoardMember(memberId) {
+      try {
+        return this.currBoard.members.some(
+          (taskMember) => taskMember._id === memberId
+        );
+      } catch (error) {
+        console.log("user is not exist in curr task", error);
       }
     },
   },

@@ -1,7 +1,7 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 // const SCORE_FOR_REVIEW = 10
-import { user } from '../data/user.js'
+// import { user } from '../data/user.js'
 
 
 const KEY = 'users'

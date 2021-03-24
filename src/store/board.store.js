@@ -90,7 +90,7 @@ export const boardStore = {
                 // socketService.on('board addUpdate', board => {
                 //     commit({ type: 'setBoard', board })
                 // })
-                socketService.emit('board newUpdate', board)
+                // socketService.emit('board newUpdate', board)
                 return await boardService.update(board)
             }
             catch (err) {
