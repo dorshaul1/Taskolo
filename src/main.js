@@ -42,10 +42,6 @@ Vue.config.productionTip = debug;
 Vue.mixin({
   $clone: require('rfdc')({ proto: true })
 });
-new Vue({
-  el: "#app",
-  foo: "foo"
-});
 
 new Vue({
   router,
