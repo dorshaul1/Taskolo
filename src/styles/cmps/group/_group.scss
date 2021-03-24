@@ -11,6 +11,8 @@
       white-space: initial;
       overflow: hidden;
 
+   
+
       .groupTitleEdit {
             flex-grow: 2;
             width: 200px;
@@ -101,15 +103,31 @@
             font-size: 14px;
             line-height: 20px;
             font-weight: 400;
-            padding-inline-start: 8px;
+            // padding-inline-start: 2px;
             padding-inline-end: 0px;
-            padding-block-start: 4px;
-            padding-block-start: 4px;
-            margin: 2px 0px 8px 8px;
+            // padding-block-start: 4px;
+            // padding-block-start: 4px;
+            padding: 4px;
+            margin: 6px 0px 4px 6px;
             font-size: 14px;
             cursor: pointer;
             & :hover {
                   background: $hover-dark;
+            }
+      }
+
+      .group-footer{
+            // margin-inline-start: 6px;
+            // margin-inline-end: 4px;
+            .add-new-Card{
+                  width: 255px;
+                  display: flex;
+                  &:hover{
+                        
+                        background: rgba(0, 0, 0, 0.03);
+                        border-radius: 3px;
+                      
+                  }
             }
       }
 
