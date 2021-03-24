@@ -6,8 +6,10 @@ import { boardStore } from './board.store.js'
 
 Vue.use(Vuex)
 
+const debug = process.env.NODE_ENV !== 'production';
+
 export const store = new Vuex.Store({
-  strict: true,
+  strict: debug,
   modules: {
     userStore,
     boardStore, 
