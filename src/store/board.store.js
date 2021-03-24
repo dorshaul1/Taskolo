@@ -66,6 +66,7 @@ export const boardStore = {
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
                 //     context.commit({ type: 'addBoard', board })
                 // })
+                socketService.on('board updated')
 
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
@@ -86,10 +87,11 @@ export const boardStore = {
                 commit({ type: 'setBoard', board })
                 socketService.emit('board addUpdate', board)
 
-                socketService.off('board addUpdate')
-                socketService.on('board addUpdate', board => {
-                    commit({ type: 'setBoard', board })
-                })
+                // socketService.off('board addUpdate')
+                // socketService.on('board addUpdate', board => {
+                //     commit({ type: 'setBoard', board })
+                // })
+                socketService.emit('board updated', board)
                 return await boardService.update(board)
             }
             catch (err) {
