@@ -12,7 +12,7 @@
       overflow: hidden;
 
       // .group-header{
-      //       position: relative;
+      //       // position: relative;
       // }
 
       // .group-edit-modal{
@@ -40,7 +40,8 @@
       }
 
       .task-modal {
-            top: 155px;
+            top: 45px;
+            // right: 0;
       }
 
       .group-title {
@@ -84,6 +85,7 @@
 
       .group-main {
             // max-height: 100%;
+            // position: relative;
             padding-bottom: 6px;
       }
 
