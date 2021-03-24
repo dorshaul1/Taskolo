@@ -194,7 +194,7 @@ export default {
         sideMenu,
         draggable,
         mainHeader,
-    },
+    }
 };
 </script>
 
