@@ -44,8 +44,8 @@
                             ref="groupTitle"
                             v-show="isTakeGroup"
                             name="NoteTxt"
-                            v-model="newGroup.title"
                             placeholder="Enter a title for this card..."
+                            v-model="newGroup.title"
                             rows="2"
                         >
                         </textarea>
@@ -58,6 +58,7 @@
                                 x
                             </button>
                         </div>
+
                     </section>
                 </div>
             </draggable>
@@ -96,7 +97,9 @@ export default {
         currBoard() {
             const clone = require("rfdc");
             let currBoard = this.$store.getters.currBoard;
+            console.log('board details comp:', currBoard)
             const boardCopy = clone({ proto: true })(Object.create(currBoard));
+            console.log('board cloned', boardCopy);
             return boardCopy;
         },
         getBoards() {
@@ -193,6 +196,7 @@ export default {
         mainHeader,
     },
     created() {
+        console.log('group id', this.currBoard)
         socketService.setup();
         socketService.emit("board", this.boardId);
         socketService.on("board newUpdate", this.log); //run this function when server send board newUpdate event

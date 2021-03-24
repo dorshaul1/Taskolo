@@ -35,11 +35,17 @@ Vue.use(VCalendar)
 
 Vue.use(ElementUI);
 
-const clone = require("rfdc")()
+const debug = process.env.NODE_ENV !== 'production';
+Vue.config.productionTip = debug;
 
-Vue.prototype.$clone = clone
 
-Vue.config.productionTip = false
+Vue.mixin({
+  $clone: require('rfdc')({ proto: true })
+});
+new Vue({
+  el: "#app",
+  foo: "foo"
+});
 
 new Vue({
   router,

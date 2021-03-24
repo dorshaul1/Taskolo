@@ -94,11 +94,6 @@
           >
             <font-awesome-icon
               class="due-date-icon"
-              v-show="isClockHoverForDisplay === ''"
-              :icon="['far', 'clock']"
-            />
-            <font-awesome-icon
-              class="due-date-icon"
               v-show="isClockHoverForDisplay === 'notDone'"
               :icon="['far', 'square']"
             />
@@ -106,6 +101,11 @@
               class="due-date-icon"
               v-show="isClockHoverForDisplay === 'done'"
               :icon="['far', 'check-square']"
+            />
+            <font-awesome-icon
+              class="due-date-icon"
+              v-show="isClockHoverForDisplay === ''"
+              :icon="['far', 'clock']"
             />
             <!-- <v-if="isClockHover" font-awesome-icon :icon="['fas', 'stop']" /> -->
             <span class="time-display"> {{ timeForDisplay }}</span>
@@ -238,7 +238,8 @@ export default {
         const clone = require("rfdc");
         let taskCopy = clone({ proto: true })(Object.create(this.task));
         taskCopy.isDone = !taskCopy.isDone;
-        this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        await this.$store.dispatch({ type: "updateTask", task: taskCopy });
+        this.userOverDueDate();
       } catch (error) {
         console.log("cant toggle is done", error);
       }
