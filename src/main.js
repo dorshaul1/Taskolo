@@ -38,13 +38,10 @@ Vue.use(ElementUI);
 const debug = process.env.NODE_ENV !== 'production';
 Vue.config.productionTip = debug;
 
+Vue.mixins.$clone = clone
 
 Vue.mixin({
   $clone: require('rfdc')({ proto: true })
-});
-new Vue({
-  el: "#app",
-  foo: "foo"
 });
 
 new Vue({
