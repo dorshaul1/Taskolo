@@ -25,6 +25,7 @@
       .cover {
             height: 60px;
             display: flex;
+            border-radius: 3px;
             .title-cover {
                   display: flex;
                   justify-content: flex-start;
@@ -116,6 +117,7 @@
             height: 30px;
       }
 
+  
   
 
       .task-main {
