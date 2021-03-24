@@ -250,24 +250,15 @@ export default {
       }
     },
     isBoardMember(memberId) {
-      // return true
-      // console.log('memberId:', memberId)
-      return this.currBoard.members.forEach((member) => {
-          // console.log('member:', member)
-          // console.log('member._id:', member._id)
-          // console.log('memberId:', memberId)
-          return member._id === memberId
-        })
-      //   console.log('Object.values(member).includes(memberId):', Object.values(member).includes(memberId))
-      //   return Object.values(member).includes(memberId)
-        // console.log('member._Id:', member._id)
-        // console.log('memberId:', memberId)
-        // console.log('member._Id === memberId:', member._Id === memberId)
-        // return member._Id === memberId;
-        // console.log("member._Id === memberId:", member._Id === memberId);
+      try {
+        return this.currBoard.members.some(
+          (taskMember) => taskMember._id === memberId
+        );
+      } catch (error) {
+        console.log("user is not exist in curr task", error);
       }
     },
+  },
   created() {},
-  }
-
+};
 </script>
