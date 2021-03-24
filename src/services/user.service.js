@@ -23,24 +23,24 @@ window.userService = userService
 // userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 100, isAdmin: true})
 // userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 100})
 
-_addUserToStorage()
+// _addUserToStorage()
 
-async function _addUserToStorage() {
-  return await JSON.parse(localStorage.getItem(KEY)) || storageService.postMany(KEY, user)
-}
+// async function _addUserToStorage() {
+//   return await JSON.parse(localStorage.getItem(KEY)) || storageService.postMany(KEY, user)
+// }
 
 function getUsers() {
-    return storageService.query(KEY)
-    // return httpService.get(`user`)
+    // return storageService.query(KEY)
+    return httpService.get(`user`)
 }
 
 function getById(userId) {
-    return storageService.get(KEY, userId)
-    // return httpService.get(`user/${userId}`)
+    // return storageService.get(KEY, userId)
+    return httpService.get(`user/${userId}`)
 }
 function remove(userId) {
-    return storageService.remove(KEY, userId)
-    // return httpService.delete(`user/${userId}`)
+    // return storageService.remove(KEY, userId)
+    return httpService.delete(`user/${userId}`)
 }
 
 async function update(user) {
