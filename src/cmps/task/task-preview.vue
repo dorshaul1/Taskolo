@@ -135,7 +135,7 @@
           </div>
 
           <div class="members flex" v-if="task.members">
-            <li
+            <li 
               class="memeber"
               v-for="member in task.members"
               :key="member._id"
