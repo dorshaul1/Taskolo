@@ -57,7 +57,7 @@
           </li>
         </ul>
 
-        <div v-if="task.attachment" class="attachment">
+        <div v-if="task.attachment" class="attachment flex center">
           <img
             :src="task.attachment"
             alt="picture"
