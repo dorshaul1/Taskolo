@@ -62,16 +62,6 @@ export const boardStore = {
                 // context.commit({ type: 'addBoard', board })
                 // })
 
-<<<<<<< HEAD
-                //socket- work: 
-
-                // socketService.off('board addUpdate')
-                // socketService.on('board addUpdate', board => {
-                //     console.log('updateddddddd')
-                //     context.commit({ type: 'setBoard', board })
-                // })
-=======
->>>>>>> dc0fbf71f050448fcc7c5940acabac429fc53c12
 
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
