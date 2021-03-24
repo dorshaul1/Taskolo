@@ -11,19 +11,7 @@
       white-space: initial;
       overflow: hidden;
 
-      // .group-header{
-      //       // position: relative;
-      // }
-
-      // .group-edit-modal{
-      //       top: 20px
-      // }
-      .plus-group{
-            width: 14px;
-            margin-inline-end: 5px;
-            padding-top: 3px;
-            padding-left: 2px;
-      }
+ 
 
       .groupTitleEdit {
             flex-grow: 2;
@@ -37,9 +25,9 @@
             font-size: 14px;
       }
 
-      .edit-group{
+      .edit-group {
             position: relative;
-            .group-modal{
+            .group-modal {
                   top: 0;
                   // z-index: 40;
             }
@@ -121,70 +109,62 @@
             border-radius: 30px;
       }
 
-      .add-new-Card {
-            font-size: 14px;
-            line-height: 20px;
-            font-weight: 400;
-            // padding-inline-start: 2px;
-            // padding-block-start: 4px;
-            // padding-block-start: 4px;
-            padding: 4px;
-            padding-inline-end: 0px;
-            margin: 6px 0px 4px 1px;
-            font-size: 14px;
-            cursor: pointer;
-      }
 
-      .group-footer{
-            // margin-inline-start: 6px;
-            // margin-inline-end: 4px;
-            .add-new-Card{
-                  width: 255px;
+      .group-footer {
+            padding: 5px 0px 0px 5px;
+            .add-new-Card {
+                  width: 254px;
+                  font-size: 14px;
+                  line-height: 20px;
+                  font-weight: 400;
                   display: flex;
-                  &:hover{
-                        
+                  align-items: center;
+                  cursor: pointer;
+                  padding: 5px 0px 5px 5px;
+                  &:hover {
                         background: rgba(0, 0, 0, 0.03);
                         border-radius: 3px;
-                      
+                  }
+                  .plus-group {
+                        width: 14px;
+                        margin-inline-end: 5px;
+                        margin-inline-start: 5px;
+                  }
+            }
+
+            .take-new-task {
+                  margin-inline-end: 1px;
+                  flex-direction: column;
+                  width: 100%;
+                  padding: 0px 4px 2px 0px;
+                  /// new task input
+                  .task-Add-input {
+                        outline: none;
+                        width: auto;
+                        margin: 0px;
+                        resize: none;
+                        height: 54px;
+                        background-color: #fff;
+                        border-color: transparent;
+                        border-radius: 3px;
+                        box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+                        & :focus {
+                              border-color: transparent;
+                        }
+                  }
+                  .task-btn-container {
+                        padding-block-start: 6px;
+                        .add-task {
+                              background-color: rgb(90, 172, 68);
+                              border-radius: 3px;
+                              width: 90px;
+                              color: white;
+                        }
+                        .exit-task {
+                              width: 40px;
+                        }
                   }
             }
       }
 
-      /// new task input
-      .task-Add-input {
-            outline: none;
-            width: auto;
-            margin: 0px;
-            resize: none;
-            height: 54px;
-            background-color: #fff;
-            border-color: transparent;
-            border-radius: 3px;
-            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-            & :focus {
-                  border-color: transparent;
-            }
-      }
-
-      .task-btn-container {
-            padding-block-start: 6px;
-      }
-
-      .add-task {
-            background-color: rgb(90, 172, 68);
-            border-radius: 3px;
-            width: 90px;
-            color: white;
-      }
-
-      .exit-task {
-            width: 40px;
-      }
-
-      .take-new-task {
-            margin-inline-end: 1px;
-            flex-direction: column;
-            width: 100%;
-            padding: 5px 4px 2px 6px;
-      }
 }
