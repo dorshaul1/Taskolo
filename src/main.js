@@ -37,7 +37,7 @@ Vue.use(ElementUI);
 
 const clone = require("rfdc")()
 
-Vue.prototype.$clone = clone
+Vue.mixins.$clone = clone
 
 Vue.config.productionTip = false
 
