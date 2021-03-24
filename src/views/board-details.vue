@@ -172,8 +172,8 @@ export default {
             // }
         },
         log(msg) {
-          console.log('sdaaaaaaaa', msg)
-        }
+            console.log("sdaaaaaaaa", msg);
+        },
     },
     watch: {
         boardId: {
@@ -194,15 +194,14 @@ export default {
         mainHeader,
     },
     created() {
-      socketService.setup()
-      socketService.emit('board', this.boardId)
-      socketService.on('board newUpdate', this.log) //run this function when server send board newUpdate event
-
+        socketService.setup();
+        socketService.emit("board", this.boardId);
+        socketService.on("board newUpdate", this.log); //run this function when server send board newUpdate event
     },
     destroyed() {
-    socketService.off('board newUpdate', this.log)
-    socketService.terminate();
-    }
+        socketService.off("board newUpdate", this.log);
+        socketService.terminate();
+    },
 };
 </script>
 

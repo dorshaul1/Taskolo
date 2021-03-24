@@ -24,7 +24,7 @@
       <li
         v-for="member in this.currBoard.members"
         :key="member._id"
-        class="member-avatar"
+        class="flex align-center"
       >
         <img :src="member.imgUrl" alt="-" />
       </li>
