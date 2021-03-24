@@ -126,16 +126,13 @@
             line-height: 20px;
             font-weight: 400;
             // padding-inline-start: 2px;
-            padding-inline-end: 0px;
             // padding-block-start: 4px;
             // padding-block-start: 4px;
             padding: 4px;
-            margin: 6px 0px 4px 6px;
+            padding-inline-end: 0px;
+            margin: 6px 0px 4px 1px;
             font-size: 14px;
             cursor: pointer;
-            & :hover {
-                  background: $hover-dark;
-            }
       }
 
       .group-footer{
