@@ -33,15 +33,12 @@
 
                 <div class="new-group-container">
                     <section v-show="!isTakeGroup">
-                        <h3
-                            @click="openGroupkAdd"
-                            class="add-new-group flex justify-center align-center"
-                        >
-                            <span>+</span> Add another list
+                        <h3 @click="openGroupkAdd" class="add-new-group flex  align-center">
+                           <img class="plus-board-icon" src="../assets/task-icon/plus-white.svg" alt="+">Add another list
                         </h3>
                     </section>
 
-                    <section v-show="isTakeGroup" class="take-new-group flex">
+                    <section v-show="isTakeGroup" class="take-new-group flex isEditable" :class="{'isEditable' : isTakeGroup}">
                         <textarea
                             class="group-Add-input"
                             ref="groupTitle"
@@ -65,6 +62,8 @@
                 </div>
             </draggable>
         </main>
+
+
         <router-view />
     </section>
 </template>

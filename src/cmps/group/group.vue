@@ -1,6 +1,7 @@
 <template>
   <div class="group-container" @click.stop="isEditTitle = false">
     <div class="group-main">
+
       <div class="group-header flex space-between align-center">
         <div>
           <h2
@@ -32,6 +33,7 @@
           </base-modal>
         </div>
       </div>
+      
       <div class="group-main-body">
         <draggable
           v-model="clonedGroup.tasks"
@@ -57,18 +59,16 @@
         <div class="group-footer flex space-between">
           <section v-show="!isTakeTask">
             <h3 @click="openTaskAdd" class="add-new-Card">
-              <span
-                ><img
-                  class="plus-group"
-                  src="../../assets/task-icon/plus.svg"
-                  alt="+"
-              /></span>
+              <img
+                class="plus-group"
+                src="../../assets/task-icon/plus.svg"
+                alt="+"
+              />
               Add another card
             </h3>
           </section>
 
           <section v-show="isTakeTask" class="take-new-task flex">
-            
             <textarea
               class="task-Add-input"
               ref="taskTitle"
