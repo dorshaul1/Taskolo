@@ -64,9 +64,12 @@ export const boardStore = {
                 context.commit({ type: 'setBoards', boards })
                 // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
-                //     context.commit({ type: 'addBoard', board })
+                    // context.commit({ type: 'addBoard', board })
                 // })
-                socketService.on('board updated')
+                socketService.on('board addUpdate', board => {
+                    console.log('updateddddddd')
+                    context.commit({ type: 'setBoard', board })
+                })
 
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
@@ -85,13 +88,13 @@ export const boardStore = {
         async updateBoard({ commit }, { board }) {
             try {
                 commit({ type: 'setBoard', board })
-                socketService.emit('board addUpdate', board)
+                // socketService.emit('board addUpdate', board)
 
                 // socketService.off('board addUpdate')
                 // socketService.on('board addUpdate', board => {
                 //     commit({ type: 'setBoard', board })
                 // })
-                socketService.emit('board updated', board)
+                socketService.emit('board newUpdate', board)
                 return await boardService.update(board)
             }
             catch (err) {
