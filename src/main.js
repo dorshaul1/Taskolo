@@ -38,10 +38,6 @@ Vue.use(ElementUI);
 const debug = process.env.NODE_ENV !== 'production';
 Vue.config.productionTip = debug;
 
-<<<<<<< HEAD
-// Vue.mixins.$clone = clone
-=======
->>>>>>> 4a35dee67cb55dcfc13aed8043f2a1f0a6ed3baa
 
 
 new Vue({
