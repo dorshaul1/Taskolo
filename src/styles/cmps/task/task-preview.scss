@@ -2,8 +2,12 @@
       padding: 6px 4px 2px 5px;
       position: relative;
 
+
       &:first-child{
-            padding-top: 0px;
+            // padding-top: 0px;
+            // .editing{
+            //       top: 2px;
+            // }
       }
 
       // .edit-btn {
@@ -11,6 +15,12 @@
       //             background-color: $hover;
       //       }
       // }
+
+      .task-header{
+            &:hover{
+                  background: rgba(0, 0, 0, 0.03);
+            }
+      }
 
       .cover {
             height: 60px;
@@ -200,6 +210,9 @@
                   height: 25px;
                   border-radius: 50%;
                   margin-inline-start: 3px;
+            }
+            &:hover{
+                  background: rgba(0, 0, 0, 0.03);
             }
       }
 }
