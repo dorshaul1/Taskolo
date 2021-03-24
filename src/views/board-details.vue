@@ -195,16 +195,6 @@ export default {
         draggable,
         mainHeader,
     },
-    created() {
-        console.log('group id', this.currBoard)
-        socketService.setup();
-        socketService.emit("board", this.boardId);
-        socketService.on("board newUpdate", this.log); //run this function when server send board newUpdate event
-    },
-    destroyed() {
-        socketService.off("board newUpdate", this.log);
-        socketService.terminate();
-    },
 };
 </script>
 
