@@ -53,6 +53,7 @@
             ></task-preview>
           </transition-group>
         </draggable>
+
         <div class="group-footer flex space-between">
           <section v-show="!isTakeTask">
             <h3 @click="openTaskAdd" class="add-new-Card">
@@ -67,6 +68,7 @@
           </section>
 
           <section v-show="isTakeTask" class="take-new-task flex">
+            
             <textarea
               class="task-Add-input"
               ref="taskTitle"
