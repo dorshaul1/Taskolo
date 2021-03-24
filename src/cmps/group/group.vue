@@ -60,7 +60,7 @@
         <div class="group-footer flex space-between">
           <section v-show="!isTakeTask">
             <h3 @click="openTaskAdd" class="add-new-Card">
-              <span>+</span> Add another card
+              <span><img class="plus-group" src="../../assets/task-icon/plus.svg" alt="+"></span> Add another card
             </h3>
           </section>
 
