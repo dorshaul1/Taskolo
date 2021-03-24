@@ -61,6 +61,7 @@ export const boardStore = {
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
                     // context.commit({ type: 'addBoard', board })
                 // })
+                socketService.off('board addUpdate')
                 socketService.on('board addUpdate', board => {
                     console.log('updateddddddd')
                     context.commit({ type: 'setBoard', board })
