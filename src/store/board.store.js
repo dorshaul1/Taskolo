@@ -50,7 +50,7 @@ export const boardStore = {
         },
         removeBoard(state, { boardId }) {
             state.boards = state.boards.filter(board => board._id !== boardId)
-        }, 
+        },
     },
     actions: {
         async loadBoards(context) {
@@ -59,13 +59,9 @@ export const boardStore = {
                 context.commit({ type: 'setBoards', boards })
                 // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
-                    // context.commit({ type: 'addBoard', board })
+                // context.commit({ type: 'addBoard', board })
                 // })
-                socketService.off('board addUpdate')
-                socketService.on('board addUpdate', board => {
-                    console.log('updateddddddd')
-                    context.commit({ type: 'setBoard', board })
-                })
+
 
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
@@ -76,6 +72,12 @@ export const boardStore = {
             try {
                 // console.log(boardId, "board id")
                 const board = await boardService.getById(boardId)
+                socketService.emit('board-watch', boardId);
+                socketService.off('board-update')
+                socketService.on('board-update', board => {
+                    console.log('board update socket', board)
+                    context.commit({ type: 'setBoard', board })
+                })
                 commit({ type: 'setBoard', board })
             } catch (error) {
 

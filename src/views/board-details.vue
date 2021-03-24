@@ -194,8 +194,7 @@ export default {
         mainHeader,
     },
     created() {
-        socketService.setup();
-        socketService.emit("board", this.boardId);
+
         socketService.on("board newUpdate", this.log); //run this function when server send board newUpdate event
     },
     destroyed() {
