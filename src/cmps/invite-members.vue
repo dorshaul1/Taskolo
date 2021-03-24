@@ -37,11 +37,7 @@ export default {
   },
   computed: {
     currBoard() {
-      const clone = require("rfdc");
-
-      return clone({ proto: true })(
-        Object.create(this.$store.getters.currBoard)
-      );
+      return this.$clone(this.$store.getters.currBoard)  
     },
     users() {
       return this.$store.getters.users;

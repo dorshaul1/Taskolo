@@ -152,8 +152,7 @@ export default {
     },
     async addNewTask() {
       try {
-        const clone = require("rfdc");
-        const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
+        const boardCopy = this.$clone(this.getBoard)
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
@@ -172,8 +171,7 @@ export default {
     },
     async deleteGroup() {
       try {
-        const clone = require("rfdc");
-        const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
+        const boardCopy = this.$clone(this.getBoard)
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
@@ -187,11 +185,7 @@ export default {
     async dragDone() {
       this.drag = false;
       try {
-        //clone
-        const clone = require("rfdc");
-        const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
-
-        //replace the group- find index
+        const boardCopy = this.$clone(this.getBoard)
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
