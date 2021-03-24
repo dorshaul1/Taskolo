@@ -10,17 +10,17 @@
       word-break: break-all;
       white-space: initial;
       overflow: hidden;
-      
-      
 
-      .groupTitleEdit{
-            flex-grow: 1;
-            width: 230px;
-            height: 30px;
-            outline-color: #0079BF;
-            border-color: #0079BF;
+      .groupTitleEdit {
+            flex-grow: 2;
+            width: 200px;
+            // height: 30px;
+            outline-color: #0079bf;
+            border-color: #0079bf;
             margin: 6px;
             margin-inline-start: 10px;
+            font-weight: 600;
+            font-size: 14px;
       }
 
       .task-modal {
@@ -42,10 +42,19 @@
       .group-menu-btn {
             width: 20px;
             height: 20px;
-
+            color: #6b778c;
             font-weight: 600;
             margin-inline-end: 11px;
+            padding: 6px;
+            border-radius: 3px;
             cursor: pointer;
+            &:hover {
+                  background: rgba(0, 0, 0, 0.03);
+            }
+      }
+
+      .el-icon-more {
+            margin-block-start: 5px;
       }
 
       .group-main-body {
