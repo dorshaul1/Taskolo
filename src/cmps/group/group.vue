@@ -28,6 +28,7 @@
             @close-modal="closeMenu"
             title="list"
             v-if="isGroupMenuOpen"
+            class="group-edit-modal"
           >
             <group-menu @delete-group="deleteGroup"></group-menu>
           </base-modal>

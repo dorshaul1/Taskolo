@@ -11,7 +11,13 @@
       white-space: initial;
       overflow: hidden;
 
-   
+      // .group-header{
+      //       position: relative;
+      // }
+
+      // .group-edit-modal{
+      //       top: 20px
+      // }
 
       .groupTitleEdit {
             flex-grow: 2;
@@ -23,6 +29,14 @@
             margin-inline-start: 10px;
             font-weight: 600;
             font-size: 14px;
+      }
+
+      .edit-group{
+            position: relative;
+            .group-modal{
+                  top: 0;
+                  // z-index: 40;
+            }
       }
 
       .task-modal {
