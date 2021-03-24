@@ -26,11 +26,22 @@
     }
     .date-preview {
         cursor: pointer;
+    }
+    .date {
+        // width: 270px;
+        font-size: .875rem;
+        height: 40px;
+        background-color: #e2e4e9;
+        border-radius: 3px;
+        text-align: left;
+        padding: 8px 12px;
+        // margin-bottom: 10px;
+        cursor: pointer;
         &:hover {
-            background-color: $hover;
+            background-color: rgba(0, 0, 0, 0.1);
         }
     }
     .end-date {
-        margin-left: 40px;
+        margin-left: 30px;
     }
 }

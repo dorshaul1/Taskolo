@@ -25,7 +25,9 @@
     text-align: center;
 }
 // flex helpers
-
+.hide {
+    display: none;
+}
 .flex {
     display: flex;
 
@@ -55,7 +57,7 @@
         justify-content: flex-start;
         align-items: flex-start;
     }
-    &.center{
+    &.center {
         justify-content: center;
         align-items: center;
     }

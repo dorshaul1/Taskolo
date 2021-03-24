@@ -31,10 +31,11 @@ image {
     width: 100%;
 }
 
-.hide {
-    display: none;
-}
-
 textarea {
     outline: none;
+    border: none;
+}
+
+input{
+    border: none;
 }
