@@ -1,9 +1,23 @@
 <template>
-  <div class="group-container">
+  <div class="group-container" @click.stop="isEditTitle = false">
     <div class="group-main">
       <div class="group-header flex space-between align-center">
-        <h2 class="group-title flex align-center">{{ group.title }}</h2>
-        <!-- <input v-if="isEdititle" ref="title" class="group-title editable"  :value="group.title" /> -->
+        <div>
+          <h2
+            v-if="!isEditTitle"
+            @click.stop="editTitle"
+            class="group-title flex align-center"
+          >
+            {{ group.title }}
+          </h2>
+          <input
+            class="groupTitleEdit"
+            ref="titleEdit"
+            v-else
+            type="text"
+            :placeholder="group.title"
+          />
+        </div>
 
         <div>
           <span @click="openGroupMenu" class="group-menu-btn"
@@ -94,6 +108,8 @@ export default {
       isGroupMenuOpen: false,
       isEdititle: false,
       drag: false,
+      isEditTitle: false,
+      title: "",
     };
   },
   computed: {
@@ -180,6 +196,12 @@ export default {
       } catch (error) {
         console.log("group cmp: error with drag task inside group");
       }
+    },
+    editTitle() {
+      this.isEditTitle = true;
+      this.$nextTick(() => {
+        this.$refs.titleEdit.select();
+      });
     },
   },
   components: {
