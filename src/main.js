@@ -38,10 +38,6 @@ Vue.use(ElementUI);
 const debug = process.env.NODE_ENV !== 'production';
 Vue.config.productionTip = debug;
 
-<<<<<<< HEAD
-Vue.mixins.$clone = clone
-=======
->>>>>>> b11502dc4874b7ab445f7d60f542e0041f9cd12a
 
 Vue.mixin({
   $clone: require('rfdc')({ proto: true })
