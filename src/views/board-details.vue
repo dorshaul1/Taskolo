@@ -199,6 +199,7 @@ export default {
     mainHeader,
     taskPreviewModal,
   },
+
 };
 </script>
 
