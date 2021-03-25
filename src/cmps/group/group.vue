@@ -32,14 +32,13 @@
           </base-modal>
         </div>
       </div>
+      <!-- :class="{'drag-start': drag}" -->
 
       <div class="group-main-body">
         <draggable
           v-model="clonedGroup.tasks"
           group="task"
           v-bind="dragOptions"
-          @start="drag = true"
-          @change="dragStart"
           @end="dragDone"
         >
           <transition-group

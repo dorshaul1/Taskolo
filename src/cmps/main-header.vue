@@ -16,7 +16,7 @@
         <!-- <img src="../assets/logo/logo-full.png" alt=""> -->
       </section>
     </section>
-    <section class="profile-details">
+    <!-- <section class="profile-details"> -->
       <!-- <div class="member-avatar"> -->
       <img
         class="member-avatar"
@@ -24,7 +24,7 @@
         alt=""
       />
       <!-- </div> -->
-    </section>
+    <!-- </section> -->
   </header>
 </template>
 

@@ -86,13 +86,6 @@ export const boardStore = {
         async updateBoard({ commit }, { board }) {
             try {
                 commit({ type: 'setBoard', board })
-                // socketService.emit('board addUpdate', board)
-
-                // socketService.off('board addUpdate')
-                // socketService.on('board addUpdate', board => {
-                //     commit({ type: 'setBoard', board })
-                // })
-                // socketService.emit('board newUpdate', board)
                 return await boardService.update(board)
             }
             catch (err) {
@@ -107,9 +100,6 @@ export const boardStore = {
                 const boardCopy = clone({ proto: true })(
                     Object.create(context.state.currBoard)
                 );
-                // const boardCopy = this.$clone({ proto: true })(
-                //     Object.create(context.state.currBoard
-                //     ));
                 let currTaskIdx;
                 const currGroupIdx = boardCopy.groups.findIndex((group) => {
                     if (group.id === context.state.currGroup.id) {
@@ -146,31 +136,5 @@ export const boardStore = {
                 throw err
             }
         },
-        // async loadAndWatchBoard({ commit }, { boardId }) {
-        //     try {
-        //         console.log(boardId, "board id")
-        //         const board = await boardService.getById(boardId)
-        //         commit({ type: 'setCurrBoard', board })
-        //     } catch (error) {
-        //     }
-        // },
-        // async setGroup({ commit }, { group }) {
-        //     console.log("set group", group)
-        //     try {
-        //         commit({ type: 'setCurrGroup', group })
-        //     } catch (err) {
-        //         console.log('boardStore: Error in set group', err)
-        //         throw err
-        //     }
-        // },
-        // async setTask({ commit }, { task }) {
-        //     console.log("set tasks", task)
-        //     try {
-        //         commit({ type: 'setCurrTask', task })
-        //     } catch (err) {
-        //         console.log('boardStore: Error in set task', err)
-        //         throw err
-        //     }
-        // },
     }
 }
