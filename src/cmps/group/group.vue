@@ -32,13 +32,14 @@
           </base-modal>
         </div>
       </div>
+      <!-- :class="{'drag-start': drag}" -->
 
       <div class="group-main-body">
         <draggable
           v-model="clonedGroup.tasks"
           group="task"
+          @change="onDrag"
           v-bind="dragOptions"
-          @start="drag = true"
           @end="dragDone"
         >
           <transition-group
@@ -202,9 +203,12 @@ export default {
         this.$refs.titleEdit.select();
       });
     },
-    openPreviewModal(task){
-      this.$emit('task-modal-open',task)
-    }
+    openPreviewModal(task) {
+      this.$emit("task-modal-open", task);
+    },
+    onDrag() {
+      console.log("ddddd");
+    },
   },
   components: {
     taskPreview,

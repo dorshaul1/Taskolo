@@ -2,18 +2,21 @@
       padding: 6px 4px 2px 5px;
       position: relative;
 
-      &:first-child {
-            // padding-top: 0px;
-            // .editing{
-            //       top: 2px;
-            // }
+
+      .ghost{
+            // background-color: rgba(0, 0, 0, 0.151);
+            // opacity: 0;
+            // transform: translate(8deg);
       }
+
 
       // .edit-btn {
       //       & :hover {
       //             background-color: $hover;
       //       }
       // }
+
+
 
       .task-header {
             &:hover {

@@ -11,8 +11,19 @@
       white-space: initial;
       overflow: hidden;
 
- 
-
+      .ghost {
+            // background-color: rgba(0, 0, 0, 0.151);
+            // opacity: 0;
+            opacity: 0;
+            // transform: rotate(45deg)
+      }
+      .sortable-drag {
+            & > * {
+                  // background: red;
+                  transform: rotate(4deg);
+                  opacity: 1 !important;
+            }
+      }
       .groupTitleEdit {
             flex-grow: 2;
             width: 200px;
@@ -109,7 +120,6 @@
             border-radius: 30px;
       }
 
-
       .group-footer {
             padding: 5px 0px 0px 5px;
             .add-new-Card {
@@ -167,5 +177,4 @@
                   }
             }
       }
-
 }

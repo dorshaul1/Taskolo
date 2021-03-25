@@ -3,8 +3,8 @@
         <div class="size-container flex column flex-start">
             <h4>Size</h4>
             <div class="size-buttons flex">
-                <div @click="coverStateClicked(false)">Header</div>
-                <div @click="coverStateClicked(true)">All</div>
+                <div :style="{backgroundColor: cover.bgColor}" @click="coverStateClicked(false)"><img src="@/assets/task-icon/covering.svg" alt=""></div>
+                <div :style="{backgroundColor: cover.bgColor}" @click="coverStateClicked(true)"><img src="@/assets/task-icon/cover.svg" alt=""></div>
             </div>
         </div>
         <h4>Colors</h4>
