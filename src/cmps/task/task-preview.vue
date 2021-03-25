@@ -7,10 +7,6 @@
       @mouseover="isEdit = true"
       @mouseleave="isEdit = false"
     >
-      <task-preview-modal
-        class="preview-modal"
-        v-if="isModalOpen"
-      ></task-preview-modal>
 
       <div class="edit-btn">
         <div class="editing">
@@ -163,7 +159,7 @@
 </template>
 
 <script>
-import taskPreviewModal from "../task/task-preview-modal";
+
 
 export default {
   props: {
@@ -177,7 +173,6 @@ export default {
       labels: this.task.labelIds,
       isEdit: false,
       isClockHover: "",
-      isModalOpen: false,
     };
   },
   computed: {
@@ -269,11 +264,8 @@ export default {
     },
     openPreviewModal() {
       console.log("open modal");
-      this.isModalOpen = true;
+      this.$emit('task-modal-open', this.task)
     },
-  },
-  components: {
-    taskPreviewModal,
   },
   created() {},
 };

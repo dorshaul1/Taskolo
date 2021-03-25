@@ -5,8 +5,8 @@
       z-index: 10;
       // transform: translateX(247px);
       opacity: 1;
-      transform: translateX(0);
       top: 6px;
+      right: 200px;
 
       .quick-item {
             transform: translateX(5px);
@@ -22,3 +22,4 @@
             transition: transform 85ms ease-in;
       }
 }
+

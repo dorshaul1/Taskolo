@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: "task preview modal",
+  name: "task-preview-modal",
 };
 </script>
 
