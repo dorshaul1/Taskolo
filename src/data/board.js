@@ -92,7 +92,7 @@ export const board = {
                               "style": {
                                     "bgColor": "#ff78cb",
                               },
-                              "labelIds": ["l107", "l106", "l105"],
+                              "labelIds": ["l106", "l105"],
                               "description": "description",
                               "comments": [
                                     {
@@ -164,7 +164,7 @@ export const board = {
                               "style": {
                                     "bgColor": "#0079bf",
                               },
-                              "labelIds": ["l101", "l102", "l110"],
+                              "labelIds": ["l101", "l102", "l103"],
                               "description": "description",
                               "comments": [
                                     {
@@ -205,7 +205,7 @@ export const board = {
                                     "bgColor": "#eb5a46",
                                     "isCover": "true"
                               },
-                              "labelIds": ["l101", "l108"],
+                              "labelIds": ["l101", "l104"],
                               "description": "description",
                               "comments": [
                                     {
@@ -240,7 +240,7 @@ export const board = {
                               "style": {
                                     "bgColor": "#70b500",
                               },
-                              "labelIds": ["l104", "l109"],
+                              "labelIds": ["l104", "l103"],
                               "description": "description",
                               "comments": [
                                     {
