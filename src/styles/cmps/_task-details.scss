@@ -42,9 +42,10 @@
     }
 
     & h3 {
+        letter-spacing: 0.5px;
         margin-bottom: 4px;
         font-size: 16px;
-        font-family: Segoe UI;
+        font-family: Robot;
         // &:last-of-type{
         //     margin-top: 30px;
         // }
@@ -114,6 +115,7 @@
         & h1 {
             margin-bottom: 16px;
             font-family: Roboto;
+            letter-spacing: 0.5px;
            
         }
     }
@@ -127,7 +129,8 @@
         h3 {
             color: #5e6c84;
             font-size: 12px;
-            font-family: Segoe UI;
+            font-family: Robot;
+            letter-spacing: 0.5px;
             font-weight: 500;
             letter-spacing: 0.04em;
         }
@@ -193,8 +196,9 @@
         color: #6b778c;
 
         h3 {
-            font-family: Segoe UI;
+            font-family: Robot;
             padding: 0;
+            letter-spacing: 0.5px;
             text-align: left;
             font-size: 14px;
             font-weight: 400;
