@@ -6,6 +6,7 @@
     z-index: 50;
     background-color: rgba(37, 37, 37, 0.432);
     overflow: auto;
+  
     // padding: 0 0 20px 0;
 }
 
@@ -19,6 +20,9 @@
 // }
 .task-details-container {
     position: absolute;
+    border-radius: 3px;
+    font-family: Roboto;
+    font-weight: 200;
     // margin: 0 auto;
 
     // margin-bottom: 20px;
@@ -95,6 +99,16 @@
     }
     & .title {
         margin: 12px 40px 8px 56px;
+        // font-weight: 300;
+        font-size: 20px;
+        line-height: 24px;
+        color:#172b4d;
+        // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        // font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans;
+        font-family: 'Roboto';
+
+        
+
 
         & h1 {
             margin-bottom: 16px;
