@@ -39,6 +39,7 @@
           group="task"
           v-bind="dragOptions"
           @start="drag = true"
+          @change="dragStart"
           @end="dragDone"
         >
           <transition-group
@@ -127,7 +128,7 @@ export default {
     dragOptions() {
       return {
         animation: 200,
-        group: "description",
+        group: "task",
         disabled: false,
         ghostClass: "ghost",
       };
@@ -204,7 +205,7 @@ export default {
     },
     openPreviewModal(task){
       this.$emit('task-modal-open',task)
-    }
+    },
   },
   components: {
     taskPreview,

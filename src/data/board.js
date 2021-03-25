@@ -6,51 +6,31 @@ export const board = {
             {
                   "id": "l101",
                   "title": "",
-                  "color": "#0079bf"
+                  "color": "#70b500"
             },
             {
                   "id": "l102",
                   "title": "",
-                  "color": "#70b500"
+                   "color": "#f2d600"
             }, {
                   "id": "l103",
                   "title": "",
-                  "color": "#ff9f1a"
+                  "color": "#eb5a46"
             },
             {
                   "id": "l104",
                   "title": "",
-                  "color": "#eb5a46"
+                    "color": "#c377e0"
             }, {
                   "id": "l105",
                   "title": "",
-                  "color": "#f2d600"
+                    "color": "#0079bf"
             },
             {
                   "id": "l106",
                   "title": "",
-                  "color": "#c377e0"
-            },
-            {
-                  "id": "l107",
-                  "title": "",
-                  "color": "#ff78cb"
-            },
-            {
-                  "id": "l108",
-                  "title": "",
                   "color": "#00c2e0"
             },
-            {
-                  "id": "l109",
-                  "title": "",
-                  "color": "#51e898"
-            },
-            {
-                  "id": "l110",
-                  "title": "",
-                  "color": "#c4c9cc"
-            }
       ],
       "members": [
       ],

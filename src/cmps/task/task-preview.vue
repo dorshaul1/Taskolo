@@ -131,7 +131,7 @@
               <!-- <font-awesome-icon :icon="['far', 'check-square']" /> -->
               <img
                 class="task-prev-icon"
-                src="../../assets/task-icon/check-box.svg"
+                src="../../assets/task-icon/check-box-new.svg"
                 alt=""
               />
               <span class="checklist-display"> {{ checklistForDisplay }}</span>
