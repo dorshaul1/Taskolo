@@ -95,11 +95,8 @@ export default {
             return this.$route.params.boardId;
         },
         currBoard() {
-            const clone = require("rfdc");
             let currBoard = this.$store.getters.currBoard;
-            console.log('board details comp:', currBoard)
-            const boardCopy = clone({ proto: true })(Object.create(currBoard));
-            console.log('board cloned', boardCopy);
+            const boardCopy = this.$clone(currBoard);
             return boardCopy;
         },
         getBoards() {
@@ -122,10 +119,7 @@ export default {
         },
         async addNewGroup() {
             try {
-                const clone = require("rfdc");
-                const boardCopy = clone({ proto: true })(
-                    Object.create(this.currBoard)
-                );
+                const boardCopy = this.$clone(this.currBoard)
                 this.newGroup.id = utilService.makeId();
                 this.newGroup.tasks = [];
                 this.newGroup.style = {};
@@ -145,14 +139,12 @@ export default {
             this.newGroup = { title: "Enter a title for this card..." };
         },
         async dragDone() {
-            console.log("drag done in board details cmp");
             await this.$store.dispatch({
                 type: "updateBoard",
                 board: this.currBoard,
             });
         },
         async dragGroup() {
-            console.log("drag gropps");
 
             // await this.$store.dispatch({
             //   type: "updateBoard",

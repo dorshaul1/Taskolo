@@ -209,9 +209,7 @@ export default {
     },
     async deleteTask() {
       try {
-        const clone = require("rfdc");
-
-        const boardCopy = clone({ proto: true })(Object.create(this.getBoard));
+        const boardCopy = this.$clone(this.getBoard)
         var groups = boardCopy.groups;
 
         var currGroupIdx = groups.findIndex(
@@ -235,8 +233,7 @@ export default {
           type: "setTaskById",
           taskId: this.task.id,
         });
-        const clone = require("rfdc");
-        let taskCopy = clone({ proto: true })(Object.create(this.task));
+        let taskCopy = this.$clone(this.task)
         taskCopy.isDone = !taskCopy.isDone;
         await this.$store.dispatch({ type: "updateTask", task: taskCopy });
         this.userOverDueDate();

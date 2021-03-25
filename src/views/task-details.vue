@@ -23,7 +23,7 @@
 
             <div class="task-details-grid">
                 <section class="left-column">
-                  <div class="task-details-top flex">
+                  <div class="task-details-top">
                     <members-preview
                         v-if="task.members && task.members"
                         :members="task.members"

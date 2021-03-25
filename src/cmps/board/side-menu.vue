@@ -52,8 +52,7 @@ export default {
       this.$emit("close");
     },
     changeBackground() {
-      const clone = require("rfdc");
-      const newBoard = clone({ proto: true })(Object.create(this.board));
+      const newBoard = this.$clone(this.board)
       newBoard.style = this.backgroundColor;
       // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
