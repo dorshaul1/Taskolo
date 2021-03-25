@@ -23,19 +23,19 @@
 
             <div class="task-details-grid">
                 <section class="left-column">
-                  <div class="task-details-top">
-                    <members-preview
-                        v-if="task.members && task.members"
-                        :members="task.members"
-                        @addMember="isMembersOpen = true"
-                    />
-                    <!-- v-if="isLabelsOpen" -->
-                    <labels-preview
-                        :labels="labelsPreview"
-                        v-if="labelsPreview"
-                        @label-clicked="isLabelsOpen = true"
-                    />
-                  </div>
+                    <div class="task-details-top">
+                        <members-preview
+                            v-if="task.members && task.members"
+                            :members="task.members"
+                            @addMember="isMembersOpen = true"
+                        />
+                        <!-- v-if="isLabelsOpen" -->
+                        <labels-preview
+                            :labels="labelsPreview"
+                            v-if="labelsPreview"
+                            @label-clicked="isLabelsOpen = true"
+                        />
+                    </div>
 
                     <description-preview
                         @updateDesc="updateDescription"
@@ -416,7 +416,7 @@ export default {
                 const taskCopy = clone({ proto: true })(
                     Object.create(this.task)
                 );
-
+                    
                 // const taskCopy = this.$clone({ proto: true })(
                 //     Object.create(this.task)
                 // );
@@ -508,7 +508,7 @@ export default {
                     type: "updateBoard",
                     board: boardCopy,
                 });
-            } catch (error) {}
+            } catch (error) { }
         },
         addLabel(label) {
             // task clone
@@ -571,6 +571,7 @@ export default {
             taskCopy.style = cover;
             this.$store.dispatch({ type: "updateTask", task: taskCopy });
         },
+
         async copyTask(newCardPos) {
             const clone = require("rfdc");
             //TODO: Support board to board copy
@@ -583,13 +584,18 @@ export default {
                 groupIdx = idx;
                 return group.id === newCardPos.copyTo.groupId;
             });
+
             groupToCopy = clone({ proto: true })(Object.create(groupToCopy));
 
             if (newCardPos.isCopy) {
                 //new id + title to copied task
+                console.log('is copy!!', newCardPos.copyTo)
                 taskCopy.id = utilService.makeId();
                 taskCopy.title = newCardPos.copyTo.title;
-            }
+                console.log(taskCopy, "task copy");
+            } else if (groupToCopy.id === this.group.id) return; //avoid 'moving' to same group
+
+            console.log('inserted task', taskCopy)
             //"insert" to specific pos
             groupToCopy.tasks.splice(newCardPos.copyTo.position, 0, taskCopy);
 
