@@ -38,7 +38,6 @@
         <draggable
           v-model="clonedGroup.tasks"
           group="task"
-          @change="onDrag"
           v-bind="dragOptions"
           @end="dragDone"
         >
@@ -203,16 +202,8 @@ export default {
         this.$refs.titleEdit.select();
       });
     },
-<<<<<<< HEAD
-    openPreviewModal(task) {
-      this.$emit("task-modal-open", task);
-    },
-    onDrag() {
-      console.log("ddddd");
-=======
     openPreviewModal(task){
       this.$emit('task-modal-open',task)
->>>>>>> f291d21797305bb56d73e50a6baccc89e41c08a1
     },
   },
   components: {
