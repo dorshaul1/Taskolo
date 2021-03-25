@@ -76,7 +76,7 @@ export const boardStore = {
                 socketService.off('board-update')
                 socketService.on('board-update', board => {
                     console.log('board update socket', board)
-                    context.commit({ type: 'setBoard', board })
+                    commit({ type: 'setBoard', board })
                 })
                 commit({ type: 'setBoard', board })
             } catch (error) {
