@@ -140,7 +140,7 @@
 
                         <img
                             class="task-prev-icon"
-                            src="../assets/task-icon/check-box.svg"
+                            src="../assets/task-icon/check-box-new.svg"
                             alt=""
                         />
 
