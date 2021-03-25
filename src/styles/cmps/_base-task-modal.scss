@@ -1,10 +1,13 @@
 .task-modal {
+    color: #172b4d;
     width: 300px;
-    background-color: white;
+    background-color: #fff;
     z-index: 100;
     position: absolute;
     top: 0;
     border-radius: 3px;
+    box-shadow: 0 8px 16px -4px rgb(9, 30, 66 / 25%), 0 0 0 1px rgb(9, 30, 66 / 8%);
+    outline: none;
 
     & .header {
         height: 40px;
