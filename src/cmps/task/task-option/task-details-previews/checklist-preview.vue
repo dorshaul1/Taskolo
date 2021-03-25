@@ -21,7 +21,7 @@
             :key="todo.id"
             class="todo-item flex"
         >
-            <input
+            <el-checkbox
                 type="checkbox"
                 :checked="todo.isDone"
                 @change="toggleTodoState(todo.id)"
@@ -32,7 +32,7 @@
                 @click="selectEditItem"
                 >{{ todo.txt }}</span
             >
-            <input v-else type="text" v-model="todo.txt" ref="todoItem" />
+            <el-input v-else type="text" v-model="todo.txt" ref="todoItem" />
         </div>
 
         <div class="checklist-button flex column align-start">
