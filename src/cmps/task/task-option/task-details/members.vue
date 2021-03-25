@@ -1,6 +1,6 @@
 <template>
     <section class="members-modal">
-        <input type="text" placeholder="Search members..." />
+        <el-input type="text" placeholder="Search members..." />
         <div
             v-for="member in members"
             :key="member._id"

@@ -1,6 +1,6 @@
 <template>
   <section class="task-labels">
-    <input type="text" />
+    <el-input type="text" />
     <h3>Labels</h3>
     <div
       v-for="label in labelsFromProp"

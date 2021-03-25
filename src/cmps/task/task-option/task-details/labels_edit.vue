@@ -1,6 +1,6 @@
 <template>
     <section class="edit-label-container">
-        <input type="text" placeholder="Name..." v-model="label.title" />
+        <el-input type="text" placeholder="Name..." v-model="label.title" />
         <div class="label-edit-color-container">
             <div
                 v-for="label in labels"

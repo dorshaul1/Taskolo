@@ -1,7 +1,7 @@
 <template>
     <section>
-        <input type="text" placeholder="Title" v-model="title" />
-        <button @click="addTitle">Add</button>
+        <el-input type="text" placeholder="Title" v-model="title" />
+        <el-button @click="addTitle">Add</el-button>
     </section>
 </template>
 
