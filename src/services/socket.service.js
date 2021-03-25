@@ -22,7 +22,7 @@ function createSocketService() {
     async setup() {
       if (socket) return
       await httpService.get('setup-session')
-      socket = io(baseUrl, { reconnection: false})
+      socket = io(baseUrl, { reconnection: false, withCredentials: true})
       socketIsReady = true;
     },
     async on(eventName, cb) {
