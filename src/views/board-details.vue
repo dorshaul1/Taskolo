@@ -33,12 +33,23 @@
 
                 <div class="new-group-container">
                     <section v-show="!isTakeGroup">
-                        <h3 @click="openGroupkAdd" class="add-new-group flex  align-center">
-                           <img class="plus-board-icon" src="../assets/task-icon/plus-white.svg" alt="+">Add another list
+                        <h3
+                            @click="openGroupkAdd"
+                            class="add-new-group flex align-center"
+                        >
+                            <img
+                                class="plus-board-icon"
+                                src="../assets/task-icon/plus-white.svg"
+                                alt="+"
+                            />Add another list
                         </h3>
                     </section>
 
-                    <section v-show="isTakeGroup" class="take-new-group flex isEditable" :class="{'isEditable' : isTakeGroup}">
+                    <section
+                        v-show="isTakeGroup"
+                        class="take-new-group flex isEditable"
+                        :class="{ isEditable: isTakeGroup }"
+                    >
                         <textarea
                             class="group-Add-input"
                             ref="groupTitle"
@@ -58,12 +69,10 @@
                                 x
                             </button>
                         </div>
-
                     </section>
                 </div>
             </draggable>
         </main>
-
 
         <router-view />
     </section>
@@ -119,7 +128,7 @@ export default {
         },
         async addNewGroup() {
             try {
-                const boardCopy = this.$clone(this.currBoard)
+                const boardCopy = this.$clone(this.currBoard);
                 this.newGroup.id = utilService.makeId();
                 this.newGroup.tasks = [];
                 this.newGroup.style = {};
@@ -145,7 +154,6 @@ export default {
             });
         },
         async dragGroup() {
-
             // await this.$store.dispatch({
             //   type: "updateBoard",
             //   board: this.currBoard,
@@ -158,7 +166,7 @@ export default {
             //   // var currGroupIdx = groups.findIndex(
             //   //   (group) => group.id === this.group.id
             //   // );
-            //   // boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);
+            //   // boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);boa
             //   //update to all the board.
             //   this.dragDone();
             // } catch (error) {
@@ -186,7 +194,7 @@ export default {
         sideMenu,
         draggable,
         mainHeader,
-    }
+    },
 };
 </script>
 
