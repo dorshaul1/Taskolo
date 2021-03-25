@@ -127,7 +127,7 @@ export default {
     dragOptions() {
       return {
         animation: 200,
-        group: "task",
+        group: "description",
         disabled: false,
         ghostClass: "ghost",
       };
