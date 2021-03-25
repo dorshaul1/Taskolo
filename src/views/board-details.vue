@@ -172,6 +172,7 @@ export default {
     watch: {
         boardId: {
             handler() {
+                // console.log(this.boardId)
                 this.$store.dispatch({
                     type: "loadBoard",
                     boardId: this.boardId,
