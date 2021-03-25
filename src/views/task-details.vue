@@ -399,10 +399,9 @@ export default {
         },
         setDate(date) {
             try {
-                const clone = require("rfdc");
-                const taskCopy = clone({ proto: true })(
-                    Object.create(this.task)
-                );
+                // const clone = require("rfdc");
+                const taskCopy = this.$clone(Object.create(this.task))
+                
                 taskCopy.dueDate = date;
                 this.toggleSection("DueDate");
                 this.$store.dispatch({ type: "updateTask", task: taskCopy });

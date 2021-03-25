@@ -1,0 +1,25 @@
+.preview-modal-main {
+      width: 240px;
+      height: 288px;
+      position: absolute;
+      z-index: 10;
+      // transform: translateX(247px);
+      opacity: 1;
+      top: 6px;
+      right: 200px;
+
+      .quick-item {
+            transform: translateX(5px);
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 3px;
+            clear: both;
+            color: #e6e6e6;
+            display: block;
+            float: left;
+            margin: 0 0 4px 8px;
+            padding: 6px 12px 6px 8px;
+            text-decoration: none;
+            transition: transform 85ms ease-in;
+      }
+}
+

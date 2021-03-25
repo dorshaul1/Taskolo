@@ -36,6 +36,7 @@
 @import "cmps/delete-card.scss";
 @import "cmps/move-card.scss";
 @import "cmps/select-card-position.scss";
+@import "cmps/task/task-preview-modal";
 
 // @import "cmps/review-list";
 @import "cmps/board/board-header";
@@ -45,4 +46,5 @@
 // Views
 @import "cmps/board/board-details.scss";
 @import "cmps/home";
+@import "cmps/_login-signup";
 

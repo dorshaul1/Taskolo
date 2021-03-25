@@ -4,6 +4,8 @@ import homePage from '../views/home-page.vue'
 import boardList from '../views/board-list'
 import boardDetails from '../views/board-details'
 import taskDetails from '../views/task-details'
+import login from '../views/login'
+import signup from '../views/signup'
 
 Vue.use(VueRouter)
 
@@ -17,6 +19,16 @@ const routes = [
     path: '/board',
     name: 'boardList',
     component: boardList
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: signup
   },
   {
     path: '/board/:boardId',

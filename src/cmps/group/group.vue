@@ -1,7 +1,6 @@
 <template>
   <div class="group-container" @click.stop="isEditTitle = false">
     <div class="group-main">
-
       <div class="group-header flex space-between align-center">
         <div>
           <h2
@@ -33,7 +32,7 @@
           </base-modal>
         </div>
       </div>
-      
+
       <div class="group-main-body">
         <draggable
           v-model="clonedGroup.tasks"
@@ -47,6 +46,7 @@
             :name="!drag ? 'flip-list' : null"
           >
             <task-preview
+              @task-modal-open="openPreviewModal"
               v-for="task in clonedGroup.tasks"
               :key="task.id"
               :task="task"
@@ -152,7 +152,7 @@ export default {
     },
     async addNewTask() {
       try {
-        const boardCopy = this.$clone(this.getBoard)
+        const boardCopy = this.$clone(this.getBoard);
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
@@ -171,7 +171,7 @@ export default {
     },
     async deleteGroup() {
       try {
-        const boardCopy = this.$clone(this.getBoard)
+        const boardCopy = this.$clone(this.getBoard);
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
@@ -185,7 +185,7 @@ export default {
     async dragDone() {
       this.drag = false;
       try {
-        const boardCopy = this.$clone(this.getBoard)
+        const boardCopy = this.$clone(this.getBoard);
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
           (group) => group.id === this.group.id
@@ -202,6 +202,9 @@ export default {
         this.$refs.titleEdit.select();
       });
     },
+    openPreviewModal(task){
+      this.$emit('task-modal-open',task)
+    }
   },
   components: {
     taskPreview,

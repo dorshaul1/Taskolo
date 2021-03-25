@@ -2,8 +2,7 @@
       padding: 6px 4px 2px 5px;
       position: relative;
 
-
-      &:first-child{
+      &:first-child {
             // padding-top: 0px;
             // .editing{
             //       top: 2px;
@@ -16,8 +15,8 @@
       //       }
       // }
 
-      .task-header{
-            &:hover{
+      .task-header {
+            &:hover {
                   background: rgba(0, 0, 0, 0.03);
             }
       }
@@ -118,9 +117,6 @@
             height: 30px;
       }
 
-  
-  
-
       .task-main {
             flex-direction: column;
             padding: 6px 8px 2px;
@@ -130,6 +126,11 @@
             border-bottom-left-radius: 3px;
             border-bottom-right-radius: 3px;
             box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+
+            .attachment {
+                  padding-bottom: 6px;
+            }
+
             .labels {
                   margin: 0;
                   padding: 0;
@@ -156,7 +157,7 @@
                   font-size: 12px;
             }
 
-            .due-date-icon{
+            .due-date-icon {
                   min-width: 20px;
             }
             // .dute-date{
@@ -169,7 +170,7 @@
                   color: #fff;
                   padding-inline-start: 5px;
             }
-            
+
             .isToday {
                   background-color: #f2d600;
                   border-radius: 3px;
@@ -221,8 +222,14 @@
                   border-radius: 50%;
                   margin-inline-start: 3px;
             }
-            &:hover{
+            &:hover {
                   background: rgba(0, 0, 0, 0.03);
             }
       }
+
+      // .preview-modal{
+      //       position: absolute;
+      //       z-index: 30;
+      //       transform: translateX(400);
+      // }
 }
