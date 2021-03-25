@@ -128,7 +128,7 @@ export default {
     dragOptions() {
       return {
         animation: 200,
-        group: "description",
+        group: "task",
         disabled: false,
         ghostClass: "ghost",
       };
@@ -203,11 +203,16 @@ export default {
         this.$refs.titleEdit.select();
       });
     },
+<<<<<<< HEAD
     openPreviewModal(task) {
       this.$emit("task-modal-open", task);
     },
     onDrag() {
       console.log("ddddd");
+=======
+    openPreviewModal(task){
+      this.$emit('task-modal-open',task)
+>>>>>>> f291d21797305bb56d73e50a6baccc89e41c08a1
     },
   },
   components: {

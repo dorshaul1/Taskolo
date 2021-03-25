@@ -109,6 +109,72 @@ export default {
       const boardCopy = this.$clone(currBoard);
       return boardCopy;
     },
+<<<<<<< HEAD
+    methods: {
+        openMenu() {
+            // console.log('efewf');
+            this.isMenuOpen = true;
+        },
+        closeMenu() {
+            this.isMenuOpen = false;
+        },
+        openGroupkAdd() {
+            this.isTakeGroup = true;
+            this.$nextTick(() => {
+                this.$refs.groupTitle.focus();
+            });
+        },
+        async addNewGroup() {
+            try {
+                const boardCopy = this.$clone(this.currBoard);
+                this.newGroup.id = utilService.makeId();
+                this.newGroup.tasks = [];
+                this.newGroup.style = {};
+                boardCopy.groups.push(this.newGroup);
+
+                await this.$store.dispatch({
+                    type: "updateBoard",
+                    board: boardCopy,
+                });
+                this.closeGroupAdd();
+            } catch (err) {
+                console.log("error in adding group", err);
+            }
+        },
+        closeGroupAdd() {
+            this.isTakeGroup = false;
+            this.newGroup = { title: "Enter a title for this card..." };
+        },
+        async dragDone() {
+            await this.$store.dispatch({
+                type: "updateBoard",
+                board: this.currBoard,
+            });
+        },
+        async dragGroup() {
+            // await this.$store.dispatch({
+            //   type: "updateBoard",
+            //   board: this.currBoard,
+            // });
+            // try {
+            //   //clone change all the groups
+            //   const clone = require("rfdc");
+            //   // //replace the group- find index
+            //   // var groups = currBoard().groups;
+            //   // var currGroupIdx = groups.findIndex(
+            //   //   (group) => group.id === this.group.id
+            //   // );
+            //   // boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);boa
+            //   //update to all the board.
+            //   this.dragDone();
+            // } catch (error) {
+            //   console.log("group cmp: error with drag task inside group");
+            // }
+        },
+        log(msg) {
+            console.log("sdaaaaaaaa", msg);
+        },
+=======
     getBoards() {
       return this.$store.getters.boards;
     },
@@ -177,6 +243,7 @@ export default {
     openPreviewModal(task) {
       console.log("the task is", task);
       this.isModalOpen = true;
+>>>>>>> 021f37f4b4811b248e9328b62bd00aafd6453a5e
     },
   },
   watch: {
@@ -190,6 +257,15 @@ export default {
       },
       immediate: true,
     },
+<<<<<<< HEAD
+    components: {
+        group,
+        boardHeader,
+        sideMenu,
+        draggable,
+        mainHeader,
+    },
+=======
   },
   components: {
     group,
@@ -199,6 +275,7 @@ export default {
     mainHeader,
     taskPreviewModal,
   },
+>>>>>>> 021f37f4b4811b248e9328b62bd00aafd6453a5e
 };
 </script>
 
