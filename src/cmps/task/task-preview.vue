@@ -208,6 +208,7 @@ export default {
     getTaskColor(taskLabelId) {
       let labels = this.currBoard.labels;
       let currLabel = labels.find((label) => label.id === taskLabelId);
+      console.log('currLabel', currLabel)
       return currLabel.color;
     },
     openEditModal() {
