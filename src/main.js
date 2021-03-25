@@ -39,6 +39,10 @@ const debug = process.env.NODE_ENV !== 'production';
 Vue.config.productionTip = debug;
 
 
+// Vue.mixin({
+//   $clone: require('rfdc')()
+// });
+
 
 new Vue({
   router,
