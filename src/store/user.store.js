@@ -4,6 +4,7 @@ import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from
 // var localLoggedinUser = null;
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
 
+
 export const userStore = {
     state: {
         loggedinUser: userService.getLoggedinUser(),
@@ -27,7 +28,7 @@ export const userStore = {
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user;
-        },       
+        },
         setUsers(state, { users }) {
             state.users = users;
         },
@@ -89,12 +90,12 @@ export const userStore = {
                 console.log('userStore: Error in loadUsers', err)
                 throw err
             }
-        },        
+        },
         async loadAndWatchUser({ commit }, { userId }) {
             try {
                 const user = await userService.getById(userId);
                 commit({ type: 'setWatchedUser', user })
-                socketService.emit(SOCKET_EMIT_USER_WATCH, userId) 
+                socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
                 socketService.off(SOCKET_EVENT_USER_UPDATED)
                 socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
                     commit({ type: 'setWatchedUser', user })

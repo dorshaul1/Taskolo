@@ -75,6 +75,13 @@ function _saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem('loggedinUser') || 'null')
+    return {
+        "_id": "u101",
+        "fullname": "Randy Kelly",
+        "username": "silverswan131",
+        "password": "firewall",
+        "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+    }
+    // return JSON.parse(sessionStorage.getItem('loggedinUser') || 'null')
 }
 
