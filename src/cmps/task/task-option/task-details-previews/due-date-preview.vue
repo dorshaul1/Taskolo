@@ -13,14 +13,14 @@
         <h3>Start Date</h3>
         <!-- {{ dateToShow.start | moment("dddd, MMMM Do YYYY, h:mm a") }} -->
         <span class="date">
-          {{ dateToShow.start | moment("dddd, MMMM Do, h:mm a") }}
+          {{ dateToShow.start | moment("MMM Do h:mm A") }}
           <!-- <font-awesome-icon class="icon" :icon="['fas', 'chevron-down']" /> -->
         </span>
       </div>
       <div class="end-date flex column align-start">
         <h3>Due Date</h3>
         <span class="date">
-          {{ dateToShow.end | moment("dddd, MMMM Do, h:mm a") }}
+          {{ dateToShow.end | moment("MMM Do h:mm A") }}
           <!-- <font-awesome-icon class="icon" :icon="['fas', 'chevron-down']" /> -->
         </span>
         <!-- {{ dateToShow.end | moment("dddd, MMMM Do YYYY, h:mm a") }} -->
@@ -33,7 +33,7 @@
     >
       <h3>Due Date</h3>
       <span class="date">
-        {{ dateToShow | moment("dddd, MMMM Do, h:mm a") }}
+        {{ dateToShow | moment("MMM Do h:mm A") }}
         <!-- <font-awesome-icon class="icon" :icon="['fas', 'chevron-down']" /> -->
       </span>
     </div>

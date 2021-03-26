@@ -18,6 +18,7 @@
 
       <div class="title flex align-start column">
         <h1>{{ task.title }}</h1>
+        <h4>in list {{group.title}}</h4>
         <!-- <input v-else name="" type="text"> -->
       </div>
 
