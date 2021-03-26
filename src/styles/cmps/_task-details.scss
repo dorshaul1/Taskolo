@@ -278,5 +278,8 @@
 
             // flex-basis: 10%;
         }
+        &:hover{
+            background-color: $hover-details;
+        }
     }
 }

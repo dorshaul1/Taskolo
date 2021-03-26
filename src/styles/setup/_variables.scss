@@ -5,5 +5,7 @@ $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
 
 $hover: darken($color: white, $amount: 7%);
+$hover-details: rgba(0, 0, 0, 0.116);
+// $hover-details: darken($color: rgba(255, 255, 255, 0), $amount: 2%);
 $hover-dark: darken($color: white, $amount: 15%);
 $hover-dark2: darken($color: rgb(126, 25, 25), $amount: 50%);

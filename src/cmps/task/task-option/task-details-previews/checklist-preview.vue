@@ -1,5 +1,5 @@
 <template>
-  <section class="checklist flex column">
+  <section class="checklist-preview flex column">
     <img src="@/assets/task-icon/trello-icon-pack/checkbox.svg" alt="" />
     <div class="checklist-title flex space-between">
       <h3>{{ checklist.title }}</h3>
@@ -8,24 +8,30 @@
         <checklist-delete-confirm @delete-checklist="deleteChecklist" />
       </base-task-modal>
     </div>
-    <div class="checklist-bar-container flex align-center">
-      <div class="status-txt">{{ percentagesToDisplay }}</div>
-      <checklist-bar :percentages="percentages" />
-    </div>
+    <div class="checklist-items-container">
+      <div class="checklist-bar-container flex align-center">
+        <div class="status-txt">{{ percentagesToDisplay }}</div>
+        <checklist-bar :percentages="percentages" />
+      </div>
 
-    <div v-for="todo in checklist.todos" :key="todo.id" class="todo-item flex">
-      <el-checkbox
-        type="checkbox"
-        :checked="todo.isDone"
-        @change="toggleTodoState(todo.id)"
-      />
-      <span
-        v-if="!isEdit"
-        :class="{ done: todo.isDone }"
-        @click="selectEditItem"
-        >{{ todo.txt }}</span
+      <div
+        v-for="todo in checklist.todos"
+        :key="todo.id"
+        class="todo-item flex"
       >
-      <el-input v-else type="text" v-model="todo.txt" ref="todoItem" />
+        <el-checkbox
+          type="checkbox"
+          :checked="todo.isDone"
+          @change="toggleTodoState(todo.id)"
+        />
+        <span
+          v-if="!isEdit"
+          :class="{ done: todo.isDone }"
+          @click="selectEditItem"
+          >{{ todo.txt }}</span
+        >
+        <el-input v-else type="text" v-model="todo.txt" ref="todoItem" />
+      </div>
     </div>
 
     <div class="checklist-button flex column align-start">

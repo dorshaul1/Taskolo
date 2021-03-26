@@ -1,6 +1,8 @@
-.checklist {
+.checklist-preview  {
     position: relative;
     font-size: 16px;
+    margin-bottom: 24px;
+
     img {
         width: 24px;
         position: absolute;
@@ -22,6 +24,19 @@
     .todo-item {
         &:hover {
             background-color: $hover-dark;
+        }
+    }
+    .checklist-items-container{
+        // background-color: red;
+        width: 106%;
+        position: relative;
+        left: -35px;
+        top: 0;
+        .checklist-bar-container{
+            margin: 0 0 12px;
+            .status-txt{
+                margin-right: 20px;
+            }
         }
     }
 }

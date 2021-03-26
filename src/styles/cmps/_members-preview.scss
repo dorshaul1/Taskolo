@@ -3,6 +3,7 @@
     margin-right: 16px;
     position: relative;
     font-size: 16px;
+    
     img {
         width: 24px;
         // position: absolute;
@@ -26,6 +27,9 @@
         cursor: pointer;
         img{
             width: 16px;
+        }
+        &:hover{
+            background-color: $hover-details;
         }
     }
 }
