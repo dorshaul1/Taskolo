@@ -7,11 +7,11 @@
         </div>
         <input type="text" placeholder="Wtire a comment..." />
 
-        <section class="activity flex">
-            <div class="profile"></div>
+        <section class="activity-item flex flex-start" v-for="activity in activites" :key="activity.id">
+            <img class="profile" :src="activity.byMember.imgUrl"/>
             <div class="activity-data">
-                <div><span></span></div>
-                <a href="#"></a>
+                <div><span>{{activity.byMember.fullname}}</span>{{activity.txt}}</div>
+                <a href="#">{{formatDate(activity.createdAt)}}</a>
             </div>
         </section>
     </section>
@@ -22,6 +22,11 @@ export default {
     name: "activity-preview",
     props: {
         activites: { type: Array }
+    },
+    methods: {
+      formatDate(data) {
+        return this.$moment(data).format('lll')
+      }
     },
     created() {
       console.log('activity', this.activites)
