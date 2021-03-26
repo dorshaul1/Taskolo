@@ -1,5 +1,7 @@
 import { boardService } from '../services/board.service'
+
 import { socketService, SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.service'
+import { utilService } from '../services/util.service';
 
 export const boardStore = {
     state: {
@@ -51,6 +53,10 @@ export const boardStore = {
         removeBoard(state, { boardId }) {
             state.boards = state.boards.filter(board => board._id !== boardId)
         },
+        addActivity(state, { activity }) {
+            // const byUser = context.rootGetters
+            state.currBoard.activities.unshift(activity)
+        }
     },
     actions: {
         async loadBoards(context) {
@@ -83,9 +89,10 @@ export const boardStore = {
 
             }
         },
-        async updateBoard({ commit }, { board }) {
+        async updateBoard({ commit, dispatch }, { board, activityTxt }) {
             try {
                 commit({ type: 'setBoard', board })
+                dispatch({ type: 'addActivityData', activityTxt })
                 return await boardService.update(board)
             }
             catch (err) {
@@ -93,7 +100,7 @@ export const boardStore = {
                 throw err
             }
         },
-        async updateTask(context, { task }) {
+        async updateTask(context, { task, activityTxt }) {
             try {
                 context.commit({ type: 'setTask', task })
                 const clone = require("rfdc");
@@ -110,7 +117,7 @@ export const boardStore = {
                     }
                 });
                 boardCopy.groups[currGroupIdx].tasks[currTaskIdx] = task
-                context.dispatch({ type: 'updateBoard', board: boardCopy })
+                context.dispatch({ type: 'updateBoard', board: boardCopy, activityTxt })
             }
             catch (err) {
                 console.log('boardStore: Error in update task', err)
@@ -136,5 +143,21 @@ export const boardStore = {
                 throw err
             }
         },
+        addActivityData(context, { activityTxt }) {
+            const byMember = context.rootGetters.miniUser
+            const task = {
+                id: context.state.currTask.id,
+                title: context.state.currTask.title 
+            }
+            const activity = {
+                id: utilService.makeId(),
+                txt: activityTxt,
+                createdAt: Date.now(),
+                byMember,
+                task
+            }
+            context.commit({type: 'addActivity', activity})
+            console.log(activity)
+        }
     }
 }

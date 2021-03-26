@@ -14,6 +14,14 @@ export const userStore = {
     getters: {
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
+        miniUser({ loggedinUser }) {
+            return {
+                _id: loggedinUser._id,
+                username: loggedinUser.username,
+                fullname: loggedinUser.fullname,
+                imgUrl: loggedinUser.imgUrl
+            }
+        },
         watchedUser({ watchedUser }) { return watchedUser }
     },
     mutations: {

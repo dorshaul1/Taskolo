@@ -401,10 +401,10 @@ export default {
             try {
                 // const clone = require("rfdc");
                 const taskCopy = this.$clone(Object.create(this.task))
-                
+
                 taskCopy.dueDate = date;
                 this.toggleSection("DueDate");
-                this.$store.dispatch({ type: "updateTask", task: taskCopy });
+                this.$store.dispatch({ type: "updateTask", task: taskCopy, activityTxt: `added date` });
             } catch (error) {
                 console.log(err);
             }
@@ -416,7 +416,7 @@ export default {
                 const taskCopy = clone({ proto: true })(
                     Object.create(this.task)
                 );
-                    
+
                 // const taskCopy = this.$clone({ proto: true })(
                 //     Object.create(this.task)
                 // );
@@ -440,7 +440,7 @@ export default {
                 taskCopy.members = taskMembers;
 
                 // change values
-                this.$store.dispatch({ type: "updateTask", task: taskCopy });
+                this.$store.dispatch({ type: "updateTask", task: taskCopy, activityTxt: `added member` });
             } catch (err) {
                 console.log(err);
             }
@@ -463,7 +463,7 @@ export default {
                 // taskCopy.checklists[checklistIdx].todos = checklist.todos;
                 taskCopy.checklists.splice(checklistIdx, 1, checklist);
             }
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            this.$store.dispatch({ type: "updateTask", task: taskCopy, activityTxt: `updated checklist` });
         },
         addToChecklist(title) {
             const clone = require("rfdc");
@@ -474,7 +474,7 @@ export default {
             const checklist = boardService.getEmptyCheckList();
             checklist.title = title;
             taskCopy.checklists.push(checklist);
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            this.$store.dispatch({ type: "updateTask", task: taskCopy, activityTxt: `added item to checklist` });
         },
         deleteChecklist(checklistId) {
             const clone = require("rfdc");
@@ -483,7 +483,7 @@ export default {
                 (checklist) => checklist.id === checklistId
             );
             taskCopy.checklists.splice(checklistIdx, 1);
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            this.$store.dispatch({ type: "updateTask", task: taskCopy,  activityTxt: `checklist deleted` });
         },
         openLabelEdit(label) {
             this.isLabelsOpen = false;
@@ -535,7 +535,7 @@ export default {
             taskCopy.labelIds = taskLabelIds;
 
             // change values
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            this.$store.dispatch({ type: "updateTask", task: taskCopy,  activityTxt: `added label` });
         },
         labelsIdsToLabels() {
             if (!this.task.labelIds) return;
@@ -556,20 +556,21 @@ export default {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
             taskCopy.attachment = url;
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            this.$store.dispatch({ type: "updateTask", task: taskCopy,  activityTxt: `added image` });
         },
         async updateDescription(updateDescription) {
             //dispatch
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
             taskCopy.description = updateDescription;
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            this.$store.dispatch({ type: "updateTask", task: taskCopy, activityTxt: `updated description` });
         },
+
         updateCover(cover) {
             const clone = require("rfdc");
             const taskCopy = clone({ proto: true })(Object.create(this.task));
             taskCopy.style = cover;
-            this.$store.dispatch({ type: "updateTask", task: taskCopy });
+            this.$store.dispatch({ type: "updateTask", task: taskCopy, activityTxt: `updated cover` });
         },
 
         async copyTask(newCardPos) {
@@ -607,11 +608,14 @@ export default {
             await this.$store.dispatch({
                 type: "updateBoard",
                 board: boardCopy,
+                activityTxt: `copied task`
+
             });
             newCardPos.isCopy
                 ? (this.isCopyCardOpen = false)
                 : (this.isMoveCardOpen = false);
         },
+
         async deleteCard() {
             const clone = require("rfdc");
 
@@ -627,10 +631,12 @@ export default {
             );
 
             boardCopy.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
+
             //update board
             await this.$store.dispatch({
                 type: "updateBoard",
                 board: boardCopy,
+                activityTxt: `deleted task`
             });
             this.isDeleteCardOpen = false;
         },
@@ -661,6 +667,9 @@ export default {
         },
         board() {
             return this.$store.getters.currBoard;
+        },
+        user() {
+            return this.$store.getters.loggedinUser
         },
         boards() {
             return this.$store.getters.boards;

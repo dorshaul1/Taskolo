@@ -208,7 +208,7 @@ export default {
     getTaskColor(taskLabelId) {
       let labels = this.currBoard.labels;
       let currLabel = labels.find((label) => label.id === taskLabelId);
-      console.log('currLabel', currLabel)
+      // console.log('currLabel', currLabel)
       return currLabel.color;
     },
     openEditModal() {
@@ -226,7 +226,7 @@ export default {
         var currTaskIdx = groups[currGroupIdx].tasks.findIndex(
           (task) => task.id === this.task.id
         );
-
+        
         boardCopy.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
         //update board
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
