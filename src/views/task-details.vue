@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <section class="task-details flex justify-center">
     <div class="screen"></div>
     <section v-if="task" class="task-details-container">
@@ -94,107 +93,6 @@
           >
             <font-awesome-icon class="icon" :icon="['fas', 'tag']" />
             <!-- <img
-=======
-    <section class="task-details flex justify-center">
-        <div class="screen"></div>
-        <section v-if="task" class="task-details-container">
-            <div
-                v-if="task.style.bgColor"
-                class="cover"
-                :style="{ backgroundColor: task.style.bgColor || '' }"
-            >
-                <a class="change-cover" href="#">Cover</a>
-            </div>
-
-            <router-link
-                class="close-modal-btn flex center"
-                :to="`/board/${board._id}`"
-                ><i class="el-icon-close"></i>
-            </router-link>
-
-            <div class="title flex align-start column">
-                <h1>{{ task.title }}</h1>
-                <!-- <input v-else name="" type="text"> -->
-            </div>
-
-            <div class="task-details-grid">
-                <section class="left-column">
-                    <div class="task-details-top flex">
-                        <members-preview
-                            v-if="task.members && task.members"
-                            :members="task.members"
-                            @addMember="isMembersOpen = true"
-                        />
-                        <!-- v-if="isLabelsOpen" -->
-                        <labels-preview
-                            :labels="labelsPreview"
-                            v-if="labelsPreview"
-                            @label-clicked="isLabelsOpen = true"
-                        />
-
-                        <due-date-preview
-                            v-if="task.dueDate"
-                            :date="task.dueDate"
-                            @setDate="toggleSection('DueDate')"
-                        />
-                    </div>
-
-                    <description-preview
-                        @updateDesc="updateDescription"
-                        :task="this.task"
-                    />
-
-                    <checklist-preview
-                        v-for="checklist in task.checklists"
-                        :key="checklist.id"
-                        @update-checklist="updateChecklist"
-                        @delete-checklist="deleteChecklist"
-                        :checklistProp="checklist"
-                    />
-
-                    <activity-preview />
-                </section>
-
-                <section class="right-column">
-                    <h3>Add to card</h3>
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Members"
-                        @click="toggleSection('Members')"
-                    >
-                        <font-awesome-icon
-                            class="icon"
-                            :icon="['far', 'user']"
-                        />
-
-                        <span>Members</span>
-                    </a>
-
-                    <base-task-modal
-                        v-if="isMembersOpen"
-                        title="Members"
-                        @close-modal="isMembersOpen = false"
-                    >
-                        <members
-                            :members="board.members"
-                            :taskMembers="task.members"
-                            @add-member="addMember"
-                        />
-                    </base-task-modal>
-
-                    <a
-                        class="link-button"
-                        href="#"
-                        title="Labels"
-                        @click="toggleSection('Labels')"
-                    >
-                        <font-awesome-icon
-                            class="icon"
-                            :icon="['fas', 'tag']"
-                        />
-                        <!-- <img
->>>>>>> fb0b5af7670b65fb4d81eaf3cba3bbbe2a9a5cf8
               class="task-prev-icon"
               src="../assets/task-icon/tag.png"
               alt=""
