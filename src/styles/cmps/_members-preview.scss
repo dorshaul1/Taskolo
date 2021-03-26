@@ -5,7 +5,7 @@
     font-size: 16px;
     img {
         width: 24px;
-        position: absolute;
+        // position: absolute;
         left: -40px;
         top: 4px;
     }
@@ -14,15 +14,18 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: palevioletred;
         position: unset;
+        margin-right: 5px;
     }
 
     & .member-plus-icon {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: white;
+        background-color: #e2e4e9;
         cursor: pointer;
+        img{
+            width: 16px;
+        }
     }
 }

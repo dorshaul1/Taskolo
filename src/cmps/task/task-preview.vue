@@ -73,11 +73,11 @@
           </div>
 
           <div class="badges flex">
-            <div class="watch" v-if="task.watch">
+            <div class="watch flex center" v-if="task.watch">
               <!-- <font-awesome-icon :icon="['far', 'eye']" /> -->
               <img
                 class="task-prev-icon"
-                src="../../assets/task-icon/visibility.svg"
+                src="@/assets/task-icon/trello-icon-pack/watch.svg"
                 alt=""
               />
             </div>
@@ -131,7 +131,7 @@
               <!-- <font-awesome-icon :icon="['far', 'check-square']" /> -->
               <img
                 class="task-prev-icon"
-                src="../../assets/task-icon/check-box-new.svg"
+                src="@/assets/task-icon/trello-icon-pack/checkbox.svg"
                 alt=""
               />
               <span class="checklist-display"> {{ checklistForDisplay }}</span>

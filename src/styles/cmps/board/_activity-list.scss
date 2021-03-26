@@ -17,7 +17,17 @@
     img {
         width: 20px;
         position: absolute;
-        left: -40px;
-        top: 10px;
+        left: -20px;
+        top: 4px;
+    }
+    input{
+        outline: none;
+        border-color: transparent;
+        padding: 8px 12px;
+        border-radius: 3px;
+        // height: 108px;
+        &:focus{
+            box-shadow: inset 0 0 0 2px #0079bf
+        }
     }
 }

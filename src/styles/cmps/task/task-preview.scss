@@ -64,6 +64,7 @@
             color: #6b778c;
             flex-wrap: wrap;
             align-items: center;
+            
             // img{
             //       width: 10px;
             // }
@@ -79,16 +80,24 @@
 
             .checklist img {
                   position: static;
+                  // img{
+                        height: 17px;
+                        width: 17px;
+                  // }
             }
 
             .watch {
                   padding: 0px;
+                  img{
+                        height: 17px;
+                        width: 17px;
+                  }
             }
 
-            .watch-icon {
-                  width: 18px;
-                  margin-block-start: 3px;
-            }
+            // .watch-icon {
+            //       width: 18px;
+            //       margin-block-start: 3px;
+            // }
       }
 
       cursor: pointer;

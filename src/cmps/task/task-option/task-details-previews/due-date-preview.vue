@@ -2,9 +2,7 @@
   <section class="due-date-preview flex column align-start">
     <img
       class="task-prev-icon"
-      src="../../../../assets/task-icon/wall-clock.svg"
-      alt=""
-    />
+    <!-- <img src="@/assets/task-icon/trello-icon-pack/clock.svg" alt="" /> -->
 
     <div
       v-if="date.start"
