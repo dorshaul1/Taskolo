@@ -6,7 +6,7 @@
     z-index: 50;
     background-color: rgba(37, 37, 37, 0.432);
     overflow: auto;
-  
+    padding-bottom: 8px;
 }
 
 // .screen {
@@ -21,7 +21,7 @@
     position: absolute;
     border-radius: 3px;
     font-family: Robot;
-    
+
     // font-weight: 200;
     // margin: 0 auto;
 
@@ -55,11 +55,11 @@
         margin-top: 30px;
     }
 
-    & h1 {
-        margin-left: 30px;
-        margin-top: 12px;
-        font-size: 20px;
-    }
+    // & h1 {
+    //     margin-left: 30px;
+    //     margin-top: 12px;
+    //     font-size: 20px;
+    // }
 
     & .close-modal-btn {
         // text-decoration: none;
@@ -104,19 +104,30 @@
         // font-weight: 300;
         font-size: 20px;
         line-height: 24px;
-        color:#172b4d;
+        color: #172b4d;
+        > * {
+            margin-left: 27px;
+            margin-top: 12px;
+            font-size: 20px;
+        }
         // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         // font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans;
         font-family: Roboto;
-
-        
-
+        h4 {
+            color: #5e6c84;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 20px;
+            font-family: Roboto;
+            // margin-left: 0;
+            margin-top: 6px;
+            margin-bottom: 15px;
+        }
 
         & h1 {
-            margin-bottom: 16px;
+            // margin-bottom: 16px;
             font-family: Roboto;
             letter-spacing: 0.5px;
-           
         }
     }
 
@@ -141,7 +152,7 @@
 
 .task-details-grid {
     display: grid;
-    grid-template-columns: 584px 200px;
+    grid-template-columns: 560px 200px;
     // margin: 0 16px;
     // padding: 0 0 20px 0;
     padding: 0 0 0 40px;
@@ -196,17 +207,26 @@
     & .right-column {
         max-width: 168px;
         min-height: 70%;
-        padding: 6px 12px 6px 6px;
+        padding: 0 12px 6px 6px;
+
         color: #6b778c;
 
         h3 {
+            color: #5e6c84;
+            font-size: 12px;
             font-family: Robot;
-            padding: 0;
             letter-spacing: 0.5px;
-            text-align: left;
-            font-size: 14px;
-            font-weight: 400;
+            font-weight: 500;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
+            font-family: Roboto;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+
+        .actions-title {
+            margin-top: 24px;
         }
 
         & > * {
