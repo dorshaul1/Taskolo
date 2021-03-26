@@ -1,7 +1,9 @@
 .activity-list-container {
     width: 100%;
+    
     // padding-bottom: 0;
     .activity-list {
+        
         // background-color: red;
         // width: 100%;
         padding: 0 20px;
@@ -11,7 +13,8 @@
         }
     }
 }
-.activity{
+.activity {
+    
     position: relative;
     font-size: 16px;
     img {
@@ -20,14 +23,61 @@
         left: -20px;
         top: 4px;
     }
-    input{
+    input {
         outline: none;
         border-color: transparent;
         padding: 8px 12px;
         border-radius: 3px;
         // height: 108px;
-        &:focus{
-            box-shadow: inset 0 0 0 2px #0079bf
+        &:focus {
+            box-shadow: inset 0 0 0 2px #0079bf;
+        }
+    }
+}
+
+.activity-item {
+    font-family: Roboto;
+    min-height: 32px;
+    padding: 8px 0;
+    text-align: left;
+
+    width: 106%;
+    position: relative;
+    left: -45px;
+    top: 0;
+
+
+
+    span {
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    a {
+        color: #5e6c84;
+        font-size: 12px;
+        display: block;
+        margin-top: 2px;
+    }
+
+    .profile {
+        background-color: black;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-right: 10px;
+        border-radius: 50%;
+        position: unset;
+    }
+
+    .activity-data{
+        div{
+            line-height: 20px;
+            font-weight: 300;
+            font-family: Roboto;
+            font-size: 14px;
         }
     }
 }
