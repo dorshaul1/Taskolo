@@ -707,6 +707,11 @@ export default {
                 });
                 return coverColors;
             },
+            taskActivites() {
+                const taskActivites = this.board.activites.filter(activity => {
+                    
+                })
+            }
         },
         components: {
             membersPreview,
