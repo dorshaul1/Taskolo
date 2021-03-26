@@ -1,6 +1,6 @@
 <template>
   <section class="description flex start column">
-    <img src="../../../../assets/task-icon/left-alignment.svg" alt="" />
+    <img src="@/assets/task-icon/left-alignment.svg" alt="" />
     <div class="title-container flex align-center">
       <h3>Description</h3>
       <!-- <button @click="openEditInput">Edit</button> -->
@@ -9,7 +9,7 @@
     <div
       v-if="!isDescriptionEdit"
       @click="openEditInput"
-      class="desc-container"
+      class="desc-container flex"
     >
       {{ descriptionToDisplay }}
     </div>
@@ -23,8 +23,8 @@
       v-model="descriptionTxt"
     ></textarea>
     <div v-if="isDescriptionEdit" class="desc-input-buttons flex align-center">
-      <button @click="updateDesc">Save</button>
-      <button @click="isDescriptionEdit = false">X</button>
+      <button @click="updateDesc" class="flex center">Save</button>
+      <button @click="isDescriptionEdit = false" class="flex center"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
     </div>
   </section>
 </template>
