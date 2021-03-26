@@ -1,14 +1,23 @@
 .members-modal {
-    padding: 0 12px 12px;
     & input {
         margin: 4px 0 12px;
         width: 100%;
+        padding: 0 12px 12px;
+    }
+    
+    h3{
+        margin: 10px 0 !important;
+        font-weight: 600 !important;
+        font-family: Robot !important;
     }
 
     & .member-container{
         cursor: pointer;
         user-select: none;
-
+        margin-bottom: 4px;
+        padding: 5px;
+        border-radius: 3px;
+        
         &:hover{
             // background: darken($color: white, $amount: 5%);
             background: $hover;
@@ -23,9 +32,9 @@
         border-radius: 50%;
     }
 
-    .member-data{
-        margin-bottom: 4px;
-    }
+    // .member-data{
+    //     margin-bottom: 4px;
+    // }
 
     & .other-members-btn {
         color: #172b4d;

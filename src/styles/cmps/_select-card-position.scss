@@ -3,11 +3,24 @@
         //only direct child
         width: 100%;
     }
+    h3{
+        margin: 10px 0 2px 0!important;
+        font-weight: 200 !important;
+        font-size: 10px !important;
+        font-family: Robot !important;
+    }
 
     input {
         margin-bottom: 8px;
     }
 
+    .select-group{
+        margin-right: 8px;
+        // width: 60%;
+    }
+    .select-position{
+        // width: 40%;
+    }
     .main-select {
         width: 100%;
     }

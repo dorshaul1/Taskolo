@@ -9,16 +9,27 @@
     padding-bottom: 8px;
 }
 
-// .screen {
-//     position: fixed;
-//     top: 0;
-//     bottom: 0;
-//     right: 0;
-//     left: 0;
-//     background-color: rgba(37, 37, 37, 0.432);
-// }
-.task-details-container {
+.screen {
     position: absolute;
+    // top: 0;
+    // bottom: 0;
+    right: 0;
+    left: 0;
+    top: 46px;
+    padding-bottom: 46px;
+    // background-color: rgba(37, 37, 37, 0.432);
+}
+
+.close-screen{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0; 
+}
+
+.task-details-container {
+    position: relative;
     border-radius: 3px;
     font-family: Robot;
 
@@ -27,7 +38,7 @@
 
     // margin-bottom: 20px;
 
-    top: 50px;
+    // top: 50px;
     // right: 25%;
     // left: 25%;
     // height: 90vh;

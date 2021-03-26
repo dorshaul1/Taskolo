@@ -7,7 +7,7 @@
             placeholder="Paste any link here..."
             v-model="url"
         />
-        <el-button @click="addUrl">Attach</el-button>
+        <button @click="addUrl">Attach</button>
     </section>
 </template>
 

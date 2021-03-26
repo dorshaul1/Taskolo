@@ -2,8 +2,9 @@
     <section class="task-modal">
         <header class="header">
             <span class="title">{{title}}</span>
-            <a href="#" @click="closeModal" class="close-btn">X</a>
+            <a href="#" @click="closeModal" class="close-btn"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></a>
         </header>
+        <hr/>
         <slot></slot>
     </section>
 </template>

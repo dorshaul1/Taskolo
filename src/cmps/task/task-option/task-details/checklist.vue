@@ -1,7 +1,8 @@
 <template>
-    <section>
-        <el-input type="text" placeholder="Title" v-model="title" />
-        <el-button @click="addTitle">Add</el-button>
+    <section class="checklist-modal flex column">
+        <h3>Title</h3>
+        <el-input type="text" placeholder="Checklist" v-model="title" />
+        <button class="add-btn flex center" @click="addTitle">Add</button>
     </section>
 </template>
 

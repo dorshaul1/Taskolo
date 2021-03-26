@@ -15,5 +15,8 @@
 
     button{
         width: unset;
+        &:hover {
+            background-color: $hover-dark;
+        }
     }
 }

@@ -1,6 +1,6 @@
 .activity-list-container {
     width: 100%;
-    
+
     // padding-bottom: 0;
     .activity-list {
         
@@ -78,6 +78,18 @@
             font-weight: 300;
             font-family: Roboto;
             font-size: 14px;
+        }
+    }
+}
+
+.acitivty-title{
+    position: relative;
+    button{
+        position: absolute;
+        right: 0;
+        top: -8px;
+        &:hover {
+            background-color: $hover-dark;
         }
     }
 }

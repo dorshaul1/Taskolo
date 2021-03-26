@@ -1,8 +1,8 @@
 <template>
     <section class="copy-card flex column align-start">
-        <label for="title">Title</label>
+        <h3 for="title">Title</h3>
         <textarea ref="title" name="title" v-model="title"></textarea>
-        <label for="select">Copy to...</label>
+        <h3 for="select">Copy to...</h3>
         <select-card-position
             :boards="boards"
             :currBoard="currBoard"

@@ -1,13 +1,13 @@
 <template>
     <section class="cover-colors flex column flex-start">
         <div class="size-container flex column flex-start">
-            <h4>Size</h4>
+            <h4>SIZE</h4>
             <div class="size-buttons flex">
                 <div :style="{backgroundColor: cover.bgColor}" @click="coverStateClicked(false)"><img src="@/assets/task-icon/covering.svg" alt=""></div>
                 <div :style="{backgroundColor: cover.bgColor}" @click="coverStateClicked(true)"><img src="@/assets/task-icon/cover.svg" alt=""></div>
             </div>
         </div>
-        <h4>Colors</h4>
+        <h4>COLORS</h4>
         <div class="colors-container">
             <div
                 v-for="color in colors"
@@ -18,8 +18,8 @@
             ></div>
         </div>
         <div class="attachtment-container flex column flex-start">
-            <h4>Attachments</h4>
-            <el-button>Upload an image</el-button>
+            <h4>ATTACHMENT</h4>
+            <button>Upload an image</button>
         </div>
     </section>
 </template>

@@ -1,6 +1,7 @@
 <template>
     <section class="members-modal">
         <el-input type="text" placeholder="Search members..." />
+        <h3>board members</h3>
         <div
             v-for="member in members"
             :key="member._id"
@@ -17,9 +18,9 @@
                 ><i class="el-icon-check"></i>
             </a>
         </div>
-        <div>
+        <!-- <div>
             <a href="#" class="other-members-btn">Show other team members</a>
-        </div>
+        </div> -->
     </section>
 </template>
 

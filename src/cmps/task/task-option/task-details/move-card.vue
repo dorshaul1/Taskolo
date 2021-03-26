@@ -1,8 +1,8 @@
 <template>
     <section class="move-card flex column align-start">
-        <h4>SUGGESTED</h4>
-        <a class="button-link" href="#">Title Here</a>
-        <h4>SELECT DESTINATION</h4>
+        <!-- <h4>SUGGESTED</h4>
+        <a class="button-link" href="#">Title Here</a> -->
+        <h3>SELECT DESTINATION</h3>
         <select-card-position
             :boards="boards"
             :currBoard="currBoard"

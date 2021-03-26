@@ -17,7 +17,7 @@
       <div
         v-for="todo in checklist.todos"
         :key="todo.id"
-        class="todo-item flex"
+        class="todo-item flex align-center"
       >
         <el-checkbox
           type="checkbox"
@@ -38,7 +38,7 @@
       <button v-if="!isAddItemClicked && !isEdit" @click="addItemClicked">
         Add an item
       </button>
-      <input
+      <el-input
         type="text"
         v-if="isAddItemClicked"
         placeholder="Add an item"
@@ -47,18 +47,18 @@
       />
       <div
         v-if="isAddItemClicked || isEdit"
-        class="checklist-actions flex space-between"
+        class="checklist-actions flex"
       >
-        <div class="add-delete flex">
-          <button v-if="!isEdit" @click="addToChecklist">Add</button>
-          <button v-else @click="editItem">Save</button>
-          <button @click="closeAddItemClicked">X</button>
+        <div class="checklist-button-container flex">
+          <button v-if="!isEdit" @click="addToChecklist" class="flex center">Add</button>
+          <button v-else @click="editItem" class="flex center">Save</button>
+          <button @click="closeAddItemClicked" class="flex center"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
         </div>
 
         <div class="text-actions flex">
-          <button>Mention</button>
+          <!-- <button>Mention</button>
           <button>Emoji</button>
-          <button>Assign</button>
+          <button>Assign</button> -->
         </div>
       </div>
     </div>
