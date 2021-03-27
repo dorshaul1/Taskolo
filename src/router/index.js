@@ -6,6 +6,7 @@ import boardDetails from '../views/board-details'
 import taskDetails from '../views/task-details'
 import login from '../views/login'
 import signup from '../views/signup'
+import dashboard from '../views/dashboard'
 
 Vue.use(VueRouter)
 
@@ -41,7 +42,12 @@ const routes = [
         component: taskDetails
       },
     ]
-  }
+  },
+  {
+    path: '/board/:boardId/dashboard',
+    name: 'dashboard',
+    component: dashboard
+  },
 ]
 
 
