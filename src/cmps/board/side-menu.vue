@@ -21,6 +21,7 @@
             v-model="backgroundColor"
           />
         </li>
+        <!-- <router-link to="/dashboard">Dashboard</router-link> -->
         <li><div class="side-menu-option">more</div></li>
         <!-- <li>more</li> -->
       </ul>

@@ -26,7 +26,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.103);
         display: block;
         width: 320px;
-        height: 485px;
+        min-height: 485px;
         margin: 0 auto;
         position: relative;
 
@@ -113,6 +113,11 @@
                     text-decoration: underline;  
                 }  
             }
+        }
+        h4{
+            font-family: robot;
+            margin-bottom: 15px;
+            color: rgb(182, 36, 36);
         }
     }
 }

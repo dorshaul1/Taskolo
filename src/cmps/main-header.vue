@@ -8,29 +8,47 @@
         <button class="boards-btn flex center" @click="$router.push('/board')">
           Boards
         </button>
-        <!-- <router-link to="/">Home</router-link> | -->
-        <!-- <router-link to="/board">Board</router-link> | -->
       </nav>
       <section class="logo flex align-center" @click="$router.push('/')">
         <img src="../assets/logo/logo-txt-white.png" alt="" />
-        <!-- <img src="../assets/logo/logo-full.png" alt=""> -->
       </section>
     </section>
-    <!-- <section class="profile-details"> -->
-      <!-- <div class="member-avatar"> -->
-      <img
-        class="member-avatar"
-        src="https://randomuser.me/api/portraits/thumb/men/75.jpg"
-        alt=""
-      />
-      <!-- </div> -->
-    <!-- </section> -->
+    <img
+      @click="isProfileModalOpen = !isProfileModalOpen"
+      class="member-avatar"
+      :src="userImg"
+      alt=""
+    />
+    <base-task-modal
+      @close-modal="isProfileModalOpen = false"
+      v-if="isProfileModalOpen"
+      title="Account"
+    >
+      <!-- <members :members="this.currBoard.members" @add-member="addMember" /> -->
+      <profile-modal />
+    </base-task-modal>
   </header>
 </template>
 
 <script>
+import baseTaskModal from "../cmps/base-task-modal";
+import profileModal from "../cmps/profile-modal";
 export default {
   name: "main-header",
+  data() {
+    return {
+      isProfileModalOpen: false,
+    };
+  },
+  computed: {
+    userImg() {
+      return this.$store.getters.loggedinUser.imgUrl;
+    },
+  },
+  components: {
+    baseTaskModal,
+    profileModal
+  },
 };
 </script>
 

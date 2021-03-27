@@ -15,11 +15,17 @@
           v-model="credentials.email"
           @input="editMail"
         />
-        <form v-if="isEnterMail" class="credentials-signup">
+        <div v-if="isEnterMail" class="credentials-signup">
+          <input
+            type="text"
+            class="fullname-input"
+            placeholder="Enter full name"
+            v-model="credentials.fullname"
+          />
           <input
             type="text"
             class="username-input"
-            placeholder="Enter full name"
+            placeholder="Enter user name"
             v-model="credentials.username"
           />
           <input
@@ -28,8 +34,16 @@
             placeholder="Create password"
             v-model="credentials.password"
           />
-        </form>
+          <button
+            class="continue-btn"
+            :class="{ 'continue-active': isValidMail }"
+            @click="signup"
+          >
+            Signup
+          </button>
+        </div>
         <button
+          v-if="!isEnterMail"
           class="continue-btn"
           :class="{ 'continue-active': isValidMail }"
           @click="enterMail"
@@ -41,7 +55,9 @@
           <div class="google-login flex center">Continue with Google</div>
           <hr />
           <span class="bottom-form-link">
-            <a href=""> Already have an account? Log In </a>
+            <router-link to="/login">
+              Already have an account? Log In
+            </router-link>
           </span>
         </div>
       </div>
@@ -57,6 +73,7 @@ export default {
         email: "",
         username: "",
         password: "",
+        fullname: "",
       },
       isEditMail: false,
       isValidMail: false,
@@ -76,6 +93,20 @@ export default {
       if (this.isValidMail) {
         this.isEnterMail = true;
         this.isEditMail = false;
+      }
+    },
+    async signup() {
+      try {
+        const user = this.$clone(Object.create(this.credentials));
+        user.imgUrl =
+          "https://romancebooks.co.il/wp-content/uploads/2019/06/default-user-image.png";
+        const loginUser = await this.$store.dispatch({
+          type: "signup",
+          userCred: user,
+        });
+        if (loginUser) this.$router.push('/board')
+      } catch (error) {
+        console.log('cannot sign up:', error)
       }
     },
   },

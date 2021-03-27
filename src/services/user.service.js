@@ -53,16 +53,16 @@ async function update(user) {
 
 
 async function login(userCred) {
-    const users = await storageService.query(KEY)
-    const user = users.find(user => user.username === userCred.username)
-    return _saveLocalUser(user)
+    // const users = await storageService.query(KEY)
+    // const user = users.find(user => user.username === userCred.username)
+    // return _saveLocalUser(user)
 
-    // const user = await httpService.post('auth/login', userCred)
-    // if (user) return _saveLocalUser(user)
+    const user = await httpService.post('auth/login', userCred)
+    if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
-    const user = await storageService.post(KEY, userCred)
-    // const user = await httpService.post('auth/signup', userCred)
+    // const user = await storageService.post(KEY, userCred)
+    const user = await httpService.post('auth/signup', userCred)
     return _saveLocalUser(user)
 }
 async function logout() {
@@ -75,13 +75,13 @@ function _saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-    return {
-        "_id": "u101",
-        "fullname": "Randy Kelly",
-        "username": "silverswan131",
-        "password": "firewall",
-        "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-    }
-    // return JSON.parse(sessionStorage.getItem('loggedinUser') || 'null')
+    // return {
+    //     "_id": "u101",
+    //     "fullname": "Randy Kelly",
+    //     "username": "silverswan131",
+    //     "password": "firewall",
+    //     "imgUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+    // }
+    return JSON.parse(sessionStorage.getItem('loggedinUser') || 'null')
 }
 

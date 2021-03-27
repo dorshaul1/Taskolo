@@ -1,0 +1,24 @@
+.profile-modal{
+    .member-avatar-container{
+        padding: 4px 8px 4px 12px;
+        .member-avatar{
+
+            width: 55px;
+            height: 55px;
+        } 
+            
+    }
+    .account-data{
+        text-align: left;   
+        h1{
+            font-family: robot;
+            font-size: 16px;
+        }
+        h4{
+            margin-top: 4px;
+            font-family: robot;
+            font-size: 12px;
+            color: rgb(156, 156, 156);
+        }
+    }
+}
