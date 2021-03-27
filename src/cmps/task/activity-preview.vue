@@ -1,6 +1,6 @@
 <template>
     <section class="activity flex column">
-        <img src="@/assets/task-icon/list.svg" alt="" />
+        <img class="activity-icon" src="@/assets/task-icon/list.svg" alt="" />
         <div class="acitivty-title flex space-between align-center">
             <h3>Activity</h3>
             <button>Show Details</button>

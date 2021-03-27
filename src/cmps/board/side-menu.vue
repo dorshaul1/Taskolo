@@ -1,18 +1,17 @@
 <template>
   <section class="side-menu-container flex column">
     <!-- <component :is="currComponent"></component> -->
-    <button @click="closeMenu" class="close-menu flex center">X</button>
+    <button @click="closeMenu" class="close-menu flex center"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
     <!-- <component :is="currCmp"></component> -->
+      <h1 class="menu-title flex center">Menu</h1>
+
     <section class="side-menu-content flex column align-center">
-      <h1>Menu</h1>
       <ul class="clean-list">
-        <li>
-          <div class="side-menu-option">About This Board</div>
-          <div class="aboutThisBoard"></div>
-        </li>
+        <li><div class="side-menu-option" @click="isActivitiesShow=true">Activities</div></li>
+
         <li>
           <label for="background-input">
-            <div class="side-menu-option">Change Background</div>
+            <div class="side-menu-option" @click="isActivitiesShow=false">Change Background</div>
           </label>
           <input
             @change="changeBackground"
@@ -21,12 +20,19 @@
             v-model="backgroundColor"
           />
         </li>
+        <li>
+          <div class="side-menu-option" @click="moveToDashBoard">Dashboard</div>
+          <div class="aboutThisBoard"></div>
+        </li>
         <!-- <router-link to="/dashboard">Dashboard</router-link> -->
-        <li><div class="side-menu-option">more</div></li>
         <!-- <li>more</li> -->
       </ul>
-      <h1>Activities</h1>
-      <activity-list :board="board" />
+
+      <!-- <component :is="currCmp"></component> -->
+      <div v-if="isActivitiesShow" class="menu-activities">
+        <!-- <activity-list :board="board" /> -->
+        <activity-preview :activites="board.activities" />
+      </div>
     </section>
   </section>
   <!-- </section> -->
@@ -34,6 +40,7 @@
 
 <script>
 import activityList from "./activity-list";
+import activityPreview from "../task/activity-preview";
 
 export default {
   props: {
@@ -46,6 +53,8 @@ export default {
   data() {
     return {
       backgroundColor: "white",
+      isActivitiesShow: true,
+      // currCmp: activityList
     };
   },
   methods: {
@@ -53,14 +62,18 @@ export default {
       this.$emit("close");
     },
     changeBackground() {
-      const newBoard = this.$clone(this.board)
+      const newBoard = this.$clone(this.board);
       newBoard.style = this.backgroundColor;
       // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
     },
+    moveToDashBoard(){
+      this.$router.push(`/board/${this.board._id}/dashboard`)
+    }
   },
   components: {
     activityList,
+    activityPreview
   },
   // created() {
   //   console.log(this.board);

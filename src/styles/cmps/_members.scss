@@ -1,51 +1,64 @@
 .members-modal {
+    // max-height: 40vh;
     & input {
         margin: 4px 0 12px;
         width: 100%;
-        padding: 0 12px 12px;
-    }
-    
-    h3{
-        margin: 10px 0 !important;
-        font-weight: 600 !important;
-        font-family: Robot !important;
-    }
+        padding: 8px 12px;
 
-    & .member-container{
-        cursor: pointer;
-        user-select: none;
-        margin-bottom: 4px;
-        padding: 5px;
-        border-radius: 3px;
-        
-        &:hover{
-            // background: darken($color: white, $amount: 5%);
-            background: $hover;
+        // padding: 4px 12px 12px;
+        outline: none;
+        border-color: transparent;
+        border-radius: 3px;        &:focus{
+            box-shadow: inset 0 0 0 1px #0079bf
         }
     }
+    .member-invite-container {
+        max-height: 40vh;
 
-    .member{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 8px;
-        border-radius: 50%;
-    }
+        overflow: auto;
 
-    // .member-data{
-    //     margin-bottom: 4px;
-    // }
+        h3 {
+            margin: 10px 0 !important;
+            font-weight: 600 !important;
+            font-family: Robot !important;
+        }
 
-    & .other-members-btn {
-        color: #172b4d;
-        width: 100%;
-        border: none;
-        display: inline-block;
-        line-height: 20px;
-        padding: 6px 12px;
-        text-decoration: none;
-        margin: 8px 4px 0 0;
-        cursor: pointer;
-        background-color: rgba(9, 30, 66, 0.04);
+        & .member-container {
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 4px;
+            padding: 5px;
+            border-radius: 3px;
+
+            &:hover {
+                // background: darken($color: white, $amount: 5%);
+                background: $hover;
+            }
+        }
+
+        .member {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+
+        // .member-data{
+        //     margin-bottom: 4px;
+        // }
+
+        & .other-members-btn {
+            color: #172b4d;
+            width: 100%;
+            border: none;
+            display: inline-block;
+            line-height: 20px;
+            padding: 6px 12px;
+            text-decoration: none;
+            margin: 8px 4px 0 0;
+            cursor: pointer;
+            background-color: rgba(9, 30, 66, 0.04);
+        }
     }
 }

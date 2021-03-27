@@ -1,6 +1,8 @@
 <template>
   <section class="members-modal" v-if="currBoard">
     <input type="text" placeholder="Search user..." />
+    <section class="member-invite-container">
+
     <div
       v-for="user in users"
       :key="user._id"
@@ -17,9 +19,10 @@
         ><i class="el-icon-check"></i>
       </a>
     </div>
-    <div>
+    <!-- <div>
       <a href="#" class="other-users-btn">Show other team users</a>
-    </div>
+    </div> -->
+    </section>
   </section>
 </template>
 
