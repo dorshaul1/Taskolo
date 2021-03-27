@@ -1,60 +1,61 @@
-.dashboard{
+.dashboard {
       // background-color: lightgrey;
 
-      .title{
+      .title {
             margin-inline-end: 30px;
       }
-    
 
-      .data-boxes{
-
-            .box{
+      .data-boxes {
+            .box {
                   margin-inline-end: 20px;
-                  .icon-member{
-                        background-color: #0079BF;
+                  .icon-member {
+                        background-color: #0079bf;
                         height: 50px;
                         width: 50px;
 
-                        .icon-check{
+                        .icon-check {
                               width: 25px;
                         }
                   }
-                  .data-box{
+                  .data-box {
                         background-color: #fff;
                         height: 50px;
-                        width:90px; 
+                        width: 90px;
                         font-size: 14px;
                   }
 
-                  .icon-total-task{
+                  .icon-total-task {
                         background-color: #f2d600;
                         height: 50px;
                         width: 50px;
-                        .icon-check{
+                        .icon-check {
                               width: 25px;
                         }
                   }
 
-                  .icon-completed-task{
+                  .icon-completed-task {
                         background-color: #70b500;
                         height: 50px;
                         width: 50px;
 
-                        .icon-check{
+                        .icon-check {
                               width: 25px;
                         }
                   }
-                  
-                  .icon-incomplete-task{
-                        background-color: #EB5A46;
+
+                  .icon-incomplete-task {
+                        background-color: #eb5a46;
                         height: 50px;
                         width: 50px;
 
-                        .icon-check{
+                        .icon-check {
                               width: 25px;
                         }
                   }
             }
+      }
 
+      .chart-by-group {
+            
       }
 }

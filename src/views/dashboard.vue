@@ -25,12 +25,11 @@
 
       <div class="box flex">
         <div class="icon-total-task flex center">
-        <img
+          <img
             class="icon-check"
             src="../assets/dashboard-icon/dash-checklist.svg"
             alt="dfas"
           />
-
         </div>
         <span class="data-box">TOTAL TASKS {{ totalTasksForDisplay }}</span>
       </div>
@@ -62,9 +61,18 @@
       </div>
     </div>
 
-    <section class="chart-by group">
-      <h1>activity by group</h1>
-      <chart :data="trelloDataForDisplay" />
+    <section class="chart-by-group flex">
+
+      <div class="chart-task">
+        <h1>activity by group</h1>
+        <chart :data="trelloDataForDisplay" />
+      </div>
+
+      <div class="chart-task">
+        <h1>activity by user</h1>
+        <chart :data="trelloDataForDisplay" />
+      </div>
+      
     </section>
   </main>
 </template>
@@ -150,6 +158,18 @@ export default {
     },
     currUsers() {
       return this.$store.getters.users;
+    },
+    trelloDataForDisplay() {
+      return {
+        datasets: [
+          {
+            backgroundColor: ["#70b500", "#f2d600", "#EB5A46", "#0079BF"],
+            data: [30, 50, 70, 40],
+          },
+        ],
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: ["task done", "Educational", "asfasf", "Funny"],
+      };
     },
   },
   methods: {
