@@ -11,6 +11,7 @@
             {{ group.title }}
           </h2>
           <input
+            @change="updateGroupTitle"
             v-else
             class="groupTitleEdit"
             ref="titleEdit"
@@ -115,7 +116,7 @@ export default {
       isEdititle: false,
       drag: false,
       isEditTitle: false,
-      title: "",
+      title: this.group.title,
     };
   },
   computed: {
@@ -213,9 +214,9 @@ export default {
         );
         boardCopy.groups[currGroupIdx].title = this.title;
 
-        // await this.$store.dispatch({ type: "updateBoard", board: boardCopy, activityTxt: 'title' });
+        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.isEditTitle = false;
-        this.title = "";
+        this.title = this.group.title;
       } catch (error) {
         console.log("cant update group title", error);
       }
