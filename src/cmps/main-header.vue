@@ -14,11 +14,13 @@
       </section>
     </section>
     <img
+      v-if="loggedinUser"
       @click="isProfileModalOpen = !isProfileModalOpen"
       class="member-avatar"
       :src="userImg"
       alt=""
     />
+    <button @click="login" v-if="!isLoginUser" class="login-btn">Log in</button>
     <base-task-modal
       @close-modal="isProfileModalOpen = false"
       v-if="isProfileModalOpen"
@@ -38,16 +40,33 @@ export default {
   data() {
     return {
       isProfileModalOpen: false,
+      // isLoginUser: ,
     };
   },
   computed: {
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
     userImg() {
+      console.log(
+        "this.$store.getters.loggedinUser:",
+        this.$store.getters.loggedinUser
+      );
+      if (!this.$store.getters.loggedinUser) return;
       return this.$store.getters.loggedinUser.imgUrl;
+    },
+    isLoginUser() {
+      return this.$store.getters.loggedinUser ? true : false;
+    },
+  },
+  methods: {
+    login() {
+      this.$router.push("/login");
     },
   },
   components: {
     baseTaskModal,
-    profileModal
+    profileModal,
   },
 };
 </script>
