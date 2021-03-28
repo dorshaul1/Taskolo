@@ -28,7 +28,7 @@ import mainHeader from "../cmps/main-header";
 export default {
   name: "Home",
   components: {
-    mainHeader
+    mainHeader,
   },
   computed: {
     currBoard() {
@@ -36,8 +36,13 @@ export default {
     },
   },
   methods: {
-    goDemoBoard() {
+    async goDemoBoard() {
       this.$router.push(`/board`);
+      const user = { username: "demo", password: "demo" };
+      await this.$store.dispatch({
+        type: "login",
+        userCred: user,
+      });
     },
   },
 };
