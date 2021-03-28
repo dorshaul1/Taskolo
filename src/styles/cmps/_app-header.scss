@@ -36,14 +36,19 @@
         }
     }
     .logo {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 50px;
+        // width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
         img {
             width: 70px;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            left: 0;
-            right: 0;
-            text-align: center;
+            &:first-of-type{
+                width: 30px;
+            }
         }
     }
 
