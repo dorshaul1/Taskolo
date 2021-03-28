@@ -1,17 +1,29 @@
 <template>
   <div class="form__field">
     <div class="form__label">
-      <strong>Please choose a color:</strong>
+      <h1>Choose color:</h1>
     </div>
     <div class="form__input">
       <v-swatches
-      @input="setColor"
+        @input="setBackground('color')"
         v-model="color"
         :swatches="swatches"
         show-fallback
         fallback-input-type="color"
         popover-x="left"
       ></v-swatches>
+    </div>
+
+    <h1>Choose background:</h1>
+    <div class="background-image-list flex">
+      <div v-for="idx in 15" :key="idx" class="clean-list">
+        <img
+          @click="setBackground('img', idx)"
+          class="background-img"
+          :src="getImgUrl(idx)"
+          v-bind:alt="idx"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -39,9 +51,17 @@ export default {
   },
   components: { VSwatches },
   methods: {
-      setColor(){
-          this.$emit('setColor', this.color)
-      }
+    setBackground(type, idx = null) {
+      if ( type === 'color')
+      this.$emit("setBackground",this.color)
+      else if(type === 'img')
+      this.$emit("setBackground",`url(${this.getImgUrl(idx)})`);
+    },
+    getImgUrl(idx) {
+      return require(`../../assets/images/${idx}.png`);
+    },
   },
 };
 </script>
+<style >
+</style>

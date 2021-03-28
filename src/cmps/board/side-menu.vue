@@ -44,7 +44,7 @@
       </div>
 
       <div v-if="isBackgroundShow" class="menu-activities">
-        <change-background @setColor="changeBackground"/>
+        <change-background @setBackground="changeBackground"/>
       </div>
     </section>
   </section>
@@ -77,10 +77,15 @@ export default {
     closeMenu() {
       this.$emit("close");
     },
-    changeBackground(color) {
-      console.log('color:', color)
+    changeBackground( background) {
+      console.log('background:', background)
       const newBoard = this.$clone(this.board);
-      newBoard.style = color;
+      // if (type === 'color'){
+        newBoard.style = background;
+      // }
+      // else if (type === 'img'){
+        // newBoard.style = `url(${background})`;
+      // }
       // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
     },
