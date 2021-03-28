@@ -37,11 +37,11 @@ export const board = {
       "groups": [
             {
                   "id": "g101",
-                  "title": "Project Resource",
+                  "title": "Development",
                   "tasks": [
                         {
                               "id": "task101",
-                              "title": "Add Samples",
+                              "title": "Add members feature",
                               "style": {
                                     "bgColor": "#ff9f1a",
                               },
@@ -71,7 +71,7 @@ export const board = {
                         },
                         {
                               "id": "task102",
-                              "title": "Edit email draft",
+                              "title": "Edit email draft feature",
                               "labelIds": ["l105", "l106"],
                               "description": "description",
                               "comments": [
@@ -127,11 +127,11 @@ export const board = {
             },
             {
                   "id": "g102",
-                  "title": "Questions for next meeting",
+                  "title": "Code Review",
                   "tasks": [
                         {
                               "id": "t104",
-                              "title": "Legal Review",
+                              "title": "need to implement another service for all utils function",
                               "description": "description",
                               "comments": [
                                     {
@@ -160,7 +160,7 @@ export const board = {
                         },
                         {
                               "id": "t105",
-                              "title": "Social media assets",
+                              "title": "Social media assets need to be in another component",
                               "style": {
                                     "bgColor": "#0079bf",
                               },
@@ -195,12 +195,121 @@ export const board = {
                   ],
             },
             {
-                  "id": "g103",
-                  "title": "Pending",
+                  "id": "g104",
+                  "title": "Q.A.",
                   "tasks": [
                         {
-                              "id": "t107",
-                              "title": "Weekly update",
+                              "id": "t110",
+                              "title": "need to fix bug when click the label and then refresh",
+                              "style": {
+                                    "bgColor": "#eb5a46",
+                                    "isCover": "true"
+                              },
+                              "labelIds": ["l103", "l102"],
+                              "description": "description",
+                              "comments": [
+                                    {
+                                          "id": "ZdPnm",
+                                          "txt": "also @yaronb please CR this",
+                                          "createdAt": 1590999817436.0,
+                                    }
+                              ],
+                              "checklists": [
+                                    {
+                                          "id": "ch1347s",
+                                          "title": "Checklist",
+                                          "todos": [
+                                                {
+                                                      "id": "tod1034319",
+                                                      "title": "To Do 6",
+                                                      "isDone": false
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "dueDate": 16158715211,
+                              "isDone": true,
+                              "watch": true,
+                              "attachment": "https://i.picsum.photos/id/608/200/200.jpg?hmac=-p1htX-mFieavdRDr9vUIJKyDHCXZAY5B35nhdcgIgQ",
+                              "members": [
+                              ],
+                        },
+                        {
+                              "id": "t111",
+                              "title": "when logout the session storage need to be updated",
+                              "style": {
+                                    "bgColor": "#70b500",
+                              },
+                              "labelIds": ["l104", "l106"],
+                              "description": "description",
+                              "comments": [
+                                    {
+                                          "id": "ZdPnm",
+                                          "txt": "also @yaronb please CR this",
+                                          "createdAt": 1590999817436.0,
+                                    }
+                              ],
+                              "checklists": [
+                                    {
+                                          "id": "ch138",
+                                          "title": "Checklist",
+                                          "todos": [
+                                                {
+                                                      "id": "tod144010",
+                                                      "title": "To Do 19",
+                                                      "isDone": false
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "dueDate": 161242111,
+                              "watch": true,
+                              "members": [
+                              ],
+                        },
+                        {
+                              "id": "t112",
+                              "title": "when click outside of box- we got error in preview component",
+                              "style": {
+                                    "bgColor": "#ff9f1a",
+                              },
+                              "labelIds": ["l106", "l103"],
+                              "description": "description",
+                              "comments": [
+                                    {
+                                          "id": "ZdPnm",
+                                          "txt": "also @yaronb please CR this",
+                                          "createdAt": 1590999817436.0,
+                                    }
+                              ],
+                              "checklists": [
+                                    {
+                                          "id": "ch1430",
+                                          "title": "Checklist",
+                                          "todos": [
+                                                {
+                                                      "id": "tod13532",
+                                                      "title": "To Do 45",
+                                                      "isDone": false
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "dueDate": 12356215211,
+                              "watch": true,
+                              "members": [
+                              ],
+                        },
+
+                  ],
+            },
+            {
+                  "id": "g105",
+                  "title": "Production",
+                  "tasks": [
+                        {
+                              "id": "t120",
+                              "title": "we can publish the invite members to board feature",
                               "style": {
                                     "bgColor": "#eb5a46",
                                     "isCover": "true"
@@ -235,8 +344,8 @@ export const board = {
                               ],
                         },
                         {
-                              "id": "t108",
-                              "title": "Monday mission",
+                              "id": "t121",
+                              "title": "need to publish the edit label new feature",
                               "style": {
                                     "bgColor": "#70b500",
                               },
@@ -268,8 +377,8 @@ export const board = {
                               ],
                         },
                         {
-                              "id": "t109",
-                              "title": "John report",
+                              "id": "t122",
+                              "title": "need to add the new util service with new feature in production ",
                               "style": {
                                     "bgColor": "#ff9f1a",
                               },
@@ -284,11 +393,11 @@ export const board = {
                               ],
                               "checklists": [
                                     {
-                                          "id": "ch140",
+                                          "id": "ch1440",
                                           "title": "Checklist",
                                           "todos": [
                                                 {
-                                                      "id": "tod132",
+                                                      "id": "tod13245",
                                                       "title": "To Do 45",
                                                       "isDone": false
                                                 }

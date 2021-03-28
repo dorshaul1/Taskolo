@@ -13,7 +13,7 @@ export default {
   },
 };
 </script>
-    MainHeader
+
 
 <style lang="scss">
 #app {
