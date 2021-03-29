@@ -8,6 +8,7 @@
       height: auto;
       color: #172b4d;
       // word-break: break-all;
+      word-wrap: break-word;
       white-space: initial;
       overflow: hidden;
       max-height: 100%;
@@ -175,6 +176,7 @@
                               color: white;
                         }
                         .exit-task {
+                              padding-bottom: 2px;
                               width: 40px;
                         }
                   }

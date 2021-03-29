@@ -82,9 +82,9 @@
             >
             </textarea>
 
-            <div class="task-btn-container flex">
+            <div class="task-btn-container flex align-center">
               <button @click="addNewTask" class="add-task">Add card</button>
-              <button @click="closeTaskAdd" class="exit-task">x</button>
+              <button @click="closeTaskAdd" class="exit-task"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
             </div>
           </section>
         </div>
