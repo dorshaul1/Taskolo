@@ -163,6 +163,9 @@
                   font-size: 14px;
                   font-weight: 400;
                   line-height: 20px;
+                  // line-break: strict;
+                  line-break: auto;
+                  word-wrap: break-word;
                   color: #172b4d;
             }
 
