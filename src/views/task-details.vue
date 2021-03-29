@@ -715,7 +715,7 @@ export default {
             this.isDeleteCardOpen = false;
         },
         addComment(comment) {
-             this.$store.dispatch({
+            this.$store.dispatch({
                 type: "addActivityData",
                 activityTxt: comment,
             });
