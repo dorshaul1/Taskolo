@@ -66,7 +66,7 @@
 
             <div class="group-btn-container flex">
               <button @click="addNewGroup" class="add-group">Add list</button>
-              <button @click="closeGroupAdd" class="exit-group">x</button>
+              <button @click="closeGroupAdd" class="exit-group"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
             </div>
           </section>
         </div>
