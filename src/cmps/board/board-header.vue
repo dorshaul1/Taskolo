@@ -36,7 +36,7 @@
     <base-task-modal
       @close-modal="isMembersOpen = false"
       v-if="isMembersOpen"
-      title="Members"
+      title="Invite to board"
     >
       <!-- <members :members="this.currBoard.members" @add-member="addMember" /> -->
       <invite-members />

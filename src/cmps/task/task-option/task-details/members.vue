@@ -1,7 +1,7 @@
 <template>
     <section class="members-modal">
         <el-input type="text" placeholder="Search members..." />
-        <h3>board members</h3>
+        <h3 class="member-title">board members</h3>
         <div
             v-for="member in members"
             :key="member._id"
@@ -12,7 +12,7 @@
                 <!-- <div class="member-icon"> -->
                 <img class="member" :src="member.imgUrl" alt="-" />
                 <!-- </div> -->
-                <h3>{{ member.fullname }}</h3>
+                <h3 class="member-fullname">{{ member.fullname }}</h3>
             </div>
             <a v-show="isAlreadyTaskMember(member._id)" href="#"
                 ><i class="el-icon-check"></i>
