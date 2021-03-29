@@ -147,6 +147,8 @@ export const boardStore = {
             }
         },
         addActivityData(context, { activityTxt }) {
+            if (!activityTxt) return
+
             const byMember = context.rootGetters.miniUser
             const task = {
                 id: context.state.currTask.id,

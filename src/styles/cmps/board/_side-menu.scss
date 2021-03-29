@@ -14,7 +14,6 @@ $border-bottom: 1px solid rgb(185, 185, 185);
     position: fixed;
     right: 0;
     top: 40px;
-    box-shadow: 0 12px 24px -6px rgb(148, 148, 148);
     transition-property: transform, width;
     transition-duration: 0.3s;
     transition-timing-function: ease-in;
@@ -22,7 +21,7 @@ $border-bottom: 1px solid rgb(185, 185, 185);
     width: 339px;
     z-index: 50;
     background-color: #f4f5f7;
-
+    
     .menu-title {
         margin: 10px 0;
         font-weight: 600;
@@ -36,8 +35,9 @@ $border-bottom: 1px solid rgb(185, 185, 185);
         // padding-right: 12px;
         // margin-bottom: 14px;
     }
-
+    
     &.menu-show {
+        box-shadow: 0 12px 24px -6px rgb(148, 148, 148);
         transform: translateX(0);
     }
     .close-menu {
@@ -124,6 +124,26 @@ $border-bottom: 1px solid rgb(185, 185, 185);
                 display: none;
             }
         }
-    }
+        .vue-swatches__container {
+            display: block !important;
+            background-color: transparent !important;
+            input{
+                display: none;
+            }
+            .vue-swatches__fallback__button{
+                display: none;
+            }
+            .vue-swatches__wrapper {
+                width: 300px !important;
+                display: flex !important;
+                /* background-dis: red !important; */
+                flex-wrap: wrap !important;
+            }
+            /* display: none; */
+        }
+        .vue-swatches__trigger{
+         display: none;   
+        }
+        }
+    
 }
-// }

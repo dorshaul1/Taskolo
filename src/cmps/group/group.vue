@@ -1,5 +1,5 @@
 <template>
-  <div class="group-container" @click.stop="isEditTitle = false">
+  <div class="group-container" @click.stop="updateGroupTitle">
     <div class="group-main">
       <div class="group-header flex space-between align-center">
         <div>
@@ -11,10 +11,12 @@
             {{ group.title }}
           </h2>
           <input
+            @change="updateGroupTitle"
+            v-else
             class="groupTitleEdit"
             ref="titleEdit"
-            v-else
             type="text"
+            v-model="title"
             :placeholder="group.title"
           />
         </div>
@@ -114,7 +116,7 @@ export default {
       isEdititle: false,
       drag: false,
       isEditTitle: false,
-      title: "",
+      title: this.group.title,
     };
   },
   computed: {
@@ -202,8 +204,25 @@ export default {
         this.$refs.titleEdit.select();
       });
     },
-    openPreviewModal(task){
-      this.$emit('task-modal-open',task)
+    async updateGroupTitle() {
+      try {
+        console.log("new title", this.title);
+        const boardCopy = this.$clone(this.getBoard);
+        var groups = boardCopy.groups;
+        var currGroupIdx = groups.findIndex(
+          (group) => group.id === this.group.id
+        );
+        boardCopy.groups[currGroupIdx].title = this.title;
+
+        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
+        this.isEditTitle = false;
+        this.title = this.group.title;
+      } catch (error) {
+        console.log("cant update group title", error);
+      }
+    },
+    openPreviewModal(task) {
+      this.$emit("task-modal-open", task);
     },
   },
   components: {

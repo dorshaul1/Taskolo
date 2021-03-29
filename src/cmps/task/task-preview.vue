@@ -10,12 +10,17 @@
 
       <div class="edit-btn">
         <div class="editing">
-          <font-awesome-icon
+
+          <img     v-show="isEdit"
+            @click.stop="openTaskPreview"
+            class="task-edit-img" src="../../assets/task-icon/pen.png" alt="sadf"> 
+
+          <!-- <font-awesome-icon
             v-show="isEdit"
             @click.stop="openPreviewModal"
             class="task-edit"
             :icon="['fas', 'pencil-alt']"
-          />
+          />  -->
 
           <font-awesome-icon
             v-show="isEdit"

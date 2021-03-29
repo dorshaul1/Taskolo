@@ -2,7 +2,7 @@
   <section
     v-if="currBoard"
     class="main-board-container"
-    :style="{ backgroundColor: currBoard.style }"
+    :style="{ background: currBoard.style }"
   >
     <task-preview-modal
       class="preview-modal"
@@ -199,7 +199,6 @@ export default {
     mainHeader,
     taskPreviewModal,
   },
-
 };
 </script>
 
