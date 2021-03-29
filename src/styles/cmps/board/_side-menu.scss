@@ -102,12 +102,12 @@ $border-bottom: 1px solid rgb(185, 185, 185);
             }
 
             .side-menu-list-icon{
-                margin-inline-end: 12px;
+                margin-inline-end: 23px;
                 width: 14px;
             }
 
             .background-icon{
-                margin-inline-end: 12px;
+                margin-inline-end: 23px;
                 width: 14px;
                 height: 14px;
                 border-radius: 3px;
@@ -120,7 +120,7 @@ $border-bottom: 1px solid rgb(185, 185, 185);
         //     overflow: auto;
         // }
         .activity {
-            left: 30px;
+            left: 25px;
             width: 80%;
             .activity-icon {
                 left: -40px;
@@ -139,6 +139,7 @@ $border-bottom: 1px solid rgb(185, 185, 185);
         }
         .vue-swatches__container {
             display: block !important;
+            // margin-inline-start: 5px !important;
             background-color: transparent !important;
             input{
                 display: none;
@@ -149,6 +150,7 @@ $border-bottom: 1px solid rgb(185, 185, 185);
             .vue-swatches__wrapper {
                 width: 300px !important;
                 display: flex !important;
+                padding-left: 15px !important;
                 /* background-dis: red !important; */
                 flex-wrap: wrap !important;
             }
