@@ -1,8 +1,12 @@
 .dashboard {
       // background-color: lightgrey;
+      height: 100vh;
 
       .title {
             margin-inline-end: 30px;
+            margin-block-start: 20px;
+            margin-block-end: 20px;
+            color: #fff;
       }
 
       .data-boxes {
@@ -18,10 +22,15 @@
                         }
                   }
                   .data-box {
-                        background-color: #fff;
+                        background-color: rgba(255, 255, 255, 0.809);
                         height: 50px;
-                        width: 90px;
-                        font-size: 14px;
+                        width: 120px;
+                        font-size: 12px;
+                        font-family: Robot;
+                        padding-top: 5px;
+                        .val{
+                              font-size: 20px;
+                        }
                   }
 
                   .icon-total-task {
@@ -55,7 +64,22 @@
             }
       }
 
-      .chart-by-group {
-            
+      .chart-task {
+            margin-block-start: 40px;
+            background-color: rgba(255, 255, 255, 0.809);
+            border-radius: 3px;
+            padding: 10px;
+      }
+
+      .btn-back {
+            position: absolute;
+            right: 30px;
+            top: 60px;
+            background-color: hsla(0, 0%, 100%, 0.24);
+            color: #fff;
+            // height: 100%;
+            & :hover {
+                  background-color: hsla(0, 0%, 100%, 0.103);
+            }
       }
 }

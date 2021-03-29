@@ -2,13 +2,13 @@
   <main
     v-if="currBoard"
     class="dashboard"
-    :style="{ 'background-color': currBoard.style }"
+    :style="{ 'background': currBoard.style }"
   >
     <main-header />
+      <button class="btn-back" @click="backToBoard">Back To Board</button>
 
     <div class="flex center">
-      <h1 class="title">dashboard</h1>
-      <button @click="backToBoard">Back To Board</button>
+      <h1 class="title">Dashboard</h1>
     </div>
 
     <div class="data-boxes flex center">
@@ -20,7 +20,7 @@
             alt="dfas"
           />
         </div>
-        <span class="data-box">MEMBERS {{ currUsers.length }}</span>
+        <h4 class="data-box">MEMBERS <div class="val">{{ currUsers.length }}</div> </h4>
       </div>
 
       <div class="box flex">
@@ -31,7 +31,7 @@
             alt="dfas"
           />
         </div>
-        <span class="data-box">TOTAL TASKS {{ totalTasksForDisplay }}</span>
+        <h4 class="data-box">TOTAL TASKS <div class="val"> {{ totalTasksForDisplay }} </div></h4>
       </div>
 
       <div class="box flex">
@@ -42,8 +42,8 @@
             alt="dfas"
           />
         </div>
-        <span class="data-box"
-          >COMPLETED TASKS {{ completedTasksForDisplay }}</span
+        <h4 class="data-box"
+          >COMPLETED TASKS <div class="val"> {{ completedTasksForDisplay }} </div></h4
         >
       </div>
 
@@ -55,20 +55,20 @@
             alt="dfas"
           />
         </div>
-        <span class="data-box"
-          >INCOMPLETE TASKS {{ incompletedTasksForDisplay }}</span
+        <h4 class="data-box"
+          >INCOMPLETE TASKS <div class="val"> {{ incompletedTasksForDisplay }} </div> </h4
         >
       </div>
     </div>
 
-    <section class="chart-by-group flex">
-      <div class="chart-task">
+    <section class="chart-by-group flex center">
+      <!-- <div class="chart-task">
         <h1>task status by member</h1>
         <chart-bar :data="taskByMemberDataForDisplay" />
-      </div>
+      </div> -->
 
       <div class="chart-task">
-        <h1>task done per list</h1>
+        <h1>Task done per list</h1>
         <chart :data="taskByMemberDataForDisplay" />
       </div>
     </section>
