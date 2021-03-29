@@ -67,7 +67,7 @@
                             :task="this.task"
                         />
 
-                        <attachment-preview v-if="task.attachment"></attachment-preview>
+                        <attachment-preview :imgUrl="task.attachment" v-if="task.attachment"></attachment-preview>
 
                         <checklist-preview
                             v-for="checklist in task.checklists"

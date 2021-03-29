@@ -20,7 +20,7 @@
             :placeholder="group.title"
           />
         </div>
-        <div>
+        <div class="menu-options">
           <span @click="openGroupMenu" class="group-menu-btn"
             ><i class="el-icon-more"></i
           ></span>
