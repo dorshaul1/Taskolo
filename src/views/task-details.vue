@@ -121,11 +121,7 @@
                                 class="icon"
                                 :icon="['fas', 'tag']"
                             />
-                            <!-- <img
-              class="task-prev-icon"
-              src="../assets/task-icon/tag.png"
-              alt=""
-            /> -->
+
                             <span>Labels</span>
                         </a>
 
@@ -161,7 +157,6 @@
                             title="Checklist"
                             @click="toggleSection('Checklist')"
                         >
-                            <!-- <font-awesome-icon class="icon" :icon="['far', 'check-square']" /> -->
 
                             <img
                                 class="task-prev-icon"
@@ -185,6 +180,13 @@
                             title="Due Date"
                             @click="toggleSection('DueDate')"
                         >
+
+
+
+
+
+
+
                             <!-- <font-awesome-icon class="icon" :icon="['far', 'clock']" /> -->
 
 
