@@ -9,7 +9,7 @@
           Boards
         </button>
       </nav>
-      <section class="logo flex align-center" @click="$router.push('/')">
+      <section class="logo-container flex align-center" @click="$router.push('/')">
         <img src="../assets/logo/logo-img-white.png" alt="" />
         <img src="../assets/logo/logo-txt-white.png" alt="" />
       </section>

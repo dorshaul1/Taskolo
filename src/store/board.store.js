@@ -40,6 +40,8 @@ export const boardStore = {
                     if (task.id === taskId) {
                         state.currTask = task
                         state.currGroup = group
+
+
                     }
                 })
             });
@@ -102,6 +104,7 @@ export const boardStore = {
         },
         async updateTask(context, { task, activityTxt }) {
             try {
+                
                 context.commit({ type: 'setTask', task })
                 const clone = require("rfdc");
                 const boardCopy = clone({ proto: true })(
@@ -149,7 +152,7 @@ export const boardStore = {
             const byMember = context.rootGetters.miniUser
             const task = {
                 id: context.state.currTask.id,
-                title: context.state.currTask.title 
+                title: context.state.currTask.title
             }
             const activity = {
                 id: utilService.makeId(),
@@ -158,7 +161,7 @@ export const boardStore = {
                 byMember,
                 task
             }
-            context.commit({type: 'addActivity', activity})
+            context.commit({ type: 'addActivity', activity })
             console.log(activity)
         }
     }
