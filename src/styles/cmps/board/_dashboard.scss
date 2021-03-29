@@ -1,6 +1,8 @@
 .dashboard {
       // background-color: lightgrey;
       height: 100vh;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
 
       .title {
             margin-inline-end: 30px;
