@@ -11,11 +11,11 @@
       <ul class="clean-list">
         <li>
           <div class="side-menu-option" @click="changeOption('activity')">
-                   <img
-                                class="side-menu-list-icon"
-                                src="../../assets/task-icon/list.svg"
-                                alt=""
-                            /> 
+            <img
+              class="side-menu-list-icon"
+              src="../../assets/task-icon/list.svg"
+              alt=""
+            />
             Activities
           </div>
         </li>
@@ -23,7 +23,10 @@
         <li>
           <label for="background-input">
             <div class="side-menu-option" @click="changeOption('background')">
-              <div class="background-icon" :style="{background: board.style}"></div>
+              <div
+                class="background-icon"
+                :style="{ background: board.style }"
+              ></div>
               Change Background
             </div>
           </label>
@@ -37,12 +40,13 @@
         </li>
         <li>
           <div class="side-menu-option" @click="moveToDashBoard">
-                         <img
-                                class="side-menu-list-icon"
-                                src="../../assets/task-icon/list.svg"
-                                alt=""
-                            /> 
-            Dashboard</div>
+            <img
+              class="side-menu-list-icon"
+              src="../../assets/task-icon/bar-chart.svg"
+              alt=""
+            />
+            Dashboard
+          </div>
           <div class="aboutThisBoard"></div>
         </li>
         <!-- <router-link to="/dashboard">Dashboard</router-link> -->
@@ -56,7 +60,7 @@
       </div>
 
       <div v-if="isBackgroundShow" class="menu-activities">
-        <change-background @setBackground="changeBackground"/>
+        <change-background @setBackground="changeBackground" />
       </div>
     </section>
   </section>
@@ -66,7 +70,7 @@
 <script>
 import activityList from "./activity-list";
 import activityPreview from "../task/activity-preview";
-import ChangeBackground from '../board/change-background';
+import ChangeBackground from "../board/change-background";
 
 export default {
   props: {
@@ -89,14 +93,14 @@ export default {
     closeMenu() {
       this.$emit("close");
     },
-    changeBackground( background) {
-      console.log('background:', background)
+    changeBackground(background) {
+      console.log("background:", background);
       const newBoard = this.$clone(this.board);
       // if (type === 'color'){
-        newBoard.style = background;
+      newBoard.style = background;
       // }
       // else if (type === 'img'){
-        // newBoard.style = `url(${background})`;
+      // newBoard.style = `url(${background})`;
       // }
       // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
@@ -104,17 +108,17 @@ export default {
     moveToDashBoard() {
       this.$router.push(`/board/${this.board._id}/dashboard`);
     },
-    changeOption(option){
-      if (option === 'activity') {
-        this.isActivitiesShow = true
-        this.isBackgroundShow = false
+    changeOption(option) {
+      if (option === "activity") {
+        this.isActivitiesShow = true;
+        this.isBackgroundShow = false;
       }
-      if (option === 'background') {
-        this.isActivitiesShow = false
-        this.isBackgroundShow = true
+      if (option === "background") {
+        this.isActivitiesShow = false;
+        this.isBackgroundShow = true;
       }
       // this.isBackgroundShow = !this.isActivitiesShow
-    }
+    },
   },
   components: {
     activityList,

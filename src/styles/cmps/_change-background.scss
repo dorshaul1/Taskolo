@@ -2,7 +2,7 @@
   flex-wrap: wrap;
   gap: 4px;
   margin-top: 10px;
-  margin-left: 2px;
+  margin-left: 1px;
 
 .background-container{
   height: 98px;
@@ -20,7 +20,9 @@
 }
 
 .vue-swatches__wrapper {
+  margin-inline-start: 4px;
   .vue-swatches__swatch {
+ 
     display: flex;
     justify-content: center;
     align-items: center;
