@@ -30,7 +30,7 @@
                     <h1 @click="openTitleInput" v-if="!isTitleOpen">
                         {{ task.title }}
                     </h1>
-                    <input
+                    <el-input
                         v-if="isTitleOpen"
                         ref="taskTitle"
                         v-model="title"
