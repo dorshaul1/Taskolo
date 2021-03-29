@@ -5,7 +5,7 @@
             <h3>Activity</h3>
             <button @click="toggleShowDetails">Show Details</button>
         </div>
-        <input type="text" placeholder="Wtire a comment..." />
+        <input type="text" v-model="comment" placeholder="Wtire a comment..." @keyup.enter="addComment" />
 
         <div v-if="isShowDetailsOpen">
             <section
@@ -34,7 +34,8 @@ export default {
     },
     data() {
         return {
-            isShowDetailsOpen: true
+            isShowDetailsOpen: true,
+            comment: ''
         }
     },
     methods: {
@@ -43,6 +44,9 @@ export default {
         },
         toggleShowDetails() {
             this.isShowDetailsOpen = !this.isShowDetailsOpen
+        },
+        addComment() {
+            this.$emit('add-comment', this.comment)
         }
     },
     created() {
