@@ -62,17 +62,15 @@
     </div>
 
     <section class="chart-by-group flex">
-
       <div class="chart-task">
-        <h1>activity by group</h1>
-        <chart :data="trelloDataForDisplay" />
+        <h1>task status by member</h1>
+        <chart-bar :data="taskByMemberDataForDisplay" />
       </div>
 
       <div class="chart-task">
-        <h1>activity by user</h1>
-        <chart :data="trelloDataForDisplay" />
+        <h1>task done per list</h1>
+        <chart :data="taskByMemberDataForDisplay" />
       </div>
-      
     </section>
   </main>
 </template>
@@ -80,7 +78,7 @@
 <script>
 import mainHeader from "../cmps/main-header";
 import chart from "../cmps/board/chart";
-// import chart from "../cmps/board/chart";
+import chartBar from "../cmps/board/chart-bar";
 
 export default {
   name: "dashboard",
@@ -92,18 +90,6 @@ export default {
   computed: {
     boardId() {
       return this.$route.params.boardId;
-    },
-    trelloDataForDisplay() {
-      return {
-        datasets: [
-          {
-            backgroundColor: ["magenta", "green", "purple"],
-            data: this.$store.getters.currBoard,
-          },
-        ],
-        // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: ["groups", "tasks", "activity"],
-      };
     },
     currBoard() {
       return this.$store.getters.currBoard;
@@ -156,19 +142,46 @@ export default {
       });
       return notDones;
     },
+    completeTaskPerGroup() {
+      let dataDone = this.currBoard.groups.map((group) => {
+        let cnt = 0;
+        group.tasks.forEach((task) => {
+          if (!task.checklists) return;
+          task.checklists.forEach((checklist) => {
+            checklist.todos.forEach((todo) => {
+              if (todo.isDone) {
+                cnt++;
+              }
+            });
+          });
+        });
+        console.log(dataDone);
+        return cnt;
+      });
+      return dataDone;
+    },
     currUsers() {
       return this.$store.getters.users;
     },
-    trelloDataForDisplay() {
+    namesUsers() {
+      let names = this.currUsers.map((user) => {
+        return user.fullname;
+      });
+      return names;
+    },
+    groupsName() {
+      return this.currBoard.groups.map((group) => group.title);
+    },
+    taskByMemberDataForDisplay() {
       return {
         datasets: [
           {
             backgroundColor: ["#70b500", "#f2d600", "#EB5A46", "#0079BF"],
-            data: [30, 50, 70, 40],
+            data: this.completeTaskPerGroup,
           },
         ],
         // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: ["task done", "Educational", "asfasf", "Funny"],
+        labels: this.groupsName,
       };
     },
   },
@@ -194,6 +207,7 @@ export default {
   components: {
     mainHeader,
     chart,
+    chartBar,
   },
 };
 </script>
