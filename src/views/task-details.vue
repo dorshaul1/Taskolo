@@ -67,6 +67,8 @@
                             :task="this.task"
                         />
 
+                        <attachment-preview v-if="task.attachment"></attachment-preview>
+
                         <checklist-preview
                             v-for="checklist in task.checklists"
                             :key="checklist.id"
@@ -349,6 +351,7 @@ import checklistPreview from "../cmps/task/task-option/task-details-previews/che
 import baseTaskModal from "../cmps/base-task-modal";
 import activityPreview from "../cmps/task/activity-preview";
 import dueDatePreview from "../cmps/task/task-option/task-details-previews/due-date-preview";
+import attachmentPreview from "../cmps/task/task-option/task-details-previews/attachment-preview";
 
 import members from "../cmps/task/task-option/task-details/members";
 import dueDate from "../cmps/task/task-option/task-details/due-date";
@@ -715,7 +718,7 @@ export default {
             this.isDeleteCardOpen = false;
         },
         addComment(comment) {
-             this.$store.dispatch({
+            this.$store.dispatch({
                 type: "addActivityData",
                 activityTxt: comment,
             });
@@ -777,6 +780,7 @@ export default {
         copyCard,
         deleteCard,
         moveCard,
+        attachmentPreview
     },
 
     watch: {
