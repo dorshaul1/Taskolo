@@ -11,6 +11,11 @@
       <ul class="clean-list">
         <li>
           <div class="side-menu-option" @click="changeOption('activity')">
+                   <img
+                                class="side-menu-list-icon"
+                                src="../../assets/task-icon/list.svg"
+                                alt=""
+                            /> 
             Activities
           </div>
         </li>
@@ -18,6 +23,7 @@
         <li>
           <label for="background-input">
             <div class="side-menu-option" @click="changeOption('background')">
+              <div class="background-icon" :style="{background: board.style}"></div>
               Change Background
             </div>
           </label>
@@ -30,7 +36,13 @@
           <!-- <color-picker /> -->
         </li>
         <li>
-          <div class="side-menu-option" @click="moveToDashBoard">Dashboard</div>
+          <div class="side-menu-option" @click="moveToDashBoard">
+                         <img
+                                class="side-menu-list-icon"
+                                src="../../assets/task-icon/list.svg"
+                                alt=""
+                            /> 
+            Dashboard</div>
           <div class="aboutThisBoard"></div>
         </li>
         <!-- <router-link to="/dashboard">Dashboard</router-link> -->

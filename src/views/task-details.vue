@@ -187,11 +187,12 @@
                         >
                             <!-- <font-awesome-icon class="icon" :icon="['far', 'clock']" /> -->
 
+
                             <img
-                                class="task-prev-icon"
-                                src="../assets/task-icon/wall-clock.svg"
+                                class="task-prev-icon clock-icon-watch"
+                                src="../assets/task-icon/clock.svg"
                                 alt=""
-                            />
+                            /> 
 
                             <span>Due Date</span>
                         </a>

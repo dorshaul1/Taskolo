@@ -1,7 +1,7 @@
 <template>
   <div class="form__field">
     <div class="form__label">
-      <h1>Choose color:</h1>
+      <h1>Choose color</h1>
     </div>
     <div class="form__input">
       <v-swatches
@@ -14,9 +14,9 @@
       ></v-swatches>
     </div>
 
-    <h1>Choose background:</h1>
+    <h1>Choose background</h1>
     <div class="background-image-list flex">
-      <div v-for="idx in 15" :key="idx" class="clean-list">
+      <div v-for="idx in 15" :key="idx" class="background-container">
         <img
           @click="setBackground('img', idx)"
           class="background-img"
