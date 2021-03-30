@@ -69,13 +69,14 @@
       </div>
     </div>
 
-    <section class="chart-by-group flex center">
-      <div class="chart-task">
+    <section class="chart-by-group flex">
+
+      <div class="chart-task per-member">
         <h1>Tasks per member</h1>
         <chart-doughnut :data="countTaskPerMemberForDisplay"></chart-doughnut>
       </div>
 
-      <div class="chart-task">
+      <div class="chart-task per-task">
         <h1>Tasks per list</h1>
         <chart :data="taskPerListForDisplay" />
       </div>
@@ -87,6 +88,7 @@
 import mainHeader from "../cmps/main-header";
 import chart from "../cmps/board/chart";
 import chartDoughnut from "../cmps/board/chart-doughnut";
+import chartList from "../cmps/board/chart-list";
 
 export default {
   name: "dashboard",
@@ -129,6 +131,15 @@ export default {
         });
       });
       return totalCount;
+    },
+    allTasks() {
+      let tasks = [];
+      this.currBoard.groups.forEach((group) => {
+        group.tasks.forEach((task) => {
+          tasks.push(task);
+        });
+      });
+      return tasks;
     },
     completedTasksForDisplay() {
       let dones = 0;
@@ -204,17 +215,22 @@ export default {
       };
     },
     taskPerMember() {
+    
+      let taskPerMember = [];
 
-      // taskPerMemberMap = Object.entries(
-      //   this.currBoard.groups.reduce(function (r, a) {
-      //     r[a.empleadoId] = r[a.empleadoId] || [];
-      //     r[a.empleadoId].push(a);
-      //     return r;
-      //   }, Object.create(null))
-      // );
-
-      // let tasksPerMember = this.currBoard
-      return [3, 7, 5];
+      this.currBoard.members.forEach((member) => {
+        let taskCnt = 0;
+        this.allTasks.forEach((task) => {
+          if (!task.members) return;
+          task.members.forEach((taskMember) => {
+            if (member.fullname === taskMember.fullname) {
+              taskCnt = taskCnt+1;
+            }
+          });
+        });
+        taskPerMember.push(taskCnt);
+      });
+      return taskPerMember;
     },
     membersName() {
       let members = this.currBoard.members.map((member) => {
@@ -259,6 +275,7 @@ export default {
     mainHeader,
     chart,
     chartDoughnut,
+    chartList
   },
 };
 </script>

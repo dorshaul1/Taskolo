@@ -30,7 +30,7 @@
                         font-size: 12px;
                         font-family: Robot;
                         padding-top: 5px;
-                        .val{
+                        .val {
                               font-size: 20px;
                         }
                   }
@@ -66,11 +66,24 @@
             }
       }
 
-      .chart-task {
-            margin-block-start: 40px;
+      .chart-by-group {
             background-color: rgba(255, 255, 255, 0.809);
-            border-radius: 3px;
-            padding: 10px;
+            justify-content: space-around;
+            margin-block-start: 20px;
+            border-radius: 5px;
+            margin-left: 15%;
+            margin-right: 15%;
+            padding: 20px;
+
+            .chart-task {
+                  margin-block-start: 40px;
+                  border-radius: 3px;
+                  padding: 10px;
+
+                  h1 {
+                        margin-bottom: 20px;
+                  }
+            }
       }
 
       .btn-back {
