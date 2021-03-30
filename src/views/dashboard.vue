@@ -2,10 +2,10 @@
   <main
     v-if="currBoard"
     class="dashboard"
-    :style="{ 'background': currBoard.style }"
+    :style="{ background: currBoard.style }"
   >
     <main-header />
-      <button class="btn-back" @click="backToBoard">Back To Board</button>
+    <button class="btn-back" @click="backToBoard">Back To Board</button>
 
     <div class="flex center">
       <h1 class="title">Dashboard</h1>
@@ -20,7 +20,10 @@
             alt="dfas"
           />
         </div>
-        <h4 class="data-box">MEMBERS <div class="val">{{ currUsers.length }}</div> </h4>
+        <h4 class="data-box">
+          MEMBERS
+          <div class="val">{{ currUsers.length }}</div>
+        </h4>
       </div>
 
       <div class="box flex">
@@ -31,7 +34,10 @@
             alt="dfas"
           />
         </div>
-        <h4 class="data-box">TOTAL TASKS <div class="val"> {{ totalTasksForDisplay }} </div></h4>
+        <h4 class="data-box">
+          TOTAL TASKS
+          <div class="val">{{ totalTasksForDisplay }}</div>
+        </h4>
       </div>
 
       <div class="box flex">
@@ -42,9 +48,10 @@
             alt="dfas"
           />
         </div>
-        <h4 class="data-box"
-          >COMPLETED TASKS <div class="val"> {{ completedTasksForDisplay }} </div></h4
-        >
+        <h4 class="data-box">
+          COMPLETED TASKS
+          <div class="val">{{ completedTasksForDisplay }}</div>
+        </h4>
       </div>
 
       <div class="box flex">
@@ -55,21 +62,23 @@
             alt="dfas"
           />
         </div>
-        <h4 class="data-box"
-          >INCOMPLETE TASKS <div class="val"> {{ incompletedTasksForDisplay }} </div> </h4
-        >
+        <h4 class="data-box">
+          INCOMPLETE TASKS
+          <div class="val">{{ incompletedTasksForDisplay }}</div>
+        </h4>
       </div>
     </div>
 
     <section class="chart-by-group flex center">
-      <!-- <div class="chart-task">
-        <h1>task status by member</h1>
-        <chart-bar :data="taskByMemberDataForDisplay" />
-      </div> -->
 
       <div class="chart-task">
-        <h1>Task done per list</h1>
-        <chart :data="taskByMemberDataForDisplay" />
+        <h1>Tasks per member</h1>
+        <chart-doughnut :data="countTaskPerMemberForDisplay"></chart-doughnut>
+      </div>
+
+      <div class="chart-task">
+        <h1>Tasks per list</h1>
+        <chart :data="taskPerListForDisplay" />
       </div>
     </section>
   </main>
@@ -78,13 +87,25 @@
 <script>
 import mainHeader from "../cmps/main-header";
 import chart from "../cmps/board/chart";
-import chartBar from "../cmps/board/chart-bar";
+import chartDoughnut from "../cmps/board/chart-doughnut";
 
 export default {
   name: "dashboard",
   data() {
     return {
       chartByGroup: null,
+      colors: [
+        "#70b500",
+        "#f2d600",
+        "#EB5A46",
+        "#ff9f1a",
+        "#0079bf",
+        "#c377e0",
+        "#ff78cb",
+        "#00c2e0",
+        "#51e898",
+        "#c4c9cc",
+      ],
     };
   },
   computed: {
@@ -142,16 +163,14 @@ export default {
       });
       return notDones;
     },
-    completeTaskPerGroup() {
+    taskPerGroup() {
       let dataDone = this.currBoard.groups.map((group) => {
         let cnt = 0;
         group.tasks.forEach((task) => {
           if (!task.checklists) return;
           task.checklists.forEach((checklist) => {
             checklist.todos.forEach((todo) => {
-              if (todo.isDone) {
-                cnt++;
-              }
+              cnt++;
             });
           });
         });
@@ -172,16 +191,40 @@ export default {
     groupsName() {
       return this.currBoard.groups.map((group) => group.title);
     },
-    taskByMemberDataForDisplay() {
+    taskPerListForDisplay() {
       return {
         datasets: [
           {
-            backgroundColor: ["#70b500", "#f2d600", "#EB5A46", "#0079BF"],
-            data: this.completeTaskPerGroup,
+            label: "Task per list",
+            backgroundColor: this.colors.slice(0, this.taskPerGroup.length),
+            data: this.taskPerGroup,
           },
         ],
         // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: this.groupsName,
+      };
+    },
+    taskPerMember() {
+      let tasksPerMember = this.currBoard
+      return [3, 7, 5];
+    },
+    membersName() {
+      let members = this.currBoard.members.map((member) => {
+        return member.fullname;
+      });
+      return members
+    },
+    countTaskPerMemberForDisplay() {
+      return {
+        datasets: [
+          {
+            label: "Tasks per member",
+            backgroundColor: this.colors.slice(0, this.taskPerMember.length),
+            data: this.taskPerMember,
+          },
+        ],
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: this.membersName,
       };
     },
   },
@@ -207,7 +250,7 @@ export default {
   components: {
     mainHeader,
     chart,
-    chartBar,
+    chartDoughnut,
   },
 };
 </script>
