@@ -36,12 +36,14 @@
       </div>
       <!-- :class="{'drag-start': drag}" -->
 
-      <div class="group-main-body">
-        <draggable
-          v-touch:touchhold="longTapHandler"
+       <!-- v-touch:touchhold="longTapHandler"
           v-touch:end = "endLongTapHandler"
           :disabled="isMobileScreen"
-          :scroll-sensitivity="200"
+          :scroll-sensitivity="200" -->
+
+
+      <div class="group-main-body">
+        <draggable
           :force-fallback="true"
           v-model="clonedGroup.tasks"
           group="task"
