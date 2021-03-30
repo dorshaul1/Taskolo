@@ -42,6 +42,7 @@
           v-touch:end = "endLongTapHandler"
           :disabled="isMobileScreen"
           :scroll-sensitivity="200" 
+              :scroll-sensitivity="200" 
           :scroll-sensitivity="200" -->
 
 
