@@ -169,9 +169,9 @@ export default {
           title: this.newTask.title,
           style: { bgColor: "" },
         });
-        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.closeTaskAdd();
         this.openTaskAdd();
+        await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
       } catch (err) {
         console.log("group-cmp: error with try to add new task", err);
       }
