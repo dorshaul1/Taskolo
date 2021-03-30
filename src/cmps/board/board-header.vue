@@ -45,6 +45,10 @@
     <button class="show-menu-btn" @click="openMenu">
       <i class="el-icon-more"></i> Show Menu
     </button>
+
+    <button class="show-menu-btn" @click="openMenu">
+      <i class="el-icon-more"></i> 
+    </button>
   </header>
 </template>
 
@@ -80,7 +84,7 @@ export default {
       return this.$store.getters.users;
     },
     currBoard() {
-      return this.$clone(this.$store.getters.currBoard)
+      return this.$clone(this.$store.getters.currBoard);
     },
   },
   methods: {
@@ -97,7 +101,7 @@ export default {
     },
 
     openMenu() {
-      this.$emit("open"); 
+      this.$emit("open");
     },
   },
   components: {
