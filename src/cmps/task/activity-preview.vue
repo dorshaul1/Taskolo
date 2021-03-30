@@ -3,9 +3,14 @@
         <img class="activity-icon" src="@/assets/task-icon/list.svg" alt="" />
         <div class="acitivty-title flex space-between align-center">
             <h3>Activity</h3>
-            <button @click="toggleShowDetails">Show Details</button>
+            <button @click="toggleShowDetails">{{ titleForDisplay }}</button>
         </div>
-        <input type="text" v-model="comment" placeholder="Wtire a comment..." @keyup.enter="addComment" />
+        <input
+            type="text"
+            v-model="comment"
+            placeholder="Wtire a comment..."
+            @keyup.enter="addComment"
+        />
 
         <div v-if="isShowDetailsOpen">
             <section
@@ -47,6 +52,11 @@ export default {
         },
         addComment() {
             this.$emit('add-comment', this.comment)
+        }
+    },
+    computed: {
+        titleForDisplay() {
+            return this.isShowDetailsOpen ? 'Hide Details' : 'Show Details'
         }
     },
     created() {
