@@ -8,6 +8,10 @@
     overflow: auto;
     padding-bottom: 8px;
 
+    h1{
+        text-align: left;
+    }
+
     button{
         background-color:rgba(9, 30, 66, 0.04)
 
@@ -256,9 +260,14 @@
         display: none;
         width: 30px;
         position: absolute;
+        padding: 0;
         right: 8px;
-        top: 170px;
-        width: 120px;
+        top: 130px;
+        // width: 120px;
+        height: 30px;
+        img{
+            width: 20px;
+        }
         @include for-normal-layout{
             display: block;
             .task-modal{
