@@ -8,9 +8,7 @@
       class="preview-modal"
       v-if="isModalOpen"
     ></task-preview-modal>
-
     <main-header />
-
     <!-- <div class="main-screen" :style="{ backgroundColor: currBoard.style }"></div> -->
     <board-header @open="isMenuOpen = true" :currBoard="currBoard" />
     <side-menu
@@ -18,13 +16,8 @@
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
     />
-<<<<<<< HEAD
-        <!-- :disabled= "isMobileScreen" -->
-
-=======
 <!-- 
     :disabled= "isMobileScreen" -->
->>>>>>> 35fd1c90d831dbbfb7f7f4e5e219b82e8ed7127c
     <main>
       <draggable
         class="flex board-details"
@@ -42,7 +35,6 @@
           :group="group"
           :boardId="currBoard._id"
         ></group>
-
         <div class="new-group-container">
           <section v-show="!isTakeGroup">
             <h3 @click="openGroupkAdd" class="add-new-group flex align-center">
@@ -53,7 +45,6 @@
               />Add another list
             </h3>
           </section>
-
           <section
             v-show="isTakeGroup"
             class="take-new-group flex isEditable"
@@ -69,7 +60,6 @@
               rows="2"
             >
             </textarea>
-
             <div class="group-btn-container flex">
               <button @click="addNewGroup" class="add-group">Add list</button>
               <button @click="closeGroupAdd" class="exit-group">
@@ -80,11 +70,9 @@
         </div>
       </draggable>
     </main>
-
     <router-view />
   </section>
 </template>
-
 <script>
 import mainHeader from "../cmps/main-header";
 import group from "../cmps/group/group";
@@ -94,7 +82,6 @@ import { utilService } from "../services/util.service.js";
 import draggable from "vuedraggable";
 import { socketService } from "../services/socket.service.js";
 import taskPreviewModal from "../cmps/task/task-preview-modal";
-
 export default {
   name: "board-details",
   data() {
@@ -144,7 +131,6 @@ export default {
         this.newGroup.tasks = [];
         this.newGroup.style = {};
         boardCopy.groups.push(this.newGroup);
-
         await this.$store.dispatch({
           type: "updateBoard",
           board: boardCopy,
@@ -164,7 +150,6 @@ export default {
         board: this.currBoard,
       });
     },
-
     openPreviewModal(task) {
       console.log("the task is", task);
       this.isModalOpen = true;
@@ -176,17 +161,16 @@ export default {
       console.log("isMobileScreen:", this.isMobileScreen);
     },
   },
-  // mounted() {
-  //   this.onResize();
-  //   this.$nextTick(() => {
-  //     window.addEventListener("resize", this.onResize);
-  //     // console.log(window.innerWidth);
-  //   });
-  // },
-
-  // beforeDestroy() {
-  //   window.removeEventListener("resize", this.onResize);
-  // },
+  mounted() {
+    this.onResize();
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+      // console.log(window.innerWidth);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  },
   watch: {
     boardId: {
       handler() {
@@ -209,6 +193,5 @@ export default {
   },
 };
 </script>
-
 <style>
 </style>
