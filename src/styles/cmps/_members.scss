@@ -1,5 +1,9 @@
 .members-modal {
     // max-height: 40vh;
+
+    .el-icon-check{
+        padding-inline-end: 30px;
+    }
     .member {
         width: 40px;
         height: 40px;
@@ -9,12 +13,12 @@
         margin: 4px;
     }
 
-    .member-fullname{
-        text-transform:none !important;
+    .member-fullname {
+        text-transform: none !important;
         font-size: 14px !important;
     }
 
-    .member-title{
+    .member-title {
         margin: 4px 0 10px 0 !important;
     }
 
@@ -26,18 +30,18 @@
         // padding: 4px 12px 12px;
         outline: none;
         // border-color: transparent;
-        border-radius: 3px;        &:focus{
-            box-shadow: inset 0 0 0 1px #0079bf
+        border-radius: 3px;
+        &:focus {
+            box-shadow: inset 0 0 0 1px #0079bf;
         }
     }
     .member-invite-container {
         max-height: 40vh;
         font-size: 14px;
         // font-weight: 100;
-        font-family: robot ;
+        font-family: robot;
 
         overflow: auto;
-
 
         h3 {
             margin: 10px 0 !important;
@@ -56,28 +60,30 @@
                 // background: darken($color: white, $amount: 5%);
                 background: $hover;
             }
-            .member{
+            .member {
                 margin-right: 14px;
+            }
+
+            .el-icon-check{
+                padding-inline-end: 30px;
             }
         }
 
-        
         // .member-data{
-            //     margin-bottom: 4px;
-            // }
-            
-            & .other-members-btn {
-                color: #172b4d;
-                width: 100%;
-                border: none;
-                display: inline-block;
-                line-height: 20px;
-                padding: 6px 12px;
-                text-decoration: none;
-                margin: 8px 4px 0 0;
-                cursor: pointer;
-                background-color: rgba(9, 30, 66, 0.04);
-            }
+        //     margin-bottom: 4px;
+        // }
+
+        & .other-members-btn {
+            color: #172b4d;
+            width: 100%;
+            border: none;
+            display: inline-block;
+            line-height: 20px;
+            padding: 6px 12px;
+            text-decoration: none;
+            margin: 8px 4px 0 0;
+            cursor: pointer;
+            background-color: rgba(9, 30, 66, 0.04);
         }
     }
-    
+}
