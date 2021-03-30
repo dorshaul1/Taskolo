@@ -38,6 +38,7 @@
 
       <div class="group-main-body">
         <draggable
+           :scroll-sensitivity="200"
           :force-fallback="true"
           v-model="clonedGroup.tasks"
           group="task"
