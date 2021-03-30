@@ -70,7 +70,6 @@
     </div>
 
     <section class="chart-by-group flex center">
-
       <div class="chart-task">
         <h1>Tasks per member</h1>
         <chart-doughnut :data="countTaskPerMemberForDisplay"></chart-doughnut>
@@ -205,14 +204,23 @@ export default {
       };
     },
     taskPerMember() {
-      let tasksPerMember = this.currBoard
+
+      // taskPerMemberMap = Object.entries(
+      //   this.currBoard.groups.reduce(function (r, a) {
+      //     r[a.empleadoId] = r[a.empleadoId] || [];
+      //     r[a.empleadoId].push(a);
+      //     return r;
+      //   }, Object.create(null))
+      // );
+
+      // let tasksPerMember = this.currBoard
       return [3, 7, 5];
     },
     membersName() {
       let members = this.currBoard.members.map((member) => {
         return member.fullname;
       });
-      return members
+      return members;
     },
     countTaskPerMemberForDisplay() {
       return {
