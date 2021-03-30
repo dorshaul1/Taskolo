@@ -5,18 +5,24 @@
     @include for-normal-layout {
         flex-wrap: wrap;
         position: relative;
-        top: -18px
+        top: -18px;
     }
     .seperate {
         margin: 0 8px;
         color: hsla(0, 0%, 100%, 0.24);
         // font-weight: 200;
+        @include for-normal-layout {
+            margin-left: 2px;
+            }
     }
 
     .task-modal {
         position: fixed;
         top: 45px;
         left: 128px;
+        @include for-normal-layout {
+        left: 10px;
+        }
     }
 
     button {
@@ -51,9 +57,21 @@
         font-size: 14px;
         line-height: 20px;
         font-weight: 400;
+
+        @include for-normal-layout {
+            display: none;
+        }
     }
+
+    .members-list {
+        li {
+            @include for-normal-layout {
+                display: none;
+            }
+        }
+    }
+
     .board-title {
-        
         h1,
         .edit-title-input input {
             // width: 180px;
@@ -71,6 +89,10 @@
             color: white;
             background-color: hsla(0, 0%, 100%, 0.24);
             border-radius: 3px;
+            @include for-normal-layout {
+                margin: 0 0 0 7px;
+                padding: 0 7px;
+            }
         }
         .edit-title-input input {
             background-color: white;
@@ -94,6 +116,10 @@
         margin-left: 8px;
         position: relative;
         height: 32px;
+        @include for-normal-layout {
+            padding: 0 8px;
+            margin-left: 0px;
+        }
     }
     .show-menu-btn {
         position: absolute;
@@ -104,6 +130,34 @@
         height: 32px;
         width: 125px;
         padding-left: 32px;
+        display: block;
+        content: "show Menu";
+        @include for-normal-layout {
+            display: none;
+            top: 23px;
+        }
+        .el-icon-more {
+            left: 12px;
+            top: 10px;
+            position: absolute;
+        }
+    }
+
+    .show-menu-btn-mobile {
+        position: absolute;
+        right: 4px;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 14px;
+        height: 32px;
+        width: 30px;
+        padding-left: 32px;
+        display: none;
+        @include for-normal-layout {
+            display: block;
+            top: 23px;
+        }
+
         .el-icon-more {
             left: 12px;
             top: 10px;
