@@ -38,7 +38,10 @@
 
       <div class="group-main-body">
         <draggable
-           :scroll-sensitivity="200"
+          v-touch:touchhold="longTapHandler"
+          v-touch:end = "endLongTapHandler"
+          :disabled="isMobileScreen"
+          :scroll-sensitivity="200"
           :force-fallback="true"
           v-model="clonedGroup.tasks"
           group="task"
@@ -121,6 +124,8 @@ export default {
       drag: false,
       isEditTitle: false,
       title: this.group.title,
+      screenWidth: null,
+      isMobileScreen: false,
     };
   },
   computed: {
@@ -228,6 +233,31 @@ export default {
     openPreviewModal(task) {
       this.$emit("task-modal-open", task);
     },
+    onResize() {
+      this.screenWidth = window.innerWidth;
+      // console.log("this.screenWidth:", this.screenWidth);
+      this.isMobileScreen = this.screenWidth <= 690 ? true : false;
+      console.log("isMobileScreen:", this.isMobileScreen);
+    },
+    longTapHandler() {
+      console.log('ddd');
+      this.isMobileScreen = false;
+    },
+    endLongTapHandler(){
+      this.isMobileScreen = true;
+
+    }
+  },
+  mounted() {
+    this.onResize();
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+      // console.log(window.innerWidth);
+    });
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   },
   components: {
     taskPreview,

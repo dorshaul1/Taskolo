@@ -802,6 +802,7 @@ export default {
     // console.log(this.taskId, "taskId in created task details");
     //1. taskID from route
     //2. commit setTaskById (mutation) find task in group
+    // console.log(screen.width);
   },
 };
 </script>
