@@ -18,8 +18,13 @@
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
     />
+<<<<<<< HEAD
         <!-- :disabled= "isMobileScreen" -->
 
+=======
+<!-- 
+    :disabled= "isMobileScreen" -->
+>>>>>>> 35fd1c90d831dbbfb7f7f4e5e219b82e8ed7127c
     <main>
       <draggable
         class="flex board-details"
