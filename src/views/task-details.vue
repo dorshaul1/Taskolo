@@ -35,6 +35,13 @@
           />
           <h4>in list {{ group.title }}</h4>
           <!-- <input v-else name="" type="text"> -->
+                  <button
+            class="burger-menu flex center"
+            @click="isOptionMenuOpen = !isOptionMenuOpen"
+          >
+            <img src="@/assets/task-icon/menu.svg" alt="" />
+          </button>
+        
         </div>
 
         <div class="task-details-grid">
@@ -89,12 +96,12 @@
                                 alt=""
                             /> -->
 
-          <button
+          <!-- <button
             class="burger-menu flex center"
             @click="isOptionMenuOpen = !isOptionMenuOpen"
           >
             <img src="@/assets/task-icon/menu.svg" alt="" />
-          </button>
+          </button> -->
 
           <section
             class="right-column"
