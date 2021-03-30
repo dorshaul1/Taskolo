@@ -2,37 +2,57 @@
   flex-wrap: wrap;
   gap: 4px;
   margin-top: 10px;
-  margin-left: 1px;
+  margin-left: 25px;
 
 .background-container{
   height: 98px;
 }
 
   .background-img {
-    width: 98px;
-    height: 98px;
+    width: 125px;
+    height: 97px;
     // margin: 5px;
-    border-radius: 5px;
+    border-radius: 8px;
   }
 }
-
-.v-swatches {
-}
-
-.vue-swatches__wrapper {
-  margin-inline-start: 4px;
-  padding-inline-start: 5px;
-  .vue-swatches__swatch {
- 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
-
-    .vue-swatches__check__wrapper {
-      .check {
-        fill: #fff;
-      }
-    }
+.vue-swatches__container {
+  display: block !important;
+  // margin-inline-start: 5px !important;
+  background-color: transparent !important;
+  input{
+      display: none;
   }
+  .vue-swatches__fallback__button{
+      display: none;
+  }
+  .vue-swatches__wrapper {
+      width: 320px !important;
+      display: flex !important;
+      padding-left: 15px !important;
+      /* background-dis: red !important; */
+      flex-wrap: wrap !important;
+      margin-inline-start: 4px;
+      padding-inline-start: 5px;
+      .vue-swatches__swatch {
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        .vue-swatches__check__wrapper {
+          .check {
+            fill: #fff;
+          }
+        }
+  }
+  /* display: none; */
+  
+  // .vue-swatches__wrapper {
+    
+    // }
+  }
+  
+}
+.vue-swatches__trigger{
+display: none;   
 }

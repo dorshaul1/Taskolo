@@ -2,6 +2,11 @@
     height: 40px;
     padding: 8px 4px 4px 8px;
     z-index: 5;
+    @include for-normal-layout {
+        flex-wrap: wrap;
+        position: relative;
+        top: -18px
+    }
     .seperate {
         margin: 0 8px;
         color: hsla(0, 0%, 100%, 0.24);
