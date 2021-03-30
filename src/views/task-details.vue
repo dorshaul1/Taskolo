@@ -532,6 +532,7 @@ export default {
       const checklist = boardService.getEmptyCheckList();
       checklist.title = title;
       taskCopy.checklists.push(checklist);
+      this.isChecklistOpen = false
       this.$store.dispatch({
         type: "updateTask",
         task: taskCopy,
