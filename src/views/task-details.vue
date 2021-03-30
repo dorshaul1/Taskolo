@@ -35,6 +35,13 @@
           />
           <h4>in list {{ group.title }}</h4>
           <!-- <input v-else name="" type="text"> -->
+                  <button
+            class="burger-menu flex center"
+            @click="isOptionMenuOpen = !isOptionMenuOpen"
+          >
+            <img src="@/assets/task-icon/menu.svg" alt="" />
+          </button>
+        
         </div>
 
         <div class="task-details-grid">
@@ -89,14 +96,21 @@
                                 alt=""
                             /> -->
 
-          <button class="burger-menu" @click="isOptionMenuOpen = !isOptionMenuOpen">Option menu</button>
-          
-          <section class="right-column" :class="{'option-menu': isOptionMenuOpen}">
+          <!-- <button
+            class="burger-menu flex center"
+            @click="isOptionMenuOpen = !isOptionMenuOpen"
+          >
+            <img src="@/assets/task-icon/menu.svg" alt="" />
+          </button> -->
+
+          <section
+            class="right-column"
+            :class="{ 'option-menu': isOptionMenuOpen }"
+          >
             <h3>Add to card</h3>
             <a
-            :class="{'option-menu': isOptionMenuOpen}"
+              :class="{ 'option-menu': isOptionMenuOpen }"
               class="link-button"
-              
               href="#"
               title="Members"
               @click="toggleSection('Members')"
@@ -375,7 +389,7 @@ export default {
       labelToEdit: null, //from labels to edit labels
       editedLabel: null,
       title: "",
-      isOptionMenuOpen: false
+      isOptionMenuOpen: false,
     };
   },
   methods: {
