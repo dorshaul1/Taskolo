@@ -159,7 +159,11 @@ export default {
     return {
       labels: this.task.labelIds,
       isEdit: false,
+<<<<<<< HEAD
       dueDateIcon: "clock",
+=======
+      icon: "clock",
+>>>>>>> 17e729e41bbe5a9498ebdea3cec2ba6f79a529f1
     };
   },
   computed: {
@@ -185,7 +189,11 @@ export default {
       return this.$store.getters.currBoard;
     },
     dueDateIcon() {
+<<<<<<< HEAD
       return this.dueDateIcon;
+=======
+      return this.icon;
+>>>>>>> 17e729e41bbe5a9498ebdea3cec2ba6f79a529f1
     },
     timeStatus() {
       return {
@@ -212,6 +220,12 @@ export default {
       }
       return icon;
     },
+<<<<<<< HEAD
+=======
+    // isBadget(){
+    //     if (this.task.description || this.task.checklists|| this.task.watch|| this.task.members.length !==0|| this.task.dueDate) return true
+    // },
+>>>>>>> 17e729e41bbe5a9498ebdea3cec2ba6f79a529f1
   },
   methods: {
     async openTaskPreview() {
