@@ -96,7 +96,7 @@
                 isToday: this.$moment().isSame(task.dueDate, 'day'),
                 isDone: task.isDone,
               }"
-              @mouseover="userOverDueDate"
+              @mouseover="userHoverDueDate"
               @mouseout="isClockHover = ''"
               @click.stop="isDoneToggle"
             >
@@ -115,12 +115,11 @@
                 v-show="isClockHoverForDisplay === ''"
                 :icon="['far', 'clock']"
               />
-              <!-- <v-if="isClockHover" font-awesome-icon :icon="['fas', 'stop']" /> -->
+          
               <span class="time-display"> {{ timeForDisplay }}</span>
             </div>
 
             <div class="desc" v-if="task.description">
-              <!-- <font-awesome-icon :icon="['fas', 'align-left']" /> -->
               <img
                 class="task-prev-icon"
                 src="../../assets/task-icon/left-alignment.svg"
@@ -248,12 +247,12 @@ export default {
         let taskCopy = this.$clone(this.task);
         taskCopy.isDone = !taskCopy.isDone;
         await this.$store.dispatch({ type: "updateTask", task: taskCopy });
-        this.userOverDueDate();
+        this.userHoverDueDate();
       } catch (error) {
         console.log("cant toggle is done", error);
       }
     },
-    userOverDueDate() {
+    userHoverDueDate() {
       this.isClockHover = "notDone";
       if (this.task.isDone) {
         this.isClockHover = "done";
