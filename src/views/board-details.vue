@@ -18,7 +18,7 @@
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
     />
-<!-- 
+    <!-- 
     :disabled= "isMobileScreen" -->
     <main>
       <draggable
@@ -140,11 +140,11 @@ export default {
         this.newGroup.style = {};
         boardCopy.groups.push(this.newGroup);
 
+        this.closeGroupAdd();
         await this.$store.dispatch({
           type: "updateBoard",
           board: boardCopy,
         });
-        this.closeGroupAdd();
       } catch (err) {
         console.log("error in adding group", err);
       }
