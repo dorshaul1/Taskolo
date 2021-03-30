@@ -96,7 +96,7 @@
                             v-if="task.dueDate"
                             :class="timeStatus"
                             @mouseover="onDateHover"
-                            @mouseout="isClockHover = ''"
+                            @mouseout="dueDateIcon = 'clock'"
                             @click.stop="isDoneToggle"
                         >
                             <font-awesome-icon
@@ -171,7 +171,7 @@ export default {
         return {
             labels: this.task.labelIds,
             isEdit: false,
-            isClockHover: "",
+            dueDateIcon: "clock",
         };
     },
     computed: {
@@ -196,8 +196,8 @@ export default {
         getBoard() {
             return this.$store.getters.currBoard;
         },
-        isClockHover() {
-            return this.isClockHover;
+        dueDateIcon() {
+            return this.dueDateIcon;
         },
         timeStatus() {
             return {
@@ -209,20 +209,19 @@ export default {
         },
         dateIcon() {
             let icon = []
-            switch (this.isClockHover) {
+            switch (this.dueDateIcon) {
                 case 'notDone':
                     icon = ['far', 'square']
                     break;
                 case 'done':
                     icon = ['far', 'check-square']
                     break;
-                case '':
+                case 'clock':
                     icon = ['far', 'clock']
                     break;
                 default:
                     break;
             }
-            console.log("icon", icon)
             return icon
         }
     },
@@ -274,9 +273,9 @@ export default {
             }
         },
         onDateHover() {
-            this.isClockHover = "notDone";
+            this.dueDateIcon = "notDone";
             if (this.task.isDone) {
-                this.isClockHover = "done";
+                this.dueDateIcon = "done";
             }
         },
         isBoardMember(memberId) {
