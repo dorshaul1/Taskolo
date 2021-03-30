@@ -94,7 +94,9 @@
           <section class="right-column" :class="{'option-menu': isOptionMenuOpen}">
             <h3>Add to card</h3>
             <a
+            :class="{'option-menu': isOptionMenuOpen}"
               class="link-button"
+              
               href="#"
               title="Members"
               @click="toggleSection('Members')"
