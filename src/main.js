@@ -16,6 +16,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import './styles/main.scss'
 
+import Vue2TouchEvents from 'vue2-touch-events'
+
+Vue.use(Vue2TouchEvents
+  // longTapTimeInterval: 400,
+)
+
 // import Calendar from 'v-calendar/lib/components/calendar.umd'
 // import DatePicker from 'v-calendar/lib/components/date-picker.umd'
 

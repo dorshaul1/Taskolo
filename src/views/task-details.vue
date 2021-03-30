@@ -532,6 +532,7 @@ export default {
       const checklist = boardService.getEmptyCheckList();
       checklist.title = title;
       taskCopy.checklists.push(checklist);
+      this.isChecklistOpen = false
       this.$store.dispatch({
         type: "updateTask",
         task: taskCopy,
@@ -801,6 +802,7 @@ export default {
     // console.log(this.taskId, "taskId in created task details");
     //1. taskID from route
     //2. commit setTaskById (mutation) find task in group
+    // console.log(screen.width);
   },
 };
 </script>

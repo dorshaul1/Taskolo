@@ -21,6 +21,7 @@
 
     <main>
       <draggable
+        :disabled= "isMobileScreen"
         class="flex board-details"
         v-model="currBoard.groups"
         group="group"
@@ -66,7 +67,9 @@
 
             <div class="group-btn-container flex">
               <button @click="addNewGroup" class="add-group">Add list</button>
-              <button @click="closeGroupAdd" class="exit-group"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
+              <button @click="closeGroupAdd" class="exit-group">
+                <img src="@/assets/task-icon/trello-icon-pack/close.svg" />
+              </button>
             </div>
           </section>
         </div>
@@ -98,6 +101,8 @@ export default {
       isTakeGroup: false,
       drag: null,
       isModalOpen: false,
+      screenWidth: null,
+      isMobileScreen: false,
     };
   },
   computed: {
@@ -154,30 +159,28 @@ export default {
         board: this.currBoard,
       });
     },
-    async dragGroup() {
-      // await this.$store.dispatch({
-      //   type: "updateBoard",
-      //   board: this.currBoard,
-      // });
-      // try {
-      //   //clone change all the groups
-      //   const clone = require("rfdc");
-      //   // //replace the group- find index
-      //   // var groups = currBoard().groups;
-      //   // var currGroupIdx = groups.findIndex(
-      //   //   (group) => group.id === this.group.id
-      //   // );
-      //   // boardCopy.groups.splice(currGroupIdx, 1, this.clonedGroup);
-      //   //update to all the board.
-      //   this.dragDone();
-      // } catch (error) {
-      //   console.log("group cmp: error with drag task inside group");
-      // }
-    },
+
     openPreviewModal(task) {
       console.log("the task is", task);
       this.isModalOpen = true;
     },
+    onResize() {
+      this.screenWidth = window.innerWidth;
+      // console.log("this.screenWidth:", this.screenWidth);
+      this.isMobileScreen = this.screenWidth <= 690 ? true : false;
+      console.log("isMobileScreen:", this.isMobileScreen);
+    },
+  },
+  mounted() {
+    this.onResize();
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+      // console.log(window.innerWidth);
+    });
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   },
   watch: {
     boardId: {
