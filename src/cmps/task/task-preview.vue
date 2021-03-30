@@ -185,10 +185,6 @@ export default {
     getBoard() {
       return this.$store.getters.currBoard;
     },
-    dueDateIcon() {
-      return this.dueDateIcon;
-      
-   return this.icon;},
     timeStatus() {
       return {
         isTimePass:
