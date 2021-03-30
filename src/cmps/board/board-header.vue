@@ -46,9 +46,11 @@
       <i class="el-icon-more"></i> Show Menu
     </button>
 
-    <button class="show-menu-btn" @click="openMenu">
+    <button  class="show-menu-btn-mobile" @click="openMenu">
       <i class="el-icon-more"></i> 
     </button>
+
+
   </header>
 </template>
 

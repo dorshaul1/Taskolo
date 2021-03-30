@@ -11,12 +11,18 @@
         margin: 0 8px;
         color: hsla(0, 0%, 100%, 0.24);
         // font-weight: 200;
+        @include for-normal-layout {
+            margin-left: 2px;
+            }
     }
 
     .task-modal {
         position: fixed;
         top: 45px;
         left: 128px;
+        @include for-normal-layout {
+        left: 10px;
+        }
     }
 
     button {
@@ -124,10 +130,34 @@
         height: 32px;
         width: 125px;
         padding-left: 32px;
+        display: block;
         content: "show Menu";
         @include for-normal-layout {
-          top: 23px;
+            display: none;
+            top: 23px;
         }
+        .el-icon-more {
+            left: 12px;
+            top: 10px;
+            position: absolute;
+        }
+    }
+
+    .show-menu-btn-mobile {
+        position: absolute;
+        right: 4px;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 14px;
+        height: 32px;
+        width: 30px;
+        padding-left: 32px;
+        display: none;
+        @include for-normal-layout {
+            display: block;
+            top: 23px;
+        }
+
         .el-icon-more {
             left: 12px;
             top: 10px;
