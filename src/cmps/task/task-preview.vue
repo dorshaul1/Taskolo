@@ -268,7 +268,7 @@ export default {
                 let taskCopy = this.$clone(this.task);
                 taskCopy.isDone = !taskCopy.isDone;
                 await this.$store.dispatch({ type: "updateTask", task: taskCopy });
-                this.userHoverDueDate();
+                this.onDateHover();
             } catch (error) {
                 console.log("cant toggle is done", error);
             }
