@@ -35,22 +35,15 @@
         </div>
       </div>
       <!-- :class="{'drag-start': drag}" -->
-<<<<<<< HEAD
 
       <!-- v-touch:touchhold="longTapHandler"
-=======
-       <!-- v-touch:touchhold="longTapHandler"
->>>>>>> 21a37685dc795a9abe4e72ab31d3bb8f3a640f55
           v-touch:end = "endLongTapHandler"
         
           :scroll-sensitivity="200" 
               :scroll-sensitivity="200" 
           :scroll-sensitivity="200" -->
-<<<<<<< HEAD
 
           <!-- :disabled="isMobileScreen" -->
-=======
->>>>>>> 21a37685dc795a9abe4e72ab31d3bb8f3a640f55
       <div class="group-main-body">
         <draggable
           :options="isMobile"
@@ -256,11 +249,7 @@ export default {
     },
     endLongTapHandler() {
       this.isMobileScreen = true;
-<<<<<<< HEAD
     },
-=======
-    }
->>>>>>> 21a37685dc795a9abe4e72ab31d3bb8f3a640f55
   },
   mounted() {
     this.onResize();
