@@ -20,6 +20,7 @@
     :disabled= "isMobileScreen" -->
     <main>
       <draggable
+        :disabled="isMobileScreen"
         class="flex board-details"
         v-model="currBoard.groups"
         group="group"
