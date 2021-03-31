@@ -243,8 +243,7 @@ export default {
       this.isMobileScreen = this.screenWidth <= 690 ? true : false;
       console.log("isMobileScreen:", this.isMobileScreen);
     },
-    longTapHandler() {
-      console.log("ddd");
+    longTapHandler() { 
       this.isMobileScreen = false;
     },
     endLongTapHandler() {

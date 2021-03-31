@@ -173,7 +173,6 @@ export default {
       labels: this.task.labelIds,
       isEdit: false,
       dueDateIcon: "clock",
-      icon: "clock",
     };
   },
   computed: {
@@ -205,23 +204,6 @@ export default {
         isToday: this.$moment().isSame(this.task.dueDate, "day"),
         isDone: this.task.isDone,
       };
-    },
-    dateIcon() {
-      let icon = [];
-      switch (this.dueDateIcon) {
-        case "notDone":
-          icon = ["far", "square"];
-          break;
-        case "done":
-          icon = ["far", "check-square"];
-          break;
-        case "clock":
-          icon = ["far", "clock"];
-          break;
-        default:
-          break;
-      }
-      return icon;
     },
   },
   methods: {
