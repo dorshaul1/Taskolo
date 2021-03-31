@@ -91,6 +91,16 @@
               />
             </div>
 
+
+
+
+
+
+
+
+
+
+
             <div
               class="dute-date flex align-center space-between"
               v-if="task.dueDate"
@@ -99,7 +109,7 @@
               @mouseout="dueDateIcon = 'clock'"
               @click.stop="isDoneToggle"
             >
-              <!-- <font-awesome-icon class="due-date-icon" :icon="dateIcon" /> -->
+
               <font-awesome-icon
                 class="due-date-icon"
                 :icon="['far', dueDateIcon]"
