@@ -29,6 +29,11 @@
     left: 0;
     top: 46px;
     padding-bottom: 46px;
+    
+    @include for-normal-layout {
+        top: 0;
+        padding-bottom: 0;
+    }
     // @include for-normal-layout{
     //     padding-bottom: 10px;
     // }
