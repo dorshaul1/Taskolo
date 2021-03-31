@@ -36,18 +36,17 @@
       </div>
       <!-- :class="{'drag-start': drag}" -->
 
-
-
-       <!-- v-touch:touchhold="longTapHandler"
+      <!-- v-touch:touchhold="longTapHandler"
           v-touch:end = "endLongTapHandler"
-          :disabled="isMobileScreen"
+        
           :scroll-sensitivity="200" 
               :scroll-sensitivity="200" 
           :scroll-sensitivity="200" -->
 
-
+          <!-- :disabled="isMobileScreen" -->
       <div class="group-main-body">
         <draggable
+          :options="isMobile"
           :force-fallback="true"
           v-model="clonedGroup.tasks"
           group="task"
@@ -149,6 +148,11 @@ export default {
         ghostClass: "ghost",
       };
     },
+    isMobile() {
+      if (this.isMobileScreen) {
+        return { delay: 80 };
+      }else return { delay: 0 }
+    },
   },
   methods: {
     openTaskAdd() {
@@ -246,13 +250,12 @@ export default {
       console.log("isMobileScreen:", this.isMobileScreen);
     },
     longTapHandler() {
-      console.log('ddd');
+      console.log("ddd");
       this.isMobileScreen = false;
     },
-    endLongTapHandler(){
+    endLongTapHandler() {
       this.isMobileScreen = true;
-
-    }
+    },
   },
   mounted() {
     this.onResize();

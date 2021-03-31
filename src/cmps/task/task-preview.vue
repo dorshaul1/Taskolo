@@ -91,27 +91,22 @@
               />
             </div>
 
-
-
-
             <div
               class="dute-date flex align-center space-between"
               v-if="task.dueDate"
               :class="timeStatus"
-              @mouseover="onDateHover"
+              @mouseover="dueDateIcon = task.isDone ? 'check-square' : 'square'"
               @mouseout="dueDateIcon = 'clock'"
               @click.stop="isDoneToggle"
             >
-              <font-awesome-icon class="due-date-icon" :icon="dateIcon" />
+              <!-- <font-awesome-icon class="due-date-icon" :icon="dateIcon" /> -->
+              <font-awesome-icon
+                class="due-date-icon"
+                :icon="['far', dueDateIcon]"
+              />
 
               <span class="time-display"> {{ timeForDisplay }}</span>
             </div>
-
-
-
-
-
-
 
             <div class="desc" v-if="task.description">
               <img
@@ -126,7 +121,6 @@
             </div>
 
             <div class="checklist flex align-center" v-if="task.checklists">
-              <!-- <font-awesome-icon :icon="['far', 'check-square']" /> -->
               <img
                 class="task-prev-icon"
                 src="@/assets/task-icon/trello-icon-pack/checkbox.svg"
@@ -169,7 +163,7 @@ export default {
       labels: this.task.labelIds,
       isEdit: false,
       dueDateIcon: "clock",
-        icon: "clock",
+      icon: "clock",
     };
   },
   computed: {
@@ -268,10 +262,7 @@ export default {
       }
     },
     onDateHover() {
-      this.dueDateIcon = "notDone";
-      if (this.task.isDone) {
-        this.dueDateIcon = "done";
-      }
+      this.dueDateIcon = this.task.isDone ? "check-square" : "square";
     },
     isBoardMember(memberId) {
       try {
