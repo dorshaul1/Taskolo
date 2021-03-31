@@ -107,7 +107,7 @@
             class="right-column"
             :class="{ 'option-menu': isOptionMenuOpen }"
           >
-            <h3>Add to card</h3>
+            <!-- <h3>Add to card</h3> -->
             <a
               :class="{ 'option-menu': isOptionMenuOpen }"
               class="link-button"
@@ -253,7 +253,7 @@
             >
               <cover :colors="coverColors" @update-cover="updateCover" />
             </base-task-modal>
-            <h3 class="actions-title">Actions</h3>
+            <!-- <h3 class="actions-title">Actions</h3> -->
 
             <!-- COPY -->
 

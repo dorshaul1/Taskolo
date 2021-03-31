@@ -131,11 +131,7 @@ export default {
         this.newGroup.tasks = [];
         this.newGroup.style = {};
         boardCopy.groups.push(this.newGroup);
-<<<<<<< HEAD
-=======
-
         this.closeGroupAdd();
->>>>>>> dca50fd8e74da5ea47f998ee0e214feb8a6cd40a
         await this.$store.dispatch({
           type: "updateBoard",
           board: boardCopy,
