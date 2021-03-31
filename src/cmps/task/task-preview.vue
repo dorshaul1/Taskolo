@@ -163,7 +163,6 @@ export default {
       labels: this.task.labelIds,
       isEdit: false,
       dueDateIcon: "clock",
-      // icon: "clock",
     };
   },
   computed: {
