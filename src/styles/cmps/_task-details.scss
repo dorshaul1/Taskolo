@@ -12,7 +12,16 @@
         text-align: left;
     }
 
-  
+    .task-modal{
+        top:117px
+    }
+
+
+    .task-modal {
+        @include for-normal-layout {
+            right: -4px;
+        }
+    }
 
     @include for-normal-layout {
         &::-webkit-scrollbar {
@@ -29,7 +38,7 @@
     left: 0;
     top: 46px;
     padding-bottom: 46px;
-    
+
     @include for-normal-layout {
         top: 0;
         padding-bottom: 0;
@@ -251,7 +260,6 @@
     }
 
     & .left-column {
-
         & > * {
             grid-column: 1/2;
             // margin-left: 40px;
@@ -306,8 +314,8 @@
             .menu-row > * {
                 margin-right: 6px;
             }
-            .actions-title{
-                margin-top: 18px  !important;
+            .actions-title {
+                margin-top: 18px !important;
             }
         }
         h3 {
