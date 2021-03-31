@@ -104,7 +104,7 @@ export const boardStore = {
         },
         async updateTask(context, { task, activityTxt }) {
             try {
-                
+                console.log('task', task)
                 context.commit({ type: 'setTask', task })
                 const clone = require("rfdc");
                 const boardCopy = clone({ proto: true })(

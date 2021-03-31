@@ -35,15 +35,22 @@
         </div>
       </div>
       <!-- :class="{'drag-start': drag}" -->
+<<<<<<< HEAD
 
       <!-- v-touch:touchhold="longTapHandler"
+=======
+       <!-- v-touch:touchhold="longTapHandler"
+>>>>>>> 21a37685dc795a9abe4e72ab31d3bb8f3a640f55
           v-touch:end = "endLongTapHandler"
         
           :scroll-sensitivity="200" 
               :scroll-sensitivity="200" 
           :scroll-sensitivity="200" -->
+<<<<<<< HEAD
 
           <!-- :disabled="isMobileScreen" -->
+=======
+>>>>>>> 21a37685dc795a9abe4e72ab31d3bb8f3a640f55
       <div class="group-main-body">
         <draggable
           :options="isMobile"
@@ -67,7 +74,6 @@
             ></task-preview>
           </transition-group>
         </draggable>
-
         <div class="group-footer flex space-between">
           <section v-show="!isTakeTask">
             <h3 @click="openTaskAdd" class="add-new-Card">
@@ -79,7 +85,6 @@
               Add another card
             </h3>
           </section>
-
           <section v-show="isTakeTask" class="take-new-task flex">
             <textarea
               class="task-Add-input"
@@ -91,7 +96,6 @@
               rows="2"
             >
             </textarea>
-
             <div class="task-btn-container flex align-center">
               <button @click="addNewTask" class="add-task">Add card</button>
               <button @click="closeTaskAdd" class="exit-task">
@@ -104,14 +108,12 @@
     </div>
   </div>
 </template>
-
 <script>
 import taskPreview from "../task/task-preview";
 import { utilService } from "../../services/util.service.js";
 import groupMenu from "../group/group-menu";
 import baseModal from "../base-task-modal";
 import draggable from "vuedraggable";
-
 export default {
   name: "group",
   props: {
@@ -232,7 +234,6 @@ export default {
           (group) => group.id === this.group.id
         );
         boardCopy.groups[currGroupIdx].title = this.title;
-
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
         this.isEditTitle = false;
         this.title = this.group.title;
@@ -255,7 +256,11 @@ export default {
     },
     endLongTapHandler() {
       this.isMobileScreen = true;
+<<<<<<< HEAD
     },
+=======
+    }
+>>>>>>> 21a37685dc795a9abe4e72ab31d3bb8f3a640f55
   },
   mounted() {
     this.onResize();
@@ -264,7 +269,6 @@ export default {
       // console.log(window.innerWidth);
     });
   },
-
   beforeDestroy() {
     window.removeEventListener("resize", this.onResize);
   },
@@ -276,4 +280,3 @@ export default {
   },
 };
 </script>
-
