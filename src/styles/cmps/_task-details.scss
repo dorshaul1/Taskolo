@@ -12,9 +12,7 @@
         text-align: left;
     }
 
-    button {
-        background-color: rgba(9, 30, 66, 0.04);
-    }
+  
 
     @include for-normal-layout {
         &::-webkit-scrollbar {
@@ -31,6 +29,11 @@
     left: 0;
     top: 46px;
     padding-bottom: 46px;
+    
+    @include for-normal-layout {
+        top: 0;
+        padding-bottom: 0;
+    }
     // @include for-normal-layout{
     //     padding-bottom: 10px;
     // }
@@ -258,7 +261,12 @@
 
             @include for-normal-layout {
                 grid-column: unset;
+                grid-row: 2/3;
             }
+        }
+
+        button {
+            background-color: rgba(9, 30, 66, 0.04);
         }
         // img{
         //     position: absolute;
@@ -280,8 +288,27 @@
         @include for-normal-layout {
             max-width: 100%;
             min-height: unset;
+            padding-left: 0;
             display: flex;
             flex-wrap: wrap;
+            grid-row: 1/2;
+            margin-bottom: 16px;
+
+            .menu-column {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .menu-row > * {
+                margin-right: 6px;
+            }
+            .actions-title{
+                margin-top: 18px  !important;
+            }
         }
         h3 {
             color: #5e6c84;
